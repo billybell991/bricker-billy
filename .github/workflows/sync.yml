@@ -1,0 +1,56 @@
+name: Daily LEGO Sync
+
+on:
+  schedule:
+    # Runs every day at 8:00 AM UTC (4 AM EST / 3 AM CST)
+    - cron: "0 8 * * *"
+  workflow_dispatch: # Allow manual trigger from GitHub Actions UI
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    name: Sync LEGO Data
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install Python dependencies
+        run: |
+          pip install --upgrade pip
+          pip install \
+            gspread \
+            google-auth \
+            requests \
+            requests-oauthlib \
+            google-generativeai
+
+      - name: Run LEGO sync script
+        env:
+          SPREADSHEET_ID: ${{ secrets.SPREADSHEET_ID }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          BL_CONSUMER_KEY: ${{ secrets.BL_CONSUMER_KEY }}
+          BL_CONSUMER_SECRET: ${{ secrets.BL_CONSUMER_SECRET }}
+          BL_TOKEN: ${{ secrets.BL_TOKEN }}
+          BL_TOKEN_SECRET: ${{ secrets.BL_TOKEN_SECRET }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python sync_lego.py
+
+      - name: Commit and push updated data.json
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: auto-sync LEGO data [skip ci]"
+          file_pattern: "public/data.json"
+          commit_user_name: "LEGO Sync Bot"
+          commit_user_email: "sync-bot@users.noreply.github.com"

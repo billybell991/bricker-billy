@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-lego-dark text-white font-display antialiased;
+    background-image: radial-gradient(ellipse at 20% 50%, rgba(0, 109, 183, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(227, 0, 11, 0.06) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-lego-card border border-white/10 rounded-2xl shadow-xl;
+  }
+  .badge-strong-sell {
+    @apply bg-green-500/20 text-green-400 border border-green-500/40 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider;
+  }
+  .badge-consider {
+    @apply bg-yellow-500/20 text-yellow-400 border border-yellow-500/40 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider;
+  }
+  .badge-hold {
+    @apply bg-slate-500/20 text-slate-400 border border-slate-500/40 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider;
+  }
+  .badge-no-data {
+    @apply bg-red-900/20 text-red-400 border border-red-800/40 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+::-webkit-scrollbar-thumb {
+  background: #0f3460;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #006db7;
+}
