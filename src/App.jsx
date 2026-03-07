@@ -128,7 +128,7 @@ export default function App() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="text-6xl mb-4">🧱</div>
+          <img src="./zombie-cap.jpg" alt="" className="w-20 h-20 object-contain mx-auto mb-4 animate-pulse" />
           <p className="text-slate-400 font-semibold animate-pulse">Loading your LEGO empire...</p>
         </div>
       </div>
@@ -158,7 +158,7 @@ export default function App() {
       <header className="sticky top-0 z-40 bg-lego-dark/90 backdrop-blur-md border-b border-white/10 px-6 py-4">
         <div className="max-w-screen-xl mx-auto flex items-center justify-between gap-4 flex-wrap">
           <div className="flex items-center gap-3">
-            <span className="text-3xl">🧱</span>
+            <img src="./zombie-cap.jpg" alt="Bricker Billy" className="w-10 h-10 object-contain" />
             <div>
               <h1 className="text-xl font-black text-white leading-none">Bricker Billy</h1>
               <p className="text-[10px] text-slate-500 tracking-wider uppercase">LEGO Investment Dashboard</p>
