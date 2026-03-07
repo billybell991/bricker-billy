@@ -48,7 +48,12 @@ export function SignalListModal({ signal, sets, onClose }) {
                 {filtered.map((s) => (
                   <tr key={s.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
                     <td className="px-4 py-3">
-                      <div className="flex items-center gap-3">
+                      <a
+                        href={`https://www.bricklink.com/v2/catalog/catalogitem.page?S=${s.set_number}-1`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 group/link"
+                      >
                         <img
                           src={s.image_url}
                           alt={s.name}
@@ -56,10 +61,10 @@ export function SignalListModal({ signal, sets, onClose }) {
                           onError={(e) => { e.target.style.display = "none"; }}
                         />
                         <div>
-                          <p className="font-bold text-white leading-tight">{s.name}</p>
+                          <p className="font-bold text-white leading-tight group-hover/link:text-lego-yellow transition-colors">{s.name}</p>
                           <p className="text-xs text-slate-500">#{s.set_number}</p>
                         </div>
-                      </div>
+                      </a>
                     </td>
                     <td className="px-4 py-3 text-slate-400 text-xs">{s.theme}</td>
                     <td className="px-4 py-3 text-right text-slate-300">

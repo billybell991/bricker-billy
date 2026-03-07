@@ -48,7 +48,14 @@ export function SetCard({ set, onAdClick, onListingChange }) {
           <p className="text-xs font-semibold text-lego-yellow uppercase tracking-widest mb-0.5">
             {set.theme}
           </p>
-          <h3 className="font-black text-base text-white leading-tight">{set.name}</h3>
+          <a
+            href={`https://www.bricklink.com/v2/catalog/catalogitem.page?S=${set.set_number}-1`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-black text-base text-white leading-tight hover:text-lego-yellow transition-colors"
+          >
+            {set.name}
+          </a>
           <p className="text-xs text-slate-500 mt-0.5">Set #{set.set_number}</p>
         </div>
 
