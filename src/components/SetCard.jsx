@@ -32,7 +32,7 @@ export function SetCard({ set, onAdClick, onListingChange }) {
           className="h-40 w-full object-contain group-hover:scale-105 transition-transform duration-500 p-2"
           onError={(e) => {
             e.target.style.display = "none";
-            e.target.parentNode.innerHTML += `<div class="text-slate-600 text-sm text-center px-4">No image available</div>`;
+            e.target.parentNode.innerHTML += `<div class="text-slate-500 text-sm text-center px-4">No image available</div>`;
           }}
         />
         {/* Signal badge top-right */}
@@ -56,23 +56,23 @@ export function SetCard({ set, onAdClick, onListingChange }) {
           >
             {set.name}
           </a>
-          <p className="text-xs text-slate-500 mt-0.5">Set #{set.set_number}</p>
+          <p className="text-xs text-slate-400 mt-0.5">Set #{set.set_number}</p>
         </div>
 
         {/* Price grid */}
         <div className="grid grid-cols-3 gap-2 text-center">
           <div className="bg-white/5 rounded-xl p-2">
-            <p className="text-[10px] text-slate-500 uppercase tracking-wider">Paid</p>
+            <p className="text-[10px] text-slate-400 uppercase tracking-wider">Paid</p>
             <p className="text-sm font-bold text-slate-300">${set.cost.toFixed(2)}</p>
           </div>
           <div className="bg-white/5 rounded-xl p-2">
-            <p className="text-[10px] text-slate-500 uppercase tracking-wider">Value</p>
+            <p className="text-[10px] text-slate-400 uppercase tracking-wider">Value</p>
             <p className="text-sm font-bold text-green-300">
               {set.current_value > 0 ? `$${set.current_value.toFixed(2)}` : "—"}
             </p>
           </div>
           <div className="bg-white/5 rounded-xl p-2">
-            <p className="text-[10px] text-slate-500 uppercase tracking-wider">Profit</p>
+            <p className="text-[10px] text-slate-400 uppercase tracking-wider">Profit</p>
             <p className={`text-sm font-bold ${profitColor}`}>
               {set.profit > 0 ? `+$${set.profit.toFixed(2)}` : set.profit < 0 ? `-$${Math.abs(set.profit).toFixed(2)}` : "—"}
             </p>
@@ -82,7 +82,7 @@ export function SetCard({ set, onAdClick, onListingChange }) {
         {/* ROI bar */}
         <div>
           <div className="flex justify-between items-center mb-1">
-            <span className="text-xs text-slate-500 flex items-center gap-1">
+            <span className="text-xs text-slate-400 flex items-center gap-1">
               <TrendingUp size={11} /> ROI
             </span>
             <span className={`text-sm font-black ${roiColor}`}>
@@ -101,7 +101,7 @@ export function SetCard({ set, onAdClick, onListingChange }) {
 
         {/* Qty sold note */}
         {set.qty_sold_6m > 0 && (
-          <p className="text-xs text-slate-600">
+          <p className="text-xs text-slate-500">
             {set.qty_sold_6m} sold in last 6 months (BL)
           </p>
         )}
@@ -109,7 +109,7 @@ export function SetCard({ set, onAdClick, onListingChange }) {
         {/* Marketplace tracker */}
         <div className="flex items-center justify-between mt-auto pt-2 border-t border-white/5">
           <div className="flex flex-col gap-1">
-            <label className="text-[10px] text-slate-500 uppercase tracking-wider">Listed On</label>
+            <label className="text-[10px] text-slate-400 uppercase tracking-wider">Listed On</label>
             <div className="flex items-center gap-2">
               <select
                 value={listing}

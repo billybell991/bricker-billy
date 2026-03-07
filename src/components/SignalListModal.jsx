@@ -32,11 +32,11 @@ export function SignalListModal({ signal, sets, onClose }) {
         {/* List */}
         <div className="overflow-y-auto flex-1">
           {filtered.length === 0 ? (
-            <div className="text-center py-12 text-slate-600">No sets in this category.</div>
+            <div className="text-center py-12 text-slate-500">No sets in this category.</div>
           ) : (
             <table className="w-full text-sm">
               <thead className="sticky top-0 bg-lego-card z-10">
-                <tr className="text-left text-slate-500 text-xs uppercase tracking-wider border-b border-white/10">
+                <tr className="text-left text-slate-400 text-xs uppercase tracking-wider border-b border-white/10">
                   <th className="px-4 py-3">Set</th>
                   <th className="px-4 py-3">Theme</th>
                   <th className="px-4 py-3 text-right">Paid</th>
@@ -62,7 +62,7 @@ export function SignalListModal({ signal, sets, onClose }) {
                         />
                         <div>
                           <p className="font-bold text-white leading-tight group-hover/link:text-lego-yellow transition-colors">{s.name}</p>
-                          <p className="text-xs text-slate-500">#{s.set_number}</p>
+                          <p className="text-xs text-slate-400">#{s.set_number}</p>
                         </div>
                       </a>
                     </td>
@@ -73,7 +73,7 @@ export function SignalListModal({ signal, sets, onClose }) {
                     <td className="px-4 py-3 text-right">
                       {s.current_value > 0
                         ? <span className="text-green-400 font-bold">${s.current_value.toFixed(2)}</span>
-                        : <span className="text-slate-600">—</span>
+                        : <span className="text-slate-500">—</span>
                       }
                     </td>
                     <td className="px-4 py-3 text-right">
@@ -81,7 +81,7 @@ export function SignalListModal({ signal, sets, onClose }) {
                         ? <span className={`font-black ${s.roi >= 40 ? "text-green-400" : s.roi >= 20 ? "text-yellow-400" : "text-slate-400"}`}>
                             {s.roi > 0 ? "+" : ""}{s.roi.toFixed(1)}%
                           </span>
-                        : <span className="text-slate-600">—</span>
+                        : <span className="text-slate-500">—</span>
                       }
                     </td>
                   </tr>

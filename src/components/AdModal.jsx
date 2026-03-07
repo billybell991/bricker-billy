@@ -63,7 +63,7 @@ export function AdModal({ set, onClose }) {
             </button>
           </>
         ) : (
-          <div className="text-center py-8 text-slate-500">
+          <div className="text-center py-8 text-slate-400">
             <p className="text-4xl mb-2">🤖</p>
             <p className="font-semibold">No AI ad generated yet.</p>
             <p className="text-sm mt-1">This set needs ROI ≥ 40% and value ≥ $50 CAD to trigger the Gemini ad engine on the next sync.</p>

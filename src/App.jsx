@@ -142,7 +142,7 @@ export default function App() {
           <div className="text-5xl mb-4">⚠️</div>
           <h2 className="text-xl font-black mb-2 text-red-400">Failed to Load Data</h2>
           <p className="text-slate-400 text-sm">{error}</p>
-          <p className="text-slate-600 text-xs mt-2">Make sure public/data.json exists or the sync script has run.</p>
+          <p className="text-slate-500 text-xs mt-2">Make sure public/data.json exists or the sync script has run.</p>
         </div>
       </div>
     );
@@ -161,11 +161,11 @@ export default function App() {
             <img src="./zombie-cap.jpg" alt="Bricker Billy" className="w-10 h-10 object-contain" />
             <div>
               <h1 className="text-xl font-black text-white leading-none">Bricker Billy</h1>
-              <p className="text-[10px] text-slate-500 tracking-wider uppercase">LEGO Investment Dashboard</p>
+              <p className="text-[10px] text-slate-400 tracking-wider uppercase">LEGO Investment Dashboard</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 text-xs text-slate-500">
+          <div className="flex items-center gap-2 text-xs text-slate-400">
             <RefreshCw size={12} />
             <span>Last synced: {lastSynced}</span>
           </div>
@@ -192,7 +192,7 @@ export default function App() {
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="text-left text-slate-500 text-xs uppercase tracking-wider border-b border-white/10">
+                  <tr className="text-left text-slate-400 text-xs uppercase tracking-wider border-b border-white/10">
                     <th className="pb-3 pr-4">Set</th>
                     <th className="pb-3 pr-4">Theme</th>
                     <th className="pb-3 pr-4 text-right">Paid</th>
@@ -224,7 +224,7 @@ export default function App() {
                             />
                             <div>
                               <p className="font-bold text-white text-sm group-hover/link:text-lego-yellow transition-colors">{s.name}</p>
-                              <p className="text-xs text-slate-500">#{s.set_number}</p>
+                              <p className="text-xs text-slate-400">#{s.set_number}</p>
                             </div>
                           </a>
                         </td>
@@ -239,7 +239,7 @@ export default function App() {
                               {s.selling_on === "BL" ? "BrickLink" : s.selling_on === "FB" ? "Facebook" : s.selling_on}
                             </span>
                           ) : (
-                            <span className="text-xs text-slate-600">Not listed</span>
+                            <span className="text-xs text-slate-500">Not listed</span>
                           )}
                         </td>
                         <td className="py-3">
@@ -264,7 +264,7 @@ export default function App() {
 
           {/* Search */}
           <div className="relative flex-1 min-w-[180px] max-w-xs">
-            <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
+            <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
               type="text"
               placeholder="Search name, set #, theme…"
@@ -276,7 +276,7 @@ export default function App() {
 
           {/* Filter */}
           <div className="flex items-center gap-2">
-            <SlidersHorizontal size={14} className="text-slate-500" />
+            <SlidersHorizontal size={14} className="text-slate-400" />
             <select
               value={filterSignal}
               onChange={(e) => setFilterSignal(e.target.value)}
@@ -317,13 +317,13 @@ export default function App() {
         </div>
 
         {/* Results count */}
-        <p className="text-xs text-slate-600 mb-4">
+        <p className="text-xs text-slate-500 mb-4">
           Showing {filteredSets.length} of {sets.length} sets
         </p>
 
         {/* ── Grid ── */}
         {filteredSets.length === 0 ? (
-          <div className="text-center py-20 text-slate-600">
+          <div className="text-center py-20 text-slate-500">
             <div className="text-5xl mb-3">🔍</div>
             <p className="font-semibold">No sets match your filters.</p>
           </div>
@@ -343,7 +343,7 @@ export default function App() {
           <div className="card overflow-hidden">
             <table className="w-full text-sm">
               <thead>
-                <tr className="text-left text-slate-500 text-xs uppercase tracking-wider border-b border-white/10">
+                <tr className="text-left text-slate-400 text-xs uppercase tracking-wider border-b border-white/10">
                   <th className="px-4 py-3">Set</th>
                   <th className="px-4 py-3">Theme</th>
                   <th className="px-4 py-3 text-right">Paid</th>
@@ -368,7 +368,7 @@ export default function App() {
                         />
                         <div>
                           <p className="font-bold text-white">{s.name}</p>
-                          <p className="text-xs text-slate-500">#{s.set_number}</p>
+                          <p className="text-xs text-slate-400">#{s.set_number}</p>
                         </div>
                       </div>
                     </td>

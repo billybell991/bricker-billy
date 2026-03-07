@@ -12,32 +12,6 @@ const SIGNAL_COLORS = {
 
 const CAD = (v) => `$${v.toLocaleString("en-CA", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
-const RoiTickItem = ({ x, y, payload, data }) => {
-  const entry = data?.find((d) => d.name === payload.value);
-  const url = entry
-    ? `https://www.bricklink.com/v2/catalog/catalogitem.page?S=${entry.setId}`
-    : null;
-  return (
-    <g
-      transform={`translate(${x},${y})`}
-      style={{ cursor: url ? "pointer" : "default" }}
-      onClick={() => url && window.open(url, "_blank", "noopener,noreferrer")}
-    >
-      <text
-        x={-196}
-        y={0}
-        dy={4}
-        textAnchor="start"
-        fill="#4ade80"
-        fontSize={11}
-        style={{ textDecoration: "underline", textDecorationColor: "rgba(74,222,128,0.4)" }}
-      >
-        {payload.value}
-      </text>
-    </g>
-  );
-};
-
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
@@ -79,7 +53,7 @@ export function ChartSection({ sets, onSliceClick }) {
     .sort((a, b) => b.roi - a.roi)
     .slice(0, 8)
     .map((s) => ({
-      name: s.name.length > 22 ? s.name.slice(0, 20) + "…" : s.name,
+      name: s.name.length > 15 ? s.name.slice(0, 13) + "…" : s.name,
       fullName: s.name,
       ROI: parseFloat(s.roi.toFixed(1)),
       setId: s.set_id,
@@ -90,7 +64,7 @@ export function ChartSection({ sets, onSliceClick }) {
       {/* Pie: Signal breakdown */}
       <div className="card p-5">
         <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-1">Signal Breakdown</h3>
-        <p className="text-[10px] text-slate-600 mb-3">Click a slice to see the sets</p>
+        <p className="text-[10px] text-slate-500 mb-3">Click a slice to see the sets</p>
         <ResponsiveContainer width="100%" height={220}>
           <PieChart>
             <Pie
@@ -141,12 +115,12 @@ export function ChartSection({ sets, onSliceClick }) {
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
             <XAxis
               dataKey="name"
-              tick={{ fill: "#64748b", fontSize: 10 }}
+              tick={{ fill: "#94a3b8", fontSize: 10 }}
               angle={-35}
               textAnchor="end"
               interval={0}
             />
-            <YAxis tick={{ fill: "#64748b", fontSize: 10 }} tickFormatter={(v) => `$${v}`} />
+            <YAxis tick={{ fill: "#94a3b8", fontSize: 10 }} tickFormatter={(v) => `$${v}`} />
             <Tooltip content={<CustomTooltip />} />
             <Legend wrapperStyle={{ fontSize: 12, color: "#94a3b8", paddingTop: 8 }} />
             <Bar dataKey="Paid (CAD$)" fill="#0f3460" radius={[4, 4, 0, 0]} />
@@ -159,26 +133,35 @@ export function ChartSection({ sets, onSliceClick }) {
       <div className="card p-5 lg:col-span-3">
         <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">ROI Leaders (Top 8)</h3>
         <ResponsiveContainer width="100%" height={280}>
-          <BarChart data={roiData} layout="vertical" margin={{ left: 10, right: 48, top: 4, bottom: 4 }}>
+          <BarChart data={roiData} layout="vertical" margin={{ left: 0, right: 48, top: 4, bottom: 4 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" horizontal={false} />
             <XAxis
               type="number"
-              tick={{ fill: "#64748b", fontSize: 10 }}
+              tick={{ fill: "#94a3b8", fontSize: 10 }}
               tickFormatter={(v) => `${v}%`}
               domain={[0, "dataMax + 20"]}
             />
             <YAxis
               type="category"
               dataKey="name"
-              tick={(props) => <RoiTickItem {...props} data={roiData} />}
-              width={210}
+              tick={{ fill: "#94a3b8", fontSize: 11 }}
+              width={160}
             />
             <Tooltip
               contentStyle={{ background: "#16213e", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12 }}
               labelFormatter={(label, payload) => payload?.[0]?.payload?.fullName || label}
               formatter={(v) => [`${v}%`, "ROI"]}
             />
-            <Bar dataKey="ROI" radius={[0, 6, 6, 0]}>
+            <Bar
+              dataKey="ROI"
+              radius={[0, 6, 6, 0]}
+              cursor="pointer"
+              onClick={(data) => window.open(
+                `https://www.bricklink.com/v2/catalog/catalogitem.page?S=${data.setId}`,
+                "_blank",
+                "noopener,noreferrer"
+              )}
+            >
               {roiData.map((entry, i) => (
                 <Cell
                   key={i}
