@@ -29,7 +29,7 @@ export function SummaryBar({ summary, onSignalClick }) {
         >
           <p className="text-[10px] text-slate-500 uppercase tracking-wider mb-1">{s.label}</p>
           <p className={`text-lg font-black ${s.color} leading-tight`}>{s.value}</p>
-          <p className="text-[10px] text-slate-600 mt-0.5">{s.sub}</p>
+          <p className="text-[10px] text-slate-400 mt-0.5">{s.sub}</p>
         </div>
       ))}
     </div>

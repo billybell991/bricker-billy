@@ -49,7 +49,7 @@ export function SetCard({ set, onAdClick, onListingChange }) {
             {set.theme}
           </p>
           <a
-            href={`https://www.bricklink.com/v2/catalog/catalogitem.page?S=${set.set_number}-1`}
+            href={`https://www.bricklink.com/v2/catalog/catalogitem.page?S=${set.set_id}`}
             target="_blank"
             rel="noopener noreferrer"
             className="font-black text-base text-white leading-tight hover:text-lego-yellow transition-colors"

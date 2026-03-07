@@ -12,6 +12,32 @@ const SIGNAL_COLORS = {
 
 const CAD = (v) => `$${v.toLocaleString("en-CA", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
+const RoiTickItem = ({ x, y, payload, data }) => {
+  const entry = data?.find((d) => d.name === payload.value);
+  const url = entry
+    ? `https://www.bricklink.com/v2/catalog/catalogitem.page?S=${entry.setId}`
+    : null;
+  return (
+    <g
+      transform={`translate(${x},${y})`}
+      style={{ cursor: url ? "pointer" : "default" }}
+      onClick={() => url && window.open(url, "_blank", "noopener,noreferrer")}
+    >
+      <text
+        x={-196}
+        y={0}
+        dy={4}
+        textAnchor="start"
+        fill="#4ade80"
+        fontSize={11}
+        style={{ textDecoration: "underline", textDecorationColor: "rgba(74,222,128,0.4)" }}
+      >
+        {payload.value}
+      </text>
+    </g>
+  );
+};
+
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
@@ -53,9 +79,10 @@ export function ChartSection({ sets, onSliceClick }) {
     .sort((a, b) => b.roi - a.roi)
     .slice(0, 8)
     .map((s) => ({
-      name: s.name.length > 15 ? s.name.slice(0, 13) + "…" : s.name,
+      name: s.name.length > 22 ? s.name.slice(0, 20) + "…" : s.name,
       fullName: s.name,
       ROI: parseFloat(s.roi.toFixed(1)),
+      setId: s.set_id,
     }));
 
   return (
@@ -87,9 +114,17 @@ export function ChartSection({ sets, onSliceClick }) {
               ))}
             </Pie>
             <Tooltip
-              contentStyle={{ background: "#16213e", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12 }}
-              labelStyle={{ color: "#fff" }}
-              formatter={(value, name) => [`${value} sets`, name]}
+              content={({ active, payload }) => {
+                if (!active || !payload?.length) return null;
+                const { name, value } = payload[0];
+                const color = SIGNAL_COLORS[name] || "#64748b";
+                return (
+                  <div style={{ background: "#0d1b2e", border: `1px solid ${color}`, borderRadius: 10, padding: "8px 14px" }}>
+                    <p style={{ color, fontWeight: 700, fontSize: 13, marginBottom: 2 }}>{name}</p>
+                    <p style={{ color: "#f1f5f9", fontSize: 13 }}>{value} sets</p>
+                  </div>
+                );
+              }}
             />
             <Legend
               wrapperStyle={{ fontSize: 12, color: "#94a3b8" }}
@@ -124,7 +159,7 @@ export function ChartSection({ sets, onSliceClick }) {
       <div className="card p-5 lg:col-span-3">
         <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">ROI Leaders (Top 8)</h3>
         <ResponsiveContainer width="100%" height={280}>
-          <BarChart data={roiData} layout="vertical" margin={{ left: 0, right: 48, top: 4, bottom: 4 }}>
+          <BarChart data={roiData} layout="vertical" margin={{ left: 10, right: 48, top: 4, bottom: 4 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" horizontal={false} />
             <XAxis
               type="number"
@@ -135,8 +170,8 @@ export function ChartSection({ sets, onSliceClick }) {
             <YAxis
               type="category"
               dataKey="name"
-              tick={{ fill: "#94a3b8", fontSize: 11 }}
-              width={160}
+              tick={(props) => <RoiTickItem {...props} data={roiData} />}
+              width={210}
             />
             <Tooltip
               contentStyle={{ background: "#16213e", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12 }}

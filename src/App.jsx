@@ -211,7 +211,7 @@ export default function App() {
                       <tr key={s.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
                         <td className="py-3 pr-4">
                           <a
-                            href={`https://www.bricklink.com/v2/catalog/catalogitem.page?S=${s.set_number}-1`}
+                            href={`https://www.bricklink.com/v2/catalog/catalogitem.page?S=${s.set_id}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-3 group/link"
