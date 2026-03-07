@@ -174,7 +174,7 @@ export default function App() {
 
       <main className="max-w-screen-xl mx-auto px-6 py-8">
         {/* ── Summary Stats ── */}
-        <SummaryBar summary={data.summary} />
+        <SummaryBar summary={data.summary} onSignalClick={setSignalModalSignal} />
 
         {/* ── Charts ── */}
         <ChartSection sets={sets} onSliceClick={setSignalModalSignal} />
