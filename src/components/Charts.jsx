@@ -53,7 +53,8 @@ export function ChartSection({ sets, onSliceClick }) {
     .sort((a, b) => b.roi - a.roi)
     .slice(0, 8)
     .map((s) => ({
-      name: s.name.length > 24 ? s.name.slice(0, 22) + "…" : s.name,
+      name: s.name.length > 15 ? s.name.slice(0, 13) + "…" : s.name,
+      fullName: s.name,
       ROI: parseFloat(s.roi.toFixed(1)),
     }));
 
@@ -139,6 +140,7 @@ export function ChartSection({ sets, onSliceClick }) {
             />
             <Tooltip
               contentStyle={{ background: "#16213e", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12 }}
+              labelFormatter={(label, payload) => payload?.[0]?.payload?.fullName || label}
               formatter={(v) => [`${v}%`, "ROI"]}
             />
             <Bar dataKey="ROI" radius={[0, 6, 6, 0]}>
