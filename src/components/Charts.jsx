@@ -53,7 +53,7 @@ export function ChartSection({ sets, onSliceClick }) {
     .sort((a, b) => b.roi - a.roi)
     .slice(0, 8)
     .map((s) => ({
-      name: s.name.length > 16 ? s.name.slice(0, 14) + "…" : s.name,
+      name: s.name.length > 24 ? s.name.slice(0, 22) + "…" : s.name,
       ROI: parseFloat(s.roi.toFixed(1)),
     }));
 
@@ -122,8 +122,8 @@ export function ChartSection({ sets, onSliceClick }) {
       {/* Bar: ROI Leaders */}
       <div className="card p-5 lg:col-span-3">
         <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">ROI Leaders (Top 8)</h3>
-        <ResponsiveContainer width="100%" height={200}>
-          <BarChart data={roiData} layout="vertical" margin={{ left: 120, right: 40 }}>
+        <ResponsiveContainer width="100%" height={280}>
+          <BarChart data={roiData} layout="vertical" margin={{ left: 0, right: 48, top: 4, bottom: 4 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" horizontal={false} />
             <XAxis
               type="number"
@@ -135,7 +135,7 @@ export function ChartSection({ sets, onSliceClick }) {
               type="category"
               dataKey="name"
               tick={{ fill: "#94a3b8", fontSize: 11 }}
-              width={110}
+              width={160}
             />
             <Tooltip
               contentStyle={{ background: "#16213e", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12 }}
