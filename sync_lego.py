@@ -30,7 +30,7 @@ from requests_oauthlib import OAuth1
 # ── Constants ─────────────────────────────────────────────────────────────────
 SHEET_TAB = "New Sets - Revised"
 BL_CURRENCY = "CAD"
-BL_CONDITION = "U"          # U = Used New (sealed/new condition)  N = new retail
+BL_CONDITION = "N"          # N = New (sealed/retail)  U = Used
 BL_GUIDE_TYPE = "sold"      # sold = completed listings avg
 BL_TIME_PERIOD = "6M"       # last 6 months
 STRONG_SELL_ROI = 0.40      # 40 % ROI threshold
