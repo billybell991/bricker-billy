@@ -4,6 +4,7 @@ import { SetCard } from "./components/SetCard.jsx";
 import { AdModal } from "./components/AdModal.jsx";
 import { ChartSection } from "./components/Charts.jsx";
 import { SummaryBar } from "./components/SummaryBar.jsx";
+import { SignalListModal } from "./components/SignalListModal.jsx";
 
 const SIGNAL_ORDER = { "Strong Sell": 0, "Consider": 1, "Hold": 2, "No Data": 3 };
 
@@ -34,6 +35,7 @@ export default function App() {
   const [sortBy, setSortBy] = useState("signal");
   const [viewMode, setViewMode] = useState("grid"); // grid | list
   const [selectedSet, setSelectedSet] = useState(null); // for ad modal
+  const [signalModalSignal, setSignalModalSignal] = useState(null); // for signal list modal
   const [listingOverrides, setListingOverrides] = useState({}); // local override for listing status
 
   // Load data.json
@@ -175,7 +177,7 @@ export default function App() {
         <SummaryBar summary={data.summary} />
 
         {/* ── Charts ── */}
-        <ChartSection sets={sets} />
+        <ChartSection sets={sets} onSliceClick={setSignalModalSignal} />
 
         {/* ── Sell Candidates Spotlight ── */}
         {sets.filter((s) => s.signal === "Strong Sell").length > 0 && (
@@ -421,6 +423,15 @@ export default function App() {
       {/* ── Ad Modal ── */}
       {selectedSet && (
         <AdModal set={selectedSet} onClose={() => setSelectedSet(null)} />
+      )}
+
+      {/* ── Signal List Modal ── */}
+      {signalModalSignal && (
+        <SignalListModal
+          signal={signalModalSignal}
+          sets={sets}
+          onClose={() => setSignalModalSignal(null)}
+        />
       )}
     </div>
   );

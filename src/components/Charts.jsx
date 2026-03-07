@@ -28,7 +28,7 @@ const CustomTooltip = ({ active, payload, label }) => {
   return null;
 };
 
-export function ChartSection({ sets }) {
+export function ChartSection({ sets, onSliceClick }) {
   // Pie: signal distribution
   const signalCounts = sets.reduce((acc, s) => {
     acc[s.signal] = (acc[s.signal] || 0) + 1;
@@ -61,7 +61,8 @@ export function ChartSection({ sets }) {
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
       {/* Pie: Signal breakdown */}
       <div className="card p-5">
-        <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">Signal Breakdown</h3>
+        <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-1">Signal Breakdown</h3>
+        <p className="text-[10px] text-slate-600 mb-3">Click a slice to see the sets</p>
         <ResponsiveContainer width="100%" height={220}>
           <PieChart>
             <Pie
@@ -72,14 +73,22 @@ export function ChartSection({ sets }) {
               outerRadius={85}
               paddingAngle={3}
               dataKey="value"
+              cursor="pointer"
+              onClick={(entry) => onSliceClick && onSliceClick(entry.name)}
             >
               {pieData.map((entry) => (
-                <Cell key={entry.name} fill={SIGNAL_COLORS[entry.name] || "#64748b"} />
+                <Cell
+                  key={entry.name}
+                  fill={SIGNAL_COLORS[entry.name] || "#64748b"}
+                  stroke="transparent"
+                  className="hover:opacity-80 transition-opacity"
+                />
               ))}
             </Pie>
             <Tooltip
               contentStyle={{ background: "#16213e", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12 }}
               labelStyle={{ color: "#fff" }}
+              formatter={(value, name) => [`${value} sets`, name]}
             />
             <Legend
               wrapperStyle={{ fontSize: 12, color: "#94a3b8" }}
