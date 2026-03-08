@@ -155,11 +155,11 @@ def generate_ad_copy(set_name: str, set_id: str, current_value: float, cost: flo
     )
     try:
         genai.configure(api_key=os.environ["GEMINI_API_KEY"])
-        model = genai.GenerativeModel("gemini-1.5-flash")
+        model = genai.GenerativeModel("gemini-2.0-flash")
         response = model.generate_content(prompt)
         return response.text.strip()
     except Exception as exc:
-        print(f"  [Gemini] Error generating ad for {set_name}: {exc}")
+        print(f"  [Gemini] Error generating ad for {set_name}: {type(exc).__name__}: {exc}")
         return ""
 
 

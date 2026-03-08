@@ -3,6 +3,7 @@ import { X, Copy, Check } from "lucide-react";
 
 export function AdModal({ set, onClose }) {
   const [copied, setCopied] = useState(false);
+  const [imgError, setImgError] = useState(false);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(set.ad_copy || "").then(() => {
@@ -22,26 +23,36 @@ export function AdModal({ set, onClose }) {
 
           {/* Hero image banner */}
           <div className="relative h-56 overflow-hidden">
-            {/* Blurred colour-fill backdrop using the set image */}
-            <div
-              className="absolute inset-0 scale-125 blur-2xl opacity-40"
-              style={{
-                backgroundImage: `url(${set.image_url})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            />
-            {/* Bottom fade into card bg */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-lego-card" />
-            {/* Sharp product image */}
-            <img
-              src={set.image_url}
-              alt={set.name}
-              referrerPolicy="no-referrer"
-              className="relative w-full h-full object-contain p-6 drop-shadow-2xl z-10"
-              onError={(e) => { e.target.style.display = "none"; }}
-            />
-            {/* Close button */}
+            {!imgError ? (
+              <>
+                {/* Blurred colour-fill backdrop */}
+                <div
+                  className="absolute inset-0 scale-125 blur-2xl opacity-40"
+                  style={{
+                    backgroundImage: `url(${set.image_url})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                />
+                {/* Bottom fade into card bg */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-lego-card" />
+                {/* Sharp product image */}
+                <img
+                  src={set.image_url}
+                  alt={set.name}
+                  referrerPolicy="no-referrer"
+                  className="relative w-full h-full object-contain p-6 drop-shadow-2xl z-10"
+                  onError={() => setImgError(true)}
+                />
+              </>
+            ) : (
+              /* Fallback gradient banner when image is blocked */
+              <div className="absolute inset-0 bg-gradient-to-br from-lego-blue/50 via-lego-accent/30 to-lego-yellow/20 flex flex-col items-center justify-center gap-1">
+                <p className="text-8xl font-black text-white/10 leading-none select-none">{set.set_number}</p>
+                <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest">{set.theme}</p>
+              </div>
+            )}
+            {/* Close button — always on top */}
             <button
               onClick={onClose}
               className="absolute top-3 right-3 z-20 text-white/80 hover:text-white bg-black/50 hover:bg-black/70 rounded-full p-1.5 transition-colors"
