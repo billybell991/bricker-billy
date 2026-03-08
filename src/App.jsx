@@ -219,6 +219,7 @@ export default function App() {
                             <img
                               src={s.image_url}
                               alt={s.name}
+                              referrerPolicy="no-referrer"
                               className="w-10 h-10 object-contain rounded bg-white/10"
                               onError={(e) => { e.target.style.display = "none"; }}
                             />
@@ -363,6 +364,7 @@ export default function App() {
                         <img
                           src={s.image_url}
                           alt={s.name}
+                          referrerPolicy="no-referrer"
                           className="w-10 h-10 object-contain rounded bg-white/10"
                           onError={(e) => { e.target.style.display = "none"; }}
                         />

@@ -38,6 +38,7 @@ export function SetCard({ set, onAdClick, onListingChange }) {
         <img
           src={set.image_url}
           alt={set.name}
+          referrerPolicy="no-referrer"
           className="relative h-40 w-full object-contain group-hover:scale-105 transition-transform duration-500 p-2 drop-shadow-lg z-10"
           onError={(e) => {
             e.target.style.display = "none";

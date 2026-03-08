@@ -37,6 +37,7 @@ export function AdModal({ set, onClose }) {
             <img
               src={set.image_url}
               alt={set.name}
+              referrerPolicy="no-referrer"
               className="relative w-full h-full object-contain p-6 drop-shadow-2xl z-10"
               onError={(e) => { e.target.style.display = "none"; }}
             />
@@ -96,7 +97,7 @@ export function AdModal({ set, onClose }) {
               <div className="text-center py-8 text-slate-400">
                 <p className="text-4xl mb-2">🤖</p>
                 <p className="font-semibold">No AI ad generated yet.</p>
-                <p className="text-sm mt-1">Ad copy will be generated on the next sync.</p>
+                <p className="text-sm mt-1">Re-run the sync script to generate ad copy for all sets.</p>
               </div>
             )}
           </div>
