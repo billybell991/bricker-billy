@@ -237,10 +237,10 @@ def main():
         # 6. Determine sell signal
         signal = sell_signal(roi, current_value) if has_bl_data else "No Data"
 
-        # 7. Generate AI ad copy if strong sell
+        # 7. Generate AI ad copy for all sets with BrickLink data
         ad_copy = ""
-        if signal == "Strong Sell":
-            print(f"    [!] Strong Sell candidate — generating ad copy via Gemini...")
+        if has_bl_data and current_value > 0:
+            print(f"    [Gemini] Generating ad copy for {name}...")
             ad_copy = generate_ad_copy(name, set_id, current_value, cost)
             time.sleep(SLEEP_BETWEEN_CALLS)
 

@@ -25,18 +25,27 @@ export function SetCard({ set, onAdClick, onListingChange }) {
   return (
     <div className="card overflow-hidden flex flex-col group hover:border-white/20 hover:shadow-2xl transition-all duration-300">
       {/* Image banner */}
-      <div className="relative bg-gradient-to-br from-white/10 to-white/5 h-44 flex items-center justify-center overflow-hidden">
+      <div className="relative bg-lego-accent/20 h-44 flex items-center justify-center overflow-hidden">
+        {/* Blurred colour-fill backdrop using the set image */}
+        <div
+          className="absolute inset-0 scale-125 blur-2xl opacity-25"
+          style={{
+            backgroundImage: `url(${set.image_url})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
         <img
           src={set.image_url}
           alt={set.name}
-          className="h-40 w-full object-contain group-hover:scale-105 transition-transform duration-500 p-2"
+          className="relative h-40 w-full object-contain group-hover:scale-105 transition-transform duration-500 p-2 drop-shadow-lg z-10"
           onError={(e) => {
             e.target.style.display = "none";
             e.target.parentNode.innerHTML += `<div class="text-slate-500 text-sm text-center px-4">No image available</div>`;
           }}
         />
         {/* Signal badge top-right */}
-        <div className="absolute top-3 right-3">
+        <div className="absolute top-3 right-3 z-20">
           <SignalBadge signal={set.signal} />
         </div>
       </div>
