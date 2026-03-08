@@ -132,7 +132,9 @@ def fetch_bl_price(set_id: str, auth: OAuth1) -> dict | None:
         price_data = data["data"]
         avg_price = float(price_data.get("avg_price", 0) or 0)
         qty_avg = int(price_data.get("unit_quantity", 0) or 0)
-        return {"avg_price": avg_price, "qty_sold": qty_avg}
+        min_price = float(price_data.get("min_price", 0) or 0)
+        max_price = float(price_data.get("max_price", 0) or 0)
+        return {"avg_price": avg_price, "qty_sold": qty_avg, "min_price": min_price, "max_price": max_price}
     except Exception as exc:
         print(f"  [BL] Error fetching {set_id}: {exc}")
         return None
@@ -220,10 +222,14 @@ def main():
         if bl_data and bl_data["avg_price"] > 0:
             current_value = bl_data["avg_price"]
             qty_sold = bl_data["qty_sold"]
+            min_price = bl_data["min_price"]
+            max_price = bl_data["max_price"]
             has_bl_data = True
         else:
             current_value = 0.0
             qty_sold = 0
+            min_price = 0.0
+            max_price = 0.0
             has_bl_data = False
             print(f"    [!] No BrickLink data for {set_id}, marking as No Data")
 
@@ -256,6 +262,8 @@ def main():
             "roi": round(roi * 100, 2),          # stored as percentage e.g. 45.3
             "signal": signal,
             "qty_sold_6m": qty_sold,
+            "bl_min_price": round(min_price, 2),
+            "bl_max_price": round(max_price, 2),
             "selling_on": selling_on,
             "notes": notes,
             "image_url": bricklink_image_url(set_id),

@@ -5,6 +5,7 @@ import { AdModal } from "./components/AdModal.jsx";
 import { ChartSection } from "./components/Charts.jsx";
 import { SummaryBar } from "./components/SummaryBar.jsx";
 import { SignalListModal } from "./components/SignalListModal.jsx";
+import { HoverTrigger } from "./components/SetHoverCard.jsx";
 
 const SIGNAL_ORDER = { "Strong Sell": 0, "Consider": 1, "Hold": 2, "No Data": 3 };
 
@@ -223,10 +224,12 @@ export default function App() {
                               className="w-10 h-10 object-contain rounded bg-white/10"
                               onError={(e) => { e.target.style.display = "none"; }}
                             />
-                            <div>
-                              <p className="font-bold text-white text-sm group-hover/link:text-lego-yellow transition-colors">{s.name}</p>
-                              <p className="text-xs text-slate-400">#{s.set_number}</p>
-                            </div>
+                            <HoverTrigger set={s}>
+                              <div>
+                                <p className="font-bold text-white text-sm group-hover/link:text-lego-yellow transition-colors">{s.name}</p>
+                                <p className="text-xs text-slate-400">#{s.set_number}</p>
+                              </div>
+                            </HoverTrigger>
                           </a>
                         </td>
                         <td className="py-3 pr-4 text-slate-400">{s.theme}</td>
@@ -368,10 +371,12 @@ export default function App() {
                           className="w-10 h-10 object-contain rounded bg-white/10"
                           onError={(e) => { e.target.style.display = "none"; }}
                         />
-                        <div>
-                          <p className="font-bold text-white">{s.name}</p>
-                          <p className="text-xs text-slate-400">#{s.set_number}</p>
-                        </div>
+                        <HoverTrigger set={s}>
+                          <div>
+                            <p className="font-bold text-white">{s.name}</p>
+                            <p className="text-xs text-slate-400">#{s.set_number}</p>
+                          </div>
+                        </HoverTrigger>
                       </div>
                     </td>
                     <td className="px-4 py-3 text-slate-400">{s.theme}</td>

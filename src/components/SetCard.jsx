@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Megaphone, TrendingUp } from "lucide-react";
 import { SignalBadge, MarketplaceBadge } from "./Badges.jsx";
+import { HoverTrigger } from "./SetHoverCard.jsx";
 
 const LISTING_OPTIONS = ["", "BL", "FB", "Both"];
 
@@ -58,15 +59,17 @@ export function SetCard({ set, onAdClick, onListingChange }) {
           <p className="text-xs font-semibold text-lego-yellow uppercase tracking-widest mb-0.5">
             {set.theme}
           </p>
-          <a
-            href={`https://www.bricklink.com/v2/catalog/catalogitem.page?S=${set.set_id}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-black text-base text-white leading-tight hover:text-lego-yellow transition-colors"
-          >
-            {set.name}
-          </a>
-          <p className="text-xs text-slate-400 mt-0.5">Set #{set.set_number}</p>
+          <HoverTrigger set={set}>
+            <a
+              href={`https://www.bricklink.com/v2/catalog/catalogitem.page?S=${set.set_id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-black text-base text-white leading-tight hover:text-lego-yellow transition-colors"
+            >
+              {set.name}
+            </a>
+            <p className="text-xs text-slate-400 mt-0.5">Set #{set.set_number}</p>
+          </HoverTrigger>
         </div>
 
         {/* Price grid */}
