@@ -28,6 +28,102 @@ const FILTER_OPTIONS = [
   { value: "listed", label: "📦 Currently Listed" },
 ];
 
+// ── GitHub persistence helpers ────────────────────────────────────────────────
+const GH_TOKEN = import.meta.env.VITE_GH_TOKEN;
+const GH_OWNER = import.meta.env.VITE_REPO_OWNER;
+const GH_REPO  = import.meta.env.VITE_REPO_NAME;
+const MANUAL_SETS_FILE = "public/manual_sets.json";
+
+async function fetchManualSetsFile() {
+  if (!GH_TOKEN || !GH_OWNER || !GH_REPO) return null;
+  try {
+    const resp = await fetch(
+      `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${MANUAL_SETS_FILE}`,
+      { headers: { Authorization: `Bearer ${GH_TOKEN}`, Accept: "application/vnd.github.v3+json" } }
+    );
+    if (!resp.ok) return { sha: null, sets: [] };
+    const file = await resp.json();
+    const sets = JSON.parse(atob(file.content.replace(/\n/g, "")));
+    return { sha: file.sha, sets };
+  } catch {
+    return null;
+  }
+}
+
+function toBase64(str) {
+  return btoa(new TextEncoder().encode(str).reduce((data, byte) => data + String.fromCharCode(byte), ""));
+}
+
+async function persistManualSetToGitHub(entry) {
+  if (!GH_TOKEN || !GH_OWNER || !GH_REPO) return;
+  const fileData = await fetchManualSetsFile();
+  if (!fileData) return;
+  const { sha, sets } = fileData;
+  if (sets.some((s) => s.set_id === entry.set_id)) return; // already present
+  const record = {
+    set_id: entry.set_id,
+    set_number: entry.set_number,
+    name: entry.name,
+    theme: entry.theme,
+    cost: entry.cost,
+    notes: entry.notes,
+    selling_on: entry.selling_on || "",
+  };
+  sets.push(record);
+  const content = toBase64(JSON.stringify(sets, null, 2) + "\n");
+  try {
+    await fetch(
+      `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${MANUAL_SETS_FILE}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${GH_TOKEN}`,
+          Accept: "application/vnd.github.v3+json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: `chore: add manual set ${entry.set_id}`,
+          content,
+          ...(sha ? { sha } : {}),
+        }),
+      }
+    );
+  } catch (e) {
+    console.warn("[GitHub] Failed to persist manual set:", e);
+  }
+}
+
+async function removeManualSetFromGitHub(setId) {
+  if (!GH_TOKEN || !GH_OWNER || !GH_REPO) return;
+  const fileData = await fetchManualSetsFile();
+  if (!fileData) return;
+  const { sha, sets } = fileData;
+  const updated = sets.filter((s) => s.set_id !== setId);
+  if (updated.length === sets.length) return; // nothing to remove
+  const content = toBase64(JSON.stringify(updated, null, 2) + "\n");
+  try {
+    await fetch(
+      `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${MANUAL_SETS_FILE}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${GH_TOKEN}`,
+          Accept: "application/vnd.github.v3+json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: `chore: remove manual set ${setId}`,
+          content,
+          ...(sha ? { sha } : {}),
+        }),
+      }
+    );
+  } catch (e) {
+    console.warn("[GitHub] Failed to remove manual set:", e);
+  }
+}
+// ─────────────────────────────────────────────────────────────────────────────
+
 export default function App() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -101,29 +197,38 @@ export default function App() {
       } catch (e) { console.error("Failed to save manual entries to localStorage:", e); }
       return next;
     });
+    // Persist to manual_sets.json so next sync fetches BrickLink prices for it
+    persistManualSetToGitHub(entry);
   };
 
   const handleDeleteManual = (id) => {
     setManualEntries((prev) => {
+      const removed = prev.find((e) => e.id === id);
       const next = prev.filter((e) => e.id !== id);
       try {
         localStorage.setItem(MANUAL_ENTRIES_KEY, JSON.stringify(next));
       } catch (e) { console.error("Failed to save manual entries to localStorage:", e); }
+      if (removed) removeManualSetFromGitHub(removed.set_id);
       return next;
     });
   };
 
-  // Merge listing overrides with data, then append manual entries
+  // Merge listing overrides with data, then append manual entries that haven't
+  // been picked up by the sync yet (avoid duplicates once the sync runs).
   const sets = useMemo(() => {
     if (!data?.sets) return [];
     const synced = data.sets.map((s) => ({
       ...s,
       selling_on: listingOverrides[s.id] !== undefined ? listingOverrides[s.id] : s.selling_on,
     }));
-    const manual = manualEntries.map((s) => ({
-      ...s,
-      selling_on: listingOverrides[s.id] !== undefined ? listingOverrides[s.id] : s.selling_on,
-    }));
+    const syncedSetIds = new Set(data.sets.map((s) => s.set_id));
+    // Only show local-only manual entries that the sync hasn't processed yet
+    const manual = manualEntries
+      .filter((s) => !syncedSetIds.has(s.set_id))
+      .map((s) => ({
+        ...s,
+        selling_on: listingOverrides[s.id] !== undefined ? listingOverrides[s.id] : s.selling_on,
+      }));
     return [...synced, ...manual];
   }, [data, listingOverrides, manualEntries]);
 
