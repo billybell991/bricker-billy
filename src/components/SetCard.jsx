@@ -47,7 +47,10 @@ export function SetCard({ set, onAdClick, onListingChange }) {
               e.target.src = rebrickUrl;
             } else {
               e.target.style.display = "none";
-              e.target.parentNode.innerHTML += `<div class="text-slate-500 text-sm text-center px-4">No image available</div>`;
+              const placeholder = document.createElement("div");
+              placeholder.className = "text-slate-500 text-sm text-center px-4";
+              placeholder.textContent = "No image available";
+              e.target.parentNode.appendChild(placeholder);
             }
           }}
         />
