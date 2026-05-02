@@ -48,8 +48,18 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python sync_lego.py
 
+      - name: Check for data changes
+        id: check_changes
+        run: |
+          git add public/data.json public/manual_sets.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
       - name: Commit and push updated data.json
-        id: auto_commit
+        if: steps.check_changes.outputs.changed == 'true'
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: auto-sync LEGO data [skip ci]"
@@ -58,7 +68,7 @@ jobs:
           commit_user_email: "sync-bot@users.noreply.github.com"
 
       - name: Trigger deploy after sync
-        if: steps.auto_commit.outputs.changes_detected == 'true'
+        if: steps.check_changes.outputs.changed == 'true'
         uses: actions/github-script@v7
         with:
           script: |
