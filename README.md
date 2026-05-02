@@ -79,7 +79,23 @@ The dev server runs at `http://localhost:5173`. The sample `public/data.json` is
 
 ---
 
-## 5. Deploying to GitHub Pages
+## 5. Cross-Device Sync (GitHub Token)
+
+Manual sets you add in the dashboard are written back to `public/manual_sets.json` in the repo via the GitHub API. This means they'll be visible on every device after the next deploy (usually takes 1–2 minutes).
+
+**To enable write access, connect a GitHub Personal Access Token on each new device:**
+
+1. Click the **Connect** button (GitHub icon) in the top-right of the dashboard
+2. A dialog will walk you through creating a token at [github.com/settings/tokens/new](https://github.com/settings/tokens/new?scopes=repo&description=Bricker+Billy)
+3. Paste the token and click **Connect** — it's verified and saved in that browser's `localStorage` only
+
+> **Security note:** The token is never baked into the deployed JavaScript bundle. It lives only in your browser's local storage and is sent only to `api.github.com` over HTTPS.
+
+You can disconnect at any time with the same button (turns green when connected). Without a token the dashboard still works fully — you just won't be able to write new manual sets back to the repo from that device.
+
+---
+
+## 6. Deploying to GitHub Pages
 
 ```bash
 npm run build
@@ -116,7 +132,7 @@ jobs:
 
 ---
 
-## 6. Business Rules
+## 7. Business Rules
 
 | Signal | Criteria |
 |---|---|
@@ -127,12 +143,13 @@ jobs:
 
 - **Gemini AI ads** are only generated for Strong Sell candidates
 - **Marketplace status** (Not Listed / BrickLink / Facebook / Both) is saved locally in `localStorage` so it persists between visits without needing a backend
+- **Manual sets** added via the dashboard are persisted to `public/manual_sets.json` in the repo (requires GitHub token — see §5) so they appear on every device after the next deploy
 - **Duplicate set entries** are kept separate (each copy of the same set treated independently)
 - **Personal notes** that look like single names (e.g., "Ben") are stripped from `data.json` before it's committed
 
 ---
 
-## 7. Running the Sync Manually
+## 8. Running the Sync Manually
 
 ```bash
 # Set environment variables first, then:
