@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
-import { RefreshCw, Search, SlidersHorizontal, LayoutGrid, List, Plus, Trash2 } from "lucide-react";
+import { RefreshCw, Search, SlidersHorizontal, LayoutGrid, List, Plus, Trash2, Github, LogOut } from "lucide-react";
 import { SetCard } from "./components/SetCard.jsx";
 import { AdModal } from "./components/AdModal.jsx";
 import { ChartSection } from "./components/Charts.jsx";
@@ -7,8 +7,10 @@ import { SummaryBar } from "./components/SummaryBar.jsx";
 import { SignalListModal } from "./components/SignalListModal.jsx";
 import { HoverTrigger } from "./components/SetHoverCard.jsx";
 import { ManualEntryModal } from "./components/ManualEntryModal.jsx";
+import { GitHubTokenModal } from "./components/GitHubTokenModal.jsx";
 
 const MANUAL_ENTRIES_KEY = "manual_entries";
+const GH_TOKEN_KEY = "gh_access_token";
 
 const SIGNAL_ORDER = { "Strong Sell": 0, "Consider": 1, "Hold": 2, "No Data": 3 };
 
@@ -29,17 +31,16 @@ const FILTER_OPTIONS = [
 ];
 
 // ── GitHub persistence helpers ────────────────────────────────────────────────
-const GH_TOKEN = import.meta.env.VITE_GH_TOKEN;
 const GH_OWNER = import.meta.env.VITE_REPO_OWNER;
 const GH_REPO  = import.meta.env.VITE_REPO_NAME;
 const MANUAL_SETS_FILE = "public/manual_sets.json";
 
-async function fetchManualSetsFile() {
-  if (!GH_TOKEN || !GH_OWNER || !GH_REPO) return null;
+async function fetchManualSetsFile(token) {
+  if (!token || !GH_OWNER || !GH_REPO) return null;
   try {
     const resp = await fetch(
       `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${MANUAL_SETS_FILE}`,
-      { headers: { Authorization: `Bearer ${GH_TOKEN}`, Accept: "application/vnd.github.v3+json" } }
+      { headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" } }
     );
     if (!resp.ok) return { sha: null, sets: [] };
     const file = await resp.json();
@@ -54,9 +55,9 @@ function toBase64(str) {
   return btoa(new TextEncoder().encode(str).reduce((data, byte) => data + String.fromCharCode(byte), ""));
 }
 
-async function persistManualSetToGitHub(entry) {
-  if (!GH_TOKEN || !GH_OWNER || !GH_REPO) return;
-  const fileData = await fetchManualSetsFile();
+async function persistManualSetToGitHub(entry, token) {
+  if (!token || !GH_OWNER || !GH_REPO) return;
+  const fileData = await fetchManualSetsFile(token);
   if (!fileData) return;
   const { sha, sets } = fileData;
   if (sets.some((s) => s.set_id === entry.set_id)) return; // already present
@@ -77,7 +78,7 @@ async function persistManualSetToGitHub(entry) {
       {
         method: "PUT",
         headers: {
-          Authorization: `Bearer ${GH_TOKEN}`,
+          Authorization: `Bearer ${token}`,
           Accept: "application/vnd.github.v3+json",
           "Content-Type": "application/json",
         },
@@ -93,9 +94,9 @@ async function persistManualSetToGitHub(entry) {
   }
 }
 
-async function removeManualSetFromGitHub(setId) {
-  if (!GH_TOKEN || !GH_OWNER || !GH_REPO) return;
-  const fileData = await fetchManualSetsFile();
+async function removeManualSetFromGitHub(setId, token) {
+  if (!token || !GH_OWNER || !GH_REPO) return;
+  const fileData = await fetchManualSetsFile(token);
   if (!fileData) return;
   const { sha, sets } = fileData;
   const updated = sets.filter((s) => s.set_id !== setId);
@@ -107,7 +108,7 @@ async function removeManualSetFromGitHub(setId) {
       {
         method: "PUT",
         headers: {
-          Authorization: `Bearer ${GH_TOKEN}`,
+          Authorization: `Bearer ${token}`,
           Accept: "application/vnd.github.v3+json",
           "Content-Type": "application/json",
         },
@@ -130,6 +131,21 @@ export default function App() {
   const [syncing, setSyncing] = useState(false);
   const [error, setError] = useState(null);
 
+  // GitHub token — stored in localStorage, never baked into the bundle
+  const [ghToken, setGhToken] = useState(() => localStorage.getItem(GH_TOKEN_KEY) || "");
+  const [showTokenModal, setShowTokenModal] = useState(false);
+
+  const handleGhConnect = (token) => {
+    localStorage.setItem(GH_TOKEN_KEY, token);
+    setGhToken(token);
+    setShowTokenModal(false);
+  };
+
+  const handleGhDisconnect = () => {
+    localStorage.removeItem(GH_TOKEN_KEY);
+    setGhToken("");
+  };
+
   // UI state
   const [search, setSearch] = useState("");
   const [filterSignal, setFilterSignal] = useState("all");
@@ -138,7 +154,7 @@ export default function App() {
   const [selectedSet, setSelectedSet] = useState(null); // for ad modal
   const [signalModalSignal, setSignalModalSignal] = useState(null); // for signal list modal
   const [listingOverrides, setListingOverrides] = useState({}); // local override for listing status
-  const [manualEntries, setManualEntries] = useState([]); // manually added sets (localStorage)
+  const [manualEntries, setManualEntries] = useState([]); // manually added sets
   const [showManualModal, setShowManualModal] = useState(false);
 
   const fetchData = useCallback((isRefresh = false) => {
@@ -157,11 +173,53 @@ export default function App() {
             const saved = JSON.parse(localStorage.getItem("listing_overrides") || "{}");
             setListingOverrides(saved);
           } catch (_) {}
-          // Load manually added sets
-          try {
-            const savedManual = JSON.parse(localStorage.getItem(MANUAL_ENTRIES_KEY) || "[]");
-            setManualEntries(savedManual);
-          } catch (e) { console.error("Failed to load manual entries from localStorage:", e); }
+
+          // Load manual entries: prefer the deployed manual_sets.json (cross-device),
+          // merged with any localStorage-only entries pending their next deploy.
+          fetch(`./manual_sets.json?t=${Date.now()}`)
+            .then((r) => r.ok ? r.json() : [])
+            .then((githubSets) => {
+              const entries = githubSets.map((s) => ({
+                id: `manual_${s.set_id}`,
+                set_id: s.set_id,
+                set_number: s.set_number,
+                name: s.name,
+                theme: s.theme || "",
+                cost: s.cost || 0,
+                current_value: 0,
+                profit: 0,
+                roi: 0,
+                signal: "No Data",
+                qty_sold_6m: 0,
+                bl_min_price: 0,
+                bl_max_price: 0,
+                selling_on: s.selling_on || "",
+                notes: s.notes || "",
+                image_url: `https://img.bricklink.com/ItemImage/SN/0/${s.set_id.split("-")[0]}.png`,
+                ad_copy: "",
+                last_updated: new Date().toISOString(),
+                isManual: true,
+              }));
+              // Also include any localStorage entries not yet committed (e.g. added moments ago)
+              const githubSetIds = new Set(githubSets.map((s) => s.set_id));
+              let pendingLocal = [];
+              try {
+                const local = JSON.parse(localStorage.getItem(MANUAL_ENTRIES_KEY) || "[]");
+                pendingLocal = local.filter((e) => !githubSetIds.has(e.set_id));
+              } catch (_) {}
+              const merged = [...entries, ...pendingLocal];
+              setManualEntries(merged);
+              try {
+                localStorage.setItem(MANUAL_ENTRIES_KEY, JSON.stringify(merged));
+              } catch (_) {}
+            })
+            .catch(() => {
+              // Fall back to localStorage only
+              try {
+                const saved = JSON.parse(localStorage.getItem(MANUAL_ENTRIES_KEY) || "[]");
+                setManualEntries(saved);
+              } catch (e) { console.error("Failed to load manual entries:", e); }
+            });
         }
         setError(null);
         setLoading(false);
@@ -198,7 +256,7 @@ export default function App() {
       return next;
     });
     // Persist to manual_sets.json so next sync fetches BrickLink prices for it
-    persistManualSetToGitHub(entry);
+    persistManualSetToGitHub(entry, ghToken);
   };
 
   const handleDeleteManual = (id) => {
@@ -208,7 +266,7 @@ export default function App() {
       try {
         localStorage.setItem(MANUAL_ENTRIES_KEY, JSON.stringify(next));
       } catch (e) { console.error("Failed to save manual entries to localStorage:", e); }
-      if (removed) removeManualSetFromGitHub(removed.set_id);
+      if (removed) removeManualSetFromGitHub(removed.set_id, ghToken);
       return next;
     });
   };
@@ -332,6 +390,27 @@ export default function App() {
               <RefreshCw size={13} className={syncing ? "animate-spin" : ""} />
               {syncing ? "Syncing…" : "Sync"}
             </button>
+
+            {/* GitHub token connect / disconnect */}
+            {ghToken ? (
+              <button
+                onClick={handleGhDisconnect}
+                title="Disconnect GitHub — stops cross-device sync"
+                className="flex items-center gap-1.5 bg-green-500/10 hover:bg-red-500/10 border border-green-500/30 hover:border-red-500/30 text-green-400 hover:text-red-400 text-xs font-bold px-3 py-2 rounded-xl transition-colors"
+              >
+                <Github size={13} />
+                <LogOut size={12} />
+              </button>
+            ) : (
+              <button
+                onClick={() => setShowTokenModal(true)}
+                title="Connect GitHub to sync data across devices"
+                className="flex items-center gap-1.5 bg-lego-card hover:bg-white/10 border border-white/10 text-slate-400 hover:text-white text-xs font-bold px-3 py-2 rounded-xl transition-colors"
+              >
+                <Github size={13} />
+                Connect
+              </button>
+            )}
           </div>
 
           <button
@@ -648,6 +727,14 @@ export default function App() {
         <ManualEntryModal
           onClose={() => setShowManualModal(false)}
           onAdd={handleAddManual}
+        />
+      )}
+
+      {/* ── GitHub Token Modal ── */}
+      {showTokenModal && (
+        <GitHubTokenModal
+          onClose={() => setShowTokenModal(false)}
+          onConnect={handleGhConnect}
         />
       )}
     </div>

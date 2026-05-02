@@ -28,7 +28,6 @@ jobs:
 
       - name: Build
         env:
-          VITE_GH_TOKEN: ${{ secrets.VITE_GH_TOKEN }}
           VITE_REPO_OWNER: ${{ github.repository_owner }}
           VITE_REPO_NAME: ${{ github.event.repository.name }}
         run: npm run build
