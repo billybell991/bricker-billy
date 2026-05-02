@@ -42,8 +42,13 @@ export function SetCard({ set, onAdClick, onListingChange }) {
           referrerPolicy="no-referrer"
           className="relative h-40 w-full object-contain group-hover:scale-105 transition-transform duration-500 p-2 drop-shadow-lg z-10"
           onError={(e) => {
-            e.target.style.display = "none";
-            e.target.parentNode.innerHTML += `<div class="text-slate-500 text-sm text-center px-4">No image available</div>`;
+            const rebrickUrl = `https://cdn.rebrickable.com/media/sets/${set.set_id}.jpg`;
+            if (e.target.src !== rebrickUrl) {
+              e.target.src = rebrickUrl;
+            } else {
+              e.target.style.display = "none";
+              e.target.parentNode.innerHTML += `<div class="text-slate-500 text-sm text-center px-4">No image available</div>`;
+            }
           }}
         />
         {/* Signal badge top-right */}

@@ -345,6 +345,19 @@ export default function App() {
       </header>
 
       <main className="max-w-screen-xl mx-auto px-6 py-8">
+        {/* ── GitHub persistence warning ── */}
+        {(!GH_TOKEN || !GH_OWNER || !GH_REPO) && (
+          <div className="mb-6 flex items-start gap-3 bg-yellow-500/10 border border-yellow-500/30 text-yellow-300 text-xs rounded-xl px-4 py-3">
+            <span className="text-base leading-none mt-0.5">⚠️</span>
+            <span>
+              <strong>GitHub sync not configured.</strong> Manually added sets will only be saved in this browser.
+              To persist sets across devices and trigger BrickLink price syncs, set the{" "}
+              <code className="bg-yellow-500/20 px-1 py-0.5 rounded">VITE_GH_TOKEN</code>,{" "}
+              <code className="bg-yellow-500/20 px-1 py-0.5 rounded">VITE_REPO_OWNER</code>, and{" "}
+              <code className="bg-yellow-500/20 px-1 py-0.5 rounded">VITE_REPO_NAME</code> secrets in GitHub Actions and redeploy.
+            </span>
+          </div>
+        )}
         {/* ── Summary Stats ── */}
         <SummaryBar summary={data.summary} onSignalClick={setSignalModalSignal} />
 
@@ -393,7 +406,11 @@ export default function App() {
                               alt={s.name}
                               referrerPolicy="no-referrer"
                               className="w-10 h-10 object-contain rounded bg-white/10"
-                              onError={(e) => { e.target.style.display = "none"; }}
+                              onError={(e) => {
+                                const rebrickUrl = `https://cdn.rebrickable.com/media/sets/${s.set_id}.jpg`;
+                                if (e.target.src !== rebrickUrl) { e.target.src = rebrickUrl; }
+                                else { e.target.style.display = "none"; }
+                              }}
                             />
                             <HoverTrigger set={s}>
                               <div>
@@ -555,7 +572,11 @@ export default function App() {
                           alt={s.name}
                           referrerPolicy="no-referrer"
                           className="w-10 h-10 object-contain rounded bg-white/10"
-                          onError={(e) => { e.target.style.display = "none"; }}
+                          onError={(e) => {
+                            const rebrickUrl = `https://cdn.rebrickable.com/media/sets/${s.set_id}.jpg`;
+                            if (e.target.src !== rebrickUrl) { e.target.src = rebrickUrl; }
+                            else { e.target.style.display = "none"; }
+                          }}
                         />
                         <HoverTrigger set={s}>
                           <div>
