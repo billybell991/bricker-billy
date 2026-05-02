@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { RefreshCw, Search, SlidersHorizontal, LayoutGrid, List, Plus, Trash2 } from "lucide-react";
 import { SetCard } from "./components/SetCard.jsx";
 import { AdModal } from "./components/AdModal.jsx";
@@ -45,7 +45,7 @@ export default function App() {
   const [manualEntries, setManualEntries] = useState([]); // manually added sets (localStorage)
   const [showManualModal, setShowManualModal] = useState(false);
 
-  const fetchData = (isRefresh = false) => {
+  const fetchData = useCallback((isRefresh = false) => {
     if (isRefresh) setSyncing(true);
     // Cache-bust so we always get the latest data.json
     fetch(`./data.json?t=${Date.now()}`)
@@ -76,12 +76,12 @@ export default function App() {
         setLoading(false);
         setSyncing(false);
       });
-  };
+  }, []);
 
   // Load data.json on mount
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   const handleListingChange = (setId, value) => {
     setListingOverrides((prev) => {
