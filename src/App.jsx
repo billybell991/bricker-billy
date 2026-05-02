@@ -1,11 +1,14 @@
 import { useState, useEffect, useMemo } from "react";
-import { RefreshCw, Search, SlidersHorizontal, LayoutGrid, List } from "lucide-react";
+import { RefreshCw, Search, SlidersHorizontal, LayoutGrid, List, Plus, Trash2 } from "lucide-react";
 import { SetCard } from "./components/SetCard.jsx";
 import { AdModal } from "./components/AdModal.jsx";
 import { ChartSection } from "./components/Charts.jsx";
 import { SummaryBar } from "./components/SummaryBar.jsx";
 import { SignalListModal } from "./components/SignalListModal.jsx";
 import { HoverTrigger } from "./components/SetHoverCard.jsx";
+import { ManualEntryModal } from "./components/ManualEntryModal.jsx";
+
+const MANUAL_ENTRIES_KEY = "manual_entries";
 
 const SIGNAL_ORDER = { "Strong Sell": 0, "Consider": 1, "Hold": 2, "No Data": 3 };
 
@@ -38,6 +41,8 @@ export default function App() {
   const [selectedSet, setSelectedSet] = useState(null); // for ad modal
   const [signalModalSignal, setSignalModalSignal] = useState(null); // for signal list modal
   const [listingOverrides, setListingOverrides] = useState({}); // local override for listing status
+  const [manualEntries, setManualEntries] = useState([]); // manually added sets (localStorage)
+  const [showManualModal, setShowManualModal] = useState(false);
 
   // Load data.json
   useEffect(() => {
@@ -53,6 +58,11 @@ export default function App() {
           const saved = JSON.parse(localStorage.getItem("listing_overrides") || "{}");
           setListingOverrides(saved);
         } catch (_) {}
+        // Load manually added sets
+        try {
+          const savedManual = JSON.parse(localStorage.getItem(MANUAL_ENTRIES_KEY) || "[]");
+          setManualEntries(savedManual);
+        } catch (e) { console.error("Failed to load manual entries from localStorage:", e); }
         setLoading(false);
       })
       .catch((e) => {
@@ -71,14 +81,39 @@ export default function App() {
     });
   };
 
-  // Merge listing overrides with data
+  const handleAddManual = (entry) => {
+    setManualEntries((prev) => {
+      const next = [...prev, entry];
+      try {
+        localStorage.setItem(MANUAL_ENTRIES_KEY, JSON.stringify(next));
+      } catch (e) { console.error("Failed to save manual entries to localStorage:", e); }
+      return next;
+    });
+  };
+
+  const handleDeleteManual = (id) => {
+    setManualEntries((prev) => {
+      const next = prev.filter((e) => e.id !== id);
+      try {
+        localStorage.setItem(MANUAL_ENTRIES_KEY, JSON.stringify(next));
+      } catch (e) { console.error("Failed to save manual entries to localStorage:", e); }
+      return next;
+    });
+  };
+
+  // Merge listing overrides with data, then append manual entries
   const sets = useMemo(() => {
     if (!data?.sets) return [];
-    return data.sets.map((s) => ({
+    const synced = data.sets.map((s) => ({
       ...s,
       selling_on: listingOverrides[s.id] !== undefined ? listingOverrides[s.id] : s.selling_on,
     }));
-  }, [data, listingOverrides]);
+    const manual = manualEntries.map((s) => ({
+      ...s,
+      selling_on: listingOverrides[s.id] !== undefined ? listingOverrides[s.id] : s.selling_on,
+    }));
+    return [...synced, ...manual];
+  }, [data, listingOverrides, manualEntries]);
 
   // Filter + sort
   const filteredSets = useMemo(() => {
@@ -170,6 +205,14 @@ export default function App() {
             <RefreshCw size={12} />
             <span>Last synced: {lastSynced}</span>
           </div>
+
+          <button
+            onClick={() => setShowManualModal(true)}
+            className="flex items-center gap-1.5 bg-lego-blue hover:bg-blue-600 text-white text-xs font-bold px-3 py-2 rounded-xl transition-colors"
+          >
+            <Plus size={14} />
+            Add Set
+          </button>
         </div>
       </header>
 
@@ -334,12 +377,27 @@ export default function App() {
         ) : viewMode === "grid" ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {filteredSets.map((s) => (
-              <SetCard
-                key={s.id}
-                set={s}
-                onAdClick={setSelectedSet}
-                onListingChange={handleListingChange}
-              />
+              <div key={s.id} className="relative">
+                {s.isManual && (
+                  <div className="absolute top-2 left-2 z-30 flex items-center gap-1">
+                    <span className="text-[10px] font-bold bg-lego-yellow/20 text-lego-yellow border border-lego-yellow/30 px-1.5 py-0.5 rounded-full uppercase tracking-wider">
+                      Manual
+                    </span>
+                    <button
+                      onClick={() => handleDeleteManual(s.id)}
+                      title="Remove manual entry"
+                      className="text-red-400 hover:text-red-300 bg-black/50 hover:bg-black/70 rounded-full p-1 transition-colors"
+                    >
+                      <Trash2 size={11} />
+                    </button>
+                  </div>
+                )}
+                <SetCard
+                  set={s}
+                  onAdClick={setSelectedSet}
+                  onListingChange={handleListingChange}
+                />
+              </div>
             ))}
           </div>
         ) : (
@@ -413,12 +471,23 @@ export default function App() {
                       </select>
                     </td>
                     <td className="px-4 py-3">
-                      <button
-                        onClick={() => setSelectedSet(s)}
-                        className="text-xs bg-lego-red/10 hover:bg-lego-red/20 border border-lego-red/30 text-lego-red hover:text-red-300 px-3 py-1 rounded-lg transition-all font-bold whitespace-nowrap"
-                      >
-                        Ad →
-                      </button>
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => setSelectedSet(s)}
+                          className="text-xs bg-lego-red/10 hover:bg-lego-red/20 border border-lego-red/30 text-lego-red hover:text-red-300 px-3 py-1 rounded-lg transition-all font-bold whitespace-nowrap"
+                        >
+                          Ad →
+                        </button>
+                        {s.isManual && (
+                          <button
+                            onClick={() => handleDeleteManual(s.id)}
+                            title="Remove manual entry"
+                            className="text-red-400 hover:text-red-300 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 rounded-lg p-1.5 transition-colors"
+                          >
+                            <Trash2 size={13} />
+                          </button>
+                        )}
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -443,6 +512,14 @@ export default function App() {
           signal={signalModalSignal}
           sets={sets}
           onClose={() => setSignalModalSignal(null)}
+        />
+      )}
+
+      {/* ── Manual Entry Modal ── */}
+      {showManualModal && (
+        <ManualEntryModal
+          onClose={() => setShowManualModal(false)}
+          onAdd={handleAddManual}
         />
       )}
     </div>
