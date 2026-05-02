@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   sync:
@@ -48,9 +49,22 @@ jobs:
         run: python sync_lego.py
 
       - name: Commit and push updated data.json
+        id: auto_commit
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: auto-sync LEGO data [skip ci]"
-          file_pattern: "public/data.json"
+          file_pattern: "public/data.json public/manual_sets.json"
           commit_user_name: "LEGO Sync Bot"
           commit_user_email: "sync-bot@users.noreply.github.com"
+
+      - name: Trigger deploy after sync
+        if: steps.auto_commit.outputs.changes_detected == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'deploy.yml',
+              ref: 'main',
+            });

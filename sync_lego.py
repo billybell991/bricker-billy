@@ -38,6 +38,7 @@ STRONG_SELL_MIN_VALUE = 50  # CAD $50 minimum market value
 CONSIDER_ROI = 0.20         # 20 % ROI threshold
 SLEEP_BETWEEN_CALLS = 1.2   # seconds — respect BrickLink rate limits
 OUTPUT_PATH = "public/data.json"
+MANUAL_SETS_PATH = "public/manual_sets.json"
 
 # Columns in the sheet (0-indexed after header row)
 COL_THEME = 0
@@ -84,6 +85,18 @@ def bricklink_image_url(set_id: str) -> str:
     # set_id format: 75045-1  → strip the -1 suffix for the image filename
     numeric = set_id.split("-")[0]
     return f"https://img.bricklink.com/ItemImage/SN/0/{numeric}.png"
+
+
+def get_manual_sets() -> list[dict]:
+    """Read manually-added sets from public/manual_sets.json."""
+    if not os.path.exists(MANUAL_SETS_PATH):
+        return []
+    try:
+        with open(MANUAL_SETS_PATH, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as exc:
+        print(f"[manual_sets] Could not read {MANUAL_SETS_PATH}: {exc}")
+        return []
 
 
 # ── Google Sheets auth ────────────────────────────────────────────────────────
@@ -270,6 +283,81 @@ def main():
             "ad_copy": ad_copy,
             "last_updated": datetime.now(timezone.utc).isoformat(),
         })
+
+    # 7b. Process manual sets from manual_sets.json (sets not in the Google Sheet)
+    sheet_set_ids = {s["set_id"] for s in sets}
+    manual_file_entries = get_manual_sets()
+    if manual_file_entries:
+        print(f"\nProcessing {len(manual_file_entries)} manual set(s) from {MANUAL_SETS_PATH}...")
+    for ms in manual_file_entries:
+        raw_set_number = str(ms.get("set_number", ms.get("set_id", ""))).strip()
+        if not raw_set_number:
+            continue
+        set_id = normalize_set_id(raw_set_number)
+        if set_id in sheet_set_ids:
+            print(f"  Skipping {set_id} — already present from Google Sheet.")
+            continue
+
+        name = str(ms.get("name", f"Set {raw_set_number}")).strip()
+        theme = str(ms.get("theme", "")).strip()
+        cost = parse_currency(ms.get("cost", 0))
+        notes = str(ms.get("notes", "")).strip()
+
+        print(f"  Processing manual {set_id} ({name})...")
+
+        bl_data = fetch_bl_price(set_id, bl_auth)
+        time.sleep(SLEEP_BETWEEN_CALLS)
+
+        if bl_data and bl_data["avg_price"] > 0:
+            current_value = bl_data["avg_price"]
+            qty_sold = bl_data["qty_sold"]
+            min_price = bl_data["min_price"]
+            max_price = bl_data["max_price"]
+            has_bl_data = True
+        else:
+            current_value = 0.0
+            qty_sold = 0
+            min_price = 0.0
+            max_price = 0.0
+            has_bl_data = False
+            print(f"    [!] No BrickLink data for {set_id}, marking as No Data")
+
+        roi = 0.0
+        profit = 0.0
+        if cost > 0 and current_value > 0:
+            roi = (current_value - cost) / cost
+            profit = current_value - cost
+
+        signal = sell_signal(roi, current_value) if has_bl_data else "No Data"
+
+        ad_copy = ""
+        if has_bl_data and current_value > 0:
+            print(f"    [Gemini] Generating ad copy for {name}...")
+            ad_copy = generate_ad_copy(name, set_id, current_value, cost)
+            time.sleep(SLEEP_BETWEEN_CALLS)
+
+        sets.append({
+            "id": f"{set_id}_manual",
+            "set_id": set_id,
+            "set_number": raw_set_number,
+            "name": name,
+            "theme": theme,
+            "cost": round(cost, 2),
+            "current_value": round(current_value, 2),
+            "profit": round(profit, 2),
+            "roi": round(roi * 100, 2),
+            "signal": signal,
+            "qty_sold_6m": qty_sold,
+            "bl_min_price": round(min_price, 2),
+            "bl_max_price": round(max_price, 2),
+            "selling_on": str(ms.get("selling_on", "")).strip(),
+            "notes": notes,
+            "image_url": bricklink_image_url(set_id),
+            "ad_copy": ad_copy,
+            "last_updated": datetime.now(timezone.utc).isoformat(),
+            "isManual": True,
+        })
+        sheet_set_ids.add(set_id)
 
     # 8. Build summary stats
     valid_sets = [s for s in sets if s["signal"] != "No Data"]

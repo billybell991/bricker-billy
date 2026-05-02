@@ -101,7 +101,7 @@ export function ManualEntryModal({ onClose, onAdd }) {
           <div>
             <h2 className="text-lg font-black text-white">Add Set Manually</h2>
             <p className="text-xs text-slate-400 mt-0.5">
-              Saved locally until the next sync runs.
+              BrickLink prices sync automatically on the next daily run.
             </p>
           </div>
           <button
@@ -135,8 +135,9 @@ export function ManualEntryModal({ onClose, onAdd }) {
           </div>
 
           <p className="text-xs text-slate-500">
-            BrickLink value and ROI will show as "No Data" until the next
-            scheduled sync.
+            BrickLink value and ROI will appear after the next scheduled sync
+            (daily at 8 AM UTC). You can also trigger a manual sync from the
+            GitHub Actions tab.
           </p>
 
           <button
