@@ -42,8 +42,16 @@ export function SetCard({ set, onAdClick, onListingChange }) {
           referrerPolicy="no-referrer"
           className="relative h-40 w-full object-contain group-hover:scale-105 transition-transform duration-500 p-2 drop-shadow-lg z-10"
           onError={(e) => {
+            // Try JPG if PNG 404s — BrickLink serves some sets as JPG only
+            if (e.target.src.endsWith(".png")) {
+              e.target.src = e.target.src.replace(".png", ".jpg");
+              return;
+            }
+            // Both PNG and JPG failed — hide image and show placeholder.
+            // Use insertAdjacentHTML (not innerHTML +=) to avoid recreating the
+            // img element which would trigger onError again.
             e.target.style.display = "none";
-            e.target.parentNode.innerHTML += `<div class="text-slate-500 text-sm text-center px-4">No image available</div>`;
+            e.target.insertAdjacentHTML("afterend", `<div class="text-slate-500 text-sm text-center px-4">No image available</div>`);
           }}
         />
         {/* Signal badge top-right */}
