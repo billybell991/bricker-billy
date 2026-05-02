@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { RefreshCw, Search, SlidersHorizontal, LayoutGrid, List, Plus, Trash2 } from "lucide-react";
 import { SetCard } from "./components/SetCard.jsx";
 import { AdModal } from "./components/AdModal.jsx";
@@ -31,6 +31,7 @@ const FILTER_OPTIONS = [
 export default function App() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [syncing, setSyncing] = useState(false);
   const [error, setError] = useState(null);
 
   // UI state
@@ -44,32 +45,43 @@ export default function App() {
   const [manualEntries, setManualEntries] = useState([]); // manually added sets (localStorage)
   const [showManualModal, setShowManualModal] = useState(false);
 
-  // Load data.json
-  useEffect(() => {
-    fetch("./data.json")
+  const fetchData = useCallback((isRefresh = false) => {
+    if (isRefresh) setSyncing(true);
+    // Cache-bust so we always get the latest data.json
+    fetch(`./data.json?t=${Date.now()}`)
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         return r.json();
       })
       .then((d) => {
         setData(d);
-        // Pre-populate listing overrides from saved state (localStorage)
-        try {
-          const saved = JSON.parse(localStorage.getItem("listing_overrides") || "{}");
-          setListingOverrides(saved);
-        } catch (_) {}
-        // Load manually added sets
-        try {
-          const savedManual = JSON.parse(localStorage.getItem(MANUAL_ENTRIES_KEY) || "[]");
-          setManualEntries(savedManual);
-        } catch (e) { console.error("Failed to load manual entries from localStorage:", e); }
+        if (!isRefresh) {
+          // Pre-populate listing overrides from saved state (localStorage)
+          try {
+            const saved = JSON.parse(localStorage.getItem("listing_overrides") || "{}");
+            setListingOverrides(saved);
+          } catch (_) {}
+          // Load manually added sets
+          try {
+            const savedManual = JSON.parse(localStorage.getItem(MANUAL_ENTRIES_KEY) || "[]");
+            setManualEntries(savedManual);
+          } catch (e) { console.error("Failed to load manual entries from localStorage:", e); }
+        }
+        setError(null);
         setLoading(false);
+        setSyncing(false);
       })
       .catch((e) => {
         setError(e.message);
         setLoading(false);
+        setSyncing(false);
       });
   }, []);
+
+  // Load data.json on mount
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   const handleListingChange = (setId, value) => {
     setListingOverrides((prev) => {
@@ -201,9 +213,20 @@ export default function App() {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 text-xs text-slate-400">
-            <RefreshCw size={12} />
-            <span>Last synced: {lastSynced}</span>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 text-xs text-slate-400">
+              <RefreshCw size={12} />
+              <span>Last synced: {lastSynced}</span>
+            </div>
+            <button
+              onClick={() => fetchData(true)}
+              disabled={syncing}
+              className="flex items-center gap-1.5 bg-lego-card hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white text-xs font-bold px-3 py-2 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              title="Re-fetch data.json"
+            >
+              <RefreshCw size={13} className={syncing ? "animate-spin" : ""} />
+              {syncing ? "Syncing…" : "Sync"}
+            </button>
           </div>
 
           <button
