@@ -26,6 +26,19 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Cache set images
+        uses: actions/cache@v4
+        with:
+          path: public/images
+          key: lego-images-${{ hashFiles('public/data.json') }}
+          restore-keys: |
+            lego-images-
+
+      - name: Download missing set images
+        run: |
+          pip install requests
+          python3 scripts/download_images.py
+
       - name: Build
         env:
           VITE_REPO_OWNER: ${{ github.repository_owner }}
