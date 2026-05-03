@@ -7,7 +7,9 @@ function normalizeSetId(raw) {
 }
 
 function bricklinkImageUrl(num) {
-  return `https://img.bricklink.com/ItemImage/SN/0/${num}.png`;
+  // Strip non-digits before constructing URL to ensure a safe, predictable src
+  const safe = num.replace(/\D/g, "");
+  return `https://img.bricklink.com/ItemImage/SN/0/${safe}.png`;
 }
 
 export function ManualEntryModal({ onClose, onAdd }) {

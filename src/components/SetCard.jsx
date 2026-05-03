@@ -31,20 +31,23 @@ export function SetCard({ set, onAdClick, onListingChange }) {
         <div
           className="absolute inset-0 scale-125 blur-2xl opacity-25"
           style={{
-            backgroundImage: `url(${set.image_url})`,
+            backgroundImage: `url(${(/^(https?:\/\/|\/)/.test(set.image_url) || !String(set.image_url).includes(":")) ? set.image_url : ""})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         />
         <img
-          src={set.image_url}
+          src={(/^(https?:\/\/|\/)/.test(set.image_url) || !String(set.image_url).includes(":")) ? set.image_url : ""}
           alt={set.name}
           className="relative h-40 w-full object-contain group-hover:scale-105 transition-transform duration-500 p-2 drop-shadow-lg z-10"
           onLoad={(e) => {
             // BrickLink returns a 1×1 GIF for missing/blocked images — hide it
             if (e.target.naturalWidth <= 1 || e.target.naturalHeight <= 1) {
               e.target.style.display = "none";
-              e.target.insertAdjacentHTML("afterend", `<div class="text-slate-500 text-sm text-center px-4">No image available</div>`);
+              const ph = document.createElement("div");
+              ph.className = "text-slate-500 text-sm text-center px-4";
+              ph.textContent = "No image available";
+              e.target.insertAdjacentElement("afterend", ph);
             }
           }}
           onError={(e) => {
@@ -53,11 +56,12 @@ export function SetCard({ set, onAdClick, onListingChange }) {
               e.target.src = e.target.src.replace(".png", ".jpg");
               return;
             }
-            // Both PNG and JPG failed — hide image and show placeholder.
-            // Use insertAdjacentHTML (not innerHTML +=) to avoid recreating the
-            // img element which would trigger onError again.
+            // Both PNG and JPG failed — show placeholder using DOM (not innerHTML)
             e.target.style.display = "none";
-            e.target.insertAdjacentHTML("afterend", `<div class="text-slate-500 text-sm text-center px-4">No image available</div>`);
+            const ph = document.createElement("div");
+            ph.className = "text-slate-500 text-sm text-center px-4";
+            ph.textContent = "No image available";
+            e.target.insertAdjacentElement("afterend", ph);
           }}
         />
         {/* Signal badge top-right */}
@@ -75,7 +79,7 @@ export function SetCard({ set, onAdClick, onListingChange }) {
           </p>
           <HoverTrigger set={set}>
             <a
-              href={`https://www.bricklink.com/v2/catalog/catalogitem.page?S=${set.set_id}`}
+              href={`https://www.bricklink.com/v2/catalog/catalogitem.page?S=${set.set_id.replace(/[^0-9-]/g, "")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="font-black text-base text-white leading-tight hover:text-lego-yellow transition-colors"

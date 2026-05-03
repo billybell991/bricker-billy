@@ -35,6 +35,19 @@ const GH_OWNER = import.meta.env.VITE_REPO_OWNER;
 const GH_REPO  = import.meta.env.VITE_REPO_NAME;
 const MANUAL_SETS_FILE = "public/manual_sets.json";
 
+/** Return a safe BrickLink catalog URL for the given set_id (only digits + hyphens). */
+function blCatalogUrl(setId) {
+  const safe = String(setId).replace(/[^0-9-]/g, "");
+  return `https://www.bricklink.com/v2/catalog/catalogitem.page?S=${safe}`;
+}
+
+/** Return the image src only if it's an http/https or relative path (never javascript:). */
+function safeImgSrc(url) {
+  if (!url) return "";
+  const s = String(url);
+  return /^(https?:\/\/|\/)/.test(s) || !s.includes(":") ? s : "";
+}
+
 async function fetchManualSetsFile(token) {
   if (!token || !GH_OWNER || !GH_REPO) return null;
   try {
@@ -491,13 +504,13 @@ export default function App() {
                       <tr key={s.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
                         <td className="py-3 pr-4">
                           <a
-                            href={`https://www.bricklink.com/v2/catalog/catalogitem.page?S=${s.set_id}`}
+                            href={blCatalogUrl(s.set_id)}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-3 group/link"
                           >
                             <img
-                              src={s.image_url}
+                              src={safeImgSrc(s.image_url)}
                               alt={s.name}
                               className="w-10 h-10 object-contain rounded bg-white/10"
                               onLoad={(e) => { if (e.target.naturalWidth <= 1 || e.target.naturalHeight <= 1) e.target.style.display = "none"; }}
@@ -654,7 +667,7 @@ export default function App() {
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-3">
                         <img
-                          src={s.image_url}
+                          src={safeImgSrc(s.image_url)}
                           alt={s.name}
                           className="w-10 h-10 object-contain rounded bg-white/10"
                           onLoad={(e) => { if (e.target.naturalWidth <= 1 || e.target.naturalHeight <= 1) e.target.style.display = "none"; }}
