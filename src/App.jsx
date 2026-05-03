@@ -195,7 +195,7 @@ export default function App() {
                 bl_max_price: 0,
                 selling_on: s.selling_on || "",
                 notes: s.notes || "",
-                image_url: `https://img.bricklink.com/ItemImage/SN/0/${s.set_id.split("-")[0]}.png`,
+                image_url: `images/${s.set_id.split("-")[0]}.png`,
                 ad_copy: "",
                 last_updated: new Date().toISOString(),
                 isManual: true,

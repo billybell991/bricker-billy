@@ -98,11 +98,18 @@ def download_set_image(set_id: str) -> str:
         if os.path.exists(os.path.join(IMAGES_DIR, f"{numeric}.{ext}")):
             return f"images/{numeric}.{ext}"
 
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/124.0.0.0 Safari/537.36"
+        )
+    }
     for ext in IMAGE_EXTENSIONS:
         url = f"https://img.bricklink.com/ItemImage/SN/0/{numeric}.{ext}"
         local_path = os.path.join(IMAGES_DIR, f"{numeric}.{ext}")
         try:
-            resp = requests.get(url, timeout=15)
+            resp = requests.get(url, headers=headers, timeout=15)
             if resp.status_code == 200 and len(resp.content) > MIN_IMAGE_SIZE_BYTES:
                 with open(local_path, "wb") as fh:
                     fh.write(resp.content)
