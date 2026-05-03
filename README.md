@@ -75,7 +75,7 @@ npm install
 npm run dev
 ```
 
-The dev server runs at `http://localhost:5173`. The sample `public/data.json` is pre-populated with example sets so you can see the UI immediately.
+The dev server runs at **`http://localhost:5173`** and hot-reloads on every file save. The `public/data.json` already in the repo has your set data, so the dashboard loads immediately with real data.
 
 ---
 
