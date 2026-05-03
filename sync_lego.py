@@ -103,7 +103,10 @@ def download_set_image(set_id: str) -> str:
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
             "AppleWebKit/537.36 (KHTML, like Gecko) "
             "Chrome/124.0.0.0 Safari/537.36"
-        )
+        ),
+        # BrickLink CDN uses hotlink protection — sending their own domain as Referer
+        # causes the real image to be served instead of the 1×1 placeholder GIF.
+        "Referer": "https://www.bricklink.com/",
     }
     for ext in IMAGE_EXTENSIONS:
         url = f"https://img.bricklink.com/ItemImage/SN/0/{numeric}.{ext}"
@@ -117,7 +120,19 @@ def download_set_image(set_id: str) -> str:
         except (requests.RequestException, OSError) as exc:
             print(f"    [img] Failed to download {url}: {exc}")
 
-    # Both formats unavailable — keep the external URL as last resort
+    # Fallback: Rebrickable CDN (no hotlink protection)
+    rb_url = f"https://cdn.rebrickable.com/media/sets/{numeric}-1.jpg"
+    local_path = os.path.join(IMAGES_DIR, f"{numeric}.jpg")
+    try:
+        resp = requests.get(rb_url, headers={"User-Agent": headers["User-Agent"]}, timeout=15)
+        if resp.status_code == 200 and len(resp.content) > MIN_IMAGE_SIZE_BYTES:
+            with open(local_path, "wb") as fh:
+                fh.write(resp.content)
+            return f"images/{numeric}.jpg"
+    except (requests.RequestException, OSError) as exc:
+        print(f"    [img] Failed to download {rb_url}: {exc}")
+
+    # Both sources unavailable — keep the external URL as last resort
     print(f"    [img] Could not download image for {set_id}, using BrickLink URL")
     return f"https://img.bricklink.com/ItemImage/SN/0/{numeric}.png"
 
