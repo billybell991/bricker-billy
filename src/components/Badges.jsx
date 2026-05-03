@@ -4,12 +4,14 @@ export function SignalBadge({ signal }) {
     "Consider": "badge-consider",
     "Hold": "badge-hold",
     "No Data": "badge-no-data",
+    "Pending Sync": "badge-no-data",
   };
   const icons = {
     "Strong Sell": "🔥",
     "Consider": "👀",
     "Hold": "💤",
     "No Data": "❓",
+    "Pending Sync": "⏳",
   };
   const cls = map[signal] || "badge-hold";
   return (

@@ -39,8 +39,14 @@ export function SetCard({ set, onAdClick, onListingChange }) {
         <img
           src={set.image_url}
           alt={set.name}
-          referrerPolicy="no-referrer"
           className="relative h-40 w-full object-contain group-hover:scale-105 transition-transform duration-500 p-2 drop-shadow-lg z-10"
+          onLoad={(e) => {
+            // BrickLink returns a 1×1 GIF for missing/blocked images — hide it
+            if (e.target.naturalWidth <= 1 || e.target.naturalHeight <= 1) {
+              e.target.style.display = "none";
+              e.target.insertAdjacentHTML("afterend", `<div class="text-slate-500 text-sm text-center px-4">No image available</div>`);
+            }
+          }}
           onError={(e) => {
             // Try JPG if PNG 404s — BrickLink serves some sets as JPG only
             if (e.target.src.endsWith(".png")) {

@@ -203,6 +203,41 @@ def fetch_bl_price(set_id: str, auth: OAuth1) -> dict | None:
         return None
 
 
+def fetch_bl_catalog_info(set_id: str, auth: OAuth1) -> dict | None:
+    """
+    Fetch catalog details (name, theme) for a LEGO set from BrickLink.
+    Returns a dict with name and theme, or None on failure.
+    """
+    # Get item details
+    item_url = f"https://api.bricklink.com/api/store/v1/items/SET/{set_id}"
+    try:
+        resp = requests.get(item_url, auth=auth, timeout=15)
+        resp.raise_for_status()
+        data = resp.json()
+        if data.get("meta", {}).get("code") != 200:
+            return None
+        item = data["data"]
+        name = item.get("name", "").strip()
+        category_id = item.get("category_id")
+
+        # Get category (theme) name
+        theme = ""
+        if category_id:
+            time.sleep(SLEEP_BETWEEN_CALLS)
+            cat_resp = requests.get(
+                f"https://api.bricklink.com/api/store/v1/categories/{category_id}",
+                auth=auth, timeout=15
+            )
+            cat_data = cat_resp.json()
+            if cat_data.get("meta", {}).get("code") == 200:
+                theme = cat_data["data"].get("category_name", "").strip()
+
+        return {"name": name, "theme": theme}
+    except Exception as exc:
+        print(f"  [BL catalog] Error fetching {set_id}: {exc}")
+        return None
+
+
 # ── Gemini AI ad copy ─────────────────────────────────────────────────────────
 
 def generate_ad_copy(set_name: str, set_id: str, current_value: float, cost: float) -> str:
@@ -337,6 +372,7 @@ def main():
     # 7b. Process manual sets from manual_sets.json (sets not in the Google Sheet)
     sheet_set_ids = {s["set_id"] for s in sets}
     manual_file_entries = get_manual_sets()
+    updated_manual_entries = []  # track any name/theme updates to write back
     if manual_file_entries:
         print(f"\nProcessing {len(manual_file_entries)} manual set(s) from {MANUAL_SETS_PATH}...")
     for ms in manual_file_entries:
@@ -348,12 +384,32 @@ def main():
             print(f"  Skipping {set_id} — already present from Google Sheet.")
             continue
 
-        name = str(ms.get("name", f"Set {raw_set_number}")).strip()
+        name = str(ms.get("name", "")).strip()
         theme = str(ms.get("theme", "")).strip()
         cost = parse_currency(ms.get("cost", 0))
         notes = str(ms.get("notes", "")).strip()
+        quantity = max(1, int(ms.get("quantity", 1) or 1))
 
-        print(f"  Processing manual {set_id} ({name})...")
+        # Auto-fetch name and theme from BrickLink catalog if not already set
+        needs_catalog = not name or name.startswith("Set ")
+        if needs_catalog:
+            print(f"  Fetching catalog info for {set_id}...")
+            catalog = fetch_bl_catalog_info(set_id, bl_auth)
+            time.sleep(SLEEP_BETWEEN_CALLS)
+            if catalog:
+                if catalog["name"]:
+                    name = catalog["name"]
+                if catalog["theme"]:
+                    theme = catalog["theme"]
+                # Write enriched name/theme back to manual_sets.json record
+                ms["name"] = name
+                ms["theme"] = theme
+        updated_manual_entries.append(ms)
+
+        if not name:
+            name = f"Set {raw_set_number}"
+
+        print(f"  Processing manual {set_id} ({name}) × {quantity}...")
 
         bl_data = fetch_bl_price(set_id, bl_auth)
         time.sleep(SLEEP_BETWEEN_CALLS)
@@ -386,28 +442,46 @@ def main():
             ad_copy = generate_ad_copy(name, set_id, current_value, cost)
             time.sleep(SLEEP_BETWEEN_CALLS)
 
-        sets.append({
-            "id": f"{set_id}_manual",
-            "set_id": set_id,
-            "set_number": raw_set_number,
-            "name": name,
-            "theme": theme,
-            "cost": round(cost, 2),
-            "current_value": round(current_value, 2),
-            "profit": round(profit, 2),
-            "roi": round(roi * 100, 2),
-            "signal": signal,
-            "qty_sold_6m": qty_sold,
-            "bl_min_price": round(min_price, 2),
-            "bl_max_price": round(max_price, 2),
-            "selling_on": str(ms.get("selling_on", "")).strip(),
-            "notes": notes,
-            "image_url": download_set_image(set_id),
-            "ad_copy": ad_copy,
-            "last_updated": datetime.now(timezone.utc).isoformat(),
-            "isManual": True,
-        })
+        image_url = download_set_image(set_id)
+
+        # Create one entry per unit of quantity (matches how Google Sheet rows work)
+        for q in range(quantity):
+            uid = f"{set_id}_manual" if quantity == 1 else f"{set_id}_manual_{q}"
+            sets.append({
+                "id": uid,
+                "set_id": set_id,
+                "set_number": raw_set_number,
+                "name": name,
+                "theme": theme,
+                "cost": round(cost, 2),
+                "current_value": round(current_value, 2),
+                "profit": round(profit, 2),
+                "roi": round(roi * 100, 2),
+                "signal": signal,
+                "qty_sold_6m": qty_sold,
+                "bl_min_price": round(min_price, 2),
+                "bl_max_price": round(max_price, 2),
+                "selling_on": str(ms.get("selling_on", "")).strip(),
+                "notes": notes,
+                "image_url": image_url,
+                "ad_copy": ad_copy,
+                "last_updated": datetime.now(timezone.utc).isoformat(),
+                "isManual": True,
+            })
         sheet_set_ids.add(set_id)
+
+    # Write back any enriched name/theme updates to manual_sets.json
+    if updated_manual_entries and any(
+        ms.get("name") and not str(ms.get("name", "")).startswith("Set ")
+        for ms in updated_manual_entries
+    ):
+        try:
+            with open(MANUAL_SETS_PATH, "w", encoding="utf-8") as f:
+                json.dump(updated_manual_entries, f, indent=2, ensure_ascii=False)
+                f.write("\n")
+            print(f"  Updated {MANUAL_SETS_PATH} with enriched catalog info.")
+        except Exception as exc:
+            print(f"  [!] Could not write updated manual sets: {exc}")
 
     # 8. Build summary stats
     valid_sets = [s for s in sets if s["signal"] != "No Data"]

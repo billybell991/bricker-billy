@@ -69,14 +69,14 @@ export function GitHubTokenModal({ onClose, onConnect }) {
               <li>
                 Open{" "}
                 <a
-                  href="https://github.com/settings/tokens/new?scopes=repo&description=Bricker+Billy"
+                  href="https://github.com/settings/tokens/new?scopes=repo,workflow&description=Bricker+Billy"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-lego-blue underline inline-flex items-center gap-0.5"
                 >
                   GitHub → New classic token <ExternalLink size={10} />
                 </a>
-                {" "}(link pre-fills the right scope)
+                {" "}(link pre-fills the right scopes)
               </li>
               <li>
                 Set an expiration (90 days is fine), then click{" "}
@@ -85,9 +85,9 @@ export function GitHubTokenModal({ onClose, onConnect }) {
               <li>Copy the token and paste it below</li>
             </ol>
             <p className="text-slate-500 mt-1">
-              Only the <code className="bg-white/10 px-1 rounded">repo</code> scope is needed.
-              For tighter permissions, use a fine-grained token with{" "}
-              <span className="italic">Contents: Read and Write</span> on this repo only.
+              The <code className="bg-white/10 px-1 rounded">repo</code> scope saves sets across devices.
+              Adding <code className="bg-white/10 px-1 rounded">workflow</code> lets new sets trigger an
+              automatic sync so they get BrickLink prices right away.
             </p>
           </div>
 
