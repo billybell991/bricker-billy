@@ -12,7 +12,7 @@ import { GitHubTokenModal } from "./components/GitHubTokenModal.jsx";
 const MANUAL_ENTRIES_KEY = "manual_entries";
 const GH_TOKEN_KEY = "gh_access_token";
 
-const SIGNAL_ORDER = { "Strong Sell": 0, "Consider": 1, "Hold": 2, "No Data": 3 };
+const SIGNAL_ORDER = { "Strong Sell": 0, "Consider": 1, "Hold": 2, "No Data": 3, "Pending Sync": 4 };
 
 const SORT_OPTIONS = [
   { value: "signal", label: "Sell Signal" },
@@ -34,6 +34,19 @@ const FILTER_OPTIONS = [
 const GH_OWNER = import.meta.env.VITE_REPO_OWNER;
 const GH_REPO  = import.meta.env.VITE_REPO_NAME;
 const MANUAL_SETS_FILE = "public/manual_sets.json";
+
+/** Return a safe BrickLink catalog URL for the given set_id (only digits + hyphens). */
+function blCatalogUrl(setId) {
+  const safe = String(setId).replace(/[^0-9-]/g, "");
+  return `https://www.bricklink.com/v2/catalog/catalogitem.page?S=${safe}`;
+}
+
+/** Return the image src only if it's an http/https or relative path (never javascript:). */
+function safeImgSrc(url) {
+  if (!url) return "";
+  const s = String(url);
+  return /^(https?:\/\/|\/)/.test(s) || !s.includes(":") ? s : "";
+}
 
 async function fetchManualSetsFile(token) {
   if (!token || !GH_OWNER || !GH_REPO) return null;
@@ -64,10 +77,8 @@ async function persistManualSetToGitHub(entry, token) {
   const record = {
     set_id: entry.set_id,
     set_number: entry.set_number,
-    name: entry.name,
-    theme: entry.theme,
     cost: entry.cost,
-    notes: entry.notes,
+    quantity: entry.quantity || 1,
     selling_on: entry.selling_on || "",
   };
   sets.push(record);
@@ -89,8 +100,31 @@ async function persistManualSetToGitHub(entry, token) {
         }),
       }
     );
+    // Trigger a full sync so the new set gets BrickLink prices and a name immediately
+    await triggerSyncWorkflow(token);
   } catch (e) {
     console.warn("[GitHub] Failed to persist manual set:", e);
+  }
+}
+
+async function triggerSyncWorkflow(token) {
+  if (!token || !GH_OWNER || !GH_REPO) return;
+  try {
+    await fetch(
+      `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/actions/workflows/sync.yml/dispatches`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github.v3+json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ref: "main" }),
+      }
+    );
+    console.log("[GitHub] Sync workflow triggered successfully.");
+  } catch (e) {
+    console.warn("[GitHub] Failed to trigger sync workflow:", e);
   }
 }
 
@@ -179,27 +213,35 @@ export default function App() {
           fetch(`./manual_sets.json?t=${Date.now()}`)
             .then((r) => r.ok ? r.json() : [])
             .then((githubSets) => {
-              const entries = githubSets.map((s) => ({
-                id: `manual_${s.set_id}`,
-                set_id: s.set_id,
-                set_number: s.set_number,
-                name: s.name,
-                theme: s.theme || "",
-                cost: s.cost || 0,
-                current_value: 0,
-                profit: 0,
-                roi: 0,
-                signal: "No Data",
-                qty_sold_6m: 0,
-                bl_min_price: 0,
-                bl_max_price: 0,
-                selling_on: s.selling_on || "",
-                notes: s.notes || "",
-                image_url: `images/${s.set_id.split("-")[0]}.png`,
-                ad_copy: "",
-                last_updated: new Date().toISOString(),
-                isManual: true,
-              }));
+              const entries = githubSets.flatMap((s) => {
+                const qty = Math.max(1, parseInt(s.quantity, 10) || 1);
+                const setId = s.set_id || (s.set_number ? (/-\d+$/.test(s.set_number) ? s.set_number : `${s.set_number}-1`) : "");
+                const numeric = setId.split("-")[0];
+                const baseEntry = {
+                  set_id: setId,
+                  set_number: s.set_number || numeric,
+                  name: s.name || `Set ${numeric}`,
+                  theme: s.theme || "",
+                  cost: s.cost || 0,
+                  current_value: 0,
+                  profit: 0,
+                  roi: 0,
+                  signal: "Pending Sync",
+                  qty_sold_6m: 0,
+                  bl_min_price: 0,
+                  bl_max_price: 0,
+                  selling_on: s.selling_on || "",
+                  notes: s.notes || "",
+                  image_url: `images/${numeric}.png`,
+                  ad_copy: "",
+                  last_updated: new Date().toISOString(),
+                  isManual: true,
+                };
+                return Array.from({ length: qty }, (_, i) => ({
+                  ...baseEntry,
+                  id: qty === 1 ? `manual_${setId}` : `manual_${setId}_${i}`,
+                }));
+              });
               // Also include any localStorage entries not yet committed (e.g. added moments ago)
               const githubSetIds = new Set(githubSets.map((s) => s.set_id));
               let pendingLocal = [];
@@ -462,16 +504,16 @@ export default function App() {
                       <tr key={s.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
                         <td className="py-3 pr-4">
                           <a
-                            href={`https://www.bricklink.com/v2/catalog/catalogitem.page?S=${s.set_id}`}
+                            href={blCatalogUrl(s.set_id)}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-3 group/link"
                           >
                             <img
-                              src={s.image_url}
+                              src={safeImgSrc(s.image_url)}
                               alt={s.name}
-                              referrerPolicy="no-referrer"
                               className="w-10 h-10 object-contain rounded bg-white/10"
+                              onLoad={(e) => { if (e.target.naturalWidth <= 1 || e.target.naturalHeight <= 1) e.target.style.display = "none"; }}
                               onError={(e) => { e.target.style.display = "none"; }}
                             />
                             <HoverTrigger set={s}>
@@ -586,18 +628,13 @@ export default function App() {
             {filteredSets.map((s) => (
               <div key={s.id} className="relative">
                 {s.isManual && (
-                  <div className="absolute top-2 left-2 z-30 flex items-center gap-1">
-                    <span className="text-[10px] font-bold bg-lego-yellow/20 text-lego-yellow border border-lego-yellow/30 px-1.5 py-0.5 rounded-full uppercase tracking-wider">
-                      Manual
-                    </span>
-                    <button
-                      onClick={() => handleDeleteManual(s.id)}
-                      title="Remove manual entry"
-                      className="text-red-400 hover:text-red-300 bg-black/50 hover:bg-black/70 rounded-full p-1 transition-colors"
-                    >
-                      <Trash2 size={11} />
-                    </button>
-                  </div>
+                  <button
+                    onClick={() => handleDeleteManual(s.id)}
+                    title="Remove this set"
+                    className="absolute top-2 left-2 z-30 text-red-400 hover:text-red-300 bg-black/50 hover:bg-black/70 rounded-full p-1 transition-colors"
+                  >
+                    <Trash2 size={11} />
+                  </button>
                 )}
                 <SetCard
                   set={s}
@@ -630,10 +667,10 @@ export default function App() {
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-3">
                         <img
-                          src={s.image_url}
+                          src={safeImgSrc(s.image_url)}
                           alt={s.name}
-                          referrerPolicy="no-referrer"
                           className="w-10 h-10 object-contain rounded bg-white/10"
+                          onLoad={(e) => { if (e.target.naturalWidth <= 1 || e.target.naturalHeight <= 1) e.target.style.display = "none"; }}
                           onError={(e) => { e.target.style.display = "none"; }}
                         />
                         <HoverTrigger set={s}>
@@ -659,7 +696,7 @@ export default function App() {
                       <span className={`text-xs font-bold px-2 py-0.5 rounded-full border ${
                         s.signal === "Strong Sell" ? "bg-green-500/20 text-green-400 border-green-500/40" :
                         s.signal === "Consider" ? "bg-yellow-500/20 text-yellow-400 border-yellow-500/40" :
-                        s.signal === "No Data" ? "bg-red-900/20 text-red-400 border-red-800/40" :
+                        s.signal === "No Data" || s.signal === "Pending Sync" ? "bg-red-900/20 text-red-400 border-red-800/40" :
                         "bg-slate-500/20 text-slate-400 border-slate-500/40"
                       }`}>
                         {s.signal}

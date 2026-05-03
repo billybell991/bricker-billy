@@ -21,7 +21,10 @@ HEADERS = {
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
         "AppleWebKit/537.36 (KHTML, like Gecko) "
         "Chrome/124.0.0.0 Safari/537.36"
-    )
+    ),
+    # BrickLink CDN uses hotlink protection — sending their own domain as Referer
+    # causes the real image to be served instead of the 1×1 placeholder GIF.
+    "Referer": "https://www.bricklink.com/",
 }
 
 os.makedirs(IMAGES_DIR, exist_ok=True)
@@ -68,10 +71,24 @@ for s in data["sets"]:
                     with open(disk_path, "wb") as fh:
                         fh.write(r.content)
                     downloaded = f"images/{num}.{ext}"
-                    print(f"  Downloaded {num}.{ext}")
+                    print(f"  Downloaded {num}.{ext} (BrickLink)")
                     break
             except Exception as exc:
                 print(f"  Failed {url}: {exc}")
+
+    # Fallback: Rebrickable CDN (no hotlink protection, publicly accessible)
+    if not downloaded:
+        rb_url = f"https://cdn.rebrickable.com/media/sets/{num}-1.jpg"
+        try:
+            r = requests.get(rb_url, headers={"User-Agent": HEADERS["User-Agent"]}, timeout=15)
+            if r.status_code == 200 and len(r.content) > MIN_SIZE:
+                disk_path = os.path.join(IMAGES_DIR, f"{num}.jpg")
+                with open(disk_path, "wb") as fh:
+                    fh.write(r.content)
+                downloaded = f"images/{num}.jpg"
+                print(f"  Downloaded {num}.jpg (Rebrickable)")
+        except Exception as exc:
+            print(f"  Failed {rb_url}: {exc}")
 
     seen[num] = downloaded
 

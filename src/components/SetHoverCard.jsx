@@ -45,9 +45,8 @@ function HoverPopup({ set, x, y }) {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-lego-card" />
           <img
-            src={set.image_url}
+            src={/^(https?:\/\/|\/)/.test(set.image_url) || !String(set.image_url).includes(":") ? set.image_url : ""}
             alt={set.name}
-            referrerPolicy="no-referrer"
             className="relative w-full h-full object-contain p-4 z-10 drop-shadow-2xl"
           />
         </div>
