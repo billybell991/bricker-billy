@@ -51,7 +51,7 @@ jobs:
       - name: Check for data changes
         id: check_changes
         run: |
-          git add public/data.json public/manual_sets.json
+          git add public/data.json public/manual_sets.json public/images/
           if git diff --cached --quiet; then
             echo "changed=false" >> $GITHUB_OUTPUT
           else
@@ -63,7 +63,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: auto-sync LEGO data [skip ci]"
-          file_pattern: "public/data.json public/manual_sets.json"
+          file_pattern: "public/data.json public/manual_sets.json public/images/**"
           commit_user_name: "LEGO Sync Bot"
           commit_user_email: "sync-bot@users.noreply.github.com"
 

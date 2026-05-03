@@ -39,6 +39,9 @@ CONSIDER_ROI = 0.20         # 20 % ROI threshold
 SLEEP_BETWEEN_CALLS = 1.2   # seconds — respect BrickLink rate limits
 OUTPUT_PATH = "public/data.json"
 MANUAL_SETS_PATH = "public/manual_sets.json"
+IMAGES_DIR = "public/images"
+IMAGE_EXTENSIONS = ("png", "jpg")
+MIN_IMAGE_SIZE_BYTES = 2000  # BrickLink serves a tiny 1×1 GIF for missing images
 
 # Columns in the sheet (0-indexed after header row)
 COL_THEME = 0
@@ -80,10 +83,35 @@ def sell_signal(roi: float, current_value: float) -> str:
         return "Hold"
 
 
-def bricklink_image_url(set_id: str) -> str:
-    """Return the standard BrickLink item image URL for a set."""
-    # set_id format: 75045-1  → strip the -1 suffix for the image filename
+def download_set_image(set_id: str) -> str:
+    """
+    Download the set image from BrickLink and save it under public/images/.
+    Returns a relative URL (images/<set_number>.png or .jpg) for use in
+    data.json so the React app can serve it locally without hotlink issues.
+    Falls back to the original BrickLink URL if both downloads fail.
+    """
+    os.makedirs(IMAGES_DIR, exist_ok=True)
     numeric = set_id.split("-")[0]
+
+    # Re-use already-downloaded files to save time on subsequent syncs
+    for ext in IMAGE_EXTENSIONS:
+        if os.path.exists(os.path.join(IMAGES_DIR, f"{numeric}.{ext}")):
+            return f"images/{numeric}.{ext}"
+
+    for ext in IMAGE_EXTENSIONS:
+        url = f"https://img.bricklink.com/ItemImage/SN/0/{numeric}.{ext}"
+        local_path = os.path.join(IMAGES_DIR, f"{numeric}.{ext}")
+        try:
+            resp = requests.get(url, timeout=15)
+            if resp.status_code == 200 and len(resp.content) > MIN_IMAGE_SIZE_BYTES:
+                with open(local_path, "wb") as fh:
+                    fh.write(resp.content)
+                return f"images/{numeric}.{ext}"
+        except (requests.RequestException, OSError) as exc:
+            print(f"    [img] Failed to download {url}: {exc}")
+
+    # Both formats unavailable — keep the external URL as last resort
+    print(f"    [img] Could not download image for {set_id}, using BrickLink URL")
     return f"https://img.bricklink.com/ItemImage/SN/0/{numeric}.png"
 
 
@@ -279,7 +307,7 @@ def main():
             "bl_max_price": round(max_price, 2),
             "selling_on": selling_on,
             "notes": notes,
-            "image_url": bricklink_image_url(set_id),
+            "image_url": download_set_image(set_id),
             "ad_copy": ad_copy,
             "last_updated": datetime.now(timezone.utc).isoformat(),
         })
@@ -352,7 +380,7 @@ def main():
             "bl_max_price": round(max_price, 2),
             "selling_on": str(ms.get("selling_on", "")).strip(),
             "notes": notes,
-            "image_url": bricklink_image_url(set_id),
+            "image_url": download_set_image(set_id),
             "ad_copy": ad_copy,
             "last_updated": datetime.now(timezone.utc).isoformat(),
             "isManual": True,
