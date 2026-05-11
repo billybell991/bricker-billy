@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { Megaphone, TrendingUp } from "lucide-react";
+import { Megaphone, TrendingUp, Trash2 } from "lucide-react";
 import { SignalBadge, MarketplaceBadge } from "./Badges.jsx";
 import { HoverTrigger } from "./SetHoverCard.jsx";
 
-const LISTING_OPTIONS = ["", "BL", "FB", "Both"];
+const LISTING_OPTIONS = ["LB", "FB", "Both"];
 
-export function SetCard({ set, onAdClick, onListingChange }) {
+export function SetCard({ set, onAdClick, onListingChange, onDelete }) {
   const [listing, setListing] = useState(set.selling_on || "");
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
   const handleListingChange = (e) => {
     const val = e.target.value;
@@ -154,6 +155,32 @@ export function SetCard({ set, onAdClick, onListingChange }) {
             <Megaphone size={13} />
             Ad
           </button>
+
+          {/* Delete button */}
+          {confirmDelete ? (
+            <div className="flex items-center gap-1">
+              <button
+                onClick={() => onDelete(set.id)}
+                className="flex items-center gap-1 bg-red-600/30 hover:bg-red-600/50 border border-red-500/50 text-red-300 text-xs font-bold px-2 py-2 rounded-xl transition-all"
+              >
+                Sold?
+              </button>
+              <button
+                onClick={() => setConfirmDelete(false)}
+                className="text-slate-500 hover:text-slate-300 text-xs px-1 py-2 transition-colors"
+              >
+                ✕
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => setConfirmDelete(true)}
+              className="flex items-center gap-1 text-slate-600 hover:text-red-400 hover:bg-red-500/10 border border-transparent hover:border-red-500/20 text-xs px-2 py-2 rounded-xl transition-all"
+              title="Remove sold set"
+            >
+              <Trash2 size={13} />
+            </button>
+          )}
         </div>
       </div>
     </div>

@@ -156,6 +156,13 @@ export default function App() {
   const [listingOverrides, setListingOverrides] = useState({}); // local override for listing status
   const [manualEntries, setManualEntries] = useState([]); // manually added sets
   const [showManualModal, setShowManualModal] = useState(false);
+  const [deletedIds, setDeletedIds] = useState(() => {
+    try {
+      return new Set(JSON.parse(localStorage.getItem("deleted_ids") || "[]"));
+    } catch (_) {
+      return new Set();
+    }
+  });
 
   const fetchData = useCallback((isRefresh = false) => {
     if (isRefresh) setSyncing(true);
@@ -237,6 +244,17 @@ export default function App() {
     fetchData();
   }, [fetchData]);
 
+  const handleDelete = (setId) => {
+    setDeletedIds((prev) => {
+      const next = new Set(prev);
+      next.add(setId);
+      try {
+        localStorage.setItem("deleted_ids", JSON.stringify([...next]));
+      } catch (_) {}
+      return next;
+    });
+  };
+
   const handleListingChange = (setId, value) => {
     setListingOverrides((prev) => {
       const next = { ...prev, [setId]: value };
@@ -247,6 +265,7 @@ export default function App() {
     });
   };
 
+<<<<<<< HEAD
   const handleAddManual = (entry) => {
     setManualEntries((prev) => {
       const next = [...prev, entry];
@@ -275,10 +294,12 @@ export default function App() {
   // been picked up by the sync yet (avoid duplicates once the sync runs).
   const sets = useMemo(() => {
     if (!data?.sets) return [];
-    const synced = data.sets.map((s) => ({
-      ...s,
-      selling_on: listingOverrides[s.id] !== undefined ? listingOverrides[s.id] : s.selling_on,
-    }));
+    const synced = data.sets
+      .filter((s) => !deletedIds.has(s.id))
+      .map((s) => ({
+        ...s,
+        selling_on: listingOverrides[s.id] !== undefined ? listingOverrides[s.id] : s.selling_on,
+      }));
     const syncedSetIds = new Set(data.sets.map((s) => s.set_id));
     // Only show local-only manual entries that the sync hasn't processed yet
     const manual = manualEntries
@@ -288,7 +309,7 @@ export default function App() {
         selling_on: listingOverrides[s.id] !== undefined ? listingOverrides[s.id] : s.selling_on,
       }));
     return [...synced, ...manual];
-  }, [data, listingOverrides, manualEntries]);
+  }, [data, listingOverrides, manualEntries, deletedIds]);
 
   // Filter + sort
   const filteredSets = useMemo(() => {
@@ -497,12 +518,25 @@ export default function App() {
                           )}
                         </td>
                         <td className="py-3">
-                          <button
-                            onClick={() => setSelectedSet(s)}
-                            className="text-xs bg-lego-red/10 hover:bg-lego-red/20 border border-lego-red/30 text-lego-red hover:text-red-300 px-3 py-1 rounded-lg transition-all font-bold"
-                          >
-                            Ad →
-                          </button>
+                          <div className="flex items-center gap-2">
+                            <button
+                              onClick={() => setSelectedSet(s)}
+                              className="text-xs bg-lego-red/10 hover:bg-lego-red/20 border border-lego-red/30 text-lego-red hover:text-red-300 px-3 py-1 rounded-lg transition-all font-bold"
+                            >
+                              Ad →
+                            </button>
+                            <button
+                              onClick={() => {
+                                if (window.confirm(`Remove "${s.name}" from your dashboard? (You sold it)`)) {
+                                  handleDelete(s.id);
+                                }
+                              }}
+                              className="text-slate-600 hover:text-red-400 p-1 rounded-lg transition-colors"
+                              title="Remove sold set"
+                            >
+                              <Trash2 size={13} />
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))}
@@ -603,6 +637,7 @@ export default function App() {
                   set={s}
                   onAdClick={setSelectedSet}
                   onListingChange={handleListingChange}
+                  onDelete={s.isManual ? null : handleDelete}
                 />
               </div>
             ))}
@@ -685,11 +720,23 @@ export default function App() {
                         >
                           Ad →
                         </button>
-                        {s.isManual && (
+                        {s.isManual ? (
                           <button
                             onClick={() => handleDeleteManual(s.id)}
                             title="Remove manual entry"
                             className="text-red-400 hover:text-red-300 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 rounded-lg p-1.5 transition-colors"
+                          >
+                            <Trash2 size={13} />
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => {
+                              if (window.confirm(`Remove "${s.name}" from your dashboard? (You sold it)`)) {
+                                handleDelete(s.id);
+                              }
+                            }}
+                            className="text-slate-600 hover:text-red-400 p-1 rounded-lg transition-colors"
+                            title="Remove sold set"
                           >
                             <Trash2 size={13} />
                           </button>
