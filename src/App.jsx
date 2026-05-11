@@ -8,6 +8,8 @@ import { SignalListModal } from "./components/SignalListModal.jsx";
 import { HoverTrigger } from "./components/SetHoverCard.jsx";
 import { ManualEntryModal } from "./components/ManualEntryModal.jsx";
 import { GitHubTokenModal } from "./components/GitHubTokenModal.jsx";
+import { SoldModal } from "./components/SoldModal.jsx";
+import { SoldSetsModal } from "./components/SoldSetsModal.jsx";
 
 const MANUAL_ENTRIES_KEY = "manual_entries";
 const GH_TOKEN_KEY = "gh_access_token";
@@ -163,6 +165,15 @@ export default function App() {
       return new Set();
     }
   });
+  const [soldSets, setSoldSets] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("sold_sets") || "[]");
+    } catch (_) {
+      return [];
+    }
+  });
+  const [sellTarget, setSellTarget] = useState(null); // set being logged as sold
+  const [showSoldSets, setShowSoldSets] = useState(false);
 
   const fetchData = useCallback((isRefresh = false) => {
     if (isRefresh) setSyncing(true);
@@ -265,7 +276,6 @@ export default function App() {
     });
   };
 
-<<<<<<< HEAD
   const handleAddManual = (entry) => {
     setManualEntries((prev) => {
       const next = [...prev, entry];
@@ -290,6 +300,48 @@ export default function App() {
     });
   };
 
+  const handleMarkSold = ({ soldFor, soldOn }) => {
+    if (!sellTarget) return;
+    const s = sellTarget;
+    const record = {
+      id: s.id,
+      set_id: s.set_id,
+      set_number: s.set_number,
+      name: s.name,
+      theme: s.theme,
+      cost: s.cost,
+      sold_for: soldFor,
+      sold_on: soldOn,
+      sold_date: new Date().toISOString(),
+    };
+    setSoldSets((prev) => {
+      const next = [...prev, record];
+      try { localStorage.setItem("sold_sets", JSON.stringify(next)); } catch (_) {}
+      return next;
+    });
+    // Always persist to deletedIds so the set stays gone after page reload
+    handleDelete(s.id);
+    if (s.isManual) handleDeleteManual(s.id);
+    setSellTarget(null);
+  };
+
+  const handleUnsell = (record) => {
+    // Remove from sold log
+    setSoldSets((prev) => {
+      // Remove only the specific sale entry (matched by id + sold_date)
+      const next = prev.filter((s) => !(s.id === record.id && s.sold_date === record.sold_date));
+      try { localStorage.setItem("sold_sets", JSON.stringify(next)); } catch (_) {}
+      return next;
+    });
+    // Remove from deletedIds so it reappears on the dashboard
+    setDeletedIds((prev) => {
+      const next = new Set(prev);
+      next.delete(record.id);
+      try { localStorage.setItem("deleted_ids", JSON.stringify([...next])); } catch (_) {}
+      return next;
+    });
+  };
+
   // Merge listing overrides with data, then append manual entries that haven't
   // been picked up by the sync yet (avoid duplicates once the sync runs).
   const sets = useMemo(() => {
@@ -303,7 +355,7 @@ export default function App() {
     const syncedSetIds = new Set(data.sets.map((s) => s.set_id));
     // Only show local-only manual entries that the sync hasn't processed yet
     const manual = manualEntries
-      .filter((s) => !syncedSetIds.has(s.set_id))
+      .filter((s) => !syncedSetIds.has(s.set_id) && !deletedIds.has(s.id))
       .map((s) => ({
         ...s,
         selling_on: listingOverrides[s.id] !== undefined ? listingOverrides[s.id] : s.selling_on,
@@ -435,6 +487,12 @@ export default function App() {
           </div>
 
           <button
+            onClick={() => setShowSoldSets(true)}
+            className="flex items-center gap-1.5 bg-lego-card hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white text-xs font-bold px-3 py-2 rounded-xl transition-colors"
+          >
+            📦 Sold ({soldSets.length})
+          </button>
+          <button
             onClick={() => setShowManualModal(true)}
             className="flex items-center gap-1.5 bg-lego-blue hover:bg-blue-600 text-white text-xs font-bold px-3 py-2 rounded-xl transition-colors"
           >
@@ -526,13 +584,9 @@ export default function App() {
                               Ad →
                             </button>
                             <button
-                              onClick={() => {
-                                if (window.confirm(`Remove "${s.name}" from your dashboard? (You sold it)`)) {
-                                  handleDelete(s.id);
-                                }
-                              }}
-                              className="text-slate-600 hover:text-red-400 p-1 rounded-lg transition-colors"
-                              title="Remove sold set"
+                              onClick={() => setSellTarget(s)}
+                              className="text-slate-600 hover:text-green-400 p-1 rounded-lg transition-colors"
+                              title="Mark as sold"
                             >
                               <Trash2 size={13} />
                             </button>
@@ -618,28 +672,13 @@ export default function App() {
         ) : viewMode === "grid" ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {filteredSets.map((s) => (
-              <div key={s.id} className="relative">
-                {s.isManual && (
-                  <div className="absolute top-2 left-2 z-30 flex items-center gap-1">
-                    <span className="text-[10px] font-bold bg-lego-yellow/20 text-lego-yellow border border-lego-yellow/30 px-1.5 py-0.5 rounded-full uppercase tracking-wider">
-                      Manual
-                    </span>
-                    <button
-                      onClick={() => handleDeleteManual(s.id)}
-                      title="Remove manual entry"
-                      className="text-red-400 hover:text-red-300 bg-black/50 hover:bg-black/70 rounded-full p-1 transition-colors"
-                    >
-                      <Trash2 size={11} />
-                    </button>
-                  </div>
-                )}
-                <SetCard
-                  set={s}
-                  onAdClick={setSelectedSet}
-                  onListingChange={handleListingChange}
-                  onDelete={s.isManual ? null : handleDelete}
-                />
-              </div>
+              <SetCard
+                key={s.id}
+                set={s}
+                onAdClick={setSelectedSet}
+                onListingChange={handleListingChange}
+                onSell={setSellTarget}
+              />
             ))}
           </div>
         ) : (
@@ -720,27 +759,13 @@ export default function App() {
                         >
                           Ad →
                         </button>
-                        {s.isManual ? (
-                          <button
-                            onClick={() => handleDeleteManual(s.id)}
-                            title="Remove manual entry"
-                            className="text-red-400 hover:text-red-300 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 rounded-lg p-1.5 transition-colors"
-                          >
-                            <Trash2 size={13} />
-                          </button>
-                        ) : (
-                          <button
-                            onClick={() => {
-                              if (window.confirm(`Remove "${s.name}" from your dashboard? (You sold it)`)) {
-                                handleDelete(s.id);
-                              }
-                            }}
-                            className="text-slate-600 hover:text-red-400 p-1 rounded-lg transition-colors"
-                            title="Remove sold set"
-                          >
-                            <Trash2 size={13} />
-                          </button>
-                        )}
+                        <button
+                          onClick={() => setSellTarget(s)}
+                          className="text-slate-600 hover:text-green-400 p-1 rounded-lg transition-colors"
+                          title="Mark as sold"
+                        >
+                          <Trash2 size={13} />
+                        </button>
                       </div>
                     </td>
                   </tr>
@@ -766,6 +791,24 @@ export default function App() {
           signal={signalModalSignal}
           sets={sets}
           onClose={() => setSignalModalSignal(null)}
+        />
+      )}
+
+      {/* ── Sold Modal ── */}
+      {sellTarget && (
+        <SoldModal
+          set={sellTarget}
+          onClose={() => setSellTarget(null)}
+          onConfirm={handleMarkSold}
+        />
+      )}
+
+      {/* ── Sold Sets Modal ── */}
+      {showSoldSets && (
+        <SoldSetsModal
+          soldSets={soldSets}
+          onClose={() => setShowSoldSets(false)}
+          onRemove={handleUnsell}
         />
       )}
 

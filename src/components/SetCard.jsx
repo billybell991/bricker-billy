@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { Megaphone, TrendingUp, Trash2 } from "lucide-react";
-import { SignalBadge, MarketplaceBadge } from "./Badges.jsx";
+import { SignalBadge } from "./Badges.jsx";
 import { HoverTrigger } from "./SetHoverCard.jsx";
 
 const LISTING_OPTIONS = ["LB", "FB", "Both"];
 
-export function SetCard({ set, onAdClick, onListingChange, onDelete }) {
+export function SetCard({ set, onAdClick, onListingChange, onSell }) {
   const [listing, setListing] = useState(set.selling_on || "");
-  const [confirmDelete, setConfirmDelete] = useState(false);
 
   const handleListingChange = (e) => {
     const val = e.target.value;
@@ -129,54 +128,34 @@ export function SetCard({ set, onAdClick, onListingChange, onDelete }) {
         )}
 
         {/* Marketplace tracker */}
-        <div className="flex items-center justify-between mt-auto pt-2 border-t border-white/5">
-          <div className="flex flex-col gap-1">
-            <label className="text-[10px] text-slate-400 uppercase tracking-wider">Listed On</label>
-            <div className="flex items-center gap-2">
-              <select
-                value={listing}
-                onChange={handleListingChange}
-                className="bg-lego-accent/50 border border-white/10 text-white text-xs rounded-lg px-2 py-1 focus:outline-none focus:ring-1 focus:ring-lego-blue cursor-pointer"
-              >
-                <option value="">Not Listed</option>
-                <option value="BL">BrickLink</option>
-                <option value="FB">Facebook</option>
-                <option value="Both">Both</option>
-              </select>
-              {listing && <MarketplaceBadge value={listing} />}
-            </div>
-          </div>
+        <div className="flex items-center gap-2 mt-auto pt-2 border-t border-white/5">
+          <span className="text-[10px] text-slate-400 uppercase tracking-wider shrink-0">Listed</span>
+          <select
+            value={listing}
+            onChange={handleListingChange}
+            className="flex-1 min-w-0 bg-lego-accent/50 border border-white/10 text-white text-xs rounded-lg px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-lego-blue cursor-pointer"
+          >
+            <option value="">Not Listed</option>
+            <option value="BL">BrickLink</option>
+            <option value="FB">Facebook</option>
+            <option value="Both">Both</option>
+          </select>
 
           {/* Ad button */}
           <button
             onClick={() => onAdClick(set)}
-            className="flex items-center gap-1.5 bg-lego-red/10 hover:bg-lego-red/20 border border-lego-red/30 text-lego-red hover:text-red-300 text-xs font-bold px-3 py-2 rounded-xl transition-all"
+            className="flex items-center gap-1 bg-lego-red/10 hover:bg-lego-red/20 border border-lego-red/30 text-lego-red hover:text-red-300 text-xs font-bold px-2.5 py-1.5 rounded-xl transition-all shrink-0"
           >
-            <Megaphone size={13} />
+            <Megaphone size={12} />
             Ad
           </button>
 
-          {/* Delete button */}
-          {confirmDelete ? (
-            <div className="flex items-center gap-1">
-              <button
-                onClick={() => onDelete(set.id)}
-                className="flex items-center gap-1 bg-red-600/30 hover:bg-red-600/50 border border-red-500/50 text-red-300 text-xs font-bold px-2 py-2 rounded-xl transition-all"
-              >
-                Sold?
-              </button>
-              <button
-                onClick={() => setConfirmDelete(false)}
-                className="text-slate-500 hover:text-slate-300 text-xs px-1 py-2 transition-colors"
-              >
-                ✕
-              </button>
-            </div>
-          ) : (
+          {/* Sell button */}
+          {onSell && (
             <button
-              onClick={() => setConfirmDelete(true)}
-              className="flex items-center gap-1 text-slate-600 hover:text-red-400 hover:bg-red-500/10 border border-transparent hover:border-red-500/20 text-xs px-2 py-2 rounded-xl transition-all"
-              title="Remove sold set"
+              onClick={() => onSell(set)}
+              className="text-slate-600 hover:text-green-400 hover:bg-green-500/10 border border-transparent hover:border-green-500/20 p-1.5 rounded-xl transition-all shrink-0"
+              title="Mark as sold"
             >
               <Trash2 size={13} />
             </button>
