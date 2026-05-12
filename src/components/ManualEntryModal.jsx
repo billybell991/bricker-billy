@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { X, Plus } from "lucide-react";
+import { X, Plus, Loader2 } from "lucide-react";
 
 const EMPTY_FORM = {
-  name: "",
   set_number: "",
-  theme: "",
   cost: "",
-  notes: "",
+  qty: "1",
 };
 
 function normalizeSetId(raw) {
@@ -19,20 +17,23 @@ function bricklinkImageUrl(setId) {
   return `https://img.bricklink.com/ItemImage/SN/0/${numeric}.png`;
 }
 
-export function ManualEntryModal({ onClose, onAdd }) {
+export function ManualEntryModal({ onClose, onAdd, hasGhToken }) {
   const [form, setForm] = useState(EMPTY_FORM);
   const [errors, setErrors] = useState({});
+  const [submitting, setSubmitting] = useState(false);
+  const [status, setStatus] = useState(null); // { kind: 'ok'|'warn'|'err', msg }
 
   const validate = () => {
     const e = {};
-    if (!form.name.trim()) e.name = "Set name is required.";
     if (!form.set_number.trim()) e.set_number = "Set number is required.";
-    if (form.cost !== "" && isNaN(parseFloat(form.cost)))
-      e.cost = "Cost must be a number.";
+    if (form.cost === "" || isNaN(parseFloat(form.cost)))
+      e.cost = "Cost is required.";
+    const qtyNum = parseInt(form.qty, 10);
+    if (!Number.isFinite(qtyNum) || qtyNum < 1) e.qty = "Quantity must be ≥ 1.";
     return e;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length > 0) {
@@ -41,14 +42,19 @@ export function ManualEntryModal({ onClose, onAdd }) {
     }
 
     const setId = normalizeSetId(form.set_number);
-    const cost = form.cost !== "" ? parseFloat(parseFloat(form.cost).toFixed(2)) : 0;
+    const unitCost = parseFloat(parseFloat(form.cost).toFixed(2));
+    const qty = parseInt(form.qty, 10) || 1;
+    const totalCost = Math.round(unitCost * qty * 100) / 100;
+
     const entry = {
       id: `manual_${Date.now()}`,
       set_id: setId,
       set_number: form.set_number.trim(),
-      name: form.name.trim(),
-      theme: form.theme.trim(),
-      cost: Math.round(cost * 100) / 100,
+      name: `Set ${form.set_number.trim()}`, // placeholder; sync fills real name
+      theme: "",
+      cost: totalCost,
+      unit_cost: unitCost,
+      qty_owned: qty,
       current_value: 0,
       profit: 0,
       roi: 0,
@@ -57,15 +63,37 @@ export function ManualEntryModal({ onClose, onAdd }) {
       bl_min_price: 0,
       bl_max_price: 0,
       selling_on: "",
-      notes: form.notes.trim(),
+      notes: "",
       image_url: bricklinkImageUrl(setId),
       ad_copy: "",
       last_updated: new Date().toISOString(),
       isManual: true,
     };
 
-    onAdd(entry);
-    onClose();
+    setSubmitting(true);
+    setStatus(null);
+    try {
+      const result = await onAdd(entry); // App returns { pushed, error }
+      if (result?.pushed) {
+        setStatus({ kind: "ok", msg: "Saved & pushed to GitHub. Sync will run in ~1 min." });
+        setTimeout(() => onClose(), 1200);
+      } else if (!hasGhToken) {
+        setStatus({
+          kind: "warn",
+          msg: "Saved locally. Connect a GitHub token to sync BrickLink prices across devices.",
+        });
+        setTimeout(() => onClose(), 1800);
+      } else {
+        setStatus({
+          kind: "err",
+          msg: result?.error || "Saved locally, but GitHub push failed. Check token scopes.",
+        });
+      }
+    } catch (err) {
+      setStatus({ kind: "err", msg: err.message || "Failed to save." });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const field = (key, label, placeholder, type = "text", extraProps = {}) => (
@@ -90,6 +118,12 @@ export function ManualEntryModal({ onClose, onAdd }) {
     </div>
   );
 
+  const setIdPreview = form.set_number.trim() ? normalizeSetId(form.set_number) : null;
+  const unitCostNum = parseFloat(form.cost);
+  const qtyNum = parseInt(form.qty, 10) || 0;
+  const totalPreview =
+    Number.isFinite(unitCostNum) && qtyNum > 0 ? unitCostNum * qtyNum : null;
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
@@ -99,9 +133,9 @@ export function ManualEntryModal({ onClose, onAdd }) {
         {/* Header */}
         <div className="flex items-center justify-between p-6 pb-4 border-b border-white/10">
           <div>
-            <h2 className="text-lg font-black text-white">Add Set Manually</h2>
+            <h2 className="text-lg font-black text-white">Add Set</h2>
             <p className="text-xs text-slate-400 mt-0.5">
-              BrickLink prices sync automatically on the next daily run.
+              Just the set number, what you paid, and how many. BrickLink + BrickEconomy data fills in on the next sync.
             </p>
           </div>
           <button
@@ -114,38 +148,80 @@ export function ManualEntryModal({ onClose, onAdd }) {
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="p-6 flex flex-col gap-4">
-          {field("name", "Set Name *", "e.g. Eiffel Tower")}
           {field("set_number", "Set Number *", "e.g. 10307")}
-          {field("theme", "Theme", "e.g. Icons")}
-          {field("cost", "Cost Paid (CAD)", "e.g. 259.99", "number", { step: "0.01", min: "0" })}
 
-          <div>
-            <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
-              Notes
-            </label>
-            <textarea
-              value={form.notes}
-              onChange={(e) =>
-                setForm((f) => ({ ...f, notes: e.target.value }))
-              }
-              placeholder="Optional notes…"
-              rows={2}
-              className="w-full bg-lego-accent/30 border border-white/10 text-white text-sm rounded-xl px-3 py-2.5 focus:outline-none focus:ring-1 focus:ring-lego-blue placeholder-slate-600 resize-none"
-            />
+          <div className="grid grid-cols-2 gap-3">
+            {field("cost", "Cost Paid Each (CAD) *", "e.g. 259.99", "number", { step: "0.01", min: "0" })}
+            {field("qty", "Quantity *", "1", "number", { step: "1", min: "1" })}
           </div>
 
-          <p className="text-xs text-slate-500">
-            BrickLink value and ROI will appear after the next scheduled sync
-            (daily at 8 AM UTC). You can also trigger a manual sync from the
-            GitHub Actions tab.
-          </p>
+          {/* Preview */}
+          {setIdPreview && (
+            <div className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl p-3">
+              <img
+                src={bricklinkImageUrl(setIdPreview)}
+                alt=""
+                referrerPolicy="no-referrer"
+                className="w-14 h-14 object-contain bg-black/20 rounded-lg"
+                onError={(e) => {
+                  if (e.target.src.endsWith(".png")) {
+                    e.target.src = e.target.src.replace(".png", ".jpg");
+                  } else {
+                    e.target.style.visibility = "hidden";
+                  }
+                }}
+              />
+              <div className="flex-1 min-w-0 text-xs">
+                <p className="text-slate-300 font-semibold truncate">Set {setIdPreview}</p>
+                {totalPreview !== null && (
+                  <p className="text-slate-400 mt-0.5">
+                    Total cost:{" "}
+                    <span className="text-white font-bold">${totalPreview.toFixed(2)}</span>
+                    {qtyNum > 1 && (
+                      <span className="text-slate-500"> ({qtyNum} × ${unitCostNum.toFixed(2)})</span>
+                    )}
+                  </p>
+                )}
+              </div>
+            </div>
+          )}
+
+          {!hasGhToken && (
+            <p className="text-xs text-amber-300/90 bg-amber-500/10 border border-amber-500/30 rounded-lg p-2.5">
+              No GitHub token connected — set will save locally only. Connect a token to sync across devices and pull BrickLink prices.
+            </p>
+          )}
+
+          {status && (
+            <p
+              className={`text-xs rounded-lg p-2.5 border ${
+                status.kind === "ok"
+                  ? "text-green-300 bg-green-500/10 border-green-500/30"
+                  : status.kind === "warn"
+                  ? "text-amber-300 bg-amber-500/10 border-amber-500/30"
+                  : "text-red-300 bg-red-500/10 border-red-500/30"
+              }`}
+            >
+              {status.msg}
+            </p>
+          )}
 
           <button
             type="submit"
-            className="flex items-center justify-center gap-2 bg-lego-blue hover:bg-blue-600 text-white font-bold py-3 rounded-xl transition-colors mt-1"
+            disabled={submitting}
+            className="flex items-center justify-center gap-2 bg-lego-blue hover:bg-blue-600 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-3 rounded-xl transition-colors mt-1"
           >
-            <Plus size={16} />
-            Add Set
+            {submitting ? (
+              <>
+                <Loader2 size={16} className="animate-spin" />
+                Saving…
+              </>
+            ) : (
+              <>
+                <Plus size={16} />
+                Add Set
+              </>
+            )}
           </button>
         </form>
       </div>

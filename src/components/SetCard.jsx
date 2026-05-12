@@ -58,6 +58,12 @@ export function SetCard({ set, onAdClick, onListingChange, onSell }) {
         <div className="absolute top-3 right-3 z-20">
           <SignalBadge signal={set.signal} />
         </div>
+        {/* Quantity badge top-left */}
+        {set.qty_owned > 1 && (
+          <div className="absolute top-3 left-3 z-20 bg-lego-blue/90 text-white text-xs font-black px-2 py-1 rounded-full shadow-lg">
+            × {set.qty_owned}
+          </div>
+        )}
       </div>
 
       {/* Content */}

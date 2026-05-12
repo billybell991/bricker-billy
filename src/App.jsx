@@ -58,24 +58,32 @@ function toBase64(str) {
 }
 
 async function persistManualSetToGitHub(entry, token) {
-  if (!token || !GH_OWNER || !GH_REPO) return;
+  if (!token || !GH_OWNER || !GH_REPO) {
+    return { pushed: false, error: "No GitHub token configured." };
+  }
   const fileData = await fetchManualSetsFile(token);
-  if (!fileData) return;
+  if (!fileData) {
+    return { pushed: false, error: "Could not read manual_sets.json from GitHub." };
+  }
   const { sha, sets } = fileData;
-  if (sets.some((s) => s.set_id === entry.set_id)) return; // already present
+  if (sets.some((s) => s.set_id === entry.set_id)) {
+    return { pushed: true, alreadyPresent: true };
+  }
   const record = {
     set_id: entry.set_id,
     set_number: entry.set_number,
     name: entry.name,
     theme: entry.theme,
     cost: entry.cost,
+    unit_cost: entry.unit_cost ?? entry.cost,
+    qty_owned: entry.qty_owned || 1,
     notes: entry.notes,
     selling_on: entry.selling_on || "",
   };
   sets.push(record);
   const content = toBase64(JSON.stringify(sets, null, 2) + "\n");
   try {
-    await fetch(
+    const resp = await fetch(
       `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${MANUAL_SETS_FILE}`,
       {
         method: "PUT",
@@ -91,8 +99,15 @@ async function persistManualSetToGitHub(entry, token) {
         }),
       }
     );
+    if (!resp.ok) {
+      const body = await resp.text().catch(() => "");
+      console.warn("[GitHub] Push failed", resp.status, body);
+      return { pushed: false, error: `GitHub responded ${resp.status}` };
+    }
+    return { pushed: true };
   } catch (e) {
     console.warn("[GitHub] Failed to persist manual set:", e);
+    return { pushed: false, error: e.message || String(e) };
   }
 }
 
@@ -209,6 +224,8 @@ export default function App() {
                 name: s.name,
                 theme: s.theme || "",
                 cost: s.cost || 0,
+                unit_cost: s.unit_cost ?? s.cost ?? 0,
+                qty_owned: s.qty_owned || 1,
                 current_value: 0,
                 profit: 0,
                 roi: 0,
@@ -281,7 +298,7 @@ export default function App() {
     });
   };
 
-  const handleAddManual = (entry) => {
+  const handleAddManual = async (entry) => {
     setManualEntries((prev) => {
       const next = [...prev, entry];
       try {
@@ -290,7 +307,7 @@ export default function App() {
       return next;
     });
     // Persist to manual_sets.json so next sync fetches BrickLink prices for it
-    persistManualSetToGitHub(entry, ghToken);
+    return await persistManualSetToGitHub(entry, ghToken);
   };
 
   const handleDeleteManual = (id) => {
@@ -437,7 +454,8 @@ export default function App() {
           <input
             type="password"
             autoFocus
-            className="input w-full text-center text-lg"
+            autoComplete="current-password"
+            className="w-full bg-lego-accent/30 border border-white/10 text-white text-lg tracking-[0.3em] text-center rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-lego-blue placeholder-slate-500 placeholder:tracking-normal"
             placeholder="Password..."
             value={passwordInput}
             onChange={(e) => setPasswordInput(e.target.value)}
@@ -859,6 +877,7 @@ export default function App() {
         <ManualEntryModal
           onClose={() => setShowManualModal(false)}
           onAdd={handleAddManual}
+          hasGhToken={Boolean(ghToken)}
         />
       )}
 

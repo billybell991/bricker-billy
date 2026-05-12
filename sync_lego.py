@@ -24,6 +24,7 @@ from datetime import datetime, timezone
 import gspread
 import google.generativeai as genai
 import requests
+from bs4 import BeautifulSoup
 from google.oauth2.service_account import Credentials
 from requests_oauthlib import OAuth1
 
@@ -188,6 +189,111 @@ def fetch_bl_price(set_id: str, auth: OAuth1) -> dict | None:
         return None
 
 
+# ── BrickEconomy fallback (web scrape) ────────────────────────────────────────
+
+BE_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/124.0.0.0 Safari/537.36"
+    ),
+    "Accept-Language": "en-US,en;q=0.9",
+}
+
+
+def _be_parse_currency(text: str) -> float:
+    if not text:
+        return 0.0
+    cleaned = re.sub(r"[^\d.]", "", text)
+    try:
+        return float(cleaned) if cleaned else 0.0
+    except ValueError:
+        return 0.0
+
+
+def fetch_brickeconomy(set_id: str) -> dict | None:
+    """
+    Scrape BrickEconomy for a set's name, theme, retail price and current
+    market value (CAD). Returns None if the set page can't be located.
+    Used as a fallback when BrickLink has no data (e.g. brand-new sets) and
+    to enrich manually-added sets with name/theme.
+    """
+    numeric = set_id.split("-")[0]
+    try:
+        # 1. Search to discover the canonical set URL (which includes a slug)
+        search_url = f"https://www.brickeconomy.com/search?query={numeric}"
+        r = requests.get(search_url, headers=BE_HEADERS, timeout=15)
+        if r.status_code != 200:
+            print(f"  [BE] search HTTP {r.status_code} for {set_id}")
+            return None
+        soup = BeautifulSoup(r.text, "html.parser")
+        link = None
+        for a in soup.select("a[href^='/set/']"):
+            href = a.get("href", "")
+            # match /set/10307-1/lego-...
+            m = re.match(rf"^/set/{re.escape(set_id)}(?:/|$)", href)
+            if m:
+                link = href
+                break
+        if not link:
+            print(f"  [BE] No matching set link for {set_id}")
+            return None
+
+        # 2. Fetch the set detail page
+        detail_url = f"https://www.brickeconomy.com{link}"
+        r2 = requests.get(detail_url, headers=BE_HEADERS, timeout=15)
+        if r2.status_code != 200:
+            print(f"  [BE] detail HTTP {r2.status_code} for {set_id}")
+            return None
+        page = BeautifulSoup(r2.text, "html.parser")
+
+        # 3. Pull name + theme + retail + market price
+        name = ""
+        theme = ""
+        retail = 0.0
+        market = 0.0
+
+        # Set Details rows: <div>Name</div><div>Eiffel Tower</div> style
+        for row in page.select("div.row"):
+            label_el = row.select_one("div.col-xs-5, div.col-xs-4")
+            value_el = row.select_one("div.col-xs-7, div.col-xs-8")
+            if not label_el or not value_el:
+                continue
+            label = label_el.get_text(strip=True).lower()
+            value = value_el.get_text(" ", strip=True)
+            if label == "name" and not name:
+                name = value
+            elif label == "theme" and not theme:
+                theme = value.split("/")[0].strip() or value
+            elif "retail price" in label and not retail:
+                retail = _be_parse_currency(value)
+            elif label in ("market price", "value") and not market:
+                market = _be_parse_currency(value)
+
+        # Fallback: title tag like "10307 LEGO Landmarks Eiffel Tower"
+        if not name:
+            title = page.find("h1")
+            if title:
+                t = title.get_text(" ", strip=True)
+                t = re.sub(r"^\d+\s+LEGO\s+", "", t)
+                # drop leading subtheme word(s) heuristically
+                name = t
+
+        if not (name or retail or market):
+            return None
+
+        return {
+            "name": name,
+            "theme": theme,
+            "retail_price": retail,
+            "market_price": market,
+            "source_url": detail_url,
+        }
+    except Exception as exc:
+        print(f"  [BE] Error scraping {set_id}: {exc}")
+        return None
+
+
 # ── Gemini AI ad copy ─────────────────────────────────────────────────────────
 
 def generate_ad_copy(set_name: str, set_id: str, current_value: float, cost: float) -> str:
@@ -336,26 +442,61 @@ def main():
         name = str(ms.get("name", f"Set {raw_set_number}")).strip()
         theme = str(ms.get("theme", "")).strip()
         cost = parse_currency(ms.get("cost", 0))
+        unit_cost = parse_currency(ms.get("unit_cost", ms.get("cost", 0)))
+        qty_owned = int(ms.get("qty_owned", 1) or 1)
+        if qty_owned < 1:
+            qty_owned = 1
         notes = str(ms.get("notes", "")).strip()
 
-        print(f"  Processing manual {set_id} ({name})...")
+        print(f"  Processing manual {set_id} ({name}, qty {qty_owned})...")
 
         bl_data = fetch_bl_price(set_id, bl_auth)
         time.sleep(SLEEP_BETWEEN_CALLS)
 
+        unit_value = 0.0
+        qty_sold = 0
+        min_price = 0.0
+        max_price = 0.0
+        has_data = False
+        be_data = None
+
         if bl_data and bl_data["avg_price"] > 0:
-            current_value = bl_data["avg_price"]
+            unit_value = bl_data["avg_price"]
             qty_sold = bl_data["qty_sold"]
             min_price = bl_data["min_price"]
             max_price = bl_data["max_price"]
-            has_bl_data = True
-        else:
-            current_value = 0.0
-            qty_sold = 0
-            min_price = 0.0
-            max_price = 0.0
-            has_bl_data = False
-            print(f"    [!] No BrickLink data for {set_id}, marking as No Data")
+            has_data = True
+
+        # Always try BrickEconomy to fill in name/theme for placeholder entries
+        # and to use as a value fallback when BrickLink has nothing.
+        needs_meta = (
+            not name
+            or name.lower().startswith("set ")
+            or not theme
+        )
+        if needs_meta or not has_data:
+            be_data = fetch_brickeconomy(set_id)
+            time.sleep(SLEEP_BETWEEN_CALLS)
+            if be_data:
+                if needs_meta:
+                    if be_data.get("name"):
+                        name = be_data["name"]
+                    if be_data.get("theme"):
+                        theme = be_data["theme"]
+                if not has_data and be_data.get("market_price", 0) > 0:
+                    unit_value = be_data["market_price"]
+                    has_data = True
+                    print(f"    [BE] Using market price ${unit_value:.2f} from BrickEconomy")
+
+        if not has_data:
+            print(f"    [!] No BrickLink or BrickEconomy data for {set_id}, marking as No Data")
+
+        # Apply quantity multiplier — line item represents qty_owned units
+        current_value = unit_value * qty_owned
+        # `cost` from JSON is already total cost (unit_cost * qty) when added
+        # via the modal. If only unit_cost is present, compute total here.
+        if cost <= 0 and unit_cost > 0:
+            cost = round(unit_cost * qty_owned, 2)
 
         roi = 0.0
         profit = 0.0
@@ -363,10 +504,10 @@ def main():
             roi = (current_value - cost) / cost
             profit = current_value - cost
 
-        signal = sell_signal(roi, current_value) if has_bl_data else "No Data"
+        signal = sell_signal(roi, current_value) if has_data else "No Data"
 
         ad_copy = ""
-        if has_bl_data and current_value > 0:
+        if has_data and current_value > 0:
             print(f"    [Gemini] Generating ad copy for {name}...")
             ad_copy = generate_ad_copy(name, set_id, current_value, cost)
             time.sleep(SLEEP_BETWEEN_CALLS)
@@ -378,6 +519,8 @@ def main():
             "name": name,
             "theme": theme,
             "cost": round(cost, 2),
+            "unit_cost": round(unit_cost or (cost / qty_owned if qty_owned else cost), 2),
+            "qty_owned": qty_owned,
             "current_value": round(current_value, 2),
             "profit": round(profit, 2),
             "roi": round(roi * 100, 2),

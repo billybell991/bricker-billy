@@ -4,6 +4,10 @@ on:
   schedule:
     # Runs every day at 8:00 AM UTC (4 AM EST / 3 AM CST)
     - cron: "0 8 * * *"
+  push:
+    branches: [main]
+    paths:
+      - "public/manual_sets.json"
   workflow_dispatch: # Allow manual trigger from GitHub Actions UI
 
 permissions:
@@ -35,7 +39,8 @@ jobs:
             google-auth \
             requests \
             requests-oauthlib \
-            google-generativeai
+            google-generativeai \
+            beautifulsoup4
 
       - name: Run LEGO sync script
         env:
