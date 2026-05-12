@@ -434,8 +434,13 @@ export default function App() {
       }
     }
 
-    // Sort
+    // Sort — but always pin newly-added manual entries (no sync data yet) to the top
+    // so they're visible immediately after adding instead of being buried.
+    const isPending = (s) => s.isManual && (s.signal === "No Data" || !s.current_value);
     result = [...result].sort((a, b) => {
+      const pa = isPending(a) ? 0 : 1;
+      const pb = isPending(b) ? 0 : 1;
+      if (pa !== pb) return pa - pb;
       switch (sortBy) {
         case "signal":
           return (SIGNAL_ORDER[a.signal] ?? 99) - (SIGNAL_ORDER[b.signal] ?? 99);
