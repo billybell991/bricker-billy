@@ -44,6 +44,8 @@ async function fetchManualSetsFile(token) {
       `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${MANUAL_SETS_FILE}`,
       { headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" } }
     );
+    if (resp.status === 401) return { unauthorized: true };
+    if (resp.status === 404) return { sha: null, sets: [] };
     if (!resp.ok) return { sha: null, sets: [] };
     const file = await resp.json();
     const sets = JSON.parse(atob(file.content.replace(/\n/g, "")));
@@ -64,6 +66,9 @@ async function persistManualSetToGitHub(entry, token) {
   const fileData = await fetchManualSetsFile(token);
   if (!fileData) {
     return { pushed: false, error: "Could not read manual_sets.json from GitHub." };
+  }
+  if (fileData.unauthorized) {
+    return { pushed: false, unauthorized: true, error: "GitHub token expired or invalid. Please reconnect." };
   }
   const { sha, sets } = fileData;
   if (sets.some((s) => s.set_id === entry.set_id)) {
@@ -102,6 +107,9 @@ async function persistManualSetToGitHub(entry, token) {
     if (!resp.ok) {
       const body = await resp.text().catch(() => "");
       console.warn("[GitHub] Push failed", resp.status, body);
+      if (resp.status === 401) {
+        return { pushed: false, unauthorized: true, error: "GitHub token expired or invalid. Please reconnect." };
+      }
       return { pushed: false, error: `GitHub responded ${resp.status}` };
     }
     return { pushed: true };
@@ -307,7 +315,14 @@ export default function App() {
       return next;
     });
     // Persist to manual_sets.json so next sync fetches BrickLink prices for it
-    return await persistManualSetToGitHub(entry, ghToken);
+    const result = await persistManualSetToGitHub(entry, ghToken);
+    if (result?.unauthorized) {
+      // Token is dead — clear it and prompt reconnect
+      localStorage.removeItem(GH_TOKEN_KEY);
+      setGhToken("");
+      setShowTokenModal(true);
+    }
+    return result;
   };
 
   const handleDeleteManual = (id) => {
