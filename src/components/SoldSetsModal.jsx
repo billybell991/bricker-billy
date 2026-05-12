@@ -1,6 +1,6 @@
-import { X, Undo2 } from "lucide-react";
+import { X, Undo2, Trash2 } from "lucide-react";
 
-export function SoldSetsModal({ soldSets, onClose, onRemove }) {
+export function SoldSetsModal({ soldSets, onClose, onRemove, onPurge }) {
   const totalRevenue = soldSets.reduce((sum, s) => sum + s.sold_for, 0);
   const totalCost = soldSets.reduce((sum, s) => sum + s.cost, 0);
   const totalProfit = totalRevenue - totalCost;
@@ -94,13 +94,28 @@ export function SoldSetsModal({ soldSets, onClose, onRemove }) {
                           {new Date(s.sold_date).toLocaleDateString("en-CA")}
                         </td>
                         <td className="py-3">
-                          <button
-                            onClick={() => onRemove(s)}
-                            className="text-slate-600 hover:text-yellow-400 hover:bg-yellow-500/10 border border-transparent hover:border-yellow-500/20 p-1.5 rounded-lg transition-all"
-                            title="Restore to active sets"
-                          >
-                            <Undo2 size={13} />
-                          </button>
+                          <div className="flex items-center gap-1">
+                            <button
+                              onClick={() => onRemove(s)}
+                              className="text-slate-600 hover:text-yellow-400 hover:bg-yellow-500/10 border border-transparent hover:border-yellow-500/20 p-1.5 rounded-lg transition-all"
+                              title="Restore to active sets"
+                            >
+                              <Undo2 size={13} />
+                            </button>
+                            {onPurge && (
+                              <button
+                                onClick={() => {
+                                  if (window.confirm(`Permanently delete this sale of "${s.name}"? The set will stay removed from your dashboard.`)) {
+                                    onPurge(s);
+                                  }
+                                }}
+                                className="text-slate-600 hover:text-red-400 hover:bg-red-500/10 border border-transparent hover:border-red-500/20 p-1.5 rounded-lg transition-all"
+                                title="Delete forever"
+                              >
+                                <Trash2 size={13} />
+                              </button>
+                            )}
+                          </div>
                         </td>
                       </tr>
                     );

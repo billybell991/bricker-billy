@@ -364,6 +364,16 @@ export default function App() {
     });
   };
 
+  const handlePurgeSold = (record) => {
+    // Permanently remove this sale entry from the sold log.
+    // Keep the set in deletedIds so it does NOT return to the active dashboard.
+    setSoldSets((prev) => {
+      const next = prev.filter((s) => !(s.id === record.id && s.sold_date === record.sold_date));
+      try { localStorage.setItem("sold_sets", JSON.stringify(next)); } catch (_) {}
+      return next;
+    });
+  };
+
   // Merge listing overrides with data, then append manual entries that haven't
   // been picked up by the sync yet (avoid duplicates once the sync runs).
   const sets = useMemo(() => {
@@ -869,6 +879,7 @@ export default function App() {
           soldSets={soldSets}
           onClose={() => setShowSoldSets(false)}
           onRemove={handleUnsell}
+          onPurge={handlePurgeSold}
         />
       )}
 
