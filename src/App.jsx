@@ -128,6 +128,11 @@ async function removeManualSetFromGitHub(setId, token) {
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return localStorage.getItem("site_unlocked") === "true";
+  });
+  const [passwordInput, setPasswordInput] = useState("");
+
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [syncing, setSyncing] = useState(false);
@@ -407,6 +412,43 @@ export default function App() {
 
     return result;
   }, [sets, search, filterSignal, sortBy]);
+
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center p-4">
+        <form 
+          className="card p-8 max-w-sm w-full text-center space-y-6"
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (passwordInput === "lego4life") {
+              localStorage.setItem("site_unlocked", "true");
+              setIsAuthenticated(true);
+            } else {
+              alert("Incorrect password");
+              setPasswordInput("");
+            }
+          }}
+        >
+          <img src="./zombie-cap.jpg" alt="Locked" className="w-24 h-24 mx-auto object-contain rounded-full shadow-lg" />
+          <div>
+            <h2 className="text-xl font-black text-white mb-2">Restricted Access</h2>
+            <p className="text-sm text-slate-400">Please enter the password to view the dashboard.</p>
+          </div>
+          <input
+            type="password"
+            autoFocus
+            className="input w-full text-center text-lg"
+            placeholder="Password..."
+            value={passwordInput}
+            onChange={(e) => setPasswordInput(e.target.value)}
+          />
+          <button type="submit" className="flex items-center justify-center gap-2 bg-lego-blue hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-xl w-full transition-colors">
+            Unlock Dashboard
+          </button>
+        </form>
+      </div>
+    );
+  }
 
   if (loading) {
     return (
