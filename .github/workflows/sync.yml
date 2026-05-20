@@ -65,12 +65,14 @@ jobs:
 
       - name: Commit and push updated data.json
         if: steps.check_changes.outputs.changed == 'true'
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: auto-sync LEGO data [skip ci]"
-          file_pattern: "public/data.json public/manual_sets.json public/images/**"
-          commit_user_name: "LEGO Sync Bot"
-          commit_user_email: "sync-bot@users.noreply.github.com"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "LEGO Sync Bot"
+          git config user.email "sync-bot@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          git commit -m "chore: auto-sync LEGO data [skip ci]"
+          git push origin main
 
       - name: Trigger deploy after sync
         if: steps.check_changes.outputs.changed == 'true'
