@@ -69,7 +69,14 @@ function HoverPopup({ set, x, y }) {
           <div className="grid grid-cols-2 gap-1.5 text-xs">
             <div className="bg-white/5 rounded-lg p-2">
               <p className="text-slate-400 text-[10px] uppercase tracking-wider mb-0.5">Paid</p>
-              <p className="text-white font-bold">${set.cost.toFixed(2)}</p>
+              {set.qty_owned > 1 && set.unit_cost ? (
+                <>
+                  <p className="text-white font-bold">${set.unit_cost.toFixed(2)}</p>
+                  <p className="text-[9px] text-slate-500">ea · ${set.cost.toFixed(2)} total</p>
+                </>
+              ) : (
+                <p className="text-white font-bold">${set.cost.toFixed(2)}</p>
+              )}
             </div>
             <div className="bg-white/5 rounded-lg p-2">
               <p className="text-slate-400 text-[10px] uppercase tracking-wider mb-0.5">BL Avg</p>

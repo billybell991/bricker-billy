@@ -71,10 +71,14 @@ async function persistManualSetToGitHub(entry, token) {
     return { pushed: false, unauthorized: true, error: "GitHub token expired or invalid. Please reconnect." };
   }
   const { sha, sets } = fileData;
-  if (sets.some((s) => s.set_id === entry.set_id)) {
-    return { pushed: true, alreadyPresent: true };
-  }
+  // Deduplicate by entry_id (unique per copy). Fall back to set_id for
+  // old records that predate the entry_id field.
+  const alreadyPresent = sets.some((s) =>
+    s.entry_id ? s.entry_id === entry.id : s.set_id === entry.set_id
+  );
+  if (alreadyPresent) return { pushed: true, alreadyPresent: true };
   const record = {
+    entry_id: entry.id,
     set_id: entry.set_id,
     set_number: entry.set_number,
     name: entry.name,
@@ -119,12 +123,15 @@ async function persistManualSetToGitHub(entry, token) {
   }
 }
 
-async function removeManualSetFromGitHub(setId, token) {
+async function removeManualSetFromGitHub(entry, token) {
   if (!token || !GH_OWNER || !GH_REPO) return;
   const fileData = await fetchManualSetsFile(token);
   if (!fileData) return;
   const { sha, sets } = fileData;
-  const updated = sets.filter((s) => s.set_id !== setId);
+  // Match by entry_id when present; fall back to set_id for old-format records.
+  const updated = sets.filter((s) =>
+    s.entry_id ? s.entry_id !== entry.id : s.set_id !== entry.set_id
+  );
   if (updated.length === sets.length) return; // nothing to remove
   const content = toBase64(JSON.stringify(updated, null, 2) + "\n");
   try {
@@ -138,7 +145,7 @@ async function removeManualSetFromGitHub(setId, token) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          message: `chore: remove manual set ${setId}`,
+          message: `chore: remove manual set ${entry.set_id}`,
           content,
           ...(sha ? { sha } : {}),
         }),
@@ -226,7 +233,7 @@ export default function App() {
             .then((r) => r.ok ? r.json() : [])
             .then((githubSets) => {
               const entries = githubSets.map((s) => ({
-                id: `manual_${s.set_id}`,
+                id: s.entry_id || `manual_${s.set_id}`,
                 set_id: s.set_id,
                 set_number: s.set_number,
                 name: s.name,
@@ -332,7 +339,7 @@ export default function App() {
       try {
         localStorage.setItem(MANUAL_ENTRIES_KEY, JSON.stringify(next));
       } catch (e) { console.error("Failed to save manual entries to localStorage:", e); }
-      if (removed) removeManualSetFromGitHub(removed.set_id, ghToken);
+      if (removed) removeManualSetFromGitHub(removed, ghToken);
       return next;
     });
   };

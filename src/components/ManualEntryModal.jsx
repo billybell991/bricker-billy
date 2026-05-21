@@ -44,17 +44,19 @@ export function ManualEntryModal({ onClose, onAdd, hasGhToken }) {
     const setId = normalizeSetId(form.set_number);
     const unitCost = parseFloat(parseFloat(form.cost).toFixed(2));
     const qty = parseInt(form.qty, 10) || 1;
-    const totalCost = Math.round(unitCost * qty * 100) / 100;
+    const baseTime = Date.now();
 
-    const entry = {
-      id: `manual_${Date.now()}`,
+    // Build one entry per copy so each gets its own card (same as how the
+    // Google-Sheet sync produces separate cards for duplicate set rows).
+    const entries = Array.from({ length: qty }, (_, i) => ({
+      id: `manual_${baseTime + i}`,
       set_id: setId,
       set_number: form.set_number.trim(),
-      name: `Set ${form.set_number.trim()}`, // placeholder; sync fills real name
+      name: `Set ${form.set_number.trim()}`,
       theme: "",
-      cost: totalCost,
+      cost: unitCost,
       unit_cost: unitCost,
-      qty_owned: qty,
+      qty_owned: 1,
       current_value: 0,
       profit: 0,
       roi: 0,
@@ -68,14 +70,18 @@ export function ManualEntryModal({ onClose, onAdd, hasGhToken }) {
       ad_copy: "",
       last_updated: new Date().toISOString(),
       isManual: true,
-    };
+    }));
 
     setSubmitting(true);
     setStatus(null);
     try {
-      const result = await onAdd(entry); // App returns { pushed, error }
+      let lastResult = null;
+      for (const entry of entries) {
+        lastResult = await onAdd(entry);
+      }
+      const result = lastResult;
       if (result?.pushed) {
-        setStatus({ kind: "ok", msg: "Saved & pushed to GitHub. Sync will run in ~1 min." });
+        setStatus({ kind: "ok", msg: qty > 1 ? `${qty} copies saved & pushed to GitHub.` : "Saved & pushed to GitHub. Sync will run in ~1 min." });
         setTimeout(() => onClose(), 1200);
       } else if (!hasGhToken) {
         setStatus({

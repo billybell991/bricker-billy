@@ -446,6 +446,7 @@ def main():
         qty_owned = int(ms.get("qty_owned", 1) or 1)
         if qty_owned < 1:
             qty_owned = 1
+        entry_id = str(ms.get("entry_id", "")).strip()
         notes = str(ms.get("notes", "")).strip()
 
         print(f"  Processing manual {set_id} ({name}, qty {qty_owned})...")
@@ -513,7 +514,7 @@ def main():
             time.sleep(SLEEP_BETWEEN_CALLS)
 
         sets.append({
-            "id": f"{set_id}_manual",
+            "id": f"{entry_id}_manual" if entry_id else f"{set_id}_manual",
             "set_id": set_id,
             "set_number": raw_set_number,
             "name": name,
@@ -535,7 +536,11 @@ def main():
             "last_updated": datetime.now(timezone.utc).isoformat(),
             "isManual": True,
         })
-        sheet_set_ids.add(set_id)
+        # Only block the set_id from re-processing if this is an old-format
+        # record (no entry_id). New per-copy records each have their own
+        # entry_id and must all be processed even when set_id repeats.
+        if not entry_id:
+            sheet_set_ids.add(set_id)
 
     # 8. Build summary stats
     valid_sets = [s for s in sets if s["signal"] != "No Data"]

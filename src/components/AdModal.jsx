@@ -126,7 +126,8 @@ export function AdModal({ set, onClose }) {
             <div className="grid grid-cols-4 gap-2 mb-5">
               <div className="bg-white/5 rounded-xl p-2 text-center">
                 <p className="text-[10px] text-slate-400 uppercase tracking-wider">Paid</p>
-                <p className="text-sm font-bold text-slate-300">${set.cost.toFixed(2)}</p>
+                <p className="text-sm font-bold text-slate-300">${(set.qty_owned > 1 && set.unit_cost ? set.unit_cost : set.cost).toFixed(2)}</p>
+                {set.qty_owned > 1 && set.unit_cost && <p className="text-[9px] text-slate-500">ea</p>}
               </div>
               <div className="bg-white/5 rounded-xl p-2 text-center">
                 <p className="text-[10px] text-slate-400 uppercase tracking-wider">Value</p>
