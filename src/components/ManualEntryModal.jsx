@@ -17,11 +17,12 @@ function bricklinkImageUrl(setId) {
   return `https://img.bricklink.com/ItemImage/SN/0/${numeric}.png`;
 }
 
-export function ManualEntryModal({ onClose, onAdd, hasGhToken }) {
+export function ManualEntryModal({ onClose, onAdd, hasGhToken, existingSets = [] }) {
   const [form, setForm] = useState(EMPTY_FORM);
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState(null); // { kind: 'ok'|'warn'|'err', msg }
+  const [confirmedDuplicate, setConfirmedDuplicate] = useState(false);
 
   const validate = () => {
     const e = {};
@@ -113,6 +114,7 @@ export function ManualEntryModal({ onClose, onAdd, hasGhToken }) {
         onChange={(e) => {
           setForm((f) => ({ ...f, [key]: e.target.value }));
           setErrors((ev) => ({ ...ev, [key]: undefined }));
+          if (key === "set_number") setConfirmedDuplicate(false);
         }}
         placeholder={placeholder}
         {...extraProps}
@@ -129,6 +131,12 @@ export function ManualEntryModal({ onClose, onAdd, hasGhToken }) {
   const qtyNum = parseInt(form.qty, 10) || 0;
   const totalPreview =
     Number.isFinite(unitCostNum) && qtyNum > 0 ? unitCostNum * qtyNum : null;
+
+  // How many copies of this set are already on the dashboard
+  const existingCount = setIdPreview
+    ? existingSets.filter((s) => s.set_id === setIdPreview).length
+    : 0;
+  const isDuplicate = existingCount > 0;
 
   return (
     <div
@@ -188,7 +196,27 @@ export function ManualEntryModal({ onClose, onAdd, hasGhToken }) {
                     )}
                   </p>
                 )}
+                {isDuplicate && (
+                  <p className="text-amber-400 font-bold mt-1">
+                    ⚠️ You already have {existingCount} of this set
+                  </p>
+                )}
               </div>
+            </div>
+          )}
+
+          {isDuplicate && !confirmedDuplicate && (
+            <div className="flex items-center justify-between bg-amber-500/10 border border-amber-500/30 rounded-xl p-3">
+              <p className="text-xs text-amber-300">
+                You already own {existingCount} cop{existingCount === 1 ? "y" : "ies"} of this set. Add {qtyNum > 1 ? `${qtyNum} more` : "another"}?
+              </p>
+              <button
+                type="button"
+                onClick={() => setConfirmedDuplicate(true)}
+                className="ml-3 shrink-0 text-xs font-bold bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 px-3 py-1.5 rounded-lg transition-colors"
+              >
+                Yes, add
+              </button>
             </div>
           )}
 
@@ -214,7 +242,7 @@ export function ManualEntryModal({ onClose, onAdd, hasGhToken }) {
 
           <button
             type="submit"
-            disabled={submitting}
+            disabled={submitting || (isDuplicate && !confirmedDuplicate)}
             className="flex items-center justify-center gap-2 bg-lego-blue hover:bg-blue-600 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-3 rounded-xl transition-colors mt-1"
           >
             {submitting ? (

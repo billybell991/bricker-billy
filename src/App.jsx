@@ -937,6 +937,7 @@ export default function App() {
           onClose={() => setShowManualModal(false)}
           onAdd={handleAddManual}
           hasGhToken={Boolean(ghToken)}
+          existingSets={sets}
         />
       )}
 
