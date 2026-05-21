@@ -5036,29 +5036,6 @@
       "ad_copy": "",
       "last_updated": "2026-05-21T15:43:09.574177+00:00",
       "isManual": true
-    },
-    {
-      "id": "30714-1_manual",
-      "set_id": "30714-1",
-      "set_number": "30714",
-      "name": "Orange Cat",
-      "theme": "Creator",
-      "cost": 5.0,
-      "unit_cost": 2.5,
-      "qty_owned": 2,
-      "current_value": 13.49,
-      "profit": 8.49,
-      "roi": 169.78,
-      "signal": "Consider",
-      "qty_sold_6m": 11,
-      "bl_min_price": 4.76,
-      "bl_max_price": 8.54,
-      "selling_on": "",
-      "notes": "",
-      "image_url": "https://img.bricklink.com/ItemImage/SN/0/30714.png",
-      "ad_copy": "",
-      "last_updated": "2026-05-21T15:43:14.082823+00:00",
-      "isManual": true
     }
   ]
 }
