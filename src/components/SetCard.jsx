@@ -90,14 +90,7 @@ export function SetCard({ set, onAdClick, onListingChange, onSell }) {
         <div className="grid grid-cols-3 gap-2 text-center">
           <div className="bg-white/5 rounded-xl p-2">
             <p className="text-[10px] text-slate-400 uppercase tracking-wider">Paid</p>
-            {set.qty_owned > 1 && set.unit_cost ? (
-              <>
-                <p className="text-sm font-bold text-slate-300">${set.unit_cost.toFixed(2)}</p>
-                <p className="text-[9px] text-slate-500 leading-tight">ea · ${set.cost.toFixed(2)} total</p>
-              </>
-            ) : (
-              <p className="text-sm font-bold text-slate-300">${set.cost.toFixed(2)}</p>
-            )}
+            <p className="text-sm font-bold text-slate-300">${set.cost.toFixed(2)}</p>
           </div>
           <div className="bg-white/5 rounded-xl p-2">
             <p className="text-[10px] text-slate-400 uppercase tracking-wider">Value</p>

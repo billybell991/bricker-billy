@@ -414,7 +414,28 @@ export default function App() {
         ...s,
         selling_on: listingOverrides[s.id] !== undefined ? listingOverrides[s.id] : s.selling_on,
       }));
-    return [...synced, ...manual];
+
+    // Expand any entry with qty_owned > 1 into individual cards so each
+    // physical copy gets its own card (matching how the Google Sheet works).
+    const expand = (s) => {
+      if (!s.qty_owned || s.qty_owned <= 1) return [s];
+      const unitCost = +(s.unit_cost ?? (s.cost / s.qty_owned)).toFixed(2);
+      const unitValue = s.current_value > 0 ? +(s.current_value / s.qty_owned).toFixed(2) : 0;
+      const unitProfit = +((unitValue || 0) - unitCost).toFixed(2);
+      return Array.from({ length: s.qty_owned }, (_, i) => ({
+        ...s,
+        id: `${s.id}_copy${i}`,
+        qty_owned: 1,
+        cost: unitCost,
+        unit_cost: unitCost,
+        current_value: unitValue,
+        profit: unitProfit,
+      }));
+    };
+
+    // Filter again after expansion so individually-deleted virtual copies
+    // (tracked in deletedIds by their virtual id) stay hidden.
+    return [...synced, ...manual].flatMap(expand).filter((s) => !deletedIds.has(s.id));
   }, [data, listingOverrides, manualEntries, deletedIds]);
 
   // Filter + sort

@@ -8,9 +8,8 @@ export function SoldModal({ set, onClose, onConfirm }) {
   const [soldOn, setSoldOn] = useState("BrickLink");
 
   const price = parseFloat(soldFor);
-  const unitCost = (set.qty_owned > 1 && set.unit_cost) ? set.unit_cost : set.cost;
-  const profit = soldFor && !isNaN(price) ? price - unitCost : null;
-  const roi = profit !== null ? (profit / unitCost) * 100 : null;
+  const profit = soldFor && !isNaN(price) ? price - set.cost : null;
+  const roi = profit !== null ? (profit / set.cost) * 100 : null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,7 +32,7 @@ export function SoldModal({ set, onClose, onConfirm }) {
         <div className="bg-white/5 rounded-xl p-3">
           <p className="text-xs text-lego-yellow font-semibold uppercase tracking-widest mb-0.5">{set.theme}</p>
           <p className="font-black text-white leading-tight">{set.name}</p>
-          <p className="text-xs text-slate-400 mt-0.5">#{set.set_number} · Paid ${unitCost.toFixed(2)}{set.qty_owned > 1 ? " ea" : ""}</p>
+          <p className="text-xs text-slate-400 mt-0.5">#{set.set_number} · Paid ${set.cost.toFixed(2)}</p>
         </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
