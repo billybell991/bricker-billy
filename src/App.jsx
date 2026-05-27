@@ -274,8 +274,8 @@ async function triggerRemoteSync(token, onStatus = () => {}) {
   // Poll for the run we just created. GitHub takes a few seconds to register it.
   const runsUrl = `${api}/actions/workflows/${SYNC_WORKFLOW_FILE}/runs?event=workflow_dispatch&per_page=5`;
   const start = Date.now();
-  const MAX_WAIT_MS = 6 * 60 * 1000; // sync usually finishes in <2 min
-  const POLL_MS = 4000;
+  const MAX_WAIT_MS = 20 * 60 * 1000; // sync can take 10\u201315 min when BrickLink is slow
+  const POLL_MS = 5000;
   let runId = null;
 
   while (Date.now() - start < MAX_WAIT_MS) {
@@ -313,7 +313,7 @@ async function triggerRemoteSync(token, onStatus = () => {}) {
       console.warn("[GitHub] poll failed", e);
     }
   }
-  return { ok: false, error: "Sync did not complete in time." };
+  return { ok: false, error: "Sync did not complete in time.", stillRunning: true };
 }
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -366,8 +366,16 @@ export default function App() {
         return;
       }
       if (!result?.ok) {
-        setError(result?.error || "Sync failed.");
-        setSyncStatus("");
+        if (result?.stillRunning) {
+          // The workflow is still running on GitHub \u2014 don't surface as an error.
+          setError(null);
+          setSyncStatus("Sync still running on GitHub. Click Sync again later to refresh.");
+          // Clear the status after a moment so it doesn't stick around forever.
+          setTimeout(() => setSyncStatus(""), 8000);
+        } else {
+          setError(result?.error || "Sync failed.");
+          setSyncStatus("");
+        }
         return;
       }
       // Sync finished \u2014 give Pages a moment to redeploy data.json, then refetch.
