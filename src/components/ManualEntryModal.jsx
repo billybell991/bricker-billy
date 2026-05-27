@@ -76,11 +76,9 @@ export function ManualEntryModal({ onClose, onAdd, hasGhToken, existingSets = []
     setSubmitting(true);
     setStatus(null);
     try {
-      let lastResult = null;
-      for (const entry of entries) {
-        lastResult = await onAdd(entry);
-      }
-      const result = lastResult;
+      // Single batched call \u2014 one GitHub commit for all copies, avoids 409
+      // conflicts from CDN-cached sha values between sequential PUTs.
+      const result = await onAdd(entries);
       if (result?.pushed) {
         setStatus({ kind: "ok", msg: qty > 1 ? `${qty} copies saved & pushed to GitHub.` : "Saved & pushed to GitHub. Sync will run in ~1 min." });
         setTimeout(() => onClose(), 1200);

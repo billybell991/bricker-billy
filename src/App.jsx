@@ -123,6 +123,78 @@ async function persistManualSetToGitHub(entry, token) {
   }
 }
 
+async function persistManualSetsToGitHub(entries, token) {
+  if (!entries || entries.length === 0) return { pushed: true };
+  if (!token || !GH_OWNER || !GH_REPO) {
+    return { pushed: false, error: "No GitHub token configured." };
+  }
+  const fileData = await fetchManualSetsFile(token);
+  if (!fileData) {
+    return { pushed: false, error: "Could not read manual_sets.json from GitHub." };
+  }
+  if (fileData.unauthorized) {
+    return { pushed: false, unauthorized: true, error: "GitHub token expired or invalid. Please reconnect." };
+  }
+  const { sha, sets } = fileData;
+  let added = 0;
+  for (const entry of entries) {
+    // Dedupe only by entry_id (each copy has its own unique id). Multiple
+    // copies of the same set_id are intentionally allowed.
+    const alreadyPresent = sets.some((s) => s.entry_id && s.entry_id === entry.id);
+    if (alreadyPresent) continue;
+    sets.push({
+      entry_id: entry.id,
+      set_id: entry.set_id,
+      set_number: entry.set_number,
+      name: entry.name,
+      theme: entry.theme,
+      cost: entry.cost,
+      unit_cost: entry.unit_cost ?? entry.cost,
+      qty_owned: entry.qty_owned || 1,
+      notes: entry.notes,
+      selling_on: entry.selling_on || "",
+    });
+    added++;
+  }
+  if (added === 0) return { pushed: true, alreadyPresent: true };
+  const content = toBase64(JSON.stringify(sets, null, 2) + "\n");
+  const firstId = entries[0].set_id;
+  const message =
+    entries.length > 1
+      ? `chore: add ${added} manual sets (${firstId}${added > 1 ? " +" + (added - 1) : ""})`
+      : `chore: add manual set ${firstId}`;
+  try {
+    const resp = await fetch(
+      `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${MANUAL_SETS_FILE}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github.v3+json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message,
+          content,
+          ...(sha ? { sha } : {}),
+        }),
+      }
+    );
+    if (!resp.ok) {
+      const body = await resp.text().catch(() => "");
+      console.warn("[GitHub] Batch push failed", resp.status, body);
+      if (resp.status === 401) {
+        return { pushed: false, unauthorized: true, error: "GitHub token expired or invalid. Please reconnect." };
+      }
+      return { pushed: false, error: `GitHub responded ${resp.status}` };
+    }
+    return { pushed: true };
+  } catch (e) {
+    console.warn("[GitHub] Failed to persist manual sets:", e);
+    return { pushed: false, error: e.message || String(e) };
+  }
+}
+
 async function removeManualSetFromGitHub(entry, token) {
   if (!token || !GH_OWNER || !GH_REPO) return;
   const fileData = await fetchManualSetsFile(token);
@@ -155,6 +227,94 @@ async function removeManualSetFromGitHub(entry, token) {
     console.warn("[GitHub] Failed to remove manual set:", e);
   }
 }
+
+// ── Manual workflow trigger ───────────────────────────────────────────────────
+const SYNC_WORKFLOW_FILE = "sync.yml";
+
+// Dispatches the Daily LEGO Sync workflow and polls until it finishes.
+// Returns { ok: true } on success, or { ok: false, error } / { unauthorized: true }.
+// onStatus is called with short human-readable status strings for UI feedback.
+async function triggerRemoteSync(token, onStatus = () => {}) {
+  if (!token || !GH_OWNER || !GH_REPO) {
+    return { ok: false, error: "No GitHub token configured." };
+  }
+  const api = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}`;
+  const headers = {
+    Authorization: `Bearer ${token}`,
+    Accept: "application/vnd.github.v3+json",
+    "Content-Type": "application/json",
+  };
+
+  // Record the time we kicked the dispatch so we can identify the new run.
+  const dispatchedAt = Date.now();
+
+  onStatus("Triggering sync…");
+  try {
+    const dispatch = await fetch(
+      `${api}/actions/workflows/${SYNC_WORKFLOW_FILE}/dispatches`,
+      {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ ref: "main" }),
+      }
+    );
+    if (dispatch.status === 401) return { unauthorized: true, ok: false, error: "GitHub token expired or invalid." };
+    if (dispatch.status === 404) {
+      return { ok: false, error: "Sync workflow not found. Token may be missing 'workflow' scope." };
+    }
+    if (!dispatch.ok) {
+      const body = await dispatch.text().catch(() => "");
+      console.warn("[GitHub] workflow dispatch failed", dispatch.status, body);
+      return { ok: false, error: `GitHub responded ${dispatch.status}` };
+    }
+  } catch (e) {
+    return { ok: false, error: e.message || String(e) };
+  }
+
+  // Poll for the run we just created. GitHub takes a few seconds to register it.
+  const runsUrl = `${api}/actions/workflows/${SYNC_WORKFLOW_FILE}/runs?event=workflow_dispatch&per_page=5`;
+  const start = Date.now();
+  const MAX_WAIT_MS = 6 * 60 * 1000; // sync usually finishes in <2 min
+  const POLL_MS = 4000;
+  let runId = null;
+
+  while (Date.now() - start < MAX_WAIT_MS) {
+    await new Promise((r) => setTimeout(r, POLL_MS));
+    try {
+      const resp = await fetch(runsUrl, { headers });
+      if (resp.status === 401) return { unauthorized: true, ok: false, error: "GitHub token expired or invalid." };
+      if (!resp.ok) continue;
+      const json = await resp.json();
+      const runs = json.workflow_runs || [];
+
+      if (!runId) {
+        // Find the first run created at-or-after our dispatch timestamp.
+        const candidate = runs.find((r) => {
+          const created = Date.parse(r.created_at);
+          return Number.isFinite(created) && created >= dispatchedAt - 5000;
+        });
+        if (candidate) {
+          runId = candidate.id;
+          onStatus("Sync running…");
+        } else {
+          onStatus("Waiting for run to start…");
+          continue;
+        }
+      }
+
+      const current = runs.find((r) => r.id === runId);
+      if (!current) continue;
+      if (current.status === "completed") {
+        if (current.conclusion === "success") return { ok: true };
+        return { ok: false, error: `Sync ${current.conclusion || "failed"}.` };
+      }
+      onStatus(`Sync ${current.status}…`);
+    } catch (e) {
+      console.warn("[GitHub] poll failed", e);
+    }
+  }
+  return { ok: false, error: "Sync did not complete in time." };
+}
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function App() {
@@ -166,6 +326,7 @@ export default function App() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [syncing, setSyncing] = useState(false);
+  const [syncStatus, setSyncStatus] = useState(""); // human-readable progress while syncing
   const [error, setError] = useState(null);
 
   // GitHub token — stored in localStorage, never baked into the bundle
@@ -181,6 +342,59 @@ export default function App() {
   const handleGhDisconnect = () => {
     localStorage.removeItem(GH_TOKEN_KEY);
     setGhToken("");
+  };
+
+  // Sync button: if a GH token is connected, trigger the workflow run remotely
+  // and wait for it to complete; otherwise just refetch the published data.json.
+  const handleSyncClick = async () => {
+    if (syncing) return;
+    if (!ghToken) {
+      // No token \u2014 fall back to a plain refetch of data.json.
+      fetchData(true);
+      return;
+    }
+    setSyncing(true);
+    setSyncStatus("Triggering sync\u2026");
+    try {
+      const result = await triggerRemoteSync(ghToken, (msg) => setSyncStatus(msg));
+      if (result?.unauthorized) {
+        localStorage.removeItem(GH_TOKEN_KEY);
+        setGhToken("");
+        setShowTokenModal(true);
+        setSyncStatus("");
+        setError("GitHub token expired \u2014 please reconnect.");
+        return;
+      }
+      if (!result?.ok) {
+        setError(result?.error || "Sync failed.");
+        setSyncStatus("");
+        return;
+      }
+      // Sync finished \u2014 give Pages a moment to redeploy data.json, then refetch.
+      setSyncStatus("Fetching updated data\u2026");
+      // Pages deploy of data.json typically takes ~30\u201360s after the sync commit.
+      // Poll data.json's last_synced timestamp until it changes, up to ~90s.
+      const previousLastSynced = data?.last_synced || "";
+      const refreshStart = Date.now();
+      const REFRESH_MAX_MS = 120 * 1000;
+      while (Date.now() - refreshStart < REFRESH_MAX_MS) {
+        try {
+          const r = await fetch(`./data.json?t=${Date.now()}`, { cache: "no-store" });
+          if (r.ok) {
+            const fresh = await r.json();
+            if (fresh.last_synced && fresh.last_synced !== previousLastSynced) {
+              setData(fresh);
+              setError(null);
+              break;
+            }
+          }
+        } catch (_) {}
+        await new Promise((r) => setTimeout(r, 5000));
+      }
+      setSyncStatus("");
+    } finally {
+      setSyncing(false);
+    }
   };
 
   // UI state
@@ -313,21 +527,36 @@ export default function App() {
     });
   };
 
-  const handleAddManual = async (entry) => {
+  const commitManualEntriesToState = (entries) => {
     setManualEntries((prev) => {
-      const next = [...prev, entry];
+      const next = [...prev, ...entries];
       try {
         localStorage.setItem(MANUAL_ENTRIES_KEY, JSON.stringify(next));
       } catch (e) { console.error("Failed to save manual entries to localStorage:", e); }
       return next;
     });
-    // Persist to manual_sets.json so next sync fetches BrickLink prices for it
-    const result = await persistManualSetToGitHub(entry, ghToken);
+  };
+
+  const handleAddManualBatch = async (entries) => {
+    const list = Array.isArray(entries) ? entries : [entries];
+    if (list.length === 0) return { pushed: true };
+
+    // If no token configured, save locally only (no network).
+    if (!ghToken) {
+      commitManualEntriesToState(list);
+      return { pushed: false, error: "No GitHub token configured." };
+    }
+
+    // Single batched PUT — avoids GitHub Contents API CDN staleness 409s.
+    const result = await persistManualSetsToGitHub(list, ghToken);
     if (result?.unauthorized) {
-      // Token is dead — clear it and prompt reconnect
       localStorage.removeItem(GH_TOKEN_KEY);
       setGhToken("");
       setShowTokenModal(true);
+      return result; // do not mutate local state on auth failure
+    }
+    if (result?.pushed) {
+      commitManualEntriesToState(list);
     }
     return result;
   };
@@ -570,16 +799,18 @@ export default function App() {
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2 text-xs text-slate-400">
               <RefreshCw size={12} />
-              <span>Last synced: {lastSynced}</span>
+              <span>
+                {syncing && syncStatus ? syncStatus : `Last synced: ${lastSynced}`}
+              </span>
             </div>
             <button
-              onClick={() => fetchData(true)}
+              onClick={handleSyncClick}
               disabled={syncing}
               className="flex items-center gap-1.5 bg-lego-card hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white text-xs font-bold px-3 py-2 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              title="Re-fetch data.json"
+              title={ghToken ? "Trigger Daily LEGO Sync workflow and refresh" : "Re-fetch data.json"}
             >
               <RefreshCw size={13} className={syncing ? "animate-spin" : ""} />
-              {syncing ? "Syncing…" : "Sync"}
+              {syncing ? "Syncing\u2026" : "Sync"}
             </button>
 
             {/* GitHub token connect / disconnect */}
@@ -935,7 +1166,7 @@ export default function App() {
       {showManualModal && (
         <ManualEntryModal
           onClose={() => setShowManualModal(false)}
-          onAdd={handleAddManual}
+          onAdd={handleAddManualBatch}
           hasGhToken={Boolean(ghToken)}
           existingSets={sets}
         />
