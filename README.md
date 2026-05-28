@@ -144,6 +144,7 @@ jobs:
 - **Gemini AI ads** are only generated for Strong Sell candidates
 - **Marketplace status** (Not Listed / BrickLink / Facebook / Both) is saved locally in `localStorage` so it persists between visits without needing a backend
 - **Manual sets** added via the dashboard are persisted to `public/manual_sets.json` in the repo (requires GitHub token — see §5) so they appear on every device after the next deploy
+- **Sold sets** are persisted to `public/sold_sets.json` in the repo (requires GitHub token on the device where you mark sold) so sold cards stay hidden and visible in the Sold modal across devices after the next deploy
 - **Duplicate set entries** are kept separate (each copy of the same set treated independently)
 - **Personal notes** that look like single names (e.g., "Ben") are stripped from `data.json` before it's committed
 

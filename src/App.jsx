@@ -36,12 +36,31 @@ const FILTER_OPTIONS = [
 const GH_OWNER = import.meta.env.VITE_REPO_OWNER;
 const GH_REPO  = import.meta.env.VITE_REPO_NAME;
 const MANUAL_SETS_FILE = "public/manual_sets.json";
+const SOLD_SETS_FILE = "public/sold_sets.json";
 
 async function fetchManualSetsFile(token) {
   if (!token || !GH_OWNER || !GH_REPO) return null;
   try {
     const resp = await fetch(
       `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${MANUAL_SETS_FILE}`,
+      { headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" } }
+    );
+    if (resp.status === 401) return { unauthorized: true };
+    if (resp.status === 404) return { sha: null, sets: [] };
+    if (!resp.ok) return { sha: null, sets: [] };
+    const file = await resp.json();
+    const sets = JSON.parse(atob(file.content.replace(/\n/g, "")));
+    return { sha: file.sha, sets };
+  } catch {
+    return null;
+  }
+}
+
+async function fetchSoldSetsFile(token) {
+  if (!token || !GH_OWNER || !GH_REPO) return null;
+  try {
+    const resp = await fetch(
+      `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${SOLD_SETS_FILE}`,
       { headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" } }
     );
     if (resp.status === 401) return { unauthorized: true };
@@ -225,6 +244,88 @@ async function removeManualSetFromGitHub(entry, token) {
     );
   } catch (e) {
     console.warn("[GitHub] Failed to remove manual set:", e);
+  }
+}
+
+async function persistSoldSetToGitHub(record, token) {
+  if (!token || !GH_OWNER || !GH_REPO) {
+    return { pushed: false, error: "No GitHub token configured." };
+  }
+  const fileData = await fetchSoldSetsFile(token);
+  if (!fileData) {
+    return { pushed: false, error: "Could not read sold_sets.json from GitHub." };
+  }
+  if (fileData.unauthorized) {
+    return { pushed: false, unauthorized: true, error: "GitHub token expired or invalid. Please reconnect." };
+  }
+  const { sha, sets } = fileData;
+  const alreadyPresent = sets.some((s) => (s.sale_id || `${s.id}::${s.sold_date}`) === (record.sale_id || `${record.id}::${record.sold_date}`));
+  if (alreadyPresent) return { pushed: true, alreadyPresent: true };
+
+  sets.push(record);
+  const content = toBase64(JSON.stringify(sets, null, 2) + "\n");
+
+  try {
+    const resp = await fetch(
+      `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${SOLD_SETS_FILE}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github.v3+json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: `chore: add sold set ${record.set_id}`,
+          content,
+          ...(sha ? { sha } : {}),
+        }),
+      }
+    );
+    if (!resp.ok) {
+      const body = await resp.text().catch(() => "");
+      console.warn("[GitHub] Sold-set push failed", resp.status, body);
+      if (resp.status === 401) {
+        return { pushed: false, unauthorized: true, error: "GitHub token expired or invalid. Please reconnect." };
+      }
+      return { pushed: false, error: `GitHub responded ${resp.status}` };
+    }
+    return { pushed: true };
+  } catch (e) {
+    console.warn("[GitHub] Failed to persist sold set:", e);
+    return { pushed: false, error: e.message || String(e) };
+  }
+}
+
+async function removeSoldSetFromGitHub(record, token) {
+  if (!token || !GH_OWNER || !GH_REPO) return;
+  const fileData = await fetchSoldSetsFile(token);
+  if (!fileData || fileData.unauthorized) return;
+  const { sha, sets } = fileData;
+  const targetKey = record.sale_id || `${record.id}::${record.sold_date}`;
+  const updated = sets.filter((s) => (s.sale_id || `${s.id}::${s.sold_date}`) !== targetKey);
+  if (updated.length === sets.length) return;
+
+  const content = toBase64(JSON.stringify(updated, null, 2) + "\n");
+  try {
+    await fetch(
+      `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${SOLD_SETS_FILE}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github.v3+json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: `chore: remove sold set ${record.set_id}`,
+          content,
+          ...(sha ? { sha } : {}),
+        }),
+      }
+    );
+  } catch (e) {
+    console.warn("[GitHub] Failed to remove sold set:", e);
   }
 }
 
@@ -498,6 +599,36 @@ export default function App() {
               } catch (e) { console.error("Failed to load manual entries:", e); }
             });
         }
+
+        // Load sold entries from sold_sets.json and merge with local entries.
+        // Local entries are kept so a just-logged sale appears immediately even
+        // before the GitHub commit is deployed to Pages.
+        fetch(`./sold_sets.json?t=${Date.now()}`)
+          .then((r) => (r.ok ? r.json() : []))
+          .then((githubSold) => {
+            const normalizedGithub = (githubSold || []).map((s) => ({
+              ...s,
+              sale_id: s.sale_id || `${s.id}::${s.sold_date}`,
+            }));
+            let local = [];
+            try {
+              local = JSON.parse(localStorage.getItem("sold_sets") || "[]");
+            } catch (_) {}
+            const seen = new Set(normalizedGithub.map((s) => s.sale_id || `${s.id}::${s.sold_date}`));
+            const pendingLocal = local
+              .map((s) => ({ ...s, sale_id: s.sale_id || `${s.id}::${s.sold_date}` }))
+              .filter((s) => !seen.has(s.sale_id));
+            const merged = [...normalizedGithub, ...pendingLocal];
+            setSoldSets(merged);
+            try { localStorage.setItem("sold_sets", JSON.stringify(merged)); } catch (_) {}
+          })
+          .catch(() => {
+            try {
+              const saved = JSON.parse(localStorage.getItem("sold_sets") || "[]");
+              setSoldSets(saved);
+            } catch (_) {}
+          });
+
         setError(null);
         setLoading(false);
         setSyncing(false);
@@ -581,10 +712,11 @@ export default function App() {
     });
   };
 
-  const handleMarkSold = ({ soldFor, soldOn }) => {
+  const handleMarkSold = async ({ soldFor, soldOn }) => {
     if (!sellTarget) return;
     const s = sellTarget;
     const record = {
+      sale_id: `sale_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
       id: s.id,
       set_id: s.set_id,
       set_number: s.set_number,
@@ -604,9 +736,21 @@ export default function App() {
     handleDelete(s.id);
     if (s.isManual) handleDeleteManual(s.id);
     setSellTarget(null);
+
+    if (ghToken) {
+      const result = await persistSoldSetToGitHub(record, ghToken);
+      if (result?.unauthorized) {
+        localStorage.removeItem(GH_TOKEN_KEY);
+        setGhToken("");
+        setShowTokenModal(true);
+        setError("GitHub token expired — please reconnect.");
+      } else if (!result?.pushed) {
+        setError(result?.error || "Failed to sync sold set to GitHub.");
+      }
+    }
   };
 
-  const handleUnsell = (record) => {
+  const handleUnsell = async (record) => {
     // Remove from sold log
     setSoldSets((prev) => {
       // Remove only the specific sale entry (matched by id + sold_date)
@@ -621,9 +765,13 @@ export default function App() {
       try { localStorage.setItem("deleted_ids", JSON.stringify([...next])); } catch (_) {}
       return next;
     });
+
+    if (ghToken) {
+      removeSoldSetFromGitHub(record, ghToken);
+    }
   };
 
-  const handlePurgeSold = (record) => {
+  const handlePurgeSold = async (record) => {
     // Permanently remove this sale entry from the sold log.
     // Keep the set in deletedIds so it does NOT return to the active dashboard.
     setSoldSets((prev) => {
@@ -631,14 +779,22 @@ export default function App() {
       try { localStorage.setItem("sold_sets", JSON.stringify(next)); } catch (_) {}
       return next;
     });
+
+    if (ghToken) {
+      removeSoldSetFromGitHub(record, ghToken);
+    }
   };
+
+  const soldSetIds = useMemo(() => {
+    return new Set(soldSets.map((s) => s.id));
+  }, [soldSets]);
 
   // Merge listing overrides with data, then append manual entries that haven't
   // been picked up by the sync yet (avoid duplicates once the sync runs).
   const sets = useMemo(() => {
     if (!data?.sets) return [];
     const synced = data.sets
-      .filter((s) => !deletedIds.has(s.id))
+      .filter((s) => !deletedIds.has(s.id) && !soldSetIds.has(s.id))
       .map((s) => ({
         ...s,
         selling_on: listingOverrides[s.id] !== undefined ? listingOverrides[s.id] : s.selling_on,
@@ -646,7 +802,7 @@ export default function App() {
     const syncedSetIds = new Set(data.sets.map((s) => s.set_id));
     // Only show local-only manual entries that the sync hasn't processed yet
     const manual = manualEntries
-      .filter((s) => !syncedSetIds.has(s.set_id) && !deletedIds.has(s.id))
+      .filter((s) => !syncedSetIds.has(s.set_id) && !deletedIds.has(s.id) && !soldSetIds.has(s.id))
       .map((s) => ({
         ...s,
         selling_on: listingOverrides[s.id] !== undefined ? listingOverrides[s.id] : s.selling_on,
@@ -672,8 +828,8 @@ export default function App() {
 
     // Filter again after expansion so individually-deleted virtual copies
     // (tracked in deletedIds by their virtual id) stay hidden.
-    return [...synced, ...manual].flatMap(expand).filter((s) => !deletedIds.has(s.id));
-  }, [data, listingOverrides, manualEntries, deletedIds]);
+    return [...synced, ...manual].flatMap(expand).filter((s) => !deletedIds.has(s.id) && !soldSetIds.has(s.id));
+  }, [data, listingOverrides, manualEntries, deletedIds, soldSetIds]);
 
   // Filter + sort
   const filteredSets = useMemo(() => {
