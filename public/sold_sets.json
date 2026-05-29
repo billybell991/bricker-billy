@@ -1,1 +1,62 @@
-[]
+[
+  {
+    "id": "76991-1_177",
+    "set_id": "76991-1",
+    "set_number": "76991",
+    "name": "Tails' Workshop and Tornado Plane",
+    "theme": "Sonic The Hedgehog",
+    "cost": 15,
+    "sold_for": 60,
+    "sold_on": "BrickLink",
+    "sold_date": "2026-05-11T17:21:30.967Z",
+    "sale_id": "76991-1_177::2026-05-11T17:21:30.967Z"
+  },
+  {
+    "id": "21329-1_110",
+    "set_id": "21329-1",
+    "set_number": "21329",
+    "name": "Fender Stratocaster",
+    "theme": "Ideas",
+    "cost": 158.18,
+    "sold_for": 200,
+    "sold_on": "BrickLink",
+    "sold_date": "2026-05-11T17:23:04.604Z",
+    "sale_id": "21329-1_110::2026-05-11T17:23:04.604Z"
+  },
+  {
+    "id": "76956-1_120",
+    "set_id": "76956-1",
+    "set_number": "76956",
+    "name": "T-Rex Breakout",
+    "theme": "Jurassic World",
+    "cost": 146.89,
+    "sold_for": 200,
+    "sold_on": "BrickLink",
+    "sold_date": "2026-05-11T17:23:59.544Z",
+    "sale_id": "76956-1_120::2026-05-11T17:23:59.544Z"
+  },
+  {
+    "id": "76942-1_118",
+    "set_id": "76942-1",
+    "set_number": "76942",
+    "name": "Baryonyx Dinosaur Boat Escape",
+    "theme": "Jurassic World",
+    "cost": 56.49,
+    "sold_for": 125,
+    "sold_on": "BrickLink",
+    "sold_date": "2026-05-11T17:25:02.576Z",
+    "sale_id": "76942-1_118::2026-05-11T17:25:02.576Z"
+  },
+  {
+    "id": "76942-1_119",
+    "set_id": "76942-1",
+    "set_number": "76942",
+    "name": "Baryonyx Dinosaur Boat Escape",
+    "theme": "Jurassic World",
+    "cost": 56.49,
+    "sold_for": 125,
+    "sold_on": "BrickLink",
+    "sold_date": "2026-05-11T17:25:07.121Z",
+    "sale_id": "76942-1_119::2026-05-11T17:25:07.121Z"
+  }
+]
