@@ -297,6 +297,71 @@ async function persistSoldSetToGitHub(record, token) {
   }
 }
 
+async function persistSoldSetsToGitHub(records, token) {
+  if (!records || records.length === 0) return { pushed: true };
+  if (!token || !GH_OWNER || !GH_REPO) {
+    return { pushed: false, error: "No GitHub token configured." };
+  }
+  const fileData = await fetchSoldSetsFile(token);
+  if (!fileData) {
+    return { pushed: false, error: "Could not read sold_sets.json from GitHub." };
+  }
+  if (fileData.unauthorized) {
+    return { pushed: false, unauthorized: true, error: "GitHub token expired or invalid. Please reconnect." };
+  }
+
+  const { sha, sets } = fileData;
+  const existing = new Set(sets.map((s) => s.sale_id || `${s.id}::${s.sold_date}`));
+  let added = 0;
+  for (const record of records) {
+    const key = record.sale_id || `${record.id}::${record.sold_date}`;
+    if (existing.has(key)) continue;
+    sets.push({ ...record, sale_id: key });
+    existing.add(key);
+    added++;
+  }
+
+  if (added === 0) return { pushed: true, alreadyPresent: true };
+
+  const content = toBase64(JSON.stringify(sets, null, 2) + "\n");
+  const firstId = records[0]?.set_id || "set";
+  const message =
+    added > 1
+      ? `chore: backfill ${added} sold sets (${firstId}${added > 1 ? " +" + (added - 1) : ""})`
+      : `chore: add sold set ${firstId}`;
+
+  try {
+    const resp = await fetch(
+      `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${SOLD_SETS_FILE}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github.v3+json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message,
+          content,
+          ...(sha ? { sha } : {}),
+        }),
+      }
+    );
+    if (!resp.ok) {
+      const body = await resp.text().catch(() => "");
+      console.warn("[GitHub] Sold-set batch push failed", resp.status, body);
+      if (resp.status === 401) {
+        return { pushed: false, unauthorized: true, error: "GitHub token expired or invalid. Please reconnect." };
+      }
+      return { pushed: false, error: `GitHub responded ${resp.status}` };
+    }
+    return { pushed: true };
+  } catch (e) {
+    console.warn("[GitHub] Failed to persist sold sets:", e);
+    return { pushed: false, error: e.message || String(e) };
+  }
+}
+
 async function removeSoldSetFromGitHub(record, token) {
   if (!token || !GH_OWNER || !GH_REPO) return;
   const fileData = await fetchSoldSetsFile(token);
@@ -621,6 +686,22 @@ export default function App() {
             const merged = [...normalizedGithub, ...pendingLocal];
             setSoldSets(merged);
             try { localStorage.setItem("sold_sets", JSON.stringify(merged)); } catch (_) {}
+
+            // One-time backfill: migrate legacy local-only sold history to GitHub
+            // so it appears on all devices after deploy.
+            const token = localStorage.getItem(GH_TOKEN_KEY) || "";
+            if (token && pendingLocal.length > 0) {
+              persistSoldSetsToGitHub(pendingLocal, token).then((result) => {
+                if (result?.unauthorized) {
+                  localStorage.removeItem(GH_TOKEN_KEY);
+                  setGhToken("");
+                  setShowTokenModal(true);
+                  setError("GitHub token expired — please reconnect.");
+                } else if (!result?.pushed) {
+                  setError(result?.error || "Failed to sync sold history to GitHub.");
+                }
+              });
+            }
           })
           .catch(() => {
             try {
