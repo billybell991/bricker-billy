@@ -85,13 +85,12 @@ export function ManualEntryModal({ onClose, onAdd, hasGhToken, existingSets = []
       } else if (!hasGhToken) {
         setStatus({
           kind: "warn",
-          msg: "Saved locally. Connect a GitHub token to sync BrickLink prices across devices.",
+          msg: "Connect a GitHub token first. Nothing was saved.",
         });
-        setTimeout(() => onClose(), 1800);
       } else {
         setStatus({
           kind: "err",
-          msg: result?.error || "Saved locally, but GitHub push failed. Check token scopes.",
+          msg: result?.error || "GitHub push failed. Check token scopes.",
         });
       }
     } catch (err) {
@@ -220,7 +219,7 @@ export function ManualEntryModal({ onClose, onAdd, hasGhToken, existingSets = []
 
           {!hasGhToken && (
             <p className="text-xs text-amber-300/90 bg-amber-500/10 border border-amber-500/30 rounded-lg p-2.5">
-              No GitHub token connected — set will save locally only. Connect a token to sync across devices and pull BrickLink prices.
+              No GitHub token connected — connect one before adding sets so inventory stays synced across devices.
             </p>
           )}
 

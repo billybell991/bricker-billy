@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
-import { RefreshCw, Search, SlidersHorizontal, LayoutGrid, List, Plus, Trash2, Github, LogOut } from "lucide-react";
+import { RefreshCw, Search, SlidersHorizontal, LayoutGrid, List, Plus, Trash2, Github, LogOut, Download } from "lucide-react";
 import { SetCard } from "./components/SetCard.jsx";
 import { AdModal } from "./components/AdModal.jsx";
 import { ChartSection } from "./components/Charts.jsx";
@@ -11,7 +11,6 @@ import { GitHubTokenModal } from "./components/GitHubTokenModal.jsx";
 import { SoldModal } from "./components/SoldModal.jsx";
 import { SoldSetsModal } from "./components/SoldSetsModal.jsx";
 
-const MANUAL_ENTRIES_KEY = "manual_entries";
 const GH_TOKEN_KEY = "gh_access_token";
 
 const SIGNAL_ORDER = { "Strong Sell": 0, "Consider": 1, "Hold": 2, "No Data": 3 };
@@ -76,6 +75,43 @@ async function fetchSoldSetsFile(token) {
 
 function toBase64(str) {
   return btoa(new TextEncoder().encode(str).reduce((data, byte) => data + String.fromCharCode(byte), ""));
+}
+
+function normalizeManualEntry(manual) {
+  const setId = manual.set_id || manual.set_number || "";
+  const entryId = manual.entry_id ? String(manual.entry_id) : "";
+  return {
+    id: entryId ? `${entryId}_manual` : `manual_${setId}`,
+    set_id: setId,
+    set_number: manual.set_number || setId,
+    name: manual.name || `Set ${manual.set_number || setId}`,
+    theme: manual.theme || "",
+    cost: Number(manual.cost || 0),
+    unit_cost: Number(manual.unit_cost ?? manual.cost ?? 0),
+    qty_owned: Number(manual.qty_owned || 1),
+    current_value: 0,
+    profit: 0,
+    roi: 0,
+    signal: "No Data",
+    qty_sold_6m: 0,
+    bl_min_price: 0,
+    bl_max_price: 0,
+    selling_on: manual.selling_on || "",
+    notes: manual.notes || "",
+    image_url: `images/${String(setId).split("-")[0]}.png`,
+    ad_copy: "",
+    last_updated: new Date().toISOString(),
+    isManual: true,
+  };
+}
+
+function toCsvCell(value) {
+  if (value === null || value === undefined) return "";
+  const str = String(value);
+  if (str.includes(",") || str.includes("\"") || str.includes("\n")) {
+    return `"${str.replace(/\"/g, '""')}"`;
+  }
+  return str;
 }
 
 async function persistManualSetToGitHub(entry, token) {
@@ -579,7 +615,6 @@ export default function App() {
   const [selectedSet, setSelectedSet] = useState(null); // for ad modal
   const [signalModalSignal, setSignalModalSignal] = useState(null); // for signal list modal
   const [listingOverrides, setListingOverrides] = useState({}); // local override for listing status
-  const [manualEntries, setManualEntries] = useState([]); // manually added sets
   const [showManualModal, setShowManualModal] = useState(false);
   const [deletedIds, setDeletedIds] = useState(() => {
     try {
@@ -607,63 +642,30 @@ export default function App() {
         return r.json();
       })
       .then((d) => {
-        setData(d);
         if (!isRefresh) {
           // Pre-populate listing overrides from saved state (localStorage)
           try {
             const saved = JSON.parse(localStorage.getItem("listing_overrides") || "{}");
             setListingOverrides(saved);
           } catch (_) {}
-
-          // Load manual entries: prefer the deployed manual_sets.json (cross-device),
-          // merged with any localStorage-only entries pending their next deploy.
-          fetch(`./manual_sets.json?t=${Date.now()}`)
-            .then((r) => r.ok ? r.json() : [])
-            .then((githubSets) => {
-              const entries = githubSets.map((s) => ({
-                id: s.entry_id || `manual_${s.set_id}`,
-                set_id: s.set_id,
-                set_number: s.set_number,
-                name: s.name,
-                theme: s.theme || "",
-                cost: s.cost || 0,
-                unit_cost: s.unit_cost ?? s.cost ?? 0,
-                qty_owned: s.qty_owned || 1,
-                current_value: 0,
-                profit: 0,
-                roi: 0,
-                signal: "No Data",
-                qty_sold_6m: 0,
-                bl_min_price: 0,
-                bl_max_price: 0,
-                selling_on: s.selling_on || "",
-                notes: s.notes || "",
-                image_url: `images/${s.set_id.split("-")[0]}.png`,
-                ad_copy: "",
-                last_updated: new Date().toISOString(),
-                isManual: true,
-              }));
-              // Also include any localStorage entries not yet committed (e.g. added moments ago)
-              const githubSetIds = new Set(githubSets.map((s) => s.set_id));
-              let pendingLocal = [];
-              try {
-                const local = JSON.parse(localStorage.getItem(MANUAL_ENTRIES_KEY) || "[]");
-                pendingLocal = local.filter((e) => !githubSetIds.has(e.set_id));
-              } catch (_) {}
-              const merged = [...entries, ...pendingLocal];
-              setManualEntries(merged);
-              try {
-                localStorage.setItem(MANUAL_ENTRIES_KEY, JSON.stringify(merged));
-              } catch (_) {}
-            })
-            .catch(() => {
-              // Fall back to localStorage only
-              try {
-                const saved = JSON.parse(localStorage.getItem(MANUAL_ENTRIES_KEY) || "[]");
-                setManualEntries(saved);
-              } catch (e) { console.error("Failed to load manual entries:", e); }
-            });
         }
+
+        // Load manual sets from GitHub and treat them as part of the same
+        // inventory array as spreadsheet-imported sets.
+        fetch(`./manual_sets.json?t=${Date.now()}`)
+          .then((r) => (r.ok ? r.json() : []))
+          .then((githubManual) => {
+            const normalized = (githubManual || []).map(normalizeManualEntry);
+            const knownIds = new Set((d.sets || []).map((s) => s.id));
+            const missing = normalized.filter((s) => !knownIds.has(s.id));
+            setData({
+              ...d,
+              sets: [...(d.sets || []), ...missing],
+            });
+          })
+          .catch(() => {
+            setData(d);
+          });
 
         // Load sold entries from sold_sets.json and merge with local entries.
         // Local entries are kept so a just-logged sale appears immediately even
@@ -748,12 +750,21 @@ export default function App() {
   };
 
   const commitManualEntriesToState = (entries) => {
-    setManualEntries((prev) => {
-      const next = [...prev, ...entries];
-      try {
-        localStorage.setItem(MANUAL_ENTRIES_KEY, JSON.stringify(next));
-      } catch (e) { console.error("Failed to save manual entries to localStorage:", e); }
-      return next;
+    if (!entries || entries.length === 0) return;
+    setData((prev) => {
+      if (!prev) return prev;
+      const normalizedEntries = entries.map((e) => ({
+        ...e,
+        id: e.id.endsWith("_manual") ? e.id : `${e.id}_manual`,
+        isManual: true,
+      }));
+      const knownIds = new Set((prev.sets || []).map((s) => s.id));
+      const missing = normalizedEntries.filter((s) => !knownIds.has(s.id));
+      if (missing.length === 0) return prev;
+      return {
+        ...prev,
+        sets: [...(prev.sets || []), ...missing],
+      };
     });
   };
 
@@ -761,9 +772,8 @@ export default function App() {
     const list = Array.isArray(entries) ? entries : [entries];
     if (list.length === 0) return { pushed: true };
 
-    // If no token configured, save locally only (no network).
+    // Keep one source of truth: GitHub-backed manual_sets.json.
     if (!ghToken) {
-      commitManualEntriesToState(list);
       return { pushed: false, error: "No GitHub token configured." };
     }
 
@@ -782,14 +792,15 @@ export default function App() {
   };
 
   const handleDeleteManual = (id) => {
-    setManualEntries((prev) => {
-      const removed = prev.find((e) => e.id === id);
-      const next = prev.filter((e) => e.id !== id);
-      try {
-        localStorage.setItem(MANUAL_ENTRIES_KEY, JSON.stringify(next));
-      } catch (e) { console.error("Failed to save manual entries to localStorage:", e); }
-      if (removed) removeManualSetFromGitHub(removed, ghToken);
-      return next;
+    setData((prev) => {
+      if (!prev) return prev;
+      const removed = (prev.sets || []).find((e) => e.id === id);
+      const nextSets = (prev.sets || []).filter((e) => e.id !== id);
+      if (removed && ghToken) {
+        const entryId = removed.id.endsWith("_manual") ? removed.id.slice(0, -7) : removed.id;
+        removeManualSetFromGitHub({ ...removed, id: entryId }, ghToken);
+      }
+      return { ...prev, sets: nextSets };
     });
   };
 
@@ -870,20 +881,11 @@ export default function App() {
     return new Set(soldSets.map((s) => s.id));
   }, [soldSets]);
 
-  // Merge listing overrides with data, then append manual entries that haven't
-  // been picked up by the sync yet (avoid duplicates once the sync runs).
+  // Inventory view always comes from one unified set list.
   const sets = useMemo(() => {
     if (!data?.sets) return [];
-    const synced = data.sets
+    const unified = data.sets
       .filter((s) => !deletedIds.has(s.id) && !soldSetIds.has(s.id))
-      .map((s) => ({
-        ...s,
-        selling_on: listingOverrides[s.id] !== undefined ? listingOverrides[s.id] : s.selling_on,
-      }));
-    const syncedSetIds = new Set(data.sets.map((s) => s.set_id));
-    // Only show local-only manual entries that the sync hasn't processed yet
-    const manual = manualEntries
-      .filter((s) => !syncedSetIds.has(s.set_id) && !deletedIds.has(s.id) && !soldSetIds.has(s.id))
       .map((s) => ({
         ...s,
         selling_on: listingOverrides[s.id] !== undefined ? listingOverrides[s.id] : s.selling_on,
@@ -909,8 +911,118 @@ export default function App() {
 
     // Filter again after expansion so individually-deleted virtual copies
     // (tracked in deletedIds by their virtual id) stay hidden.
-    return [...synced, ...manual].flatMap(expand).filter((s) => !deletedIds.has(s.id) && !soldSetIds.has(s.id));
-  }, [data, listingOverrides, manualEntries, deletedIds, soldSetIds]);
+    return unified.flatMap(expand).filter((s) => !deletedIds.has(s.id) && !soldSetIds.has(s.id));
+  }, [data, listingOverrides, deletedIds, soldSetIds]);
+
+  const summary = useMemo(() => {
+    const total_cost = sets.reduce((sum, s) => sum + (Number(s.cost) || 0), 0);
+    const total_market_value = sets.reduce((sum, s) => sum + (Number(s.current_value) || 0), 0);
+    const total_profit_potential = sets.reduce((sum, s) => sum + Math.max(Number(s.profit) || 0, 0), 0);
+    return {
+      total_sets: sets.length,
+      total_cost,
+      total_market_value,
+      total_profit_potential,
+      strong_sell_count: sets.filter((s) => s.signal === "Strong Sell").length,
+      consider_count: sets.filter((s) => s.signal === "Consider").length,
+      hold_count: sets.filter((s) => s.signal === "Hold").length,
+    };
+  }, [sets]);
+
+  const handleExportCsv = useCallback(() => {
+    const headers = [
+      "record_type",
+      "id",
+      "set_id",
+      "set_number",
+      "name",
+      "theme",
+      "cost_cad",
+      "market_value_cad",
+      "profit_cad",
+      "roi_percent",
+      "signal",
+      "listed_on",
+      "qty_owned",
+      "unit_cost_cad",
+      "qty_sold_6m",
+      "bl_min_price_cad",
+      "bl_max_price_cad",
+      "notes",
+      "sold_for_cad",
+      "sold_on",
+      "sold_date",
+      "last_updated",
+      "dashboard_last_synced",
+    ];
+
+    const activeRows = sets.map((s) => ([
+      "active",
+      s.id,
+      s.set_id,
+      s.set_number,
+      s.name,
+      s.theme,
+      s.cost,
+      s.current_value,
+      s.profit,
+      s.roi,
+      s.signal,
+      s.selling_on || "",
+      s.qty_owned || 1,
+      s.unit_cost ?? s.cost,
+      s.qty_sold_6m ?? "",
+      s.bl_min_price ?? "",
+      s.bl_max_price ?? "",
+      s.notes || "",
+      "",
+      "",
+      "",
+      s.last_updated || "",
+      data?.last_synced || "",
+    ]));
+
+    const soldRows = soldSets.map((s) => ([
+      "sold",
+      s.id,
+      s.set_id,
+      s.set_number,
+      s.name,
+      s.theme,
+      s.cost,
+      "",
+      "",
+      "",
+      "",
+      "",
+      1,
+      s.cost,
+      "",
+      "",
+      "",
+      "",
+      s.sold_for,
+      s.sold_on,
+      s.sold_date,
+      "",
+      data?.last_synced || "",
+    ]));
+
+    const lines = [headers, ...activeRows, ...soldRows]
+      .map((row) => row.map(toCsvCell).join(","))
+      .join("\n");
+
+    const blob = new Blob([lines], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    const stamp = new Date().toISOString().slice(0, 10);
+    a.href = url;
+    a.download = `bricker-billy-export-${stamp}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }, [sets, soldSets, data?.last_synced]);
 
   // Filter + sort
   const filteredSets = useMemo(() => {
@@ -1058,6 +1170,15 @@ export default function App() {
               {syncing ? "Syncing\u2026" : "Sync"}
             </button>
 
+            <button
+              onClick={handleExportCsv}
+              className="flex items-center gap-1.5 bg-lego-card hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white text-xs font-bold px-3 py-2 rounded-xl transition-colors"
+              title="Download active + sold inventory as CSV"
+            >
+              <Download size={13} />
+              Export
+            </button>
+
             {/* GitHub token connect / disconnect */}
             {ghToken ? (
               <button
@@ -1098,7 +1219,7 @@ export default function App() {
 
       <main className="max-w-screen-xl mx-auto px-6 py-8">
         {/* ── Summary Stats ── */}
-        <SummaryBar summary={data.summary} onSignalClick={setSignalModalSignal} />
+        <SummaryBar summary={summary} onSignalClick={setSignalModalSignal} />
 
         {/* ── Charts ── */}
         <ChartSection sets={sets} onSliceClick={setSignalModalSignal} />
