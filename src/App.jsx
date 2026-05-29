@@ -36,6 +36,8 @@ const GH_OWNER = import.meta.env.VITE_REPO_OWNER;
 const GH_REPO  = import.meta.env.VITE_REPO_NAME;
 const MANUAL_SETS_FILE = "public/manual_sets.json";
 const SOLD_SETS_FILE = "public/sold_sets.json";
+const DELETED_IDS_FILE = "public/deleted_ids.json";
+const LISTING_OVERRIDES_FILE = "public/listing_overrides.json";
 
 async function fetchManualSetsFile(token) {
   if (!token || !GH_OWNER || !GH_REPO) return null;
@@ -430,6 +432,116 @@ async function removeSoldSetFromGitHub(record, token) {
   }
 }
 
+async function fetchDeletedIdsFile(token) {
+  if (!token || !GH_OWNER || !GH_REPO) return null;
+  try {
+    const resp = await fetch(
+      `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${DELETED_IDS_FILE}`,
+      { headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" } }
+    );
+    if (resp.status === 401) return { unauthorized: true };
+    if (resp.status === 404) return { sha: null, deletedIds: [] };
+    if (!resp.ok) return { sha: null, deletedIds: [] };
+    const file = await resp.json();
+    const deletedIds = JSON.parse(atob(file.content.replace(/\n/g, "")));
+    return { sha: file.sha, deletedIds };
+  } catch {
+    return null;
+  }
+}
+
+async function persistDeletedIdsToGitHub(deletedIds, token) {
+  if (!token || !GH_OWNER || !GH_REPO) return { pushed: false, error: "No GitHub token configured." };
+  const fileData = await fetchDeletedIdsFile(token);
+  if (!fileData) return { pushed: false, error: "Could not read deleted_ids.json from GitHub." };
+  if (fileData.unauthorized) return { pushed: false, unauthorized: true, error: "GitHub token expired or invalid. Please reconnect." };
+
+  const content = toBase64(JSON.stringify(deletedIds, null, 2) + "\n");
+  try {
+    const resp = await fetch(
+      `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${DELETED_IDS_FILE}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github.v3+json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: `chore: update deleted set IDs`,
+          content,
+          ...(fileData.sha ? { sha: fileData.sha } : {}),
+        }),
+      }
+    );
+    if (!resp.ok) {
+      const body = await resp.text().catch(() => "");
+      console.warn("[GitHub] deleted_ids push failed", resp.status, body);
+      if (resp.status === 401) return { pushed: false, unauthorized: true, error: "GitHub token expired or invalid. Please reconnect." };
+      return { pushed: false, error: `GitHub responded ${resp.status}` };
+    }
+    return { pushed: true };
+  } catch (e) {
+    console.warn("[GitHub] Failed to persist deleted_ids:", e);
+    return { pushed: false, error: e.message || String(e) };
+  }
+}
+
+async function fetchListingOverridesFile(token) {
+  if (!token || !GH_OWNER || !GH_REPO) return null;
+  try {
+    const resp = await fetch(
+      `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${LISTING_OVERRIDES_FILE}`,
+      { headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" } }
+    );
+    if (resp.status === 401) return { unauthorized: true };
+    if (resp.status === 404) return { sha: null, overrides: {} };
+    if (!resp.ok) return { sha: null, overrides: {} };
+    const file = await resp.json();
+    const overrides = JSON.parse(atob(file.content.replace(/\n/g, "")));
+    return { sha: file.sha, overrides };
+  } catch {
+    return null;
+  }
+}
+
+async function persistListingOverridesToGitHub(overrides, token) {
+  if (!token || !GH_OWNER || !GH_REPO) return { pushed: false, error: "No GitHub token configured." };
+  const fileData = await fetchListingOverridesFile(token);
+  if (!fileData) return { pushed: false, error: "Could not read listing_overrides.json from GitHub." };
+  if (fileData.unauthorized) return { pushed: false, unauthorized: true, error: "GitHub token expired or invalid. Please reconnect." };
+
+  const content = toBase64(JSON.stringify(overrides, null, 2) + "\n");
+  try {
+    const resp = await fetch(
+      `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${LISTING_OVERRIDES_FILE}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github.v3+json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: `chore: update listing overrides`,
+          content,
+          ...(fileData.sha ? { sha: fileData.sha } : {}),
+        }),
+      }
+    );
+    if (!resp.ok) {
+      const body = await resp.text().catch(() => "");
+      console.warn("[GitHub] listing_overrides push failed", resp.status, body);
+      if (resp.status === 401) return { pushed: false, unauthorized: true, error: "GitHub token expired or invalid. Please reconnect." };
+      return { pushed: false, error: `GitHub responded ${resp.status}` };
+    }
+    return { pushed: true };
+  } catch (e) {
+    console.warn("[GitHub] Failed to persist listing_overrides:", e);
+    return { pushed: false, error: e.message || String(e) };
+  }
+}
+
 // ── Manual workflow trigger ───────────────────────────────────────────────────
 const SYNC_WORKFLOW_FILE = "sync.yml";
 
@@ -614,15 +726,9 @@ export default function App() {
   const [viewMode, setViewMode] = useState("grid"); // grid | list
   const [selectedSet, setSelectedSet] = useState(null); // for ad modal
   const [signalModalSignal, setSignalModalSignal] = useState(null); // for signal list modal
-  const [listingOverrides, setListingOverrides] = useState({}); // local override for listing status
+  const [listingOverrides, setListingOverrides] = useState({});
   const [showManualModal, setShowManualModal] = useState(false);
-  const [deletedIds, setDeletedIds] = useState(() => {
-    try {
-      return new Set(JSON.parse(localStorage.getItem("deleted_ids") || "[]"));
-    } catch (_) {
-      return new Set();
-    }
-  });
+  const [deletedIds, setDeletedIds] = useState(new Set());
   const [soldSets, setSoldSets] = useState(() => {
     try {
       return JSON.parse(localStorage.getItem("sold_sets") || "[]");
@@ -712,6 +818,76 @@ export default function App() {
             } catch (_) {}
           });
 
+        // Load deleted_ids.json from GitHub and merge with any local entries
+        fetch(`./deleted_ids.json?t=${Date.now()}`)
+          .then((r) => (r.ok ? r.json() : []))
+          .then((githubDeleted) => {
+            let local = [];
+            try {
+              local = JSON.parse(localStorage.getItem("deleted_ids") || "[]");
+            } catch (_) {}
+            const seen = new Set(githubDeleted || []);
+            const pendingLocal = (local || []).filter((id) => !seen.has(id));
+            const merged = [...(githubDeleted || []), ...pendingLocal];
+            setDeletedIds(new Set(merged));
+
+            // One-time backfill: migrate legacy local-only deleted IDs to GitHub
+            const token = localStorage.getItem(GH_TOKEN_KEY) || "";
+            if (token && pendingLocal.length > 0) {
+              persistDeletedIdsToGitHub(merged, token).then((result) => {
+                if (result?.unauthorized) {
+                  localStorage.removeItem(GH_TOKEN_KEY);
+                  setGhToken("");
+                  setShowTokenModal(true);
+                } else if (!result?.pushed) {
+                  console.warn("Failed to sync deleted IDs to GitHub:", result?.error);
+                }
+              });
+            }
+          })
+          .catch(() => {
+            try {
+              const saved = JSON.parse(localStorage.getItem("deleted_ids") || "[]");
+              setDeletedIds(new Set(saved));
+            } catch (_) {
+              setDeletedIds(new Set());
+            }
+          });
+
+        // Load listing_overrides.json from GitHub and merge with any local entries
+        fetch(`./listing_overrides.json?t=${Date.now()}`)
+          .then((r) => (r.ok ? r.json() : {}))
+          .then((githubOverrides) => {
+            let local = {};
+            try {
+              local = JSON.parse(localStorage.getItem("listing_overrides") || "{}");
+            } catch (_) {}
+            const merged = { ...(githubOverrides || {}), ...local };
+            setListingOverrides(merged);
+
+            // One-time backfill: migrate legacy local-only listing overrides to GitHub
+            const token = localStorage.getItem(GH_TOKEN_KEY) || "";
+            if (token && Object.keys(local).length > 0 && JSON.stringify(local) !== JSON.stringify(githubOverrides || {})) {
+              persistListingOverridesToGitHub(merged, token).then((result) => {
+                if (result?.unauthorized) {
+                  localStorage.removeItem(GH_TOKEN_KEY);
+                  setGhToken("");
+                  setShowTokenModal(true);
+                } else if (!result?.pushed) {
+                  console.warn("Failed to sync listing overrides to GitHub:", result?.error);
+                }
+              });
+            }
+          })
+          .catch(() => {
+            try {
+              const saved = JSON.parse(localStorage.getItem("listing_overrides") || "{}");
+              setListingOverrides(saved);
+            } catch (_) {
+              setListingOverrides({});
+            }
+          });
+
         setError(null);
         setLoading(false);
         setSyncing(false);
@@ -732,9 +908,17 @@ export default function App() {
     setDeletedIds((prev) => {
       const next = new Set(prev);
       next.add(setId);
-      try {
-        localStorage.setItem("deleted_ids", JSON.stringify([...next]));
-      } catch (_) {}
+      // Persist to GitHub (async, no await to keep UI responsive)
+      const token = ghToken || localStorage.getItem(GH_TOKEN_KEY) || "";
+      if (token) {
+        persistDeletedIdsToGitHub([...next], token).then((result) => {
+          if (result?.unauthorized) {
+            localStorage.removeItem(GH_TOKEN_KEY);
+            setGhToken("");
+            setShowTokenModal(true);
+          }
+        });
+      }
       return next;
     });
   };
@@ -742,9 +926,17 @@ export default function App() {
   const handleListingChange = (setId, value) => {
     setListingOverrides((prev) => {
       const next = { ...prev, [setId]: value };
-      try {
-        localStorage.setItem("listing_overrides", JSON.stringify(next));
-      } catch (_) {}
+      // Persist to GitHub (async, no await to keep UI responsive)
+      const token = ghToken || localStorage.getItem(GH_TOKEN_KEY) || "";
+      if (token) {
+        persistListingOverridesToGitHub(next, token).then((result) => {
+          if (result?.unauthorized) {
+            localStorage.removeItem(GH_TOKEN_KEY);
+            setGhToken("");
+            setShowTokenModal(true);
+          }
+        });
+      }
       return next;
     });
   };
@@ -854,7 +1046,17 @@ export default function App() {
     setDeletedIds((prev) => {
       const next = new Set(prev);
       next.delete(record.id);
-      try { localStorage.setItem("deleted_ids", JSON.stringify([...next])); } catch (_) {}
+      // Persist to GitHub (async, no await to keep UI responsive)
+      const token = ghToken || localStorage.getItem(GH_TOKEN_KEY) || "";
+      if (token) {
+        persistDeletedIdsToGitHub([...next], token).then((result) => {
+          if (result?.unauthorized) {
+            localStorage.removeItem(GH_TOKEN_KEY);
+            setGhToken("");
+            setShowTokenModal(true);
+          }
+        });
+      }
       return next;
     });
 
