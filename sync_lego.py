@@ -161,7 +161,7 @@ def get_bricklink_auth() -> OAuth1:
 
 def fetch_bl_price(set_id: str, auth: OAuth1) -> dict | None:
     """
-    Fetch 6-month average sold price for a LEGO set from BrickLink.
+    Fetch the BrickLink "Last 6 Months Sales" average sold price for a LEGO set.
     Returns a dict with avg_price and qty_sold, or None on failure.
     """
     url = (
@@ -169,7 +169,6 @@ def fetch_bl_price(set_id: str, auth: OAuth1) -> dict | None:
         f"?guide_type={BL_GUIDE_TYPE}"
         f"&new_or_used={BL_CONDITION}"
         f"&currency_code={BL_CURRENCY}"
-        f"&region=north_america"
     )
     try:
         resp = requests.get(url, auth=auth, timeout=15)
