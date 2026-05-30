@@ -4,7 +4,18 @@ on:
   schedule:
     # Runs every day at 8:00 AM UTC (4 AM EST / 3 AM CST)
     - cron: "0 8 * * *"
+  push:
+    branches: [main]
+    paths:
+      - "public/manual_sets.json"
   workflow_dispatch: # Allow manual trigger from GitHub Actions UI
+
+# Coalesce rapid back-to-back edits to manual_sets.json into a single sync.
+# If another sync is already in flight when a new push lands, cancel the
+# in-progress run — the newer one will pick up all pending changes.
+concurrency:
+  group: daily-lego-sync
+  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -35,7 +46,8 @@ jobs:
             google-auth \
             requests \
             requests-oauthlib \
-            google-generativeai
+            google-generativeai \
+            beautifulsoup4
 
       - name: Run LEGO sync script
         env:
@@ -60,12 +72,28 @@ jobs:
 
       - name: Commit and push updated data.json
         if: steps.check_changes.outputs.changed == 'true'
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: auto-sync LEGO data [skip ci]"
-          file_pattern: "public/data.json public/manual_sets.json public/images/**"
-          commit_user_name: "LEGO Sync Bot"
-          commit_user_email: "sync-bot@users.noreply.github.com"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "LEGO Sync Bot"
+          git config user.email "sync-bot@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          git commit -m "chore: auto-sync LEGO data [skip ci]"
+
+          # Sync runs can take 10+ minutes. If anyone pushed to main while the
+          # script was running (e.g. dashboard adds/removes), our push will
+          # fail with non-fast-forward. Rebase and retry a few times.
+          for attempt in 1 2 3 4 5; do
+            if git push origin main; then
+              echo "Push succeeded on attempt $attempt"
+              exit 0
+            fi
+            echo "Push failed on attempt $attempt, rebasing onto origin/main and retrying..."
+            git fetch origin main
+            git rebase origin/main || { git rebase --abort; exit 1; }
+          done
+          echo "Push still failing after 5 attempts"
+          exit 1
 
       - name: Trigger deploy after sync
         if: steps.check_changes.outputs.changed == 'true'

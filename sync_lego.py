@@ -24,6 +24,7 @@ from datetime import datetime, timezone
 import gspread
 import google.generativeai as genai
 import requests
+from bs4 import BeautifulSoup
 from google.oauth2.service_account import Credentials
 from requests_oauthlib import OAuth1
 
@@ -103,10 +104,7 @@ def download_set_image(set_id: str) -> str:
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
             "AppleWebKit/537.36 (KHTML, like Gecko) "
             "Chrome/124.0.0.0 Safari/537.36"
-        ),
-        # BrickLink CDN uses hotlink protection — sending their own domain as Referer
-        # causes the real image to be served instead of the 1×1 placeholder GIF.
-        "Referer": "https://www.bricklink.com/",
+        )
     }
     for ext in IMAGE_EXTENSIONS:
         url = f"https://img.bricklink.com/ItemImage/SN/0/{numeric}.{ext}"
@@ -120,19 +118,7 @@ def download_set_image(set_id: str) -> str:
         except (requests.RequestException, OSError) as exc:
             print(f"    [img] Failed to download {url}: {exc}")
 
-    # Fallback: Rebrickable CDN (no hotlink protection)
-    rb_url = f"https://cdn.rebrickable.com/media/sets/{numeric}-1.jpg"
-    local_path = os.path.join(IMAGES_DIR, f"{numeric}.jpg")
-    try:
-        resp = requests.get(rb_url, headers={"User-Agent": headers["User-Agent"]}, timeout=15)
-        if resp.status_code == 200 and len(resp.content) > MIN_IMAGE_SIZE_BYTES:
-            with open(local_path, "wb") as fh:
-                fh.write(resp.content)
-            return f"images/{numeric}.jpg"
-    except (requests.RequestException, OSError) as exc:
-        print(f"    [img] Failed to download {rb_url}: {exc}")
-
-    # Both sources unavailable — keep the external URL as last resort
+    # Both formats unavailable — keep the external URL as last resort
     print(f"    [img] Could not download image for {set_id}, using BrickLink URL")
     return f"https://img.bricklink.com/ItemImage/SN/0/{numeric}.png"
 
@@ -203,38 +189,108 @@ def fetch_bl_price(set_id: str, auth: OAuth1) -> dict | None:
         return None
 
 
-def fetch_bl_catalog_info(set_id: str, auth: OAuth1) -> dict | None:
-    """
-    Fetch catalog details (name, theme) for a LEGO set from BrickLink.
-    Returns a dict with name and theme, or None on failure.
-    """
-    # Get item details
-    item_url = f"https://api.bricklink.com/api/store/v1/items/SET/{set_id}"
+# ── BrickEconomy fallback (web scrape) ────────────────────────────────────────
+
+BE_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/124.0.0.0 Safari/537.36"
+    ),
+    "Accept-Language": "en-US,en;q=0.9",
+}
+
+
+def _be_parse_currency(text: str) -> float:
+    if not text:
+        return 0.0
+    cleaned = re.sub(r"[^\d.]", "", text)
     try:
-        resp = requests.get(item_url, auth=auth, timeout=15)
-        resp.raise_for_status()
-        data = resp.json()
-        if data.get("meta", {}).get("code") != 200:
+        return float(cleaned) if cleaned else 0.0
+    except ValueError:
+        return 0.0
+
+
+def fetch_brickeconomy(set_id: str) -> dict | None:
+    """
+    Scrape BrickEconomy for a set's name, theme, retail price and current
+    market value (CAD). Returns None if the set page can't be located.
+    Used as a fallback when BrickLink has no data (e.g. brand-new sets) and
+    to enrich manually-added sets with name/theme.
+    """
+    numeric = set_id.split("-")[0]
+    try:
+        # 1. Search to discover the canonical set URL (which includes a slug)
+        search_url = f"https://www.brickeconomy.com/search?query={numeric}"
+        r = requests.get(search_url, headers=BE_HEADERS, timeout=15)
+        if r.status_code != 200:
+            print(f"  [BE] search HTTP {r.status_code} for {set_id}")
             return None
-        item = data["data"]
-        name = item.get("name", "").strip()
-        category_id = item.get("category_id")
+        soup = BeautifulSoup(r.text, "html.parser")
+        link = None
+        for a in soup.select("a[href^='/set/']"):
+            href = a.get("href", "")
+            # match /set/10307-1/lego-...
+            m = re.match(rf"^/set/{re.escape(set_id)}(?:/|$)", href)
+            if m:
+                link = href
+                break
+        if not link:
+            print(f"  [BE] No matching set link for {set_id}")
+            return None
 
-        # Get category (theme) name
+        # 2. Fetch the set detail page
+        detail_url = f"https://www.brickeconomy.com{link}"
+        r2 = requests.get(detail_url, headers=BE_HEADERS, timeout=15)
+        if r2.status_code != 200:
+            print(f"  [BE] detail HTTP {r2.status_code} for {set_id}")
+            return None
+        page = BeautifulSoup(r2.text, "html.parser")
+
+        # 3. Pull name + theme + retail + market price
+        name = ""
         theme = ""
-        if category_id:
-            time.sleep(SLEEP_BETWEEN_CALLS)
-            cat_resp = requests.get(
-                f"https://api.bricklink.com/api/store/v1/categories/{category_id}",
-                auth=auth, timeout=15
-            )
-            cat_data = cat_resp.json()
-            if cat_data.get("meta", {}).get("code") == 200:
-                theme = cat_data["data"].get("category_name", "").strip()
+        retail = 0.0
+        market = 0.0
 
-        return {"name": name, "theme": theme}
+        # Set Details rows: <div>Name</div><div>Eiffel Tower</div> style
+        for row in page.select("div.row"):
+            label_el = row.select_one("div.col-xs-5, div.col-xs-4")
+            value_el = row.select_one("div.col-xs-7, div.col-xs-8")
+            if not label_el or not value_el:
+                continue
+            label = label_el.get_text(strip=True).lower()
+            value = value_el.get_text(" ", strip=True)
+            if label == "name" and not name:
+                name = value
+            elif label == "theme" and not theme:
+                theme = value.split("/")[0].strip() or value
+            elif "retail price" in label and not retail:
+                retail = _be_parse_currency(value)
+            elif label in ("market price", "value") and not market:
+                market = _be_parse_currency(value)
+
+        # Fallback: title tag like "10307 LEGO Landmarks Eiffel Tower"
+        if not name:
+            title = page.find("h1")
+            if title:
+                t = title.get_text(" ", strip=True)
+                t = re.sub(r"^\d+\s+LEGO\s+", "", t)
+                # drop leading subtheme word(s) heuristically
+                name = t
+
+        if not (name or retail or market):
+            return None
+
+        return {
+            "name": name,
+            "theme": theme,
+            "retail_price": retail,
+            "market_price": market,
+            "source_url": detail_url,
+        }
     except Exception as exc:
-        print(f"  [BL catalog] Error fetching {set_id}: {exc}")
+        print(f"  [BE] Error scraping {set_id}: {exc}")
         return None
 
 
@@ -242,20 +298,38 @@ def fetch_bl_catalog_info(set_id: str, auth: OAuth1) -> dict | None:
 
 def generate_ad_copy(set_name: str, set_id: str, current_value: float, cost: float) -> str:
     """Call Gemini to generate a Facebook Marketplace ad."""
-    profit = current_value - cost
     prompt = (
-        f"Act as a pro LEGO reseller. Write a Facebook Marketplace listing ad for the LEGO set "
+        f"Write a Facebook Marketplace listing description for the LEGO set "
         f'"{set_name}" (Set #{set_id.split("-")[0]}). '
-        f"Mention it is a rare collector's item currently valued at CAD ${current_value:.2f}. "
-        f"Keep it enthusiastic, conversational, and under 200 words. "
-        f"Include relevant emojis throughout and finish with 3-5 relevant hashtags. "
-        f"Do NOT include a price in the ad body — the price will be set separately on Marketplace."
+        f"Use a normal, straightforward, conversational tone and keep it under 200 words. "
+        f"Focus on what the set is and why someone may enjoy building or displaying it. "
+        f"Do not use hype, exaggerated claims, emojis, or hashtags. "
+        f"Do NOT mention price, value, worth, investment potential, resale value, ROI, or profit in any form. "
+        f"Do NOT include currency symbols or dollar amounts."
     )
     try:
         genai.configure(api_key=os.environ["GEMINI_API_KEY"])
         model = genai.GenerativeModel("gemini-2.0-flash")
         response = model.generate_content(prompt)
-        return response.text.strip()
+        text = response.text.strip()
+        valuation_pattern = re.compile(
+            r"\b(price|priced|pricing|value|valued|worth|investment|invest|resale|profit|roi|return on investment|msrp|retail|market price)\b|\$|cad|usd|\d+\s*(dollars?|bucks?)\b",
+            re.IGNORECASE,
+        )
+        lines = [line.strip() for line in text.replace("\r", "").split("\n") if line.strip()]
+        if not lines:
+            return ""
+
+        title = lines[0]
+        body = " ".join(lines[1:])
+        sentences = re.findall(r"[^.!?]+[.!?]?", body)
+        cleaned_body = " ".join(
+            sentence.strip()
+            for sentence in sentences
+            if sentence.strip() and not valuation_pattern.search(sentence)
+        )
+        cleaned_body = re.sub(r"\s+", " ", cleaned_body).strip()
+        return f"{title}\n\n{cleaned_body}" if cleaned_body else title
     except Exception as exc:
         print(f"  [Gemini] Error generating ad for {set_name}: {type(exc).__name__}: {exc}")
         return ""
@@ -372,7 +446,6 @@ def main():
     # 7b. Process manual sets from manual_sets.json (sets not in the Google Sheet)
     sheet_set_ids = {s["set_id"] for s in sets}
     manual_file_entries = get_manual_sets()
-    updated_manual_entries = []  # track any name/theme updates to write back
     if manual_file_entries:
         print(f"\nProcessing {len(manual_file_entries)} manual set(s) from {MANUAL_SETS_PATH}...")
     for ms in manual_file_entries:
@@ -384,49 +457,65 @@ def main():
             print(f"  Skipping {set_id} — already present from Google Sheet.")
             continue
 
-        name = str(ms.get("name", "")).strip()
+        name = str(ms.get("name", f"Set {raw_set_number}")).strip()
         theme = str(ms.get("theme", "")).strip()
         cost = parse_currency(ms.get("cost", 0))
+        unit_cost = parse_currency(ms.get("unit_cost", ms.get("cost", 0)))
+        qty_owned = int(ms.get("qty_owned", 1) or 1)
+        if qty_owned < 1:
+            qty_owned = 1
+        entry_id = str(ms.get("entry_id", "")).strip()
         notes = str(ms.get("notes", "")).strip()
-        quantity = max(1, int(ms.get("quantity", 1) or 1))
 
-        # Auto-fetch name and theme from BrickLink catalog if not already set
-        needs_catalog = not name or name.startswith("Set ")
-        if needs_catalog:
-            print(f"  Fetching catalog info for {set_id}...")
-            catalog = fetch_bl_catalog_info(set_id, bl_auth)
-            time.sleep(SLEEP_BETWEEN_CALLS)
-            if catalog:
-                if catalog["name"]:
-                    name = catalog["name"]
-                if catalog["theme"]:
-                    theme = catalog["theme"]
-                # Write enriched name/theme back to manual_sets.json record
-                ms["name"] = name
-                ms["theme"] = theme
-        updated_manual_entries.append(ms)
-
-        if not name:
-            name = f"Set {raw_set_number}"
-
-        print(f"  Processing manual {set_id} ({name}) × {quantity}...")
+        print(f"  Processing manual {set_id} ({name}, qty {qty_owned})...")
 
         bl_data = fetch_bl_price(set_id, bl_auth)
         time.sleep(SLEEP_BETWEEN_CALLS)
 
+        unit_value = 0.0
+        qty_sold = 0
+        min_price = 0.0
+        max_price = 0.0
+        has_data = False
+        be_data = None
+
         if bl_data and bl_data["avg_price"] > 0:
-            current_value = bl_data["avg_price"]
+            unit_value = bl_data["avg_price"]
             qty_sold = bl_data["qty_sold"]
             min_price = bl_data["min_price"]
             max_price = bl_data["max_price"]
-            has_bl_data = True
-        else:
-            current_value = 0.0
-            qty_sold = 0
-            min_price = 0.0
-            max_price = 0.0
-            has_bl_data = False
-            print(f"    [!] No BrickLink data for {set_id}, marking as No Data")
+            has_data = True
+
+        # Always try BrickEconomy to fill in name/theme for placeholder entries
+        # and to use as a value fallback when BrickLink has nothing.
+        needs_meta = (
+            not name
+            or name.lower().startswith("set ")
+            or not theme
+        )
+        if needs_meta or not has_data:
+            be_data = fetch_brickeconomy(set_id)
+            time.sleep(SLEEP_BETWEEN_CALLS)
+            if be_data:
+                if needs_meta:
+                    if be_data.get("name"):
+                        name = be_data["name"]
+                    if be_data.get("theme"):
+                        theme = be_data["theme"]
+                if not has_data and be_data.get("market_price", 0) > 0:
+                    unit_value = be_data["market_price"]
+                    has_data = True
+                    print(f"    [BE] Using market price ${unit_value:.2f} from BrickEconomy")
+
+        if not has_data:
+            print(f"    [!] No BrickLink or BrickEconomy data for {set_id}, marking as No Data")
+
+        # Apply quantity multiplier — line item represents qty_owned units
+        current_value = unit_value * qty_owned
+        # `cost` from JSON is already total cost (unit_cost * qty) when added
+        # via the modal. If only unit_cost is present, compute total here.
+        if cost <= 0 and unit_cost > 0:
+            cost = round(unit_cost * qty_owned, 2)
 
         roi = 0.0
         profit = 0.0
@@ -434,54 +523,42 @@ def main():
             roi = (current_value - cost) / cost
             profit = current_value - cost
 
-        signal = sell_signal(roi, current_value) if has_bl_data else "No Data"
+        signal = sell_signal(roi, current_value) if has_data else "No Data"
 
         ad_copy = ""
-        if has_bl_data and current_value > 0:
+        if has_data and current_value > 0:
             print(f"    [Gemini] Generating ad copy for {name}...")
             ad_copy = generate_ad_copy(name, set_id, current_value, cost)
             time.sleep(SLEEP_BETWEEN_CALLS)
 
-        image_url = download_set_image(set_id)
-
-        # Create one entry per unit of quantity (matches how Google Sheet rows work)
-        for q in range(quantity):
-            uid = f"{set_id}_manual" if quantity == 1 else f"{set_id}_manual_{q}"
-            sets.append({
-                "id": uid,
-                "set_id": set_id,
-                "set_number": raw_set_number,
-                "name": name,
-                "theme": theme,
-                "cost": round(cost, 2),
-                "current_value": round(current_value, 2),
-                "profit": round(profit, 2),
-                "roi": round(roi * 100, 2),
-                "signal": signal,
-                "qty_sold_6m": qty_sold,
-                "bl_min_price": round(min_price, 2),
-                "bl_max_price": round(max_price, 2),
-                "selling_on": str(ms.get("selling_on", "")).strip(),
-                "notes": notes,
-                "image_url": image_url,
-                "ad_copy": ad_copy,
-                "last_updated": datetime.now(timezone.utc).isoformat(),
-                "isManual": True,
-            })
-        sheet_set_ids.add(set_id)
-
-    # Write back any enriched name/theme updates to manual_sets.json
-    if updated_manual_entries and any(
-        ms.get("name") and not str(ms.get("name", "")).startswith("Set ")
-        for ms in updated_manual_entries
-    ):
-        try:
-            with open(MANUAL_SETS_PATH, "w", encoding="utf-8") as f:
-                json.dump(updated_manual_entries, f, indent=2, ensure_ascii=False)
-                f.write("\n")
-            print(f"  Updated {MANUAL_SETS_PATH} with enriched catalog info.")
-        except Exception as exc:
-            print(f"  [!] Could not write updated manual sets: {exc}")
+        sets.append({
+            "id": f"{entry_id}_manual" if entry_id else f"{set_id}_manual",
+            "set_id": set_id,
+            "set_number": raw_set_number,
+            "name": name,
+            "theme": theme,
+            "cost": round(cost, 2),
+            "unit_cost": round(unit_cost or (cost / qty_owned if qty_owned else cost), 2),
+            "qty_owned": qty_owned,
+            "current_value": round(current_value, 2),
+            "profit": round(profit, 2),
+            "roi": round(roi * 100, 2),
+            "signal": signal,
+            "qty_sold_6m": qty_sold,
+            "bl_min_price": round(min_price, 2),
+            "bl_max_price": round(max_price, 2),
+            "selling_on": str(ms.get("selling_on", "")).strip(),
+            "notes": notes,
+            "image_url": download_set_image(set_id),
+            "ad_copy": ad_copy,
+            "last_updated": datetime.now(timezone.utc).isoformat(),
+            "isManual": True,
+        })
+        # Only block the set_id from re-processing if this is an old-format
+        # record (no entry_id). New per-copy records each have their own
+        # entry_id and must all be processed even when set_id repeats.
+        if not entry_id:
+            sheet_set_ids.add(set_id)
 
     # 8. Build summary stats
     valid_sets = [s for s in sets if s["signal"] != "No Data"]

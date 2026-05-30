@@ -3,6 +3,11 @@ name: Deploy Dashboard to GitHub Pages
 on:
   push:
     branches: [main]
+    # manual_sets.json is an input to the Daily Sync script, not bundled into
+    # the dashboard — the app reads data.json. Skip redeploys when only that
+    # file changes (e.g. from the in-app Add Set / Remove flows).
+    paths-ignore:
+      - "public/manual_sets.json"
   workflow_dispatch:
 
 permissions:
