@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { X, Copy, Check, Sparkles, Key } from "lucide-react";
 
-const GEMINI_KEY_STORAGE = "gemini_api_key";
 const VALUATION_PATTERN =
   /\b(price|priced|pricing|value|valued|worth|investment|invest|resale|profit|roi|return on investment|msrp|retail|market price)\b|\$|cad|usd|\d+\s*(dollars?|bucks?)\b/i;
 
@@ -59,7 +58,7 @@ export function AdModal({ set, onClose }) {
   const [adCopy, setAdCopy] = useState(set.ad_copy || "");
   const [generating, setGenerating] = useState(false);
   const [genError, setGenError] = useState(null);
-  const [apiKey, setApiKey] = useState(() => localStorage.getItem(GEMINI_KEY_STORAGE) || "");
+  const [apiKey, setApiKey] = useState("");
   const [showKeyInput, setShowKeyInput] = useState(false);
 
   const handleCopy = () => {
@@ -84,7 +83,6 @@ export function AdModal({ set, onClose }) {
   };
 
   const handleSaveKey = () => {
-    localStorage.setItem(GEMINI_KEY_STORAGE, apiKey.trim());
     setShowKeyInput(false);
     handleGenerate();
   };
