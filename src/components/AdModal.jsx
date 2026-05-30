@@ -2,15 +2,40 @@ import { useState } from "react";
 import { X, Copy, Check, Sparkles, Key } from "lucide-react";
 
 const GEMINI_KEY_STORAGE = "gemini_api_key";
+const VALUATION_PATTERN =
+  /\b(price|priced|pricing|value|valued|worth|investment|invest|resale|profit|roi|return on investment|msrp|retail|market price)\b|\$|cad|usd|\d+\s*(dollars?|bucks?)\b/i;
+
+function sanitizeMarketplaceAd(text) {
+  const lines = String(text || "")
+    .replace(/\r/g, "")
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  if (!lines.length) return "";
+
+  const title = lines[0];
+  const body = lines.slice(1).join(" ");
+  const sentences = body.match(/[^.!?]+[.!?]?/g) || [];
+  const cleanedBody = sentences
+    .map((sentence) => sentence.trim())
+    .filter((sentence) => sentence && !VALUATION_PATTERN.test(sentence))
+    .join(" ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  return cleanedBody ? `${title}\n\n${cleanedBody}` : title;
+}
 
 async function callGemini(apiKey, set) {
   const prompt =
-    `Act as a pro LEGO reseller. Write a Facebook Marketplace listing ad for the LEGO set. ` +
+    `Write a Facebook Marketplace listing description for a LEGO set in a normal, straightforward tone. ` +
     `Make the very first line a title formatted exactly like this: "LEGO ${set.theme} - ${set.name} (${set.set_number})". ` +
-    `Mention it is a rare collector's item currently valued at CAD $${set.current_value?.toFixed(2) ?? "?"}. ` +
-    `Keep it enthusiastic, conversational, and under 200 words. ` +
+    `Focus on what the set is and why someone might like building or displaying it. ` +
+    `Keep it conversational, clear, and under 200 words. Avoid hype and salesy language. ` +
     `Do NOT use any emojis. Do NOT include any hashtags. ` +
-    `Do NOT include a price in the ad body — the price will be set separately on Marketplace.`;
+    `Do NOT mention price, value, worth, investment potential, resale value, ROI, or profit in any form. ` +
+    `Do NOT include currency symbols or dollar amounts.`;
 
   const res = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
@@ -25,7 +50,7 @@ async function callGemini(apiKey, set) {
     throw new Error(err?.error?.message || `HTTP ${res.status}`);
   }
   const data = await res.json();
-  return data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ?? "";
+  return sanitizeMarketplaceAd(data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ?? "");
 }
 
 export function AdModal({ set, onClose }) {

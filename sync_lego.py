@@ -298,20 +298,38 @@ def fetch_brickeconomy(set_id: str) -> dict | None:
 
 def generate_ad_copy(set_name: str, set_id: str, current_value: float, cost: float) -> str:
     """Call Gemini to generate a Facebook Marketplace ad."""
-    profit = current_value - cost
     prompt = (
-        f"Act as a pro LEGO reseller. Write a Facebook Marketplace listing ad for the LEGO set "
+        f"Write a Facebook Marketplace listing description for the LEGO set "
         f'"{set_name}" (Set #{set_id.split("-")[0]}). '
-        f"Mention it is a rare collector's item currently valued at CAD ${current_value:.2f}. "
-        f"Keep it enthusiastic, conversational, and under 200 words. "
-        f"Include relevant emojis throughout and finish with 3-5 relevant hashtags. "
-        f"Do NOT include a price in the ad body — the price will be set separately on Marketplace."
+        f"Use a normal, straightforward, conversational tone and keep it under 200 words. "
+        f"Focus on what the set is and why someone may enjoy building or displaying it. "
+        f"Do not use hype, exaggerated claims, emojis, or hashtags. "
+        f"Do NOT mention price, value, worth, investment potential, resale value, ROI, or profit in any form. "
+        f"Do NOT include currency symbols or dollar amounts."
     )
     try:
         genai.configure(api_key=os.environ["GEMINI_API_KEY"])
         model = genai.GenerativeModel("gemini-2.0-flash")
         response = model.generate_content(prompt)
-        return response.text.strip()
+        text = response.text.strip()
+        valuation_pattern = re.compile(
+            r"\b(price|priced|pricing|value|valued|worth|investment|invest|resale|profit|roi|return on investment|msrp|retail|market price)\b|\$|cad|usd|\d+\s*(dollars?|bucks?)\b",
+            re.IGNORECASE,
+        )
+        lines = [line.strip() for line in text.replace("\r", "").split("\n") if line.strip()]
+        if not lines:
+            return ""
+
+        title = lines[0]
+        body = " ".join(lines[1:])
+        sentences = re.findall(r"[^.!?]+[.!?]?", body)
+        cleaned_body = " ".join(
+            sentence.strip()
+            for sentence in sentences
+            if sentence.strip() and not valuation_pattern.search(sentence)
+        )
+        cleaned_body = re.sub(r"\s+", " ", cleaned_body).strip()
+        return f"{title}\n\n{cleaned_body}" if cleaned_body else title
     except Exception as exc:
         print(f"  [Gemini] Error generating ad for {set_name}: {type(exc).__name__}: {exc}")
         return ""
