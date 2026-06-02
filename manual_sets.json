@@ -1,10 +1,25 @@
 [
   {
+    "entry_id": "manual_30701_1",
     "set_id": "30701-1",
     "set_number": "30701",
     "name": "Field Flowers",
     "theme": "Botanicals",
     "cost": 2.5,
+    "unit_cost": 2.5,
+    "qty_owned": 1,
+    "notes": "",
+    "selling_on": ""
+  },
+  {
+    "entry_id": "manual_30701_2",
+    "set_id": "30701-1",
+    "set_number": "30701",
+    "name": "Field Flowers",
+    "theme": "Botanicals",
+    "cost": 2.5,
+    "unit_cost": 2.5,
+    "qty_owned": 1,
     "notes": "",
     "selling_on": ""
   },
