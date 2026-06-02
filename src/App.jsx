@@ -28,7 +28,7 @@ const FILTER_OPTIONS = [
   { value: "Strong Sell", label: "🔥 Strong Sell" },
   { value: "Consider", label: "👀 Consider" },
   { value: "Hold", label: "💤 Hold" },
-  { value: "listed", label: "📦 Currently Listed" },
+  { value: "No Data", label: "❓ No Data" },
 ];
 
 // ── GitHub persistence helpers ────────────────────────────────────────────────
@@ -83,7 +83,7 @@ function normalizeManualEntry(manual) {
   const setId = manual.set_id || manual.set_number || "";
   const entryId = manual.entry_id ? String(manual.entry_id) : "";
   return {
-    id: entryId ? `${entryId}_manual` : `manual_${setId}`,
+    id: entryId ? `${entryId}_manual` : `${setId}_manual`,
     set_id: setId,
     set_number: manual.set_number || setId,
     name: manual.name || `Set ${manual.set_number || setId}`,
@@ -722,7 +722,9 @@ export default function App() {
   // UI state
   const [search, setSearch] = useState("");
   const [filterSignal, setFilterSignal] = useState("all");
+  const [filterListed, setFilterListed] = useState(false);
   const [sortBy, setSortBy] = useState("signal");
+  const [listSort, setListSort] = useState({ col: "roi", dir: "desc" });
   const [viewMode, setViewMode] = useState("grid"); // grid | list
   const [selectedSet, setSelectedSet] = useState(null); // for ad modal
   const [signalModalSignal, setSignalModalSignal] = useState(null); // for signal list modal
@@ -1241,40 +1243,60 @@ export default function App() {
       );
     }
 
-    // Signal / listing filter
+    // Signal filter
     if (filterSignal !== "all") {
-      if (filterSignal === "listed") {
-        result = result.filter((s) => s.selling_on && s.selling_on !== "");
-      } else {
-        result = result.filter((s) => s.signal === filterSignal);
-      }
+      result = result.filter((s) => s.signal === filterSignal);
+    }
+    // Listed filter
+    if (filterListed) {
+      result = result.filter((s) => s.selling_on && s.selling_on !== "");
     }
 
-    // Sort — but always pin newly-added manual entries (no sync data yet) to the top
-    // so they're visible immediately after adding instead of being buried.
-    const isPending = (s) => s.isManual && (s.signal === "No Data" || !s.current_value);
-    result = [...result].sort((a, b) => {
-      const pa = isPending(a) ? 0 : 1;
-      const pb = isPending(b) ? 0 : 1;
-      if (pa !== pb) return pa - pb;
-      switch (sortBy) {
-        case "signal":
-          return (SIGNAL_ORDER[a.signal] ?? 99) - (SIGNAL_ORDER[b.signal] ?? 99);
-        case "roi_desc":
-          return b.roi - a.roi;
-        case "profit_desc":
-          return b.profit - a.profit;
-        case "value_desc":
-          return b.current_value - a.current_value;
-        case "name_asc":
-          return a.name.localeCompare(b.name);
-        default:
-          return 0;
-      }
-    });
+    // Pin entries added within the last 30 minutes so they appear immediately
+    // after being manually added, but don't permanently pin all No Data sets.
+    const PENDING_WINDOW_MS = 30 * 60 * 1000;
+    const isPending = (s) =>
+      s.isManual &&
+      s.current_value === 0 &&
+      Date.now() - new Date(s.last_updated).getTime() < PENDING_WINDOW_MS;
+
+    if (viewMode === "list") {
+      result = [...result].sort((a, b) => {
+        const pa = isPending(a) ? 0 : 1;
+        const pb = isPending(b) ? 0 : 1;
+        if (pa !== pb) return pa - pb;
+        const { col, dir } = listSort;
+        let cmp = 0;
+        switch (col) {
+          case "name":    cmp = a.name.localeCompare(b.name); break;
+          case "theme":   cmp = a.theme.localeCompare(b.theme); break;
+          case "cost":    cmp = a.cost - b.cost; break;
+          case "value":   cmp = a.current_value - b.current_value; break;
+          case "profit":  cmp = a.profit - b.profit; break;
+          case "roi":     cmp = a.roi - b.roi; break;
+          case "signal":  cmp = (SIGNAL_ORDER[a.signal] ?? 99) - (SIGNAL_ORDER[b.signal] ?? 99); break;
+          default: break;
+        }
+        return dir === "asc" ? cmp : -cmp;
+      });
+    } else {
+      result = [...result].sort((a, b) => {
+        const pa = isPending(a) ? 0 : 1;
+        const pb = isPending(b) ? 0 : 1;
+        if (pa !== pb) return pa - pb;
+        switch (sortBy) {
+          case "signal":      return (SIGNAL_ORDER[a.signal] ?? 99) - (SIGNAL_ORDER[b.signal] ?? 99);
+          case "roi_desc":    return b.roi - a.roi;
+          case "profit_desc": return b.profit - a.profit;
+          case "value_desc":  return b.current_value - a.current_value;
+          case "name_asc":    return a.name.localeCompare(b.name);
+          default:            return 0;
+        }
+      });
+    }
 
     return result;
-  }, [sets, search, filterSignal, sortBy]);
+  }, [sets, search, filterSignal, filterListed, sortBy, listSort, viewMode]);
 
   if (!isAuthenticated) {
     return (
@@ -1426,97 +1448,6 @@ export default function App() {
         {/* ── Charts ── */}
         <ChartSection sets={sets} onSliceClick={setSignalModalSignal} />
 
-        {/* ── Sell Candidates Spotlight ── */}
-        {sets.filter((s) => s.signal === "Strong Sell").length > 0 && (
-          <div className="mb-10">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-2xl">🔥</span>
-              <h2 className="text-lg font-black text-white">Sell Now Candidates</h2>
-              <span className="badge-strong-sell ml-1">
-                {sets.filter((s) => s.signal === "Strong Sell").length} sets
-              </span>
-            </div>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="text-left text-slate-400 text-xs uppercase tracking-wider border-b border-white/10">
-                    <th className="pb-3 pr-4">Set</th>
-                    <th className="pb-3 pr-4">Theme</th>
-                    <th className="pb-3 pr-4 text-right">Paid</th>
-                    <th className="pb-3 pr-4 text-right">Value</th>
-                    <th className="pb-3 pr-4 text-right">Profit</th>
-                    <th className="pb-3 pr-4 text-right">ROI</th>
-                    <th className="pb-3 pr-4">Listed</th>
-                    <th className="pb-3"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {sets
-                    .filter((s) => s.signal === "Strong Sell")
-                    .sort((a, b) => b.roi - a.roi)
-                    .map((s) => (
-                      <tr key={s.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                        <td className="py-3 pr-4">
-                          <a
-                            href={`https://www.bricklink.com/v2/catalog/catalogitem.page?S=${s.set_id}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-3 group/link"
-                          >
-                            <img
-                              src={s.image_url}
-                              alt={s.name}
-                              referrerPolicy="no-referrer"
-                              className="w-10 h-10 object-contain rounded bg-white/10"
-                              onError={(e) => { e.target.style.display = "none"; }}
-                            />
-                            <HoverTrigger set={s}>
-                              <div>
-                                <p className="font-bold text-white text-sm group-hover/link:text-lego-yellow transition-colors">{s.name}</p>
-                                <p className="text-xs text-slate-400">#{s.set_number}</p>
-                              </div>
-                            </HoverTrigger>
-                          </a>
-                        </td>
-                        <td className="py-3 pr-4 text-slate-400">{s.theme}</td>
-                        <td className="py-3 pr-4 text-right text-slate-300">${s.cost.toFixed(2)}</td>
-                        <td className="py-3 pr-4 text-right text-green-400 font-bold">${s.current_value.toFixed(2)}</td>
-                        <td className="py-3 pr-4 text-right text-green-300 font-bold">+${s.profit.toFixed(2)}</td>
-                        <td className="py-3 pr-4 text-right text-yellow-400 font-black">+{s.roi.toFixed(1)}%</td>
-                        <td className="py-3 pr-4">
-                          {s.selling_on ? (
-                            <span className="text-xs bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded-full">
-                              {s.selling_on === "BL" ? "BrickLink" : s.selling_on === "FB" ? "Facebook" : s.selling_on}
-                            </span>
-                          ) : (
-                            <span className="text-xs text-slate-500">Not listed</span>
-                          )}
-                        </td>
-                        <td className="py-3">
-                          <div className="flex items-center gap-2">
-                            <button
-                              onClick={() => setSelectedSet(s)}
-                              className="text-xs bg-lego-red/10 hover:bg-lego-red/20 border border-lego-red/30 text-lego-red hover:text-red-300 px-3 py-1 rounded-lg transition-all font-bold"
-                            >
-                              Ad →
-                            </button>
-                            <button
-                              onClick={() => setSellTarget(s)}
-                              className="text-slate-600 hover:text-green-400 p-1 rounded-lg transition-colors"
-                              title="Mark as sold"
-                            >
-                              <Trash2 size={13} />
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
-
         {/* ── Card Grid Controls ── */}
         <div className="flex flex-wrap items-center gap-3 mb-6">
           <h2 className="text-lg font-black text-white mr-2">All Sets</h2>
@@ -1533,7 +1464,7 @@ export default function App() {
             />
           </div>
 
-          {/* Filter */}
+          {/* Signal Filter */}
           <div className="flex items-center gap-2">
             <SlidersHorizontal size={14} className="text-slate-400" />
             <select
@@ -1547,16 +1478,30 @@ export default function App() {
             </select>
           </div>
 
-          {/* Sort */}
-          <select
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
-            className="bg-lego-card border border-white/10 text-white text-sm rounded-xl px-3 py-2.5 focus:outline-none focus:ring-1 focus:ring-lego-blue cursor-pointer"
+          {/* Listed toggle */}
+          <button
+            onClick={() => setFilterListed((v) => !v)}
+            className={`flex items-center gap-1.5 text-sm px-3 py-2.5 rounded-xl border transition-colors ${
+              filterListed
+                ? "bg-blue-500/20 border-blue-500/40 text-blue-300 font-bold"
+                : "bg-lego-card border-white/10 text-slate-400 hover:text-white"
+            }`}
           >
-            {SORT_OPTIONS.map((o) => (
-              <option key={o.value} value={o.value}>{o.label}</option>
-            ))}
-          </select>
+            📦 Listed
+          </button>
+
+          {/* Sort — only shown in grid view; list view uses column headers */}
+          {viewMode === "grid" && (
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              className="bg-lego-card border border-white/10 text-white text-sm rounded-xl px-3 py-2.5 focus:outline-none focus:ring-1 focus:ring-lego-blue cursor-pointer"
+            >
+              {SORT_OPTIONS.map((o) => (
+                <option key={o.value} value={o.value}>{o.label}</option>
+              ))}
+            </select>
+          )}
 
           {/* View mode toggle */}
           <div className="flex items-center border border-white/10 rounded-xl overflow-hidden ml-auto">
@@ -1601,19 +1546,42 @@ export default function App() {
         ) : (
           /* ── List view ── */
           <div className="card overflow-hidden">
-            <table className="w-full text-sm">
+            <div className="overflow-x-auto">
+            <table className="w-full text-sm min-w-[700px]">
               <thead>
-                <tr className="text-left text-slate-400 text-xs uppercase tracking-wider border-b border-white/10">
-                  <th className="px-4 py-3">Set</th>
-                  <th className="px-4 py-3">Theme</th>
-                  <th className="px-4 py-3 text-right">Paid</th>
-                  <th className="px-4 py-3 text-right">Value</th>
-                  <th className="px-4 py-3 text-right">Profit</th>
-                  <th className="px-4 py-3 text-right">ROI</th>
-                  <th className="px-4 py-3">Signal</th>
-                  <th className="px-4 py-3">Listed</th>
-                  <th className="px-4 py-3"></th>
-                </tr>
+                {(() => {
+                  const SortTh = ({ col, children, right = false }) => {
+                    const active = listSort.col === col;
+                    const arrow = active ? (listSort.dir === "asc" ? " ↑" : " ↓") : "";
+                    return (
+                      <th
+                        className={`px-4 py-3 select-none cursor-pointer hover:text-white transition-colors${right ? " text-right" : ""} ${active ? "text-white" : "text-slate-400"}`}
+                        onClick={() =>
+                          setListSort((prev) =>
+                            prev.col === col
+                              ? { col, dir: prev.dir === "asc" ? "desc" : "asc" }
+                              : { col, dir: col === "name" || col === "theme" ? "asc" : "desc" }
+                          )
+                        }
+                      >
+                        <span className="text-xs uppercase tracking-wider">{children}{arrow}</span>
+                      </th>
+                    );
+                  };
+                  return (
+                    <tr className="border-b border-white/10">
+                      <SortTh col="name">Set</SortTh>
+                      <SortTh col="theme">Theme</SortTh>
+                      <SortTh col="cost" right>Paid</SortTh>
+                      <SortTh col="value" right>Value</SortTh>
+                      <SortTh col="profit" right>Profit</SortTh>
+                      <SortTh col="roi" right>ROI</SortTh>
+                      <SortTh col="signal">Signal</SortTh>
+                      <th className="px-4 py-3 text-xs uppercase tracking-wider text-slate-400">Listed</th>
+                      <th className="px-4 py-3"></th>
+                    </tr>
+                  );
+                })()}
               </thead>
               <tbody>
                 {filteredSets.map((s) => (
@@ -1628,10 +1596,15 @@ export default function App() {
                           onError={(e) => { e.target.style.display = "none"; }}
                         />
                         <HoverTrigger set={s}>
-                          <div>
-                            <p className="font-bold text-white">{s.name}</p>
+                          <a
+                            href={`https://www.bricklink.com/v2/catalog/catalogitem.page?S=${s.set_id}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group/link"
+                          >
+                            <p className="font-bold text-white group-hover/link:text-lego-yellow transition-colors">{s.name}</p>
                             <p className="text-xs text-slate-400">#{s.set_number}</p>
-                          </div>
+                          </a>
                         </HoverTrigger>
                       </div>
                     </td>
@@ -1689,6 +1662,7 @@ export default function App() {
                 ))}
               </tbody>
             </table>
+            </div>
           </div>
         )}
 
