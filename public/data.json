@@ -1,11 +1,11 @@
 {
-  "last_synced": "2026-08-29T14:01:21.065527+00:00",
+  "last_synced": "2026-08-31T16:16:11.340849+00:00",
   "currency": "CAD",
   "summary": {
     "total_sets": 350,
     "total_cost": 13089.81,
-    "total_market_value": 16576.43,
-    "total_profit_potential": 4223.14,
+    "total_market_value": 16577.51,
+    "total_profit_potential": 4224.41,
     "strong_sell_count": 41,
     "consider_count": 168,
     "hold_count": 126
@@ -29,7 +29,7 @@
       "notes": "Retired - Display in nerd cave",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/21045.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:39:37.370802+00:00"
+      "last_updated": "2026-08-31T15:54:12.153690+00:00"
     },
     {
       "id": "21028-1_1",
@@ -38,18 +38,18 @@
       "name": "New York City",
       "theme": "Architecture",
       "cost": 65.0,
-      "current_value": 51.72,
-      "profit": -13.28,
-      "roi": -20.43,
+      "current_value": 51.84,
+      "profit": -13.16,
+      "roi": -20.24,
       "signal": "Hold",
-      "qty_sold_6m": 29,
+      "qty_sold_6m": 30,
       "bl_min_price": 26.76,
       "bl_max_price": 90.3,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/21028.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:39:40.735454+00:00"
+      "last_updated": "2026-08-31T15:54:15.350519+00:00"
     },
     {
       "id": "21028-1_2",
@@ -58,18 +58,18 @@
       "name": "New York City",
       "theme": "Architecture",
       "cost": 33.9,
-      "current_value": 51.72,
-      "profit": 17.82,
-      "roi": 52.57,
+      "current_value": 51.84,
+      "profit": 17.94,
+      "roi": 52.93,
       "signal": "Strong Sell",
-      "qty_sold_6m": 29,
+      "qty_sold_6m": 30,
       "bl_min_price": 26.76,
       "bl_max_price": 90.3,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/21028.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:39:43.968037+00:00"
+      "last_updated": "2026-08-31T15:54:18.544463+00:00"
     },
     {
       "id": "21034-1_3",
@@ -89,7 +89,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/21034.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:39:47.214342+00:00"
+      "last_updated": "2026-08-31T15:54:21.737644+00:00"
     },
     {
       "id": "21034-1_4",
@@ -109,7 +109,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/21034.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:39:50.512976+00:00"
+      "last_updated": "2026-08-31T15:54:24.949051+00:00"
     },
     {
       "id": "21057-1_5",
@@ -129,7 +129,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/21057.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:39:53.853815+00:00"
+      "last_updated": "2026-08-31T15:54:28.144921+00:00"
     },
     {
       "id": "21057-1_6",
@@ -149,7 +149,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/21057.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:39:57.098993+00:00"
+      "last_updated": "2026-08-31T15:54:31.301130+00:00"
     },
     {
       "id": "21044-1_7",
@@ -158,18 +158,18 @@
       "name": "Paris",
       "theme": "Architecture",
       "cost": 39.54,
-      "current_value": 54.57,
-      "profit": 15.03,
-      "roi": 38.02,
+      "current_value": 54.6,
+      "profit": 15.06,
+      "roi": 38.1,
       "signal": "Consider",
-      "qty_sold_6m": 25,
+      "qty_sold_6m": 26,
       "bl_min_price": 48.04,
       "bl_max_price": 75.35,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/21044.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:40:00.420953+00:00"
+      "last_updated": "2026-08-31T15:54:34.468741+00:00"
     },
     {
       "id": "21042-1_8",
@@ -189,7 +189,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/21042.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:40:03.693741+00:00"
+      "last_updated": "2026-08-31T15:54:37.635925+00:00"
     },
     {
       "id": "31199-1_9",
@@ -209,7 +209,7 @@
       "notes": "Open in Nerd Cave",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/31199.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:40:07.033903+00:00"
+      "last_updated": "2026-08-31T15:54:40.836829+00:00"
     },
     {
       "id": "31205-1_10",
@@ -229,7 +229,7 @@
       "notes": "Open in Nerd Cave",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/31205.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:40:10.471094+00:00"
+      "last_updated": "2026-08-31T15:54:44.010244+00:00"
     },
     {
       "id": "31202-1_11",
@@ -249,7 +249,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/31202.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:40:13.739579+00:00"
+      "last_updated": "2026-08-31T15:54:47.226489+00:00"
     },
     {
       "id": "10281-1_12",
@@ -269,7 +269,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/10281.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:40:17.047127+00:00"
+      "last_updated": "2026-08-31T15:54:50.413208+00:00"
     },
     {
       "id": "10281-1_13",
@@ -289,7 +289,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/10281.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:40:20.265072+00:00"
+      "last_updated": "2026-08-31T15:54:53.591148+00:00"
     },
     {
       "id": "10280-1_14",
@@ -309,7 +309,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/10280.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:40:23.590715+00:00"
+      "last_updated": "2026-08-31T15:54:56.777507+00:00"
     },
     {
       "id": "40495-1_15",
@@ -318,18 +318,18 @@
       "name": "Harry, Hermione, Ron & Hagrid",
       "theme": "Harry Potter",
       "cost": 39.54,
-      "current_value": 42.25,
-      "profit": 2.71,
-      "roi": 6.87,
+      "current_value": 42.72,
+      "profit": 3.18,
+      "roi": 8.05,
       "signal": "Hold",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 25,
       "bl_min_price": 34.06,
-      "bl_max_price": 49.31,
+      "bl_max_price": 49.44,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40495.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:40:26.875903+00:00"
+      "last_updated": "2026-08-31T15:54:59.952857+00:00"
     },
     {
       "id": "75317-1_16",
@@ -349,7 +349,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75317.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:40:30.189794+00:00"
+      "last_updated": "2026-08-31T15:55:03.131510+00:00"
     },
     {
       "id": "75317-1_17",
@@ -369,7 +369,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75317.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:40:33.654695+00:00"
+      "last_updated": "2026-08-31T15:55:06.274596+00:00"
     },
     {
       "id": "75317-1_18",
@@ -389,7 +389,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75317.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:40:37.077787+00:00"
+      "last_updated": "2026-08-31T15:55:09.462592+00:00"
     },
     {
       "id": "75317-1_19",
@@ -409,7 +409,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75317.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:40:40.445061+00:00"
+      "last_updated": "2026-08-31T15:55:12.657583+00:00"
     },
     {
       "id": "75317-1_20",
@@ -429,7 +429,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75317.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:40:43.696836+00:00"
+      "last_updated": "2026-08-31T15:55:15.898491+00:00"
     },
     {
       "id": "75317-1_21",
@@ -449,7 +449,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75317.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:40:47.086449+00:00"
+      "last_updated": "2026-08-31T15:55:19.041901+00:00"
     },
     {
       "id": "75317-1_22",
@@ -469,7 +469,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75317.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:40:50.377826+00:00"
+      "last_updated": "2026-08-31T15:55:22.204703+00:00"
     },
     {
       "id": "40490-1_23",
@@ -489,7 +489,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40490.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:40:53.608691+00:00"
+      "last_updated": "2026-08-31T15:55:25.437532+00:00"
     },
     {
       "id": "40623-1_24",
@@ -498,18 +498,18 @@
       "name": "Batlle of Endor Heroes",
       "theme": "Star Wars",
       "cost": 32.47,
-      "current_value": 32.06,
-      "profit": -0.41,
-      "roi": -1.28,
+      "current_value": 32.16,
+      "profit": -0.31,
+      "roi": -0.94,
       "signal": "Hold",
-      "qty_sold_6m": 26,
+      "qty_sold_6m": 27,
       "bl_min_price": 21.23,
       "bl_max_price": 45.49,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40623.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:40:56.942892+00:00"
+      "last_updated": "2026-08-31T15:55:28.750433+00:00"
     },
     {
       "id": "40623-1_25",
@@ -518,18 +518,18 @@
       "name": "Batlle of Endor Heroes",
       "theme": "Star Wars",
       "cost": 32.47,
-      "current_value": 32.06,
-      "profit": -0.41,
-      "roi": -1.28,
+      "current_value": 32.16,
+      "profit": -0.31,
+      "roi": -0.94,
       "signal": "Hold",
-      "qty_sold_6m": 26,
+      "qty_sold_6m": 27,
       "bl_min_price": 21.23,
       "bl_max_price": 45.49,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40623.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:41:00.226778+00:00"
+      "last_updated": "2026-08-31T15:55:31.915895+00:00"
     },
     {
       "id": "40619-1_26",
@@ -549,7 +549,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40619.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:41:03.418961+00:00"
+      "last_updated": "2026-08-31T15:55:35.092087+00:00"
     },
     {
       "id": "40619-1_27",
@@ -569,7 +569,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40619.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:41:06.624631+00:00"
+      "last_updated": "2026-08-31T15:55:38.250504+00:00"
     },
     {
       "id": "40619-1_28",
@@ -589,7 +589,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40619.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:41:09.816421+00:00"
+      "last_updated": "2026-08-31T15:55:41.443771+00:00"
     },
     {
       "id": "40622-1_29",
@@ -609,7 +609,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40622.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:41:13.153853+00:00"
+      "last_updated": "2026-08-31T15:55:44.618001+00:00"
     },
     {
       "id": "10305-1_30",
@@ -618,18 +618,18 @@
       "name": "Lion Knights' Castle",
       "theme": "Castle",
       "cost": 423.74,
-      "current_value": 575.08,
-      "profit": 151.34,
-      "roi": 35.71,
+      "current_value": 575.8,
+      "profit": 152.06,
+      "roi": 35.89,
       "signal": "Consider",
-      "qty_sold_6m": 82,
+      "qty_sold_6m": 83,
       "bl_min_price": 371.34,
       "bl_max_price": 875.0,
       "selling_on": "FB, Kijiji",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/10305.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:41:16.587671+00:00"
+      "last_updated": "2026-08-31T15:55:47.851331+00:00"
     },
     {
       "id": "60320-1_31",
@@ -638,18 +638,18 @@
       "name": "Fire Station",
       "theme": "City",
       "cost": 40.68,
-      "current_value": 73.72,
-      "profit": 33.04,
-      "roi": 81.23,
+      "current_value": 76.47,
+      "profit": 35.79,
+      "roi": 87.97,
       "signal": "Strong Sell",
-      "qty_sold_6m": 10,
+      "qty_sold_6m": 11,
       "bl_min_price": 57.55,
-      "bl_max_price": 88.46,
+      "bl_max_price": 103.9,
       "selling_on": "BL, FB, Kijiji",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/60320.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:41:19.847032+00:00"
+      "last_updated": "2026-08-31T15:55:51.044324+00:00"
     },
     {
       "id": "60320-1_32",
@@ -658,18 +658,18 @@
       "name": "Fire Station",
       "theme": "City",
       "cost": 40.68,
-      "current_value": 73.72,
-      "profit": 33.04,
-      "roi": 81.23,
+      "current_value": 76.47,
+      "profit": 35.79,
+      "roi": 87.97,
       "signal": "Strong Sell",
-      "qty_sold_6m": 10,
+      "qty_sold_6m": 11,
       "bl_min_price": 57.55,
-      "bl_max_price": 88.46,
+      "bl_max_price": 103.9,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/60320.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:41:23.037160+00:00"
+      "last_updated": "2026-08-31T15:55:54.211501+00:00"
     },
     {
       "id": "60320-1_33",
@@ -678,18 +678,18 @@
       "name": "Fire Station",
       "theme": "City",
       "cost": 50.85,
-      "current_value": 73.72,
-      "profit": 22.87,
-      "roi": 44.98,
+      "current_value": 76.47,
+      "profit": 25.62,
+      "roi": 50.38,
       "signal": "Strong Sell",
-      "qty_sold_6m": 10,
+      "qty_sold_6m": 11,
       "bl_min_price": 57.55,
-      "bl_max_price": 88.46,
+      "bl_max_price": 103.9,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/60320.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:41:26.272541+00:00"
+      "last_updated": "2026-08-31T15:55:57.386790+00:00"
     },
     {
       "id": "60295-1_34",
@@ -698,18 +698,18 @@
       "name": "Stunt Show Arena",
       "theme": "City",
       "cost": 63.28,
-      "current_value": 97.39,
-      "profit": 34.11,
-      "roi": 53.9,
+      "current_value": 95.35,
+      "profit": 32.07,
+      "roi": 50.68,
       "signal": "Strong Sell",
-      "qty_sold_6m": 6,
+      "qty_sold_6m": 7,
       "bl_min_price": 82.22,
       "bl_max_price": 106.06,
       "selling_on": "BL, FB, Kijiji",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/60295.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:41:29.505578+00:00"
+      "last_updated": "2026-08-31T15:56:00.580842+00:00"
     },
     {
       "id": "60295-1_35",
@@ -718,18 +718,18 @@
       "name": "Stunt Show Arena",
       "theme": "City",
       "cost": 56.5,
-      "current_value": 97.39,
-      "profit": 40.89,
-      "roi": 72.37,
+      "current_value": 95.35,
+      "profit": 38.85,
+      "roi": 68.76,
       "signal": "Strong Sell",
-      "qty_sold_6m": 6,
+      "qty_sold_6m": 7,
       "bl_min_price": 82.22,
       "bl_max_price": 106.06,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/60295.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:41:32.706480+00:00"
+      "last_updated": "2026-08-31T15:56:03.765069+00:00"
     },
     {
       "id": "60310-1_36",
@@ -749,7 +749,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/60310.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:41:35.901155+00:00"
+      "last_updated": "2026-08-31T15:56:06.975543+00:00"
     },
     {
       "id": "60309-1_37",
@@ -769,7 +769,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/60309.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:41:39.250605+00:00"
+      "last_updated": "2026-08-31T15:56:10.157055+00:00"
     },
     {
       "id": "60299-1_38",
@@ -789,7 +789,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/60299.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:41:42.479784+00:00"
+      "last_updated": "2026-08-31T15:56:13.341733+00:00"
     },
     {
       "id": "60299-1_39",
@@ -809,7 +809,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/60299.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:41:45.699249+00:00"
+      "last_updated": "2026-08-31T15:56:16.510652+00:00"
     },
     {
       "id": "71022-1_40",
@@ -818,18 +818,18 @@
       "name": "Set of 22 Series 1 Minifigures",
       "theme": "Harry Potter (CMF)",
       "cost": 0.0,
-      "current_value": 9.94,
+      "current_value": 10.89,
       "profit": 0.0,
       "roi": 0.0,
       "signal": "Hold",
-      "qty_sold_6m": 6,
+      "qty_sold_6m": 7,
       "bl_min_price": 6.85,
-      "bl_max_price": 11.14,
+      "bl_max_price": 16.62,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/71022.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:41:48.856615+00:00"
+      "last_updated": "2026-08-31T15:56:19.786213+00:00"
     },
     {
       "id": "10274-1_41",
@@ -849,7 +849,7 @@
       "notes": "Display in nerd cave",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/10274.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:41:52.052198+00:00"
+      "last_updated": "2026-08-31T15:56:22.985345+00:00"
     },
     {
       "id": "10274-1_42",
@@ -869,7 +869,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/10274.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:41:55.404466+00:00"
+      "last_updated": "2026-08-31T15:56:26.211275+00:00"
     },
     {
       "id": "10300-1_43",
@@ -889,7 +889,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/10300.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:41:58.628111+00:00"
+      "last_updated": "2026-08-31T15:56:29.499730+00:00"
     },
     {
       "id": "40220-1_44",
@@ -909,7 +909,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40220.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:42:01.832042+00:00"
+      "last_updated": "2026-08-31T15:56:32.732992+00:00"
     },
     {
       "id": "40220-1_45",
@@ -929,7 +929,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40220.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:42:05.030728+00:00"
+      "last_updated": "2026-08-31T15:56:35.911014+00:00"
     },
     {
       "id": "10306-1_46",
@@ -949,7 +949,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/10306.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:42:08.240991+00:00"
+      "last_updated": "2026-08-31T15:56:39.144863+00:00"
     },
     {
       "id": "31133-1_47",
@@ -969,7 +969,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/31133.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:42:11.435244+00:00"
+      "last_updated": "2026-08-31T15:56:42.352833+00:00"
     },
     {
       "id": "31131-1_48",
@@ -989,7 +989,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/31131.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:42:14.686601+00:00"
+      "last_updated": "2026-08-31T15:56:45.540886+00:00"
     },
     {
       "id": "31131-1_49",
@@ -1009,7 +1009,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/31131.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:42:17.851397+00:00"
+      "last_updated": "2026-08-31T15:56:48.738006+00:00"
     },
     {
       "id": "76139-1_50",
@@ -1029,7 +1029,7 @@
       "notes": "Display in nerd cave",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76139.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:42:21.021226+00:00"
+      "last_updated": "2026-08-31T15:56:51.908147+00:00"
     },
     {
       "id": "40428-1_51",
@@ -1049,7 +1049,7 @@
       "notes": "Built in nerd cave",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40428.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:42:24.322165+00:00"
+      "last_updated": "2026-08-31T15:56:55.093803+00:00"
     },
     {
       "id": "40386-1_52",
@@ -1069,7 +1069,7 @@
       "notes": "Built in nerd cave",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40386.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:42:27.653085+00:00"
+      "last_updated": "2026-08-31T15:56:58.244093+00:00"
     },
     {
       "id": "40386-1_53",
@@ -1089,7 +1089,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40386.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:42:30.842716+00:00"
+      "last_updated": "2026-08-31T15:57:01.398221+00:00"
     },
     {
       "id": "76179-1_54",
@@ -1098,18 +1098,18 @@
       "name": "Motorcycle Pursuit",
       "theme": "The Batman",
       "cost": 22.59,
-      "current_value": 22.58,
-      "profit": -0.01,
-      "roi": -0.03,
+      "current_value": 22.71,
+      "profit": 0.12,
+      "roi": 0.52,
       "signal": "Hold",
-      "qty_sold_6m": 35,
+      "qty_sold_6m": 36,
       "bl_min_price": 3.55,
       "bl_max_price": 32.81,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76179.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:42:34.143710+00:00"
+      "last_updated": "2026-08-31T15:57:04.578753+00:00"
     },
     {
       "id": "76183-1_55",
@@ -1118,18 +1118,18 @@
       "name": "Batcave: The Riddler Face-Off",
       "theme": "The Batman",
       "cost": 124.29,
-      "current_value": 89.52,
-      "profit": -34.77,
-      "roi": -27.97,
+      "current_value": 89.53,
+      "profit": -34.76,
+      "roi": -27.96,
       "signal": "Hold",
-      "qty_sold_6m": 54,
+      "qty_sold_6m": 55,
       "bl_min_price": 70.0,
       "bl_max_price": 110.02,
       "selling_on": "FB",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76183.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:42:37.390218+00:00"
+      "last_updated": "2026-08-31T15:57:07.741951+00:00"
     },
     {
       "id": "76183-1_56",
@@ -1138,18 +1138,18 @@
       "name": "Batcave: The Riddler Face-Off",
       "theme": "The Batman",
       "cost": 49.72,
-      "current_value": 89.52,
-      "profit": 39.8,
-      "roi": 80.06,
+      "current_value": 89.53,
+      "profit": 39.81,
+      "roi": 80.07,
       "signal": "Strong Sell",
-      "qty_sold_6m": 54,
+      "qty_sold_6m": 55,
       "bl_min_price": 70.0,
       "bl_max_price": 110.02,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76183.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:42:40.705606+00:00"
+      "last_updated": "2026-08-31T15:57:10.899364+00:00"
     },
     {
       "id": "76183-1_57",
@@ -1158,18 +1158,18 @@
       "name": "Batcave: The Riddler Face-Off",
       "theme": "The Batman",
       "cost": 49.72,
-      "current_value": 89.52,
-      "profit": 39.8,
-      "roi": 80.06,
+      "current_value": 89.53,
+      "profit": 39.81,
+      "roi": 80.07,
       "signal": "Strong Sell",
-      "qty_sold_6m": 54,
+      "qty_sold_6m": 55,
       "bl_min_price": 70.0,
       "bl_max_price": 110.02,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76183.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:42:43.999874+00:00"
+      "last_updated": "2026-08-31T15:57:14.081223+00:00"
     },
     {
       "id": "76183-1_58",
@@ -1178,18 +1178,18 @@
       "name": "Batcave: The Riddler Face-Off",
       "theme": "The Batman",
       "cost": 49.72,
-      "current_value": 89.52,
-      "profit": 39.8,
-      "roi": 80.06,
+      "current_value": 89.53,
+      "profit": 39.81,
+      "roi": 80.07,
       "signal": "Strong Sell",
-      "qty_sold_6m": 54,
+      "qty_sold_6m": 55,
       "bl_min_price": 70.0,
       "bl_max_price": 110.02,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76183.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:42:47.188821+00:00"
+      "last_updated": "2026-08-31T15:57:17.304416+00:00"
     },
     {
       "id": "76183-1_59",
@@ -1198,18 +1198,18 @@
       "name": "Batcave: The Riddler Face-Off",
       "theme": "The Batman",
       "cost": 62.14,
-      "current_value": 89.52,
-      "profit": 27.38,
-      "roi": 44.07,
+      "current_value": 89.53,
+      "profit": 27.39,
+      "roi": 44.08,
       "signal": "Strong Sell",
-      "qty_sold_6m": 54,
+      "qty_sold_6m": 55,
       "bl_min_price": 70.0,
       "bl_max_price": 110.02,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76183.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:42:50.408367+00:00"
+      "last_updated": "2026-08-31T15:57:20.492735+00:00"
     },
     {
       "id": "76183-1_60",
@@ -1218,18 +1218,18 @@
       "name": "Batcave: The Riddler Face-Off",
       "theme": "The Batman",
       "cost": 62.14,
-      "current_value": 89.52,
-      "profit": 27.38,
-      "roi": 44.07,
+      "current_value": 89.53,
+      "profit": 27.39,
+      "roi": 44.08,
       "signal": "Strong Sell",
-      "qty_sold_6m": 54,
+      "qty_sold_6m": 55,
       "bl_min_price": 70.0,
       "bl_max_price": 110.02,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76183.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:42:53.590446+00:00"
+      "last_updated": "2026-08-31T15:57:23.685040+00:00"
     },
     {
       "id": "76183-1_61",
@@ -1238,18 +1238,18 @@
       "name": "Batcave: The Riddler Face-Off",
       "theme": "The Batman",
       "cost": 62.14,
-      "current_value": 89.52,
-      "profit": 27.38,
-      "roi": 44.07,
+      "current_value": 89.53,
+      "profit": 27.39,
+      "roi": 44.08,
       "signal": "Strong Sell",
-      "qty_sold_6m": 54,
+      "qty_sold_6m": 55,
       "bl_min_price": 70.0,
       "bl_max_price": 110.02,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76183.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:42:56.810693+00:00"
+      "last_updated": "2026-08-31T15:57:26.918463+00:00"
     },
     {
       "id": "30455-1_62",
@@ -1269,7 +1269,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30455.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:43:00.021028+00:00"
+      "last_updated": "2026-08-31T15:57:30.127269+00:00"
     },
     {
       "id": "30455-1_63",
@@ -1289,7 +1289,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30455.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:43:03.265212+00:00"
+      "last_updated": "2026-08-31T15:57:33.288926+00:00"
     },
     {
       "id": "30455-1_64",
@@ -1309,7 +1309,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30455.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:43:06.446441+00:00"
+      "last_updated": "2026-08-31T15:57:36.483123+00:00"
     },
     {
       "id": "30558-1_65",
@@ -1329,7 +1329,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30558.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:43:09.612726+00:00"
+      "last_updated": "2026-08-31T15:57:39.710736+00:00"
     },
     {
       "id": "30558-1_66",
@@ -1349,7 +1349,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30558.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:43:12.847082+00:00"
+      "last_updated": "2026-08-31T15:57:42.871570+00:00"
     },
     {
       "id": "30558-1_67",
@@ -1369,7 +1369,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30558.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:43:16.162950+00:00"
+      "last_updated": "2026-08-31T15:57:46.082155+00:00"
     },
     {
       "id": "30558-1_68",
@@ -1389,7 +1389,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30558.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:43:19.493975+00:00"
+      "last_updated": "2026-08-31T15:57:49.271741+00:00"
     },
     {
       "id": "40521-1_69",
@@ -1409,7 +1409,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40521.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:43:22.649190+00:00"
+      "last_updated": "2026-08-31T15:57:52.457856+00:00"
     },
     {
       "id": "40521-1_70",
@@ -1429,7 +1429,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40521.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:43:25.972200+00:00"
+      "last_updated": "2026-08-31T15:57:55.656353+00:00"
     },
     {
       "id": "40521-1_71",
@@ -1449,7 +1449,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40521.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:43:29.188242+00:00"
+      "last_updated": "2026-08-31T15:57:58.837877+00:00"
     },
     {
       "id": "43217-1_72",
@@ -1469,7 +1469,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/43217.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:43:32.425488+00:00"
+      "last_updated": "2026-08-31T15:58:02.017489+00:00"
     },
     {
       "id": "43229-1_73",
@@ -1489,7 +1489,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/43229.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:43:35.614767+00:00"
+      "last_updated": "2026-08-31T15:58:05.218158+00:00"
     },
     {
       "id": "43212-1_74",
@@ -1509,7 +1509,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/43212.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:43:38.820883+00:00"
+      "last_updated": "2026-08-31T15:58:08.382569+00:00"
     },
     {
       "id": "10998-1_75",
@@ -1529,7 +1529,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/10998.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:43:42.022960+00:00"
+      "last_updated": "2026-08-31T15:58:11.613482+00:00"
     },
     {
       "id": "10998-1_76",
@@ -1549,7 +1549,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/10998.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:43:45.309211+00:00"
+      "last_updated": "2026-08-31T15:58:14.819173+00:00"
     },
     {
       "id": "43227-1_77",
@@ -1558,18 +1558,18 @@
       "name": "Villain Icons",
       "theme": "Disney",
       "cost": 153.67,
-      "current_value": 198.9,
-      "profit": 45.23,
-      "roi": 29.43,
+      "current_value": 198.5,
+      "profit": 44.83,
+      "roi": 29.17,
       "signal": "Consider",
-      "qty_sold_6m": 24,
+      "qty_sold_6m": 23,
       "bl_min_price": 177.73,
       "bl_max_price": 225.37,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/43227.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:43:48.536617+00:00"
+      "last_updated": "2026-08-31T15:58:18.000074+00:00"
     },
     {
       "id": "5005888-1_78",
@@ -1589,7 +1589,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5005888.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:43:50.386834+00:00"
+      "last_updated": "2026-08-31T15:58:19.914037+00:00"
     },
     {
       "id": "5005888-1_79",
@@ -1609,7 +1609,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5005888.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:43:52.308311+00:00"
+      "last_updated": "2026-08-31T15:58:21.822526+00:00"
     },
     {
       "id": "75955-1_80",
@@ -1618,18 +1618,18 @@
       "name": "Hogwarts Express",
       "theme": "Harry Potter",
       "cost": 92.99,
-      "current_value": 81.8,
-      "profit": -11.19,
-      "roi": -12.04,
+      "current_value": 81.62,
+      "profit": -11.37,
+      "roi": -12.23,
       "signal": "Hold",
-      "qty_sold_6m": 45,
+      "qty_sold_6m": 47,
       "bl_min_price": 40.93,
       "bl_max_price": 125.0,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75955.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:43:55.555269+00:00"
+      "last_updated": "2026-08-31T15:58:25.042888+00:00"
     },
     {
       "id": "75955-1_81",
@@ -1638,18 +1638,18 @@
       "name": "Hogwarts Express",
       "theme": "Harry Potter",
       "cost": 112.99,
-      "current_value": 81.8,
-      "profit": -31.19,
-      "roi": -27.61,
+      "current_value": 81.62,
+      "profit": -31.37,
+      "roi": -27.76,
       "signal": "Hold",
-      "qty_sold_6m": 45,
+      "qty_sold_6m": 47,
       "bl_min_price": 40.93,
       "bl_max_price": 125.0,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75955.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:43:58.769971+00:00"
+      "last_updated": "2026-08-31T15:58:28.208589+00:00"
     },
     {
       "id": "75979-1_82",
@@ -1669,7 +1669,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75979.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:44:01.984991+00:00"
+      "last_updated": "2026-08-31T15:58:31.427216+00:00"
     },
     {
       "id": "75979-1_83",
@@ -1689,7 +1689,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75979.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:44:05.289135+00:00"
+      "last_updated": "2026-08-31T15:58:34.597601+00:00"
     },
     {
       "id": "76385-1_84",
@@ -1698,18 +1698,18 @@
       "name": "Charms Class",
       "theme": "Harry Potter",
       "cost": 45.19,
-      "current_value": 49.23,
-      "profit": 4.04,
-      "roi": 8.93,
+      "current_value": 49.19,
+      "profit": 4.0,
+      "roi": 8.86,
       "signal": "Hold",
-      "qty_sold_6m": 21,
+      "qty_sold_6m": 22,
       "bl_min_price": 31.45,
       "bl_max_price": 62.46,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76385.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:44:08.484615+00:00"
+      "last_updated": "2026-08-31T15:58:37.786171+00:00"
     },
     {
       "id": "76383-1_85",
@@ -1729,7 +1729,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76383.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:44:11.662683+00:00"
+      "last_updated": "2026-08-31T15:58:40.959425+00:00"
     },
     {
       "id": "76383-1_86",
@@ -1749,7 +1749,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76383.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:44:14.917445+00:00"
+      "last_updated": "2026-08-31T15:58:44.118437+00:00"
     },
     {
       "id": "76383-1_87",
@@ -1769,7 +1769,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76383.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:44:18.070099+00:00"
+      "last_updated": "2026-08-31T15:58:47.312792+00:00"
     },
     {
       "id": "76382-1_88",
@@ -1789,7 +1789,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76382.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:44:21.237296+00:00"
+      "last_updated": "2026-08-31T15:58:50.478567+00:00"
     },
     {
       "id": "76382-1_89",
@@ -1809,7 +1809,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76382.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:44:24.479082+00:00"
+      "last_updated": "2026-08-31T15:58:53.638422+00:00"
     },
     {
       "id": "76382-1_90",
@@ -1829,7 +1829,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76382.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:44:27.646609+00:00"
+      "last_updated": "2026-08-31T15:58:56.818115+00:00"
     },
     {
       "id": "75969-1_91",
@@ -1849,7 +1849,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75969.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:44:30.946907+00:00"
+      "last_updated": "2026-08-31T15:59:00.003350+00:00"
     },
     {
       "id": "75969-1_92",
@@ -1869,7 +1869,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75969.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:44:34.221217+00:00"
+      "last_updated": "2026-08-31T15:59:03.170132+00:00"
     },
     {
       "id": "76392-1_93",
@@ -1878,18 +1878,18 @@
       "name": "Hogwarts Wizard Chess",
       "theme": "Harry Potter",
       "cost": 50.0,
-      "current_value": 171.5,
-      "profit": 121.5,
-      "roi": 243.01,
+      "current_value": 171.89,
+      "profit": 121.89,
+      "roi": 243.79,
       "signal": "Strong Sell",
-      "qty_sold_6m": 14,
+      "qty_sold_6m": 13,
       "bl_min_price": 148.46,
       "bl_max_price": 275.0,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76392.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:44:37.657867+00:00"
+      "last_updated": "2026-08-31T15:59:06.357571+00:00"
     },
     {
       "id": "76399-1_94",
@@ -1909,7 +1909,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76399.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:44:40.858058+00:00"
+      "last_updated": "2026-08-31T15:59:09.536507+00:00"
     },
     {
       "id": "75968-1_95",
@@ -1929,7 +1929,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75968.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:44:44.170902+00:00"
+      "last_updated": "2026-08-31T15:59:12.897672+00:00"
     },
     {
       "id": "76388-1_96",
@@ -1949,7 +1949,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76388.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:44:47.514551+00:00"
+      "last_updated": "2026-08-31T15:59:16.069981+00:00"
     },
     {
       "id": "76388-1_97",
@@ -1969,7 +1969,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76388.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:44:50.823253+00:00"
+      "last_updated": "2026-08-31T15:59:19.257384+00:00"
     },
     {
       "id": "76388-1_98",
@@ -1989,7 +1989,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76388.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:44:54.037043+00:00"
+      "last_updated": "2026-08-31T15:59:22.465588+00:00"
     },
     {
       "id": "76388-1_99",
@@ -2009,7 +2009,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76388.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:44:57.299281+00:00"
+      "last_updated": "2026-08-31T15:59:25.676459+00:00"
     },
     {
       "id": "76397-1_100",
@@ -2029,7 +2029,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76397.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:45:00.464808+00:00"
+      "last_updated": "2026-08-31T15:59:28.838121+00:00"
     },
     {
       "id": "30392-1_101",
@@ -2049,7 +2049,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30392.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:45:03.685491+00:00"
+      "last_updated": "2026-08-31T15:59:32.030983+00:00"
     },
     {
       "id": "76406-1_102",
@@ -2058,18 +2058,18 @@
       "name": "Hungarian Horntail",
       "theme": "Harry Potter",
       "cost": 73.44,
-      "current_value": 86.27,
-      "profit": 12.83,
-      "roi": 17.47,
+      "current_value": 86.44,
+      "profit": 13.0,
+      "roi": 17.7,
       "signal": "Hold",
-      "qty_sold_6m": 18,
+      "qty_sold_6m": 20,
       "bl_min_price": 61.5,
       "bl_max_price": 98.32,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76406.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:45:06.853528+00:00"
+      "last_updated": "2026-08-31T15:59:35.208714+00:00"
     },
     {
       "id": "76416-1_103",
@@ -2089,7 +2089,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76416.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:45:10.047787+00:00"
+      "last_updated": "2026-08-31T15:59:38.389221+00:00"
     },
     {
       "id": "40197-1_104",
@@ -2109,7 +2109,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40197.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:45:13.244847+00:00"
+      "last_updated": "2026-08-31T15:59:41.648435+00:00"
     },
     {
       "id": "40499-1_105",
@@ -2118,18 +2118,18 @@
       "name": "Santa's Sleigh",
       "theme": "Holiday & Event",
       "cost": 56.49,
-      "current_value": 38.23,
-      "profit": -18.26,
-      "roi": -32.32,
+      "current_value": 37.96,
+      "profit": -18.53,
+      "roi": -32.81,
       "signal": "Hold",
-      "qty_sold_6m": 20,
+      "qty_sold_6m": 21,
       "bl_min_price": 31.1,
       "bl_max_price": 66.67,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40499.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:45:16.467420+00:00"
+      "last_updated": "2026-08-31T15:59:44.806341+00:00"
     },
     {
       "id": "40573-1_106",
@@ -2149,7 +2149,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40573.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:45:19.666315+00:00"
+      "last_updated": "2026-08-31T15:59:47.995765+00:00"
     },
     {
       "id": "40573-1_107",
@@ -2169,7 +2169,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40573.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:45:22.858362+00:00"
+      "last_updated": "2026-08-31T15:59:51.148670+00:00"
     },
     {
       "id": "10308-1_108",
@@ -2178,18 +2178,18 @@
       "name": "Holiday Main Street",
       "theme": "Holiday & Event",
       "cost": 146.89,
-      "current_value": 195.19,
-      "profit": 48.3,
-      "roi": 32.88,
+      "current_value": 191.05,
+      "profit": 44.16,
+      "roi": 30.06,
       "signal": "Consider",
-      "qty_sold_6m": 6,
+      "qty_sold_6m": 7,
       "bl_min_price": 161.28,
       "bl_max_price": 237.74,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/10308.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:45:26.078985+00:00"
+      "last_updated": "2026-08-31T15:59:54.305028+00:00"
     },
     {
       "id": "21315-1_109",
@@ -2209,7 +2209,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/21315.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:45:34.267316+00:00"
+      "last_updated": "2026-08-31T15:59:57.470858+00:00"
     },
     {
       "id": "21329-1_110",
@@ -2229,7 +2229,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/21329.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:45:37.494780+00:00"
+      "last_updated": "2026-08-31T16:00:00.654041+00:00"
     },
     {
       "id": "21329-1_111",
@@ -2249,7 +2249,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/21329.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:45:40.688666+00:00"
+      "last_updated": "2026-08-31T16:00:03.895888+00:00"
     },
     {
       "id": "21329-1_112",
@@ -2269,7 +2269,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/21329.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:45:43.913205+00:00"
+      "last_updated": "2026-08-31T16:00:07.863224+00:00"
     },
     {
       "id": "21331-1_113",
@@ -2278,18 +2278,18 @@
       "name": "Sonic The Hedgehog: Green Hill Zone",
       "theme": "Ideas",
       "cost": 101.69,
-      "current_value": 83.66,
-      "profit": -18.03,
-      "roi": -17.73,
+      "current_value": 83.52,
+      "profit": -18.17,
+      "roi": -17.87,
       "signal": "Hold",
-      "qty_sold_6m": 13,
+      "qty_sold_6m": 14,
       "bl_min_price": 54.71,
       "bl_max_price": 119.58,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/21331.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:45:47.123646+00:00"
+      "last_updated": "2026-08-31T16:00:11.068931+00:00"
     },
     {
       "id": "21331-1_114",
@@ -2298,18 +2298,18 @@
       "name": "Sonic The Hedgehog: Green Hill Zone",
       "theme": "Ideas",
       "cost": 114.12,
-      "current_value": 83.66,
-      "profit": -30.46,
-      "roi": -26.69,
+      "current_value": 83.52,
+      "profit": -30.6,
+      "roi": -26.82,
       "signal": "Hold",
-      "qty_sold_6m": 13,
+      "qty_sold_6m": 14,
       "bl_min_price": 54.71,
       "bl_max_price": 119.58,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/21331.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:45:50.281538+00:00"
+      "last_updated": "2026-08-31T16:00:14.248764+00:00"
     },
     {
       "id": "21342-1_115",
@@ -2318,18 +2318,18 @@
       "name": "The Insect Collection",
       "theme": "Ideas",
       "cost": 108.27,
-      "current_value": 76.27,
-      "profit": -32.0,
-      "roi": -29.56,
+      "current_value": 76.72,
+      "profit": -31.55,
+      "roi": -29.14,
       "signal": "Hold",
-      "qty_sold_6m": 14,
+      "qty_sold_6m": 15,
       "bl_min_price": 68.47,
       "bl_max_price": 90.15,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/21342.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:45:53.501909+00:00"
+      "last_updated": "2026-08-31T16:00:17.427684+00:00"
     },
     {
       "id": "21342-1_116",
@@ -2338,18 +2338,18 @@
       "name": "The Insect Collection",
       "theme": "Ideas",
       "cost": 108.27,
-      "current_value": 76.27,
-      "profit": -32.0,
-      "roi": -29.56,
+      "current_value": 76.72,
+      "profit": -31.55,
+      "roi": -29.14,
       "signal": "Hold",
-      "qty_sold_6m": 14,
+      "qty_sold_6m": 15,
       "bl_min_price": 68.47,
       "bl_max_price": 90.15,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/21342.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:45:56.657718+00:00"
+      "last_updated": "2026-08-31T16:00:20.643891+00:00"
     },
     {
       "id": "21342-1_117",
@@ -2358,18 +2358,18 @@
       "name": "The Insect Collection",
       "theme": "Ideas",
       "cost": 90.0,
-      "current_value": 76.27,
-      "profit": -13.73,
-      "roi": -15.26,
+      "current_value": 76.72,
+      "profit": -13.28,
+      "roi": -14.75,
       "signal": "Hold",
-      "qty_sold_6m": 14,
+      "qty_sold_6m": 15,
       "bl_min_price": 68.47,
       "bl_max_price": 90.15,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/21342.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:45:59.870866+00:00"
+      "last_updated": "2026-08-31T16:00:23.830151+00:00"
     },
     {
       "id": "76942-1_118",
@@ -2389,7 +2389,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76942.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:46:03.156954+00:00"
+      "last_updated": "2026-08-31T16:00:27.019313+00:00"
     },
     {
       "id": "76942-1_119",
@@ -2409,7 +2409,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76942.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:46:06.318703+00:00"
+      "last_updated": "2026-08-31T16:00:30.206609+00:00"
     },
     {
       "id": "76956-1_120",
@@ -2429,7 +2429,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76956.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:46:09.647846+00:00"
+      "last_updated": "2026-08-31T16:00:33.368910+00:00"
     },
     {
       "id": "76162-1_121",
@@ -2449,7 +2449,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76162.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:46:12.965739+00:00"
+      "last_updated": "2026-08-31T16:00:36.571851+00:00"
     },
     {
       "id": "76185-1_122",
@@ -2469,7 +2469,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76185.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:46:16.170679+00:00"
+      "last_updated": "2026-08-31T16:00:39.769519+00:00"
     },
     {
       "id": "40454-1_123",
@@ -2489,7 +2489,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40454.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:46:19.365346+00:00"
+      "last_updated": "2026-08-31T16:00:42.928700+00:00"
     },
     {
       "id": "40454-1_124",
@@ -2509,7 +2509,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40454.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:46:22.574005+00:00"
+      "last_updated": "2026-08-31T16:00:46.131315+00:00"
     },
     {
       "id": "40454-1_125",
@@ -2529,7 +2529,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40454.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:46:25.779159+00:00"
+      "last_updated": "2026-08-31T16:00:49.326451+00:00"
     },
     {
       "id": "40454-1_126",
@@ -2549,7 +2549,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40454.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:46:28.984068+00:00"
+      "last_updated": "2026-08-31T16:00:52.521728+00:00"
     },
     {
       "id": "40454-1_127",
@@ -2569,7 +2569,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40454.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:46:32.230899+00:00"
+      "last_updated": "2026-08-31T16:00:55.721733+00:00"
     },
     {
       "id": "76205-1_128",
@@ -2578,18 +2578,18 @@
       "name": "Gargantos Showdown",
       "theme": "Marvel",
       "cost": 46.32,
-      "current_value": 36.87,
-      "profit": -9.45,
-      "roi": -20.4,
+      "current_value": 36.26,
+      "profit": -10.06,
+      "roi": -21.72,
       "signal": "Hold",
-      "qty_sold_6m": 20,
+      "qty_sold_6m": 21,
       "bl_min_price": 24.0,
       "bl_max_price": 68.52,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76205.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:46:35.499518+00:00"
+      "last_updated": "2026-08-31T16:00:58.885784+00:00"
     },
     {
       "id": "76205-1_129",
@@ -2598,18 +2598,18 @@
       "name": "Gargantos Showdown",
       "theme": "Marvel",
       "cost": 46.32,
-      "current_value": 36.87,
-      "profit": -9.45,
-      "roi": -20.4,
+      "current_value": 36.26,
+      "profit": -10.06,
+      "roi": -21.72,
       "signal": "Hold",
-      "qty_sold_6m": 20,
+      "qty_sold_6m": 21,
       "bl_min_price": 24.0,
       "bl_max_price": 68.52,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76205.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:46:38.861050+00:00"
+      "last_updated": "2026-08-31T16:01:02.044730+00:00"
     },
     {
       "id": "76156-1_130",
@@ -2618,18 +2618,18 @@
       "name": "Rise of the Domo",
       "theme": "Marvel",
       "cost": 98.22,
-      "current_value": 74.16,
-      "profit": -24.06,
-      "roi": -24.49,
+      "current_value": 74.8,
+      "profit": -23.42,
+      "roi": -23.84,
       "signal": "Hold",
-      "qty_sold_6m": 13,
+      "qty_sold_6m": 14,
       "bl_min_price": 60.0,
       "bl_max_price": 111.81,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76156.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:46:42.080429+00:00"
+      "last_updated": "2026-08-31T16:01:05.221715+00:00"
     },
     {
       "id": "66711-1_131",
@@ -2649,7 +2649,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/66711.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:46:45.432709+00:00"
+      "last_updated": "2026-08-31T16:01:08.382755+00:00"
     },
     {
       "id": "66711-1_132",
@@ -2669,7 +2669,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/66711.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:46:48.646355+00:00"
+      "last_updated": "2026-08-31T16:01:11.529492+00:00"
     },
     {
       "id": "30652-1_133",
@@ -2680,16 +2680,16 @@
       "cost": 7.3,
       "current_value": 7.38,
       "profit": 0.08,
-      "roi": 1.12,
+      "roi": 1.13,
       "signal": "Hold",
-      "qty_sold_6m": 90,
+      "qty_sold_6m": 92,
       "bl_min_price": 1.39,
       "bl_max_price": 16.82,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30652.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:46:51.888592+00:00"
+      "last_updated": "2026-08-31T16:01:15.031101+00:00"
     },
     {
       "id": "30652-1_134",
@@ -2700,16 +2700,16 @@
       "cost": 7.3,
       "current_value": 7.38,
       "profit": 0.08,
-      "roi": 1.12,
+      "roi": 1.13,
       "signal": "Hold",
-      "qty_sold_6m": 90,
+      "qty_sold_6m": 92,
       "bl_min_price": 1.39,
       "bl_max_price": 16.82,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30652.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:46:55.166840+00:00"
+      "last_updated": "2026-08-31T16:01:18.288403+00:00"
     },
     {
       "id": "30652-1_135",
@@ -2720,16 +2720,16 @@
       "cost": 7.3,
       "current_value": 7.38,
       "profit": 0.08,
-      "roi": 1.12,
+      "roi": 1.13,
       "signal": "Hold",
-      "qty_sold_6m": 90,
+      "qty_sold_6m": 92,
       "bl_min_price": 1.39,
       "bl_max_price": 16.82,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30652.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:46:58.428437+00:00"
+      "last_updated": "2026-08-31T16:01:21.536129+00:00"
     },
     {
       "id": "242104-1_136",
@@ -2749,7 +2749,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/242104.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:01.645533+00:00"
+      "last_updated": "2026-08-31T16:01:24.703653+00:00"
     },
     {
       "id": "30443-1_137",
@@ -2758,18 +2758,18 @@
       "name": "Spider-Man Bridge Battle polybag",
       "theme": "Marvel",
       "cost": 5.0,
-      "current_value": 11.23,
-      "profit": 6.23,
-      "roi": 124.63,
+      "current_value": 11.16,
+      "profit": 6.16,
+      "roi": 123.24,
       "signal": "Consider",
-      "qty_sold_6m": 47,
+      "qty_sold_6m": 48,
       "bl_min_price": 4.25,
       "bl_max_price": 18.64,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30443.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:04.852065+00:00"
+      "last_updated": "2026-08-31T16:01:27.885964+00:00"
     },
     {
       "id": "76244-1_138",
@@ -2789,7 +2789,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76244.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:08.063085+00:00"
+      "last_updated": "2026-08-31T16:01:31.065204+00:00"
     },
     {
       "id": "71374-1_139",
@@ -2809,7 +2809,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/71374.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:11.292976+00:00"
+      "last_updated": "2026-08-31T16:01:34.423392+00:00"
     },
     {
       "id": "71360-1_140",
@@ -2829,7 +2829,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/71360.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:14.486430+00:00"
+      "last_updated": "2026-08-31T16:01:37.691373+00:00"
     },
     {
       "id": "71360-1_141",
@@ -2849,7 +2849,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/71360.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:17.690517+00:00"
+      "last_updated": "2026-08-31T16:01:40.826523+00:00"
     },
     {
       "id": "5007029-1_142",
@@ -2869,7 +2869,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5007029.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:19.557943+00:00"
+      "last_updated": "2026-08-31T16:01:42.770366+00:00"
     },
     {
       "id": "66648-1_143",
@@ -2889,7 +2889,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/66648.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:21.441362+00:00"
+      "last_updated": "2026-08-31T16:01:44.699784+00:00"
     },
     {
       "id": "66650-1_144",
@@ -2909,7 +2909,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/66650.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:23.357272+00:00"
+      "last_updated": "2026-08-31T16:01:46.592330+00:00"
     },
     {
       "id": "5007840-1_145",
@@ -2929,7 +2929,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5007840.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:25.255266+00:00"
+      "last_updated": "2026-08-31T16:01:48.519418+00:00"
     },
     {
       "id": "5007840-1_146",
@@ -2949,7 +2949,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5007840.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:27.135592+00:00"
+      "last_updated": "2026-08-31T16:01:50.433555+00:00"
     },
     {
       "id": "5007403-1_147",
@@ -2969,7 +2969,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5007403.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:29.001683+00:00"
+      "last_updated": "2026-08-31T16:01:52.328546+00:00"
     },
     {
       "id": "5007403-1_148",
@@ -2989,7 +2989,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5007403.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:30.907455+00:00"
+      "last_updated": "2026-08-31T16:01:54.248475+00:00"
     },
     {
       "id": "5007403-1_149",
@@ -3009,7 +3009,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5007403.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:32.821392+00:00"
+      "last_updated": "2026-08-31T16:01:56.173717+00:00"
     },
     {
       "id": "5007089-1_150",
@@ -3029,7 +3029,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5007089.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:34.712627+00:00"
+      "last_updated": "2026-08-31T16:01:58.084488+00:00"
     },
     {
       "id": "40529-1_151",
@@ -3038,18 +3038,18 @@
       "name": "Children's Amusement Park",
       "theme": "Promo",
       "cost": 0.0,
-      "current_value": 12.79,
+      "current_value": 12.83,
       "profit": 0.0,
       "roi": 0.0,
       "signal": "Hold",
-      "qty_sold_6m": 51,
+      "qty_sold_6m": 53,
       "bl_min_price": 5.54,
       "bl_max_price": 23.84,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40529.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:37.883114+00:00"
+      "last_updated": "2026-08-31T16:02:01.367961+00:00"
     },
     {
       "id": "40417-1_152",
@@ -3069,7 +3069,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40417.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:41.106361+00:00"
+      "last_updated": "2026-08-31T16:02:04.589494+00:00"
     },
     {
       "id": "5006746-1_153",
@@ -3089,7 +3089,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5006746.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:44.254019+00:00"
+      "last_updated": "2026-08-31T16:02:07.772748+00:00"
     },
     {
       "id": "6346109-1_154",
@@ -3109,7 +3109,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/6346109.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:46.229223+00:00"
+      "last_updated": "2026-08-31T16:02:09.666378+00:00"
     },
     {
       "id": "6427896-1_155",
@@ -3129,7 +3129,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/6427896.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:49.598712+00:00"
+      "last_updated": "2026-08-31T16:02:12.883969+00:00"
     },
     {
       "id": "6427896-1_156",
@@ -3149,7 +3149,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/6427896.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:52.786391+00:00"
+      "last_updated": "2026-08-31T16:02:16.067098+00:00"
     },
     {
       "id": "6427896-1_157",
@@ -3169,7 +3169,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/6427896.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:56.021180+00:00"
+      "last_updated": "2026-08-31T16:02:19.321417+00:00"
     },
     {
       "id": "6427896-1_158",
@@ -3189,7 +3189,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/6427896.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:47:59.229834+00:00"
+      "last_updated": "2026-08-31T16:02:22.515640+00:00"
     },
     {
       "id": "40563-1_159",
@@ -3198,18 +3198,18 @@
       "name": "Tribute to LEGO House",
       "theme": "Promo",
       "cost": 0.0,
-      "current_value": 22.07,
+      "current_value": 22.1,
       "profit": 0.0,
       "roi": 0.0,
       "signal": "Hold",
-      "qty_sold_6m": 50,
+      "qty_sold_6m": 52,
       "bl_min_price": 13.8,
       "bl_max_price": 37.45,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40563.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:48:02.565653+00:00"
+      "last_updated": "2026-08-31T16:02:25.733623+00:00"
     },
     {
       "id": "5007428-1_160",
@@ -3229,7 +3229,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5007428.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:48:05.867485+00:00"
+      "last_updated": "2026-08-31T16:02:29.007943+00:00"
     },
     {
       "id": "5007427-1_161",
@@ -3249,7 +3249,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5007427.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:48:09.073885+00:00"
+      "last_updated": "2026-08-31T16:02:32.292230+00:00"
     },
     {
       "id": "5006085-1_162",
@@ -3269,7 +3269,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5006085.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:48:12.334251+00:00"
+      "last_updated": "2026-08-31T16:02:35.526641+00:00"
     },
     {
       "id": "6346101-1_163",
@@ -3289,7 +3289,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/6346101.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:48:14.219105+00:00"
+      "last_updated": "2026-08-31T16:02:37.441835+00:00"
     },
     {
       "id": "5007622-1_164",
@@ -3309,7 +3309,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5007622.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:48:16.160742+00:00"
+      "last_updated": "2026-08-31T16:02:39.332899+00:00"
     },
     {
       "id": "40407-1_165",
@@ -3318,18 +3318,18 @@
       "name": "Death Star II Battle",
       "theme": "GWP",
       "cost": 0.0,
-      "current_value": 29.68,
+      "current_value": 29.24,
       "profit": 0.0,
       "roi": 0.0,
       "signal": "Hold",
-      "qty_sold_6m": 19,
-      "bl_min_price": 21.31,
+      "qty_sold_6m": 20,
+      "bl_min_price": 20.77,
       "bl_max_price": 46.32,
       "selling_on": "BL, FB, Kijiji",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40407.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:48:19.390921+00:00"
+      "last_updated": "2026-08-31T16:02:42.572422+00:00"
     },
     {
       "id": "40407-1_166",
@@ -3338,18 +3338,18 @@
       "name": "Death Star II Battle",
       "theme": "GWP",
       "cost": 0.0,
-      "current_value": 29.68,
+      "current_value": 29.24,
       "profit": 0.0,
       "roi": 0.0,
       "signal": "Hold",
-      "qty_sold_6m": 19,
-      "bl_min_price": 21.31,
+      "qty_sold_6m": 20,
+      "bl_min_price": 20.77,
       "bl_max_price": 46.32,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40407.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:48:22.609210+00:00"
+      "last_updated": "2026-08-31T16:02:45.783067+00:00"
     },
     {
       "id": "40407-1_167",
@@ -3358,18 +3358,18 @@
       "name": "Death Star II Battle",
       "theme": "GWP",
       "cost": 0.0,
-      "current_value": 29.68,
+      "current_value": 29.24,
       "profit": 0.0,
       "roi": 0.0,
       "signal": "Hold",
-      "qty_sold_6m": 19,
-      "bl_min_price": 21.31,
+      "qty_sold_6m": 20,
+      "bl_min_price": 20.77,
       "bl_max_price": 46.32,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40407.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:48:25.786694+00:00"
+      "last_updated": "2026-08-31T16:02:48.988263+00:00"
     },
     {
       "id": "40600-1_168",
@@ -3389,7 +3389,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40600.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:48:28.980136+00:00"
+      "last_updated": "2026-08-31T16:02:52.164961+00:00"
     },
     {
       "id": "40600-1_169",
@@ -3409,7 +3409,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40600.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:48:32.164911+00:00"
+      "last_updated": "2026-08-31T16:02:55.356277+00:00"
     },
     {
       "id": "40600-1_170",
@@ -3429,7 +3429,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40600.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:48:35.372540+00:00"
+      "last_updated": "2026-08-31T16:02:58.504068+00:00"
     },
     {
       "id": "40600-1_171",
@@ -3449,7 +3449,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40600.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:48:38.626265+00:00"
+      "last_updated": "2026-08-31T16:03:01.691357+00:00"
     },
     {
       "id": "40600-1_172",
@@ -3469,7 +3469,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40600.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:48:41.882299+00:00"
+      "last_updated": "2026-08-31T16:03:04.875835+00:00"
     },
     {
       "id": "6471612-1_173",
@@ -3489,7 +3489,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/6471612.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:48:43.717458+00:00"
+      "last_updated": "2026-08-31T16:03:06.853454+00:00"
     },
     {
       "id": "30668-1_174",
@@ -3498,18 +3498,18 @@
       "name": "Easter Bunny w/Colorful Eggs polybag",
       "theme": "GWP",
       "cost": 0.0,
-      "current_value": 5.05,
+      "current_value": 5.02,
       "profit": 0.0,
       "roi": 0.0,
       "signal": "Hold",
-      "qty_sold_6m": 34,
+      "qty_sold_6m": 37,
       "bl_min_price": 2.08,
       "bl_max_price": 15.52,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30668.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:48:47.020276+00:00"
+      "last_updated": "2026-08-31T16:03:10.036881+00:00"
     },
     {
       "id": "40703-1_175",
@@ -3518,18 +3518,18 @@
       "name": "Micro Ninjago City",
       "theme": "GWP",
       "cost": 0.0,
-      "current_value": 24.07,
+      "current_value": 23.86,
       "profit": 0.0,
       "roi": 0.0,
       "signal": "Hold",
-      "qty_sold_6m": 54,
+      "qty_sold_6m": 57,
       "bl_min_price": 13.59,
       "bl_max_price": 49.5,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40703.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:48:50.226738+00:00"
+      "last_updated": "2026-08-31T16:03:13.218882+00:00"
     },
     {
       "id": "5009044-1_176",
@@ -3549,7 +3549,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5009044.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:48:53.452922+00:00"
+      "last_updated": "2026-08-31T16:03:16.427555+00:00"
     },
     {
       "id": "76991-1_177",
@@ -3569,7 +3569,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76991.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:48:56.662605+00:00"
+      "last_updated": "2026-08-31T16:03:19.591241+00:00"
     },
     {
       "id": "76990-1_178",
@@ -3589,7 +3589,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/76990.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:48:59.819359+00:00"
+      "last_updated": "2026-08-31T16:03:22.798144+00:00"
     },
     {
       "id": "75254-1_179",
@@ -3598,18 +3598,18 @@
       "name": "AT-ST Raider (Open and in display)",
       "theme": "Star Wars",
       "cost": 69.0,
-      "current_value": 49.34,
-      "profit": -19.66,
-      "roi": -28.5,
+      "current_value": 49.5,
+      "profit": -19.5,
+      "roi": -28.25,
       "signal": "Hold",
-      "qty_sold_6m": 56,
+      "qty_sold_6m": 58,
       "bl_min_price": 34.86,
       "bl_max_price": 131.78,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75254.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:49:03.124120+00:00"
+      "last_updated": "2026-08-31T16:03:26.201872+00:00"
     },
     {
       "id": "75267-1_180",
@@ -3622,14 +3622,14 @@
       "profit": 6.36,
       "roi": 29.57,
       "signal": "Consider",
-      "qty_sold_6m": 117,
+      "qty_sold_6m": 118,
       "bl_min_price": 13.64,
       "bl_max_price": 49.88,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75267.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:49:06.337410+00:00"
+      "last_updated": "2026-08-31T16:03:29.457222+00:00"
     },
     {
       "id": "75267-1_181",
@@ -3642,14 +3642,14 @@
       "profit": 5.36,
       "roi": 23.81,
       "signal": "Consider",
-      "qty_sold_6m": 117,
+      "qty_sold_6m": 118,
       "bl_min_price": 13.64,
       "bl_max_price": 49.88,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75267.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:49:09.702878+00:00"
+      "last_updated": "2026-08-31T16:03:32.684450+00:00"
     },
     {
       "id": "75267-1_182",
@@ -3662,14 +3662,14 @@
       "profit": 5.36,
       "roi": 23.81,
       "signal": "Consider",
-      "qty_sold_6m": 117,
+      "qty_sold_6m": 118,
       "bl_min_price": 13.64,
       "bl_max_price": 49.88,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75267.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:49:12.998462+00:00"
+      "last_updated": "2026-08-31T16:03:35.919841+00:00"
     },
     {
       "id": "75267-1_183",
@@ -3682,14 +3682,14 @@
       "profit": 5.36,
       "roi": 23.81,
       "signal": "Consider",
-      "qty_sold_6m": 117,
+      "qty_sold_6m": 118,
       "bl_min_price": 13.64,
       "bl_max_price": 49.88,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75267.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:49:16.290630+00:00"
+      "last_updated": "2026-08-31T16:03:39.144205+00:00"
     },
     {
       "id": "75267-1_184",
@@ -3702,14 +3702,14 @@
       "profit": 5.36,
       "roi": 23.81,
       "signal": "Consider",
-      "qty_sold_6m": 117,
+      "qty_sold_6m": 118,
       "bl_min_price": 13.64,
       "bl_max_price": 49.88,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75267.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:49:19.520245+00:00"
+      "last_updated": "2026-08-31T16:03:42.417165+00:00"
     },
     {
       "id": "75267-1_185",
@@ -3722,14 +3722,14 @@
       "profit": 5.36,
       "roi": 23.81,
       "signal": "Consider",
-      "qty_sold_6m": 117,
+      "qty_sold_6m": 118,
       "bl_min_price": 13.64,
       "bl_max_price": 49.88,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75267.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:49:22.897552+00:00"
+      "last_updated": "2026-08-31T16:03:45.662165+00:00"
     },
     {
       "id": "40407-1_186",
@@ -3738,18 +3738,18 @@
       "name": "Death Star II Battle",
       "theme": "Star Wars",
       "cost": 0.0,
-      "current_value": 29.68,
+      "current_value": 29.24,
       "profit": 0.0,
       "roi": 0.0,
       "signal": "Hold",
-      "qty_sold_6m": 19,
-      "bl_min_price": 21.31,
+      "qty_sold_6m": 20,
+      "bl_min_price": 20.77,
       "bl_max_price": 46.32,
       "selling_on": "Kijiji, BL, & FB",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40407.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:49:26.169024+00:00"
+      "last_updated": "2026-08-31T16:03:48.821002+00:00"
     },
     {
       "id": "40407-1_187",
@@ -3758,18 +3758,18 @@
       "name": "Death Star II Battle",
       "theme": "Star Wars",
       "cost": 0.0,
-      "current_value": 29.68,
+      "current_value": 29.24,
       "profit": 0.0,
       "roi": 0.0,
       "signal": "Hold",
-      "qty_sold_6m": 19,
-      "bl_min_price": 21.31,
+      "qty_sold_6m": 20,
+      "bl_min_price": 20.77,
       "bl_max_price": 46.32,
       "selling_on": "Kijiji, BL, & FB",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40407.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:49:29.366176+00:00"
+      "last_updated": "2026-08-31T16:03:52.051620+00:00"
     },
     {
       "id": "40407-1_188",
@@ -3778,18 +3778,18 @@
       "name": "Death Star II Battle",
       "theme": "Star Wars",
       "cost": 0.0,
-      "current_value": 29.68,
+      "current_value": 29.24,
       "profit": 0.0,
       "roi": 0.0,
       "signal": "Hold",
-      "qty_sold_6m": 19,
-      "bl_min_price": 21.31,
+      "qty_sold_6m": 20,
+      "bl_min_price": 20.77,
       "bl_max_price": 46.32,
       "selling_on": "Kijiji, BL, & FB",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40407.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:49:32.547330+00:00"
+      "last_updated": "2026-08-31T16:03:55.217464+00:00"
     },
     {
       "id": "75292-1_189",
@@ -3809,7 +3809,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75292.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:49:35.735402+00:00"
+      "last_updated": "2026-08-31T16:03:58.403480+00:00"
     },
     {
       "id": "40391-1_190",
@@ -3818,18 +3818,18 @@
       "name": "First Order Stormtrooper",
       "theme": "Sketches",
       "cost": 15.0,
-      "current_value": 12.5,
-      "profit": -2.5,
-      "roi": -16.69,
+      "current_value": 13.74,
+      "profit": -1.26,
+      "roi": -8.38,
       "signal": "Hold",
-      "qty_sold_6m": 1,
+      "qty_sold_6m": 2,
       "bl_min_price": 12.5,
-      "bl_max_price": 12.5,
+      "bl_max_price": 14.99,
       "selling_on": "",
       "notes": "Built in nerd cave",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40391.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:49:39.036089+00:00"
+      "last_updated": "2026-08-31T16:04:01.619889+00:00"
     },
     {
       "id": "40431-1_191",
@@ -3849,7 +3849,7 @@
       "notes": "Built in nerd cave",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40431.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:49:42.279827+00:00"
+      "last_updated": "2026-08-31T16:04:04.805676+00:00"
     },
     {
       "id": "75299-1_192",
@@ -3869,7 +3869,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75299.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:49:45.451344+00:00"
+      "last_updated": "2026-08-31T16:04:08.050789+00:00"
     },
     {
       "id": "75270-1_193",
@@ -3878,18 +3878,18 @@
       "name": "Obi-Wan's Hut",
       "theme": "Star Wars",
       "cost": 45.19,
-      "current_value": 50.68,
-      "profit": 5.49,
-      "roi": 12.15,
+      "current_value": 50.3,
+      "profit": 5.11,
+      "roi": 11.32,
       "signal": "Hold",
-      "qty_sold_6m": 36,
-      "bl_min_price": 41.62,
+      "qty_sold_6m": 37,
+      "bl_min_price": 36.8,
       "bl_max_price": 67.13,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75270.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:49:48.686004+00:00"
+      "last_updated": "2026-08-31T16:04:11.233724+00:00"
     },
     {
       "id": "75270-1_194",
@@ -3898,18 +3898,18 @@
       "name": "Obi-Wan's Hut",
       "theme": "Star Wars",
       "cost": 45.19,
-      "current_value": 50.68,
-      "profit": 5.49,
-      "roi": 12.15,
+      "current_value": 50.3,
+      "profit": 5.11,
+      "roi": 11.32,
       "signal": "Hold",
-      "qty_sold_6m": 36,
-      "bl_min_price": 41.62,
+      "qty_sold_6m": 37,
+      "bl_min_price": 36.8,
       "bl_max_price": 67.13,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75270.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:49:51.855965+00:00"
+      "last_updated": "2026-08-31T16:04:14.444330+00:00"
     },
     {
       "id": "75304-1_195",
@@ -3929,7 +3929,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75304.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:49:55.059983+00:00"
+      "last_updated": "2026-08-31T16:04:17.608909+00:00"
     },
     {
       "id": "75304-1_196",
@@ -3949,7 +3949,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75304.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:49:58.275988+00:00"
+      "last_updated": "2026-08-31T16:04:20.811349+00:00"
     },
     {
       "id": "75266-1_197",
@@ -3958,18 +3958,18 @@
       "name": "Sith Trooper Battle Pack",
       "theme": "Star Wars",
       "cost": 22.59,
-      "current_value": 27.27,
-      "profit": 4.68,
-      "roi": 20.74,
+      "current_value": 27.33,
+      "profit": 4.74,
+      "roi": 20.98,
       "signal": "Consider",
-      "qty_sold_6m": 49,
+      "qty_sold_6m": 50,
       "bl_min_price": 15.0,
       "bl_max_price": 40.91,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75266.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:50:01.529595+00:00"
+      "last_updated": "2026-08-31T16:04:24.060792+00:00"
     },
     {
       "id": "30384-1_198",
@@ -3989,7 +3989,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30384.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:50:04.746810+00:00"
+      "last_updated": "2026-08-31T16:04:27.685106+00:00"
     },
     {
       "id": "40539-1_199",
@@ -4009,7 +4009,7 @@
       "notes": "Retiring Soon",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40539.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:50:07.952526+00:00"
+      "last_updated": "2026-08-31T16:04:30.879836+00:00"
     },
     {
       "id": "40539-1_200",
@@ -4029,7 +4029,7 @@
       "notes": "Retiring Soon",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40539.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:50:11.149120+00:00"
+      "last_updated": "2026-08-31T16:04:34.100860+00:00"
     },
     {
       "id": "40539-1_201",
@@ -4049,7 +4049,7 @@
       "notes": "Retiring Soon",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40539.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:50:14.359832+00:00"
+      "last_updated": "2026-08-31T16:04:37.382756+00:00"
     },
     {
       "id": "40539-1_202",
@@ -4069,7 +4069,7 @@
       "notes": "Retiring Soon",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40539.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:50:17.561518+00:00"
+      "last_updated": "2026-08-31T16:04:40.585623+00:00"
     },
     {
       "id": "40539-1_203",
@@ -4089,7 +4089,7 @@
       "notes": "Retiring Soon",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40539.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:50:20.739507+00:00"
+      "last_updated": "2026-08-31T16:04:43.776873+00:00"
     },
     {
       "id": "75320-1_204",
@@ -4098,18 +4098,18 @@
       "name": "Snowtrooper Battle Pack",
       "theme": "Star Wars",
       "cost": 28.24,
-      "current_value": 33.67,
-      "profit": 5.43,
-      "roi": 19.23,
+      "current_value": 33.63,
+      "profit": 5.39,
+      "roi": 19.1,
       "signal": "Hold",
-      "qty_sold_6m": 86,
+      "qty_sold_6m": 87,
       "bl_min_price": 24.19,
       "bl_max_price": 47.62,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75320.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:50:24.008810+00:00"
+      "last_updated": "2026-08-31T16:04:47.050991+00:00"
     },
     {
       "id": "75320-1_205",
@@ -4118,18 +4118,18 @@
       "name": "Snowtrooper Battle Pack",
       "theme": "Star Wars",
       "cost": 28.24,
-      "current_value": 33.67,
-      "profit": 5.43,
-      "roi": 19.23,
+      "current_value": 33.63,
+      "profit": 5.39,
+      "roi": 19.1,
       "signal": "Hold",
-      "qty_sold_6m": 86,
+      "qty_sold_6m": 87,
       "bl_min_price": 24.19,
       "bl_max_price": 47.62,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75320.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:50:27.241723+00:00"
+      "last_updated": "2026-08-31T16:04:50.326698+00:00"
     },
     {
       "id": "75321-1_206",
@@ -4149,7 +4149,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75321.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:50:30.527357+00:00"
+      "last_updated": "2026-08-31T16:04:53.513425+00:00"
     },
     {
       "id": "75321-1_207",
@@ -4169,7 +4169,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75321.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:50:33.736647+00:00"
+      "last_updated": "2026-08-31T16:04:56.719040+00:00"
     },
     {
       "id": "75324-1_208",
@@ -4178,18 +4178,18 @@
       "name": "Dark Trooper Attack",
       "theme": "Star Wars",
       "cost": 30.0,
-      "current_value": 41.94,
-      "profit": 11.94,
-      "roi": 39.79,
+      "current_value": 41.93,
+      "profit": 11.93,
+      "roi": 39.77,
       "signal": "Consider",
-      "qty_sold_6m": 96,
+      "qty_sold_6m": 97,
       "bl_min_price": 27.01,
       "bl_max_price": 82.03,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75324.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:50:37.098680+00:00"
+      "last_updated": "2026-08-31T16:04:59.977421+00:00"
     },
     {
       "id": "75324-1_209",
@@ -4198,18 +4198,18 @@
       "name": "Dark Trooper Attack",
       "theme": "Star Wars",
       "cost": 45.19,
-      "current_value": 41.94,
-      "profit": -3.25,
-      "roi": -7.2,
+      "current_value": 41.93,
+      "profit": -3.26,
+      "roi": -7.21,
       "signal": "Hold",
-      "qty_sold_6m": 96,
+      "qty_sold_6m": 97,
       "bl_min_price": 27.01,
       "bl_max_price": 82.03,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75324.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:50:40.395466+00:00"
+      "last_updated": "2026-08-31T16:05:03.197891+00:00"
     },
     {
       "id": "75324-1_210",
@@ -4218,18 +4218,18 @@
       "name": "Dark Trooper Attack",
       "theme": "Star Wars",
       "cost": 45.19,
-      "current_value": 41.94,
-      "profit": -3.25,
-      "roi": -7.2,
+      "current_value": 41.93,
+      "profit": -3.26,
+      "roi": -7.21,
       "signal": "Hold",
-      "qty_sold_6m": 96,
+      "qty_sold_6m": 97,
       "bl_min_price": 27.01,
       "bl_max_price": 82.03,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75324.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:50:43.653617+00:00"
+      "last_updated": "2026-08-31T16:05:06.455506+00:00"
     },
     {
       "id": "75324-1_211",
@@ -4238,18 +4238,18 @@
       "name": "Dark Trooper Attack",
       "theme": "Star Wars",
       "cost": 20.0,
-      "current_value": 41.94,
-      "profit": 21.94,
-      "roi": 109.68,
+      "current_value": 41.93,
+      "profit": 21.93,
+      "roi": 109.66,
       "signal": "Consider",
-      "qty_sold_6m": 96,
+      "qty_sold_6m": 97,
       "bl_min_price": 27.01,
       "bl_max_price": 82.03,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75324.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:50:46.910412+00:00"
+      "last_updated": "2026-08-31T16:05:09.683505+00:00"
     },
     {
       "id": "75324-1_212",
@@ -4258,18 +4258,18 @@
       "name": "Dark Trooper Attack",
       "theme": "Star Wars",
       "cost": 20.0,
-      "current_value": 41.94,
-      "profit": 21.94,
-      "roi": 109.68,
+      "current_value": 41.93,
+      "profit": 21.93,
+      "roi": 109.66,
       "signal": "Consider",
-      "qty_sold_6m": 96,
+      "qty_sold_6m": 97,
       "bl_min_price": 27.01,
       "bl_max_price": 82.03,
       "selling_on": "BL",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75324.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:50:50.200019+00:00"
+      "last_updated": "2026-08-31T16:05:12.957357+00:00"
     },
     {
       "id": "75316-1_213",
@@ -4289,7 +4289,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75316.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:50:53.420544+00:00"
+      "last_updated": "2026-08-31T16:05:16.247030+00:00"
     },
     {
       "id": "75302-1_214",
@@ -4309,7 +4309,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75302.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:50:56.748206+00:00"
+      "last_updated": "2026-08-31T16:05:19.453136+00:00"
     },
     {
       "id": "75302-1_215",
@@ -4329,7 +4329,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75302.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:50:59.964293+00:00"
+      "last_updated": "2026-08-31T16:05:22.633095+00:00"
     },
     {
       "id": "75302-1_216",
@@ -4349,7 +4349,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75302.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:51:03.210007+00:00"
+      "last_updated": "2026-08-31T16:05:25.781918+00:00"
     },
     {
       "id": "75302-1_217",
@@ -4369,7 +4369,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75302.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:51:06.432650+00:00"
+      "last_updated": "2026-08-31T16:05:28.936266+00:00"
     },
     {
       "id": "75312-1_218",
@@ -4389,7 +4389,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75312.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:51:09.646507+00:00"
+      "last_updated": "2026-08-31T16:05:32.177421+00:00"
     },
     {
       "id": "75330-1_219",
@@ -4409,7 +4409,7 @@
       "notes": "Lego.com",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75330.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:51:12.895194+00:00"
+      "last_updated": "2026-08-31T16:05:35.397502+00:00"
     },
     {
       "id": "75330-1_220",
@@ -4429,7 +4429,7 @@
       "notes": "Lego.com",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75330.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:51:16.198982+00:00"
+      "last_updated": "2026-08-31T16:05:38.604051+00:00"
     },
     {
       "id": "75339-1_221",
@@ -4449,7 +4449,7 @@
       "notes": "Lego.com",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75339.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:51:19.425098+00:00"
+      "last_updated": "2026-08-31T16:05:41.781304+00:00"
     },
     {
       "id": "75339-1_222",
@@ -4469,7 +4469,7 @@
       "notes": "Lego.com",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75339.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:51:22.618390+00:00"
+      "last_updated": "2026-08-31T16:05:44.960000+00:00"
     },
     {
       "id": "75329-1_223",
@@ -4489,7 +4489,7 @@
       "notes": "Lego.com",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75329.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:51:25.962839+00:00"
+      "last_updated": "2026-08-31T16:05:48.188705+00:00"
     },
     {
       "id": "75329-1_224",
@@ -4509,7 +4509,7 @@
       "notes": "Lego.com",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75329.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:51:29.131798+00:00"
+      "last_updated": "2026-08-31T16:05:51.353699+00:00"
     },
     {
       "id": "75298-1_225",
@@ -4529,7 +4529,7 @@
       "notes": "Lego.com",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75298.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:51:32.396297+00:00"
+      "last_updated": "2026-08-31T16:05:54.545174+00:00"
     },
     {
       "id": "75322-1_226",
@@ -4549,7 +4549,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75322.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:51:35.547907+00:00"
+      "last_updated": "2026-08-31T16:05:57.788878+00:00"
     },
     {
       "id": "75294-1_227",
@@ -4569,7 +4569,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75294.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:51:38.766557+00:00"
+      "last_updated": "2026-08-31T16:06:01.002001+00:00"
     },
     {
       "id": "75353-1_228",
@@ -4589,7 +4589,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75353.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:51:42.033751+00:00"
+      "last_updated": "2026-08-31T16:06:04.768309+00:00"
     },
     {
       "id": "75352-1_229",
@@ -4609,7 +4609,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75352.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:51:45.235289+00:00"
+      "last_updated": "2026-08-31T16:06:08.388979+00:00"
     },
     {
       "id": "75352-1_230",
@@ -4629,7 +4629,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75352.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:51:48.552888+00:00"
+      "last_updated": "2026-08-31T16:06:11.645637+00:00"
     },
     {
       "id": "30654-1_231",
@@ -4642,14 +4642,14 @@
       "profit": 0.0,
       "roi": 0.0,
       "signal": "Hold",
-      "qty_sold_6m": 155,
+      "qty_sold_6m": 156,
       "bl_min_price": 2.05,
       "bl_max_price": 21.23,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30654.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:51:51.951155+00:00"
+      "last_updated": "2026-08-31T16:06:16.293009+00:00"
     },
     {
       "id": "75323-1_232",
@@ -4658,18 +4658,18 @@
       "name": "The Justifier",
       "theme": "Star Wars",
       "cost": 192.09,
-      "current_value": 164.36,
-      "profit": -27.73,
-      "roi": -14.44,
+      "current_value": 165.2,
+      "profit": -26.89,
+      "roi": -14.0,
       "signal": "Hold",
-      "qty_sold_6m": 34,
+      "qty_sold_6m": 35,
       "bl_min_price": 76.51,
       "bl_max_price": 270.69,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75323.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:51:55.171066+00:00"
+      "last_updated": "2026-08-31T16:06:20.146833+00:00"
     },
     {
       "id": "75342-1_233",
@@ -4678,18 +4678,18 @@
       "name": "Republic Fighter Tank",
       "theme": "Star Wars",
       "cost": 56.49,
-      "current_value": 62.79,
-      "profit": 6.3,
-      "roi": 11.15,
+      "current_value": 62.77,
+      "profit": 6.28,
+      "roi": 11.11,
       "signal": "Hold",
-      "qty_sold_6m": 116,
+      "qty_sold_6m": 118,
       "bl_min_price": 40.49,
       "bl_max_price": 88.91,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75342.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:51:58.448439+00:00"
+      "last_updated": "2026-08-31T16:06:24.421401+00:00"
     },
     {
       "id": "40623-1_234",
@@ -4698,18 +4698,18 @@
       "name": "Battle of Endor Heroes",
       "theme": "Star Wars",
       "cost": 56.49,
-      "current_value": 32.06,
-      "profit": -24.43,
-      "roi": -43.25,
+      "current_value": 32.16,
+      "profit": -24.33,
+      "roi": -43.06,
       "signal": "Hold",
-      "qty_sold_6m": 26,
+      "qty_sold_6m": 27,
       "bl_min_price": 21.23,
       "bl_max_price": 45.49,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40623.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:52:01.629665+00:00"
+      "last_updated": "2026-08-31T16:06:27.956921+00:00"
     },
     {
       "id": "40623-1_235",
@@ -4718,18 +4718,18 @@
       "name": "Battle of Endor Heroes",
       "theme": "Star Wars",
       "cost": 56.49,
-      "current_value": 32.06,
-      "profit": -24.43,
-      "roi": -43.25,
+      "current_value": 32.16,
+      "profit": -24.33,
+      "roi": -43.06,
       "signal": "Hold",
-      "qty_sold_6m": 26,
+      "qty_sold_6m": 27,
       "bl_min_price": 21.23,
       "bl_max_price": 45.49,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/40623.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:52:04.805630+00:00"
+      "last_updated": "2026-08-31T16:06:31.207702+00:00"
     },
     {
       "id": "75372-1_236",
@@ -4738,18 +4738,18 @@
       "name": "Clone Trooper & Battle Droid Battle Pack",
       "theme": "Star Wars",
       "cost": 45.19,
-      "current_value": 28.98,
-      "profit": -16.21,
-      "roi": -35.87,
+      "current_value": 28.79,
+      "profit": -16.4,
+      "roi": -36.29,
       "signal": "Hold",
-      "qty_sold_6m": 35,
+      "qty_sold_6m": 36,
       "bl_min_price": 20.51,
       "bl_max_price": 44.19,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75372.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:52:08.003546+00:00"
+      "last_updated": "2026-08-31T16:06:34.895294+00:00"
     },
     {
       "id": "75372-1_237",
@@ -4758,18 +4758,18 @@
       "name": "Clone Trooper & Battle Droid Battle Pack",
       "theme": "Star Wars",
       "cost": 45.19,
-      "current_value": 28.98,
-      "profit": -16.21,
-      "roi": -35.87,
+      "current_value": 28.79,
+      "profit": -16.4,
+      "roi": -36.29,
       "signal": "Hold",
-      "qty_sold_6m": 35,
+      "qty_sold_6m": 36,
       "bl_min_price": 20.51,
       "bl_max_price": 44.19,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75372.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:52:11.225782+00:00"
+      "last_updated": "2026-08-31T16:06:38.163268+00:00"
     },
     {
       "id": "75372-1_238",
@@ -4778,18 +4778,18 @@
       "name": "Clone Trooper & Battle Droid Battle Pack",
       "theme": "Star Wars",
       "cost": 45.19,
-      "current_value": 28.98,
-      "profit": -16.21,
-      "roi": -35.87,
+      "current_value": 28.79,
+      "profit": -16.4,
+      "roi": -36.29,
       "signal": "Hold",
-      "qty_sold_6m": 35,
+      "qty_sold_6m": 36,
       "bl_min_price": 20.51,
       "bl_max_price": 44.19,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75372.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:52:14.396509+00:00"
+      "last_updated": "2026-08-31T16:06:41.408513+00:00"
     },
     {
       "id": "75372-1_239",
@@ -4798,18 +4798,18 @@
       "name": "Clone Trooper & Battle Droid Battle Pack",
       "theme": "Star Wars",
       "cost": 45.19,
-      "current_value": 28.98,
-      "profit": -16.21,
-      "roi": -35.87,
+      "current_value": 28.79,
+      "profit": -16.4,
+      "roi": -36.29,
       "signal": "Hold",
-      "qty_sold_6m": 35,
+      "qty_sold_6m": 36,
       "bl_min_price": 20.51,
       "bl_max_price": 44.19,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75372.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:52:17.610939+00:00"
+      "last_updated": "2026-08-31T16:06:44.666940+00:00"
     },
     {
       "id": "75372-1_240",
@@ -4818,18 +4818,18 @@
       "name": "Clone Trooper & Battle Droid Battle Pack",
       "theme": "Star Wars",
       "cost": 45.19,
-      "current_value": 28.98,
-      "profit": -16.21,
-      "roi": -35.87,
+      "current_value": 28.79,
+      "profit": -16.4,
+      "roi": -36.29,
       "signal": "Hold",
-      "qty_sold_6m": 35,
+      "qty_sold_6m": 36,
       "bl_min_price": 20.51,
       "bl_max_price": 44.19,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75372.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:52:20.779954+00:00"
+      "last_updated": "2026-08-31T16:06:47.934691+00:00"
     },
     {
       "id": "75372-1_241",
@@ -4838,18 +4838,18 @@
       "name": "Clone Trooper & Battle Droid Battle Pack",
       "theme": "Star Wars",
       "cost": 20.0,
-      "current_value": 28.98,
-      "profit": 8.98,
-      "roi": 44.9,
+      "current_value": 28.79,
+      "profit": 8.79,
+      "roi": 43.95,
       "signal": "Consider",
-      "qty_sold_6m": 35,
+      "qty_sold_6m": 36,
       "bl_min_price": 20.51,
       "bl_max_price": 44.19,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75372.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:52:23.971526+00:00"
+      "last_updated": "2026-08-31T16:06:51.195790+00:00"
     },
     {
       "id": "75359-1_242",
@@ -4858,18 +4858,18 @@
       "name": "Ahsoka's Clone Trooper Battle Pack",
       "theme": "Star Wars",
       "cost": 10.0,
-      "current_value": 25.52,
-      "profit": 15.52,
-      "roi": 155.15,
+      "current_value": 25.6,
+      "profit": 15.6,
+      "roi": 156.02,
       "signal": "Consider",
-      "qty_sold_6m": 92,
+      "qty_sold_6m": 96,
       "bl_min_price": 14.14,
       "bl_max_price": 48.0,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75359.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:52:27.218015+00:00"
+      "last_updated": "2026-08-31T16:06:54.568881+00:00"
     },
     {
       "id": "75347-1_243",
@@ -4878,18 +4878,18 @@
       "name": "TIE Bomber",
       "theme": "Star Wars",
       "cost": 50.0,
-      "current_value": 56.87,
-      "profit": 6.87,
-      "roi": 13.75,
+      "current_value": 56.8,
+      "profit": 6.8,
+      "roi": 13.61,
       "signal": "Hold",
-      "qty_sold_6m": 53,
+      "qty_sold_6m": 57,
       "bl_min_price": 43.62,
       "bl_max_price": 114.99,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75347.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:52:30.451799+00:00"
+      "last_updated": "2026-08-31T16:06:57.796586+00:00"
     },
     {
       "id": "75345-1_244",
@@ -4898,18 +4898,18 @@
       "name": "501st Clone Troopers Battle Pack",
       "theme": "Star Wars",
       "cost": 20.0,
-      "current_value": 20.66,
-      "profit": 0.66,
-      "roi": 3.32,
+      "current_value": 20.65,
+      "profit": 0.65,
+      "roi": 3.23,
       "signal": "Hold",
-      "qty_sold_6m": 127,
+      "qty_sold_6m": 132,
       "bl_min_price": 11.1,
       "bl_max_price": 38.22,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75345.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:52:33.727907+00:00"
+      "last_updated": "2026-08-31T16:07:01.077197+00:00"
     },
     {
       "id": "75345-1_245",
@@ -4918,18 +4918,18 @@
       "name": "501st Clone Troopers Battle Pack",
       "theme": "Star Wars",
       "cost": 20.0,
-      "current_value": 20.66,
-      "profit": 0.66,
-      "roi": 3.32,
+      "current_value": 20.65,
+      "profit": 0.65,
+      "roi": 3.23,
       "signal": "Hold",
-      "qty_sold_6m": 127,
+      "qty_sold_6m": 132,
       "bl_min_price": 11.1,
       "bl_max_price": 38.22,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75345.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:52:36.941221+00:00"
+      "last_updated": "2026-08-31T16:07:04.553845+00:00"
     },
     {
       "id": "75345-1_246",
@@ -4938,18 +4938,18 @@
       "name": "501st Clone Troopers Battle Pack",
       "theme": "Star Wars",
       "cost": 20.0,
-      "current_value": 20.66,
-      "profit": 0.66,
-      "roi": 3.32,
+      "current_value": 20.65,
+      "profit": 0.65,
+      "roi": 3.23,
       "signal": "Hold",
-      "qty_sold_6m": 127,
+      "qty_sold_6m": 132,
       "bl_min_price": 11.1,
       "bl_max_price": 38.22,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75345.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:52:40.198445+00:00"
+      "last_updated": "2026-08-31T16:07:07.829724+00:00"
     },
     {
       "id": "75345-1_247",
@@ -4958,18 +4958,18 @@
       "name": "501st Clone Troopers Battle Pack",
       "theme": "Star Wars",
       "cost": 20.0,
-      "current_value": 20.66,
-      "profit": 0.66,
-      "roi": 3.32,
+      "current_value": 20.65,
+      "profit": 0.65,
+      "roi": 3.23,
       "signal": "Hold",
-      "qty_sold_6m": 127,
+      "qty_sold_6m": 132,
       "bl_min_price": 11.1,
       "bl_max_price": 38.22,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75345.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:52:43.502087+00:00"
+      "last_updated": "2026-08-31T16:07:11.075604+00:00"
     },
     {
       "id": "75378-1_248",
@@ -4989,7 +4989,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/75378.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:52:46.716342+00:00"
+      "last_updated": "2026-08-31T16:07:14.303501+00:00"
     },
     {
       "id": "manual_30701_1_manual",
@@ -5000,18 +5000,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 5.61,
-      "profit": 3.11,
-      "roi": 124.52,
+      "current_value": 5.6,
+      "profit": 3.1,
+      "roi": 124.01,
       "signal": "Consider",
-      "qty_sold_6m": 61,
+      "qty_sold_6m": 62,
       "bl_min_price": 0.07,
       "bl_max_price": 9.83,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30701.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:52:49.930542+00:00",
+      "last_updated": "2026-08-31T16:07:17.552275+00:00",
       "isManual": true
     },
     {
@@ -5023,18 +5023,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 5.61,
-      "profit": 3.11,
-      "roi": 124.52,
+      "current_value": 5.6,
+      "profit": 3.1,
+      "roi": 124.01,
       "signal": "Consider",
-      "qty_sold_6m": 61,
+      "qty_sold_6m": 62,
       "bl_min_price": 0.07,
       "bl_max_price": 9.83,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30701.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:52:53.246152+00:00",
+      "last_updated": "2026-08-31T16:07:20.792677+00:00",
       "isManual": true
     },
     {
@@ -5057,7 +5057,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/77256.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:52:56.439119+00:00",
+      "last_updated": "2026-08-31T16:07:24.093954+00:00",
       "isManual": true
     },
     {
@@ -5080,7 +5080,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30714.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:53:01.820487+00:00",
+      "last_updated": "2026-08-31T16:07:29.729284+00:00",
       "isManual": true
     },
     {
@@ -5103,7 +5103,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30714.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:53:07.103172+00:00",
+      "last_updated": "2026-08-31T16:07:35.848922+00:00",
       "isManual": true
     },
     {
@@ -5126,7 +5126,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30714.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:53:12.289552+00:00",
+      "last_updated": "2026-08-31T16:07:41.708966+00:00",
       "isManual": true
     },
     {
@@ -5149,7 +5149,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30714.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:53:17.389307+00:00",
+      "last_updated": "2026-08-31T16:07:47.033423+00:00",
       "isManual": true
     },
     {
@@ -5161,18 +5161,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.32,
-      "profit": 3.82,
-      "roi": 152.66,
+      "current_value": 6.34,
+      "profit": 3.84,
+      "roi": 153.72,
       "signal": "Consider",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 23,
       "bl_min_price": 3.0,
       "bl_max_price": 11.08,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:53:22.626682+00:00",
+      "last_updated": "2026-08-31T16:07:52.588328+00:00",
       "isManual": true
     },
     {
@@ -5184,18 +5184,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.32,
-      "profit": 3.82,
-      "roi": 152.66,
+      "current_value": 6.34,
+      "profit": 3.84,
+      "roi": 153.72,
       "signal": "Consider",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 23,
       "bl_min_price": 3.0,
       "bl_max_price": 11.08,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:53:27.653723+00:00",
+      "last_updated": "2026-08-31T16:07:57.683441+00:00",
       "isManual": true
     },
     {
@@ -5207,18 +5207,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.32,
-      "profit": 3.82,
-      "roi": 152.66,
+      "current_value": 6.34,
+      "profit": 3.84,
+      "roi": 153.72,
       "signal": "Consider",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 23,
       "bl_min_price": 3.0,
       "bl_max_price": 11.08,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:53:32.633607+00:00",
+      "last_updated": "2026-08-31T16:08:03.122204+00:00",
       "isManual": true
     },
     {
@@ -5230,18 +5230,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.32,
-      "profit": 3.82,
-      "roi": 152.66,
+      "current_value": 6.34,
+      "profit": 3.84,
+      "roi": 153.72,
       "signal": "Consider",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 23,
       "bl_min_price": 3.0,
       "bl_max_price": 11.08,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:53:37.587999+00:00",
+      "last_updated": "2026-08-31T16:08:08.431891+00:00",
       "isManual": true
     },
     {
@@ -5253,18 +5253,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.32,
-      "profit": 3.82,
-      "roi": 152.66,
+      "current_value": 6.34,
+      "profit": 3.84,
+      "roi": 153.72,
       "signal": "Consider",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 23,
       "bl_min_price": 3.0,
       "bl_max_price": 11.08,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:53:42.604996+00:00",
+      "last_updated": "2026-08-31T16:08:13.640451+00:00",
       "isManual": true
     },
     {
@@ -5276,18 +5276,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.32,
-      "profit": 3.82,
-      "roi": 152.66,
+      "current_value": 6.34,
+      "profit": 3.84,
+      "roi": 153.72,
       "signal": "Consider",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 23,
       "bl_min_price": 3.0,
       "bl_max_price": 11.08,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:53:47.716645+00:00",
+      "last_updated": "2026-08-31T16:08:19.035503+00:00",
       "isManual": true
     },
     {
@@ -5299,18 +5299,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.32,
-      "profit": 3.82,
-      "roi": 152.66,
+      "current_value": 6.34,
+      "profit": 3.84,
+      "roi": 153.72,
       "signal": "Consider",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 23,
       "bl_min_price": 3.0,
       "bl_max_price": 11.08,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:53:52.659871+00:00",
+      "last_updated": "2026-08-31T16:08:24.204083+00:00",
       "isManual": true
     },
     {
@@ -5322,18 +5322,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.32,
-      "profit": 3.82,
-      "roi": 152.66,
+      "current_value": 6.34,
+      "profit": 3.84,
+      "roi": 153.72,
       "signal": "Consider",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 23,
       "bl_min_price": 3.0,
       "bl_max_price": 11.08,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:53:57.864417+00:00",
+      "last_updated": "2026-08-31T16:08:29.284584+00:00",
       "isManual": true
     },
     {
@@ -5345,18 +5345,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.32,
-      "profit": 3.82,
-      "roi": 152.66,
+      "current_value": 6.34,
+      "profit": 3.84,
+      "roi": 153.72,
       "signal": "Consider",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 23,
       "bl_min_price": 3.0,
       "bl_max_price": 11.08,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:54:02.864642+00:00",
+      "last_updated": "2026-08-31T16:08:34.462319+00:00",
       "isManual": true
     },
     {
@@ -5368,18 +5368,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.32,
-      "profit": 3.82,
-      "roi": 152.66,
+      "current_value": 6.34,
+      "profit": 3.84,
+      "roi": 153.72,
       "signal": "Consider",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 23,
       "bl_min_price": 3.0,
       "bl_max_price": 11.08,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:54:07.947975+00:00",
+      "last_updated": "2026-08-31T16:08:39.615759+00:00",
       "isManual": true
     },
     {
@@ -5391,18 +5391,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.32,
-      "profit": 3.82,
-      "roi": 152.66,
+      "current_value": 6.34,
+      "profit": 3.84,
+      "roi": 153.72,
       "signal": "Consider",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 23,
       "bl_min_price": 3.0,
       "bl_max_price": 11.08,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:54:13.025909+00:00",
+      "last_updated": "2026-08-31T16:08:44.756877+00:00",
       "isManual": true
     },
     {
@@ -5414,18 +5414,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.32,
-      "profit": 3.82,
-      "roi": 152.66,
+      "current_value": 6.34,
+      "profit": 3.84,
+      "roi": 153.72,
       "signal": "Consider",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 23,
       "bl_min_price": 3.0,
       "bl_max_price": 11.08,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:54:18.038834+00:00",
+      "last_updated": "2026-08-31T16:08:50.371455+00:00",
       "isManual": true
     },
     {
@@ -5448,7 +5448,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30735.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:54:23.479304+00:00",
+      "last_updated": "2026-08-31T16:08:55.956508+00:00",
       "isManual": true
     },
     {
@@ -5471,7 +5471,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30735.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:54:28.797748+00:00",
+      "last_updated": "2026-08-31T16:09:01.334936+00:00",
       "isManual": true
     },
     {
@@ -5494,7 +5494,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30735.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:54:33.967207+00:00",
+      "last_updated": "2026-08-31T16:09:06.627236+00:00",
       "isManual": true
     },
     {
@@ -5517,7 +5517,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30735.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:54:39.207591+00:00",
+      "last_updated": "2026-08-31T16:09:11.939004+00:00",
       "isManual": true
     },
     {
@@ -5540,7 +5540,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30719.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:54:44.553512+00:00",
+      "last_updated": "2026-08-31T16:09:17.467790+00:00",
       "isManual": true
     },
     {
@@ -5563,7 +5563,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30719.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:54:49.666585+00:00",
+      "last_updated": "2026-08-31T16:09:22.667388+00:00",
       "isManual": true
     },
     {
@@ -5586,7 +5586,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30719.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:54:54.788733+00:00",
+      "last_updated": "2026-08-31T16:09:28.049035+00:00",
       "isManual": true
     },
     {
@@ -5609,7 +5609,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30719.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:54:59.932722+00:00",
+      "last_updated": "2026-08-31T16:09:33.403091+00:00",
       "isManual": true
     },
     {
@@ -5632,7 +5632,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30719.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:55:05.091861+00:00",
+      "last_updated": "2026-08-31T16:09:38.475779+00:00",
       "isManual": true
     },
     {
@@ -5644,18 +5644,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 4.68,
-      "profit": 2.18,
-      "roi": 87.21,
+      "current_value": 4.71,
+      "profit": 2.21,
+      "roi": 88.39,
       "signal": "Consider",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 23,
       "bl_min_price": 3.41,
       "bl_max_price": 5.66,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30691.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:55:10.510187+00:00",
+      "last_updated": "2026-08-31T16:09:44.317877+00:00",
       "isManual": true
     },
     {
@@ -5667,18 +5667,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 4.68,
-      "profit": 2.18,
-      "roi": 87.21,
+      "current_value": 4.71,
+      "profit": 2.21,
+      "roi": 88.39,
       "signal": "Consider",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 23,
       "bl_min_price": 3.41,
       "bl_max_price": 5.66,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30691.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:55:15.663309+00:00",
+      "last_updated": "2026-08-31T16:09:49.698065+00:00",
       "isManual": true
     },
     {
@@ -5690,18 +5690,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 4.68,
-      "profit": 2.18,
-      "roi": 87.21,
+      "current_value": 4.71,
+      "profit": 2.21,
+      "roi": 88.39,
       "signal": "Consider",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 23,
       "bl_min_price": 3.41,
       "bl_max_price": 5.66,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30691.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:55:20.802725+00:00",
+      "last_updated": "2026-08-31T16:09:54.967301+00:00",
       "isManual": true
     },
     {
@@ -5713,18 +5713,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 4.68,
-      "profit": 2.18,
-      "roi": 87.21,
+      "current_value": 4.71,
+      "profit": 2.21,
+      "roi": 88.39,
       "signal": "Consider",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 23,
       "bl_min_price": 3.41,
       "bl_max_price": 5.66,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30691.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:55:25.924081+00:00",
+      "last_updated": "2026-08-31T16:10:00.368800+00:00",
       "isManual": true
     },
     {
@@ -5736,18 +5736,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 4.68,
-      "profit": 2.18,
-      "roi": 87.21,
+      "current_value": 4.71,
+      "profit": 2.21,
+      "roi": 88.39,
       "signal": "Consider",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 23,
       "bl_min_price": 3.41,
       "bl_max_price": 5.66,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30691.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:55:31.042860+00:00",
+      "last_updated": "2026-08-31T16:10:05.606451+00:00",
       "isManual": true
     },
     {
@@ -5759,18 +5759,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 4.68,
-      "profit": 2.18,
-      "roi": 87.21,
+      "current_value": 4.71,
+      "profit": 2.21,
+      "roi": 88.39,
       "signal": "Consider",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 23,
       "bl_min_price": 3.41,
       "bl_max_price": 5.66,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30691.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:55:36.122681+00:00",
+      "last_updated": "2026-08-31T16:10:10.912891+00:00",
       "isManual": true
     },
     {
@@ -5793,7 +5793,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30697.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:55:41.336102+00:00",
+      "last_updated": "2026-08-31T16:10:16.246561+00:00",
       "isManual": true
     },
     {
@@ -5816,7 +5816,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30697.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:55:46.433044+00:00",
+      "last_updated": "2026-08-31T16:10:21.451337+00:00",
       "isManual": true
     },
     {
@@ -5839,7 +5839,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30697.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:55:51.763324+00:00",
+      "last_updated": "2026-08-31T16:10:26.596099+00:00",
       "isManual": true
     },
     {
@@ -5862,7 +5862,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30697.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:55:56.786198+00:00",
+      "last_updated": "2026-08-31T16:10:31.711968+00:00",
       "isManual": true
     },
     {
@@ -5885,7 +5885,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:56:02.001833+00:00",
+      "last_updated": "2026-08-31T16:10:37.479683+00:00",
       "isManual": true
     },
     {
@@ -5908,7 +5908,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:56:07.122214+00:00",
+      "last_updated": "2026-08-31T16:10:42.706659+00:00",
       "isManual": true
     },
     {
@@ -5931,7 +5931,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:56:12.123745+00:00",
+      "last_updated": "2026-08-31T16:10:47.819133+00:00",
       "isManual": true
     },
     {
@@ -5954,7 +5954,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:56:17.126718+00:00",
+      "last_updated": "2026-08-31T16:10:52.988221+00:00",
       "isManual": true
     },
     {
@@ -5977,7 +5977,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:56:22.242683+00:00",
+      "last_updated": "2026-08-31T16:10:58.153446+00:00",
       "isManual": true
     },
     {
@@ -6000,7 +6000,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:56:27.369688+00:00",
+      "last_updated": "2026-08-31T16:11:03.470667+00:00",
       "isManual": true
     },
     {
@@ -6023,7 +6023,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:56:32.325182+00:00",
+      "last_updated": "2026-08-31T16:11:08.556843+00:00",
       "isManual": true
     },
     {
@@ -6046,7 +6046,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:56:37.316865+00:00",
+      "last_updated": "2026-08-31T16:11:13.619336+00:00",
       "isManual": true
     },
     {
@@ -6069,7 +6069,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:56:42.308985+00:00",
+      "last_updated": "2026-08-31T16:11:18.764593+00:00",
       "isManual": true
     },
     {
@@ -6092,7 +6092,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:56:47.521654+00:00",
+      "last_updated": "2026-08-31T16:11:23.873724+00:00",
       "isManual": true
     },
     {
@@ -6115,7 +6115,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:56:52.608830+00:00",
+      "last_updated": "2026-08-31T16:11:29.062814+00:00",
       "isManual": true
     },
     {
@@ -6138,7 +6138,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:56:57.580341+00:00",
+      "last_updated": "2026-08-31T16:11:34.213554+00:00",
       "isManual": true
     },
     {
@@ -6161,7 +6161,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:57:02.711790+00:00",
+      "last_updated": "2026-08-31T16:11:39.329366+00:00",
       "isManual": true
     },
     {
@@ -6184,7 +6184,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:57:07.757973+00:00",
+      "last_updated": "2026-08-31T16:11:44.362758+00:00",
       "isManual": true
     },
     {
@@ -6207,7 +6207,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:57:14.025528+00:00",
+      "last_updated": "2026-08-31T16:11:49.641374+00:00",
       "isManual": true
     },
     {
@@ -6230,7 +6230,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:57:19.135158+00:00",
+      "last_updated": "2026-08-31T16:11:54.896065+00:00",
       "isManual": true
     },
     {
@@ -6253,7 +6253,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:57:24.235643+00:00",
+      "last_updated": "2026-08-31T16:11:59.980431+00:00",
       "isManual": true
     },
     {
@@ -6276,7 +6276,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:57:29.289123+00:00",
+      "last_updated": "2026-08-31T16:12:05.113691+00:00",
       "isManual": true
     },
     {
@@ -6299,7 +6299,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:57:34.444246+00:00",
+      "last_updated": "2026-08-31T16:12:10.415537+00:00",
       "isManual": true
     },
     {
@@ -6322,7 +6322,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:57:39.563951+00:00",
+      "last_updated": "2026-08-31T16:12:15.524741+00:00",
       "isManual": true
     },
     {
@@ -6345,7 +6345,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:57:44.674306+00:00",
+      "last_updated": "2026-08-31T16:12:20.564985+00:00",
       "isManual": true
     },
     {
@@ -6368,7 +6368,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:57:49.799548+00:00",
+      "last_updated": "2026-08-31T16:12:25.685939+00:00",
       "isManual": true
     },
     {
@@ -6391,7 +6391,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:57:54.833131+00:00",
+      "last_updated": "2026-08-31T16:12:31.119222+00:00",
       "isManual": true
     },
     {
@@ -6414,7 +6414,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:58:00.007981+00:00",
+      "last_updated": "2026-08-31T16:12:36.251605+00:00",
       "isManual": true
     },
     {
@@ -6437,7 +6437,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:58:05.082382+00:00",
+      "last_updated": "2026-08-31T16:12:41.411988+00:00",
       "isManual": true
     },
     {
@@ -6460,7 +6460,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:58:10.209076+00:00",
+      "last_updated": "2026-08-31T16:12:46.617378+00:00",
       "isManual": true
     },
     {
@@ -6483,7 +6483,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:58:15.304152+00:00",
+      "last_updated": "2026-08-31T16:12:51.646779+00:00",
       "isManual": true
     },
     {
@@ -6506,7 +6506,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:58:20.288738+00:00",
+      "last_updated": "2026-08-31T16:12:56.841493+00:00",
       "isManual": true
     },
     {
@@ -6529,7 +6529,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:58:25.282484+00:00",
+      "last_updated": "2026-08-31T16:13:02.306598+00:00",
       "isManual": true
     },
     {
@@ -6552,7 +6552,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:58:30.250600+00:00",
+      "last_updated": "2026-08-31T16:13:07.451112+00:00",
       "isManual": true
     },
     {
@@ -6566,16 +6566,16 @@
       "qty_owned": 1,
       "current_value": 6.25,
       "profit": 3.75,
-      "roi": 149.94,
+      "roi": 149.89,
       "signal": "Consider",
-      "qty_sold_6m": 61,
+      "qty_sold_6m": 62,
       "bl_min_price": 2.95,
       "bl_max_price": 14.09,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30665.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:58:35.513913+00:00",
+      "last_updated": "2026-08-31T16:13:12.927236+00:00",
       "isManual": true
     },
     {
@@ -6589,16 +6589,16 @@
       "qty_owned": 1,
       "current_value": 6.25,
       "profit": 3.75,
-      "roi": 149.94,
+      "roi": 149.89,
       "signal": "Consider",
-      "qty_sold_6m": 61,
+      "qty_sold_6m": 62,
       "bl_min_price": 2.95,
       "bl_max_price": 14.09,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30665.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:58:40.752444+00:00",
+      "last_updated": "2026-08-31T16:13:18.074091+00:00",
       "isManual": true
     },
     {
@@ -6612,16 +6612,16 @@
       "qty_owned": 1,
       "current_value": 6.25,
       "profit": 3.75,
-      "roi": 149.94,
+      "roi": 149.89,
       "signal": "Consider",
-      "qty_sold_6m": 61,
+      "qty_sold_6m": 62,
       "bl_min_price": 2.95,
       "bl_max_price": 14.09,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30665.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:58:45.899294+00:00",
+      "last_updated": "2026-08-31T16:13:23.195553+00:00",
       "isManual": true
     },
     {
@@ -6635,16 +6635,16 @@
       "qty_owned": 1,
       "current_value": 6.25,
       "profit": 3.75,
-      "roi": 149.94,
+      "roi": 149.89,
       "signal": "Consider",
-      "qty_sold_6m": 61,
+      "qty_sold_6m": 62,
       "bl_min_price": 2.95,
       "bl_max_price": 14.09,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30665.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:58:51.084029+00:00",
+      "last_updated": "2026-08-31T16:13:28.386109+00:00",
       "isManual": true
     },
     {
@@ -6658,16 +6658,16 @@
       "qty_owned": 1,
       "current_value": 6.25,
       "profit": 3.75,
-      "roi": 149.94,
+      "roi": 149.89,
       "signal": "Consider",
-      "qty_sold_6m": 61,
+      "qty_sold_6m": 62,
       "bl_min_price": 2.95,
       "bl_max_price": 14.09,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30665.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:58:56.200935+00:00",
+      "last_updated": "2026-08-31T16:13:33.452505+00:00",
       "isManual": true
     },
     {
@@ -6681,16 +6681,16 @@
       "qty_owned": 1,
       "current_value": 6.25,
       "profit": 3.75,
-      "roi": 149.94,
+      "roi": 149.89,
       "signal": "Consider",
-      "qty_sold_6m": 61,
+      "qty_sold_6m": 62,
       "bl_min_price": 2.95,
       "bl_max_price": 14.09,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30665.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:59:01.339756+00:00",
+      "last_updated": "2026-08-31T16:13:38.495489+00:00",
       "isManual": true
     },
     {
@@ -6704,16 +6704,16 @@
       "qty_owned": 1,
       "current_value": 6.25,
       "profit": 3.75,
-      "roi": 149.94,
+      "roi": 149.89,
       "signal": "Consider",
-      "qty_sold_6m": 61,
+      "qty_sold_6m": 62,
       "bl_min_price": 2.95,
       "bl_max_price": 14.09,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30665.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:59:06.649548+00:00",
+      "last_updated": "2026-08-31T16:13:43.612826+00:00",
       "isManual": true
     },
     {
@@ -6727,16 +6727,16 @@
       "qty_owned": 1,
       "current_value": 6.25,
       "profit": 3.75,
-      "roi": 149.94,
+      "roi": 149.89,
       "signal": "Consider",
-      "qty_sold_6m": 61,
+      "qty_sold_6m": 62,
       "bl_min_price": 2.95,
       "bl_max_price": 14.09,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30665.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:59:11.709521+00:00",
+      "last_updated": "2026-08-31T16:13:48.874283+00:00",
       "isManual": true
     },
     {
@@ -6750,16 +6750,16 @@
       "qty_owned": 1,
       "current_value": 6.25,
       "profit": 3.75,
-      "roi": 149.94,
+      "roi": 149.89,
       "signal": "Consider",
-      "qty_sold_6m": 61,
+      "qty_sold_6m": 62,
       "bl_min_price": 2.95,
       "bl_max_price": 14.09,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30665.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:59:16.735602+00:00",
+      "last_updated": "2026-08-31T16:13:53.950400+00:00",
       "isManual": true
     },
     {
@@ -6773,16 +6773,16 @@
       "qty_owned": 1,
       "current_value": 6.25,
       "profit": 3.75,
-      "roi": 149.94,
+      "roi": 149.89,
       "signal": "Consider",
-      "qty_sold_6m": 61,
+      "qty_sold_6m": 62,
       "bl_min_price": 2.95,
       "bl_max_price": 14.09,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30665.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:59:21.853342+00:00",
+      "last_updated": "2026-08-31T16:13:59.214765+00:00",
       "isManual": true
     },
     {
@@ -6805,7 +6805,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30723.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:59:27.165912+00:00",
+      "last_updated": "2026-08-31T16:14:04.748663+00:00",
       "isManual": true
     },
     {
@@ -6828,7 +6828,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30723.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:59:32.441736+00:00",
+      "last_updated": "2026-08-31T16:14:09.922653+00:00",
       "isManual": true
     },
     {
@@ -6851,7 +6851,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30659.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:59:37.651138+00:00",
+      "last_updated": "2026-08-31T16:14:26.646372+00:00",
       "isManual": true
     },
     {
@@ -6874,7 +6874,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30659.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:59:42.604780+00:00",
+      "last_updated": "2026-08-31T16:14:31.694463+00:00",
       "isManual": true
     },
     {
@@ -6897,7 +6897,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30659.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:59:47.616436+00:00",
+      "last_updated": "2026-08-31T16:14:36.740197+00:00",
       "isManual": true
     },
     {
@@ -6920,7 +6920,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30659.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:59:52.880120+00:00",
+      "last_updated": "2026-08-31T16:14:41.901505+00:00",
       "isManual": true
     },
     {
@@ -6943,7 +6943,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30733.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T13:59:58.304625+00:00",
+      "last_updated": "2026-08-31T16:14:47.297356+00:00",
       "isManual": true
     },
     {
@@ -6966,7 +6966,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30733.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T14:00:03.422072+00:00",
+      "last_updated": "2026-08-31T16:14:52.341167+00:00",
       "isManual": true
     },
     {
@@ -6978,18 +6978,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 5.95,
-      "profit": 3.45,
-      "roi": 138.13,
+      "current_value": 6.0,
+      "profit": 3.5,
+      "roi": 140.05,
       "signal": "Consider",
-      "qty_sold_6m": 19,
+      "qty_sold_6m": 20,
       "bl_min_price": 4.11,
       "bl_max_price": 8.23,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30699.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T14:00:08.693661+00:00",
+      "last_updated": "2026-08-31T16:14:57.842312+00:00",
       "isManual": true
     },
     {
@@ -7001,18 +7001,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 5.95,
-      "profit": 3.45,
-      "roi": 138.13,
+      "current_value": 6.0,
+      "profit": 3.5,
+      "roi": 140.05,
       "signal": "Consider",
-      "qty_sold_6m": 19,
+      "qty_sold_6m": 20,
       "bl_min_price": 4.11,
       "bl_max_price": 8.23,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30699.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T14:00:13.810190+00:00",
+      "last_updated": "2026-08-31T16:15:03.100911+00:00",
       "isManual": true
     },
     {
@@ -7024,18 +7024,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 5.95,
-      "profit": 3.45,
-      "roi": 138.13,
+      "current_value": 6.0,
+      "profit": 3.5,
+      "roi": 140.05,
       "signal": "Consider",
-      "qty_sold_6m": 19,
+      "qty_sold_6m": 20,
       "bl_min_price": 4.11,
       "bl_max_price": 8.23,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30699.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T14:00:18.906076+00:00",
+      "last_updated": "2026-08-31T16:15:08.319667+00:00",
       "isManual": true
     },
     {
@@ -7047,18 +7047,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 5.95,
-      "profit": 3.45,
-      "roi": 138.13,
+      "current_value": 6.0,
+      "profit": 3.5,
+      "roi": 140.05,
       "signal": "Consider",
-      "qty_sold_6m": 19,
+      "qty_sold_6m": 20,
       "bl_min_price": 4.11,
       "bl_max_price": 8.23,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30699.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T14:00:24.067088+00:00",
+      "last_updated": "2026-08-31T16:15:13.554370+00:00",
       "isManual": true
     },
     {
@@ -7070,18 +7070,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 5.95,
-      "profit": 3.45,
-      "roi": 138.13,
+      "current_value": 6.0,
+      "profit": 3.5,
+      "roi": 140.05,
       "signal": "Consider",
-      "qty_sold_6m": 19,
+      "qty_sold_6m": 20,
       "bl_min_price": 4.11,
       "bl_max_price": 8.23,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30699.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T14:00:29.136915+00:00",
+      "last_updated": "2026-08-31T16:15:18.669214+00:00",
       "isManual": true
     },
     {
@@ -7093,18 +7093,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 5.95,
-      "profit": 3.45,
-      "roi": 138.13,
+      "current_value": 6.0,
+      "profit": 3.5,
+      "roi": 140.05,
       "signal": "Consider",
-      "qty_sold_6m": 19,
+      "qty_sold_6m": 20,
       "bl_min_price": 4.11,
       "bl_max_price": 8.23,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30699.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T14:00:34.152593+00:00",
+      "last_updated": "2026-08-31T16:15:23.740335+00:00",
       "isManual": true
     },
     {
@@ -7116,18 +7116,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 5.95,
-      "profit": 3.45,
-      "roi": 138.13,
+      "current_value": 6.0,
+      "profit": 3.5,
+      "roi": 140.05,
       "signal": "Consider",
-      "qty_sold_6m": 19,
+      "qty_sold_6m": 20,
       "bl_min_price": 4.11,
       "bl_max_price": 8.23,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30699.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T14:00:39.188362+00:00",
+      "last_updated": "2026-08-31T16:15:28.831819+00:00",
       "isManual": true
     },
     {
@@ -7139,18 +7139,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 5.95,
-      "profit": 3.45,
-      "roi": 138.13,
+      "current_value": 6.0,
+      "profit": 3.5,
+      "roi": 140.05,
       "signal": "Consider",
-      "qty_sold_6m": 19,
+      "qty_sold_6m": 20,
       "bl_min_price": 4.11,
       "bl_max_price": 8.23,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30699.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T14:00:44.230865+00:00",
+      "last_updated": "2026-08-31T16:15:33.942901+00:00",
       "isManual": true
     },
     {
@@ -7162,18 +7162,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 8.32,
-      "profit": 5.82,
-      "roi": 232.64,
+      "current_value": 8.24,
+      "profit": 5.74,
+      "roi": 229.46,
       "signal": "Consider",
-      "qty_sold_6m": 40,
+      "qty_sold_6m": 42,
       "bl_min_price": 4.0,
       "bl_max_price": 21.61,
       "selling_on": "",
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30700.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T14:00:49.608075+00:00",
+      "last_updated": "2026-08-31T16:15:39.645401+00:00",
       "isManual": true
     },
     {
@@ -7196,7 +7196,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30692.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T14:00:54.894586+00:00",
+      "last_updated": "2026-08-31T16:15:45.315832+00:00",
       "isManual": true
     },
     {
@@ -7219,7 +7219,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30692.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T14:00:59.998787+00:00",
+      "last_updated": "2026-08-31T16:15:50.362831+00:00",
       "isManual": true
     },
     {
@@ -7242,7 +7242,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30692.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T14:01:05.101125+00:00",
+      "last_updated": "2026-08-31T16:15:55.410333+00:00",
       "isManual": true
     },
     {
@@ -7265,7 +7265,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30675.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T14:01:10.818130+00:00",
+      "last_updated": "2026-08-31T16:16:00.876595+00:00",
       "isManual": true
     },
     {
@@ -7288,7 +7288,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30675.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T14:01:15.970338+00:00",
+      "last_updated": "2026-08-31T16:16:06.199600+00:00",
       "isManual": true
     },
     {
@@ -7311,7 +7311,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/30675.png",
       "ad_copy": "",
-      "last_updated": "2026-08-29T14:01:21.064875+00:00",
+      "last_updated": "2026-08-31T16:16:11.340206+00:00",
       "isManual": true
     }
   ]
