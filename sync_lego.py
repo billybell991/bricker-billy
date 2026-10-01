@@ -107,7 +107,7 @@ def download_set_image(set_id: str) -> str:
         )
     }
     for ext in IMAGE_EXTENSIONS:
-        url = f"https://img.bricklink.com/ItemImage/SN/0/{numeric}.{ext}"
+        url = f"https://img.bricklink.com/ItemImage/SN/0/{set_id}.{ext}"
         local_path = os.path.join(IMAGES_DIR, f"{numeric}.{ext}")
         try:
             resp = requests.get(url, headers=headers, timeout=15)
@@ -120,7 +120,7 @@ def download_set_image(set_id: str) -> str:
 
     # Both formats unavailable — keep the external URL as last resort
     print(f"    [img] Could not download image for {set_id}, using BrickLink URL")
-    return f"https://img.bricklink.com/ItemImage/SN/0/{numeric}.png"
+    return f"https://img.bricklink.com/ItemImage/SN/0/{set_id}.png"
 
 
 def get_manual_sets() -> list[dict]:

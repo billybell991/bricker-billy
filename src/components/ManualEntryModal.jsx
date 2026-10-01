@@ -15,8 +15,9 @@ function normalizeSetId(raw) {
 }
 
 function bricklinkImageUrl(setId) {
-  const numeric = setId.split("-")[0];
-  return `https://img.bricklink.com/ItemImage/SN/0/${numeric}.png`;
+  // BrickLink's image server requires the full item number (e.g. "21028-1"),
+  // not just the numeric set number — a bare number 404s.
+  return `https://img.bricklink.com/ItemImage/SN/0/${setId}.png`;
 }
 
 export function ManualEntryModal({ onClose, onAdd, hasGhToken, existingSets = [] }) {
