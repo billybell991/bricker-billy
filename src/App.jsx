@@ -101,6 +101,7 @@ function normalizeManualEntry(manual) {
     bl_max_price: 0,
     selling_on: manual.selling_on || "",
     notes: manual.notes || "",
+    condition: manual.condition || "new",
     image_url: `images/${String(setId).split("-")[0]}.png`,
     ad_copy: "",
     last_updated: new Date().toISOString(),
@@ -145,6 +146,7 @@ async function persistManualSetToGitHub(entry, token) {
     unit_cost: entry.unit_cost ?? entry.cost,
     qty_owned: entry.qty_owned || 1,
     notes: entry.notes,
+    condition: entry.condition || "new",
     selling_on: entry.selling_on || "",
   };
   sets.push(record);
@@ -210,6 +212,7 @@ async function persistManualSetsToGitHub(entries, token) {
       unit_cost: entry.unit_cost ?? entry.cost,
       qty_owned: entry.qty_owned || 1,
       notes: entry.notes,
+      condition: entry.condition || "new",
       selling_on: entry.selling_on || "",
     });
     added++;
@@ -1151,6 +1154,8 @@ export default function App() {
       name: s.name,
       theme: s.theme,
       cost: s.cost,
+      condition: s.condition || "new",
+      notes: s.notes || "",
       sold_for: soldFor,
       sold_on: soldOn,
       sold_date: new Date().toISOString(),

@@ -1,6 +1,8 @@
-import { X, Undo2, Trash2 } from "lucide-react";
+import { useState, Fragment } from "react";
+import { X, Undo2, Trash2, MessageSquare } from "lucide-react";
 
 export function SoldSetsModal({ soldSets, onClose, onRemove, onPurge }) {
+  const [expandedKey, setExpandedKey] = useState(null);
   const totalRevenue = soldSets.reduce((sum, s) => sum + s.sold_for, 0);
   const totalCost = soldSets.reduce((sum, s) => sum + s.cost, 0);
   const totalProfit = totalRevenue - totalCost;
@@ -57,6 +59,7 @@ export function SoldSetsModal({ soldSets, onClose, onRemove, onPurge }) {
                   <tr className="text-left text-slate-400 text-xs uppercase tracking-wider border-b border-white/10">
                     <th className="pb-3 pr-4">Set</th>
                     <th className="pb-3 pr-4">Theme</th>
+                    <th className="pb-3 pr-4">Condition</th>
                     <th className="pb-3 pr-4 text-right">Paid</th>
                     <th className="pb-3 pr-4 text-right">Sold For</th>
                     <th className="pb-3 pr-4 text-right">Profit</th>
@@ -70,13 +73,30 @@ export function SoldSetsModal({ soldSets, onClose, onRemove, onPurge }) {
                   {sorted.map((s) => {
                     const profit = s.sold_for - s.cost;
                     const roi = (profit / s.cost) * 100;
+                    const key = s.sale_id || `${s.id}_${s.sold_date}`;
+                    const hasNotes = !!(s.notes && s.notes.trim());
+                    const isExpanded = expandedKey === key;
                     return (
-                      <tr key={`${s.id}_${s.sold_date}`} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                      <Fragment key={key}>
+                      <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
                         <td className="py-3 pr-4">
                           <p className="font-bold text-white">{s.name}</p>
                           <p className="text-xs text-slate-400">#{s.set_number}</p>
                         </td>
                         <td className="py-3 pr-4 text-slate-400 text-xs">{s.theme}</td>
+                        <td className="py-3 pr-4">
+                          {s.condition ? (
+                            <span className={`text-xs font-bold px-2 py-0.5 rounded-full border capitalize ${
+                              s.condition === "used"
+                                ? "bg-amber-500/20 text-amber-300 border-amber-500/40"
+                                : "bg-white/5 text-slate-300 border-white/10"
+                            }`}>
+                              {s.condition}
+                            </span>
+                          ) : (
+                            <span className="text-xs text-slate-600">—</span>
+                          )}
+                        </td>
                         <td className="py-3 pr-4 text-right text-slate-300">${s.cost.toFixed(2)}</td>
                         <td className="py-3 pr-4 text-right text-white font-bold">${s.sold_for.toFixed(2)}</td>
                         <td className={`py-3 pr-4 text-right font-bold ${profit >= 0 ? "text-green-400" : "text-red-400"}`}>
@@ -95,6 +115,20 @@ export function SoldSetsModal({ soldSets, onClose, onRemove, onPurge }) {
                         </td>
                         <td className="py-3">
                           <div className="flex items-center gap-1">
+                            <button
+                              onClick={() => hasNotes && setExpandedKey(isExpanded ? null : key)}
+                              disabled={!hasNotes}
+                              className={`p-1.5 rounded-lg border transition-all ${
+                                hasNotes
+                                  ? isExpanded
+                                    ? "text-lego-blue bg-lego-blue/10 border-lego-blue/30"
+                                    : "text-slate-600 hover:text-lego-blue hover:bg-lego-blue/10 border-transparent hover:border-lego-blue/20"
+                                  : "text-slate-800 border-transparent cursor-not-allowed"
+                              }`}
+                              title={hasNotes ? "Toggle notes" : "No notes"}
+                            >
+                              <MessageSquare size={13} />
+                            </button>
                             <button
                               onClick={() => onRemove(s)}
                               className="text-slate-600 hover:text-yellow-400 hover:bg-yellow-500/10 border border-transparent hover:border-yellow-500/20 p-1.5 rounded-lg transition-all"
@@ -118,6 +152,15 @@ export function SoldSetsModal({ soldSets, onClose, onRemove, onPurge }) {
                           </div>
                         </td>
                       </tr>
+                      {isExpanded && (
+                        <tr className="border-b border-white/5 bg-white/[0.03]">
+                          <td colSpan={9} className="py-2.5 px-4 text-xs text-slate-300">
+                            <span className="text-slate-500 uppercase tracking-wider font-bold mr-2">Notes:</span>
+                            {s.notes}
+                          </td>
+                        </tr>
+                      )}
+                      </Fragment>
                     );
                   })}
                 </tbody>
@@ -129,3 +172,4 @@ export function SoldSetsModal({ soldSets, onClose, onRemove, onPurge }) {
     </div>
   );
 }
+

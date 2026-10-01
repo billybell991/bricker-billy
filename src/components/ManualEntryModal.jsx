@@ -5,6 +5,8 @@ const EMPTY_FORM = {
   set_number: "",
   cost: "",
   qty: "1",
+  condition: "new",
+  notes: "",
 };
 
 function normalizeSetId(raw) {
@@ -66,7 +68,8 @@ export function ManualEntryModal({ onClose, onAdd, hasGhToken, existingSets = []
       bl_min_price: 0,
       bl_max_price: 0,
       selling_on: "",
-      notes: "",
+      condition: form.condition,
+      notes: form.notes.trim(),
       image_url: bricklinkImageUrl(setId),
       ad_copy: "",
       last_updated: new Date().toISOString(),
@@ -164,6 +167,41 @@ export function ManualEntryModal({ onClose, onAdd, hasGhToken, existingSets = []
           <div className="grid grid-cols-2 gap-3">
             {field("cost", "Cost Paid Each (CAD) *", "e.g. 259.99", "number", { step: "0.01", min: "0" })}
             {field("qty", "Quantity *", "1", "number", { step: "1", min: "1" })}
+          </div>
+
+          <div>
+            <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+              Condition
+            </label>
+            <div className="flex gap-2">
+              {["new", "used"].map((c) => (
+                <button
+                  key={c}
+                  type="button"
+                  onClick={() => setForm((f) => ({ ...f, condition: c }))}
+                  className={`flex-1 text-xs font-bold px-3 py-2 rounded-xl border capitalize transition-colors ${
+                    form.condition === c
+                      ? "bg-lego-blue/80 border-lego-blue text-white"
+                      : "bg-lego-accent/30 border-white/10 text-slate-400 hover:text-white"
+                  }`}
+                >
+                  {c}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+              Notes
+            </label>
+            <textarea
+              value={form.notes}
+              onChange={(e) => setForm((f) => ({ ...f, notes: e.target.value }))}
+              placeholder="Optional — storage location, box condition, etc."
+              rows={2}
+              className="w-full bg-lego-accent/30 border border-white/10 text-white text-sm rounded-xl px-3 py-2.5 focus:outline-none focus:ring-1 focus:ring-lego-blue placeholder-slate-600 resize-none"
+            />
           </div>
 
           {/* Preview */}
