@@ -82,5 +82,29 @@
     "sold_for": 0,
     "sold_on": "BrickLink",
     "sold_date": "2026-08-13T11:58:37.026Z"
+  },
+  {
+    "sale_id": "sale_1790085440262_r9lqzw",
+    "id": "40619-1_26",
+    "set_id": "40619-1",
+    "set_number": "40619",
+    "name": "Eve & Wall-E",
+    "theme": "Disney/Pixar",
+    "cost": 22.59,
+    "sold_for": 0,
+    "sold_on": "Other",
+    "sold_date": "2026-09-22T13:57:20.262Z"
+  },
+  {
+    "sale_id": "sale_1790839840476_ru2yye",
+    "id": "10281-1_13",
+    "set_id": "10281-1",
+    "set_number": "10281",
+    "name": "Bonsai Tree",
+    "theme": "Botanical",
+    "cost": 79.09,
+    "sold_for": 0,
+    "sold_on": "BrickLink",
+    "sold_date": "2026-10-01T07:30:40.476Z"
   }
 ]
