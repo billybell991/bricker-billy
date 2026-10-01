@@ -1,18 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Megaphone, TrendingUp, Trash2 } from "lucide-react";
 import { SignalBadge } from "./Badges.jsx";
 import { HoverTrigger } from "./SetHoverCard.jsx";
 
 const LISTING_OPTIONS = ["LB", "FB", "Both"];
 
-export function SetCard({ set, onAdClick, onListingChange, onSell }) {
+export function SetCard({ set, onAdClick, onListingChange, onMetaChange, onSell }) {
   const [listing, setListing] = useState(set.selling_on || "");
+  const [notes, setNotes] = useState(set.notes || "");
+  const notesTimeoutRef = useRef(null);
+
+  useEffect(() => {
+    setNotes(set.notes || "");
+  }, [set.notes]);
 
   const handleListingChange = (e) => {
     const val = e.target.value;
     setListing(val);
     onListingChange(set.id, val);
   };
+
+  const handleConditionChange = (value) => {
+    onMetaChange?.(set.id, { condition: value });
+  };
+
+  const handleNotesChange = (e) => {
+    const val = e.target.value;
+    setNotes(val);
+    if (notesTimeoutRef.current) clearTimeout(notesTimeoutRef.current);
+    notesTimeoutRef.current = setTimeout(() => onMetaChange?.(set.id, { notes: val }), 800);
+  };
+
+  const condition = set.condition || "new";
 
   const roiColor =
     set.roi >= 40
@@ -62,6 +81,12 @@ export function SetCard({ set, onAdClick, onListingChange, onSell }) {
         {set.qty_owned > 1 && (
           <div className="absolute top-3 left-3 z-20 bg-lego-blue/90 text-white text-xs font-black px-2 py-1 rounded-full shadow-lg">
             × {set.qty_owned}
+          </div>
+        )}
+        {/* Used condition badge bottom-left */}
+        {condition === "used" && (
+          <div className="absolute bottom-3 left-3 z-20 bg-amber-500/90 text-black text-[10px] font-black px-2 py-1 rounded-full shadow-lg uppercase tracking-wider">
+            Used
           </div>
         )}
       </div>
@@ -132,6 +157,36 @@ export function SetCard({ set, onAdClick, onListingChange, onSell }) {
             {set.qty_sold_6m} sold in last 6 months (BL)
           </p>
         )}
+
+        {/* Condition toggle */}
+        <div className="flex items-center gap-2">
+          <span className="text-[10px] text-slate-400 uppercase tracking-wider shrink-0">Condition</span>
+          <div className="flex gap-1.5">
+            {["new", "used"].map((c) => (
+              <button
+                key={c}
+                type="button"
+                onClick={() => handleConditionChange(c)}
+                className={`text-[10px] font-bold px-2.5 py-1 rounded-lg border capitalize transition-colors ${
+                  condition === c
+                    ? "bg-lego-blue/80 border-lego-blue text-white"
+                    : "bg-white/5 border-white/10 text-slate-400 hover:text-white"
+                }`}
+              >
+                {c}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Notes */}
+        <textarea
+          value={notes}
+          onChange={handleNotesChange}
+          placeholder="Add notes…"
+          rows={2}
+          className="w-full bg-white/5 border border-white/10 text-white text-xs rounded-lg px-2.5 py-2 focus:outline-none focus:ring-1 focus:ring-lego-blue placeholder-slate-600 resize-none"
+        />
 
         {/* Marketplace tracker */}
         <div className="flex items-center gap-2 mt-auto pt-2 border-t border-white/5">

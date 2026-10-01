@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import { RefreshCw, Search, SlidersHorizontal, LayoutGrid, List, Plus, Trash2, Github, LogOut, Download } from "lucide-react";
 import { SetCard } from "./components/SetCard.jsx";
 import { AdModal } from "./components/AdModal.jsx";
@@ -38,6 +38,7 @@ const MANUAL_SETS_FILE = "public/manual_sets.json";
 const SOLD_SETS_FILE = "public/sold_sets.json";
 const DELETED_IDS_FILE = "public/deleted_ids.json";
 const LISTING_OVERRIDES_FILE = "public/listing_overrides.json";
+const SET_META_FILE = "public/set_meta.json";
 
 async function fetchManualSetsFile(token) {
   if (!token || !GH_OWNER || !GH_REPO) return null;
@@ -542,6 +543,61 @@ async function persistListingOverridesToGitHub(overrides, token) {
   }
 }
 
+async function fetchSetMetaFile(token) {
+  if (!token || !GH_OWNER || !GH_REPO) return null;
+  try {
+    const resp = await fetch(
+      `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${SET_META_FILE}`,
+      { headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" } }
+    );
+    if (resp.status === 401) return { unauthorized: true };
+    if (resp.status === 404) return { sha: null, meta: {} };
+    if (!resp.ok) return { sha: null, meta: {} };
+    const file = await resp.json();
+    const meta = JSON.parse(atob(file.content.replace(/\n/g, "")));
+    return { sha: file.sha, meta };
+  } catch {
+    return null;
+  }
+}
+
+async function persistSetMetaToGitHub(meta, token) {
+  if (!token || !GH_OWNER || !GH_REPO) return { pushed: false, error: "No GitHub token configured." };
+  const fileData = await fetchSetMetaFile(token);
+  if (!fileData) return { pushed: false, error: "Could not read set_meta.json from GitHub." };
+  if (fileData.unauthorized) return { pushed: false, unauthorized: true, error: "GitHub token expired or invalid. Please reconnect." };
+
+  const content = toBase64(JSON.stringify(meta, null, 2) + "\n");
+  try {
+    const resp = await fetch(
+      `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${SET_META_FILE}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github.v3+json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: `chore: update set notes/condition`,
+          content,
+          ...(fileData.sha ? { sha: fileData.sha } : {}),
+        }),
+      }
+    );
+    if (!resp.ok) {
+      const body = await resp.text().catch(() => "");
+      console.warn("[GitHub] set_meta push failed", resp.status, body);
+      if (resp.status === 401) return { pushed: false, unauthorized: true, error: "GitHub token expired or invalid. Please reconnect." };
+      return { pushed: false, error: `GitHub responded ${resp.status}` };
+    }
+    return { pushed: true };
+  } catch (e) {
+    console.warn("[GitHub] Failed to persist set_meta:", e);
+    return { pushed: false, error: e.message || String(e) };
+  }
+}
+
 // ── Manual workflow trigger ───────────────────────────────────────────────────
 const SYNC_WORKFLOW_FILE = "sync.yml";
 
@@ -630,6 +686,33 @@ async function triggerRemoteSync(token, onStatus = () => {}) {
   return { ok: false, error: "Sync did not complete in time.", stillRunning: true };
 }
 // ─────────────────────────────────────────────────────────────────────────────
+
+// Debounced inline notes input used in the list-view table row.
+function NotesCell({ set, onMetaChange }) {
+  const [value, setValue] = useState(set.notes || "");
+  const timeoutRef = useRef(null);
+
+  useEffect(() => {
+    setValue(set.notes || "");
+  }, [set.notes]);
+
+  const handleChange = (e) => {
+    const val = e.target.value;
+    setValue(val);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => onMetaChange(set.id, { notes: val }), 800);
+  };
+
+  return (
+    <input
+      type="text"
+      value={value}
+      onChange={handleChange}
+      placeholder="Add notes…"
+      className="w-full min-w-[140px] bg-lego-accent/50 border border-white/10 text-white text-xs rounded-lg px-2 py-1 focus:outline-none focus:ring-1 focus:ring-lego-blue placeholder-slate-600"
+    />
+  );
+}
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
@@ -729,6 +812,7 @@ export default function App() {
   const [selectedSet, setSelectedSet] = useState(null); // for ad modal
   const [signalModalSignal, setSignalModalSignal] = useState(null); // for signal list modal
   const [listingOverrides, setListingOverrides] = useState({});
+  const [setMeta, setSetMeta] = useState({}); // { [setId]: { notes, condition } }
   const [showManualModal, setShowManualModal] = useState(false);
   const [deletedIds, setDeletedIds] = useState(new Set());
   const [soldSets, setSoldSets] = useState(() => {
@@ -755,6 +839,11 @@ export default function App() {
           try {
             const saved = JSON.parse(localStorage.getItem("listing_overrides") || "{}");
             setListingOverrides(saved);
+          } catch (_) {}
+          // Pre-populate set notes/condition from saved state (localStorage)
+          try {
+            const saved = JSON.parse(localStorage.getItem("set_meta") || "{}");
+            setSetMeta(saved);
           } catch (_) {}
         }
 
@@ -890,6 +979,40 @@ export default function App() {
             }
           });
 
+        // Load set_meta.json (notes + condition) from GitHub and merge with any local entries
+        fetch(`./set_meta.json?t=${Date.now()}`)
+          .then((r) => (r.ok ? r.json() : {}))
+          .then((githubMeta) => {
+            let local = {};
+            try {
+              local = JSON.parse(localStorage.getItem("set_meta") || "{}");
+            } catch (_) {}
+            const merged = { ...(githubMeta || {}), ...local };
+            setSetMeta(merged);
+
+            // One-time backfill: migrate legacy local-only notes/condition to GitHub
+            const token = localStorage.getItem(GH_TOKEN_KEY) || "";
+            if (token && Object.keys(local).length > 0 && JSON.stringify(local) !== JSON.stringify(githubMeta || {})) {
+              persistSetMetaToGitHub(merged, token).then((result) => {
+                if (result?.unauthorized) {
+                  localStorage.removeItem(GH_TOKEN_KEY);
+                  setGhToken("");
+                  setShowTokenModal(true);
+                } else if (!result?.pushed) {
+                  console.warn("Failed to sync set notes/condition to GitHub:", result?.error);
+                }
+              });
+            }
+          })
+          .catch(() => {
+            try {
+              const saved = JSON.parse(localStorage.getItem("set_meta") || "{}");
+              setSetMeta(saved);
+            } catch (_) {
+              setSetMeta({});
+            }
+          });
+
         setError(null);
         setLoading(false);
         setSyncing(false);
@@ -932,6 +1055,25 @@ export default function App() {
       const token = ghToken || localStorage.getItem(GH_TOKEN_KEY) || "";
       if (token) {
         persistListingOverridesToGitHub(next, token).then((result) => {
+          if (result?.unauthorized) {
+            localStorage.removeItem(GH_TOKEN_KEY);
+            setGhToken("");
+            setShowTokenModal(true);
+          }
+        });
+      }
+      return next;
+    });
+  };
+
+  // patch is a partial { notes?, condition? } merged into the set's existing meta
+  const handleSetMetaChange = (setId, patch) => {
+    setSetMeta((prev) => {
+      const next = { ...prev, [setId]: { ...(prev[setId] || {}), ...patch } };
+      try { localStorage.setItem("set_meta", JSON.stringify(next)); } catch (_) {}
+      const token = ghToken || localStorage.getItem(GH_TOKEN_KEY) || "";
+      if (token) {
+        persistSetMetaToGitHub(next, token).then((result) => {
           if (result?.unauthorized) {
             localStorage.removeItem(GH_TOKEN_KEY);
             setGhToken("");
@@ -1093,6 +1235,8 @@ export default function App() {
       .map((s) => ({
         ...s,
         selling_on: listingOverrides[s.id] !== undefined ? listingOverrides[s.id] : s.selling_on,
+        notes: setMeta[s.id]?.notes !== undefined ? setMeta[s.id].notes : (s.notes || ""),
+        condition: setMeta[s.id]?.condition || s.condition || "new",
       }));
 
     // Expand any entry with qty_owned > 1 into individual cards so each
@@ -1116,7 +1260,7 @@ export default function App() {
     // Filter again after expansion so individually-deleted virtual copies
     // (tracked in deletedIds by their virtual id) stay hidden.
     return unified.flatMap(expand).filter((s) => !deletedIds.has(s.id) && !soldSetIds.has(s.id));
-  }, [data, listingOverrides, deletedIds, soldSetIds]);
+  }, [data, listingOverrides, setMeta, deletedIds, soldSetIds]);
 
   const summary = useMemo(() => {
     const total_cost = sets.reduce((sum, s) => sum + (Number(s.cost) || 0), 0);
@@ -1539,6 +1683,7 @@ export default function App() {
                 set={s}
                 onAdClick={setSelectedSet}
                 onListingChange={handleListingChange}
+                onMetaChange={handleSetMetaChange}
                 onSell={setSellTarget}
               />
             ))}
@@ -1578,6 +1723,8 @@ export default function App() {
                       <SortTh col="roi" right>ROI</SortTh>
                       <SortTh col="signal">Signal</SortTh>
                       <th className="px-4 py-3 text-xs uppercase tracking-wider text-slate-400">Listed</th>
+                      <th className="px-4 py-3 text-xs uppercase tracking-wider text-slate-400">Condition</th>
+                      <th className="px-4 py-3 text-xs uppercase tracking-wider text-slate-400">Notes</th>
                       <th className="px-4 py-3"></th>
                     </tr>
                   );
@@ -1640,6 +1787,19 @@ export default function App() {
                         <option value="FB">Facebook</option>
                         <option value="Both">Both</option>
                       </select>
+                    </td>
+                    <td className="px-4 py-3">
+                      <select
+                        value={s.condition || "new"}
+                        onChange={(e) => handleSetMetaChange(s.id, { condition: e.target.value })}
+                        className="bg-lego-accent/50 border border-white/10 text-white text-xs rounded-lg px-2 py-1 focus:outline-none cursor-pointer capitalize"
+                      >
+                        <option value="new">New</option>
+                        <option value="used">Used</option>
+                      </select>
+                    </td>
+                    <td className="px-4 py-3">
+                      <NotesCell set={s} onMetaChange={handleSetMetaChange} />
                     </td>
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-2">
