@@ -94,5 +94,17 @@
     "sold_for": 0,
     "sold_on": "Other",
     "sold_date": "2026-09-22T13:57:20.262Z"
+  },
+  {
+    "sale_id": "sale_1790839840476_ru2yye",
+    "id": "10281-1_13",
+    "set_id": "10281-1",
+    "set_number": "10281",
+    "name": "Bonsai Tree",
+    "theme": "Botanical",
+    "cost": 79.09,
+    "sold_for": 0,
+    "sold_on": "BrickLink",
+    "sold_date": "2026-10-01T07:30:40.476Z"
   }
 ]
