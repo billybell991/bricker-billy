@@ -98,8 +98,8 @@ export function ChartSection({ sets, onSliceClick }) {
       {/* Bar: Cost vs Value */}
       <div className="card p-5 lg:col-span-2">
         <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">Cost vs Market Value (Top 12 by Profit)</h3>
-        <ResponsiveContainer width="100%" height={220}>
-          <BarChart data={barData} margin={{ left: 10, right: 10, bottom: 30 }}>
+        <ResponsiveContainer width="100%" height={300}>
+          <BarChart data={barData} margin={{ left: 10, right: 10, top: 4, bottom: 4 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
             <XAxis
               dataKey="name"
@@ -107,10 +107,11 @@ export function ChartSection({ sets, onSliceClick }) {
               angle={-35}
               textAnchor="end"
               interval={0}
+              height={80}
             />
             <YAxis tick={{ fill: "#94a3b8", fontSize: 10 }} tickFormatter={(v) => `$${v}`} />
             <Tooltip content={<CustomTooltip />} />
-            <Legend wrapperStyle={{ fontSize: 12, color: "#94a3b8", paddingTop: 8 }} />
+            <Legend verticalAlign="top" align="right" height={28} wrapperStyle={{ fontSize: 12, color: "#94a3b8" }} />
             <Bar dataKey="Paid (CAD$)" fill="#0f3460" radius={[4, 4, 0, 0]} />
             <Bar dataKey="Value (CAD$)" fill="#22c55e" radius={[4, 4, 0, 0]} />
           </BarChart>
