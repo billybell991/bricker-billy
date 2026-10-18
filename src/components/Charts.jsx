@@ -47,18 +47,6 @@ export function ChartSection({ sets, onSliceClick }) {
       "Value (CAD$)": s.current_value,
     }));
 
-  // Bar: Top 8 ROI
-  const roiData = [...sets]
-    .filter((s) => s.roi > 0)
-    .sort((a, b) => b.roi - a.roi)
-    .slice(0, 8)
-    .map((s) => ({
-      name: s.name.length > 15 ? s.name.slice(0, 13) + "…" : s.name,
-      fullName: s.name,
-      ROI: parseFloat(s.roi.toFixed(1)),
-      setId: s.set_id,
-    }));
-
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
       {/* Pie: Signal breakdown */}
@@ -125,50 +113,6 @@ export function ChartSection({ sets, onSliceClick }) {
             <Legend wrapperStyle={{ fontSize: 12, color: "#94a3b8", paddingTop: 8 }} />
             <Bar dataKey="Paid (CAD$)" fill="#0f3460" radius={[4, 4, 0, 0]} />
             <Bar dataKey="Value (CAD$)" fill="#22c55e" radius={[4, 4, 0, 0]} />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
-
-      {/* Bar: ROI Leaders */}
-      <div className="card p-5 lg:col-span-3">
-        <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">ROI Leaders (Top 8)</h3>
-        <ResponsiveContainer width="100%" height={280}>
-          <BarChart data={roiData} layout="vertical" margin={{ left: 0, right: 48, top: 4, bottom: 4 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" horizontal={false} />
-            <XAxis
-              type="number"
-              tick={{ fill: "#94a3b8", fontSize: 10 }}
-              tickFormatter={(v) => `${v}%`}
-              domain={[0, "dataMax + 20"]}
-            />
-            <YAxis
-              type="category"
-              dataKey="name"
-              tick={{ fill: "#94a3b8", fontSize: 11 }}
-              width={160}
-            />
-            <Tooltip
-              contentStyle={{ background: "#16213e", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12 }}
-              labelFormatter={(label, payload) => payload?.[0]?.payload?.fullName || label}
-              formatter={(v) => [`${v}%`, "ROI"]}
-            />
-            <Bar
-              dataKey="ROI"
-              radius={[0, 6, 6, 0]}
-              cursor="pointer"
-              onClick={(data) => window.open(
-                `https://www.bricklink.com/v2/catalog/catalogitem.page?S=${data.setId}`,
-                "_blank",
-                "noopener,noreferrer"
-              )}
-            >
-              {roiData.map((entry, i) => (
-                <Cell
-                  key={i}
-                  fill={entry.ROI >= 40 ? "#22c55e" : entry.ROI >= 20 ? "#eab308" : "#64748b"}
-                />
-              ))}
-            </Bar>
           </BarChart>
         </ResponsiveContainer>
       </div>
