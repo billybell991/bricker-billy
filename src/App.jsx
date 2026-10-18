@@ -773,8 +773,9 @@ export default function App() {
           // Clear the status after a moment so it doesn't stick around forever.
           setTimeout(() => setSyncStatus(""), 8000);
         } else {
-          setError(result?.error || "Sync failed.");
-          setSyncStatus("");
+          // Don't replace the whole dashboard with the error screen; data.json is still valid.
+          setSyncStatus(`${result?.error || "Sync failed."} Click Sync to retry.`);
+          setTimeout(() => setSyncStatus(""), 10000);
         }
         return;
       }
