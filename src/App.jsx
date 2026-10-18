@@ -45,7 +45,7 @@ async function fetchManualSetsFile(token) {
   try {
     const resp = await fetch(
       `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${MANUAL_SETS_FILE}`,
-      { headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" } }
+      { cache: "no-store", headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" } }
     );
     if (resp.status === 401) return { unauthorized: true };
     if (resp.status === 404) return { sha: null, sets: [] };
@@ -63,7 +63,7 @@ async function fetchSoldSetsFile(token) {
   try {
     const resp = await fetch(
       `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${SOLD_SETS_FILE}`,
-      { headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" } }
+      { cache: "no-store", headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" } }
     );
     if (resp.status === 401) return { unauthorized: true };
     if (resp.status === 404) return { sha: null, sets: [] };
@@ -118,7 +118,7 @@ function toCsvCell(value) {
   return str;
 }
 
-async function persistManualSetToGitHub(entry, token) {
+async function persistManualSetToGitHubRaw(entry, token) {
   if (!token || !GH_OWNER || !GH_REPO) {
     return { pushed: false, error: "No GitHub token configured." };
   }
@@ -183,7 +183,7 @@ async function persistManualSetToGitHub(entry, token) {
   }
 }
 
-async function persistManualSetsToGitHub(entries, token) {
+async function persistManualSetsToGitHubRaw(entries, token) {
   if (!entries || entries.length === 0) return { pushed: true };
   if (!token || !GH_OWNER || !GH_REPO) {
     return { pushed: false, error: "No GitHub token configured." };
@@ -256,7 +256,7 @@ async function persistManualSetsToGitHub(entries, token) {
   }
 }
 
-async function removeManualSetFromGitHub(entry, token) {
+async function removeManualSetFromGitHubRaw(entry, token) {
   if (!token || !GH_OWNER || !GH_REPO) return;
   const fileData = await fetchManualSetsFile(token);
   if (!fileData) return;
@@ -289,7 +289,7 @@ async function removeManualSetFromGitHub(entry, token) {
   }
 }
 
-async function persistSoldSetToGitHub(record, token) {
+async function persistSoldSetToGitHubRaw(record, token) {
   if (!token || !GH_OWNER || !GH_REPO) {
     return { pushed: false, error: "No GitHub token configured." };
   }
@@ -339,7 +339,7 @@ async function persistSoldSetToGitHub(record, token) {
   }
 }
 
-async function persistSoldSetsToGitHub(records, token) {
+async function persistSoldSetsToGitHubRaw(records, token) {
   if (!records || records.length === 0) return { pushed: true };
   if (!token || !GH_OWNER || !GH_REPO) {
     return { pushed: false, error: "No GitHub token configured." };
@@ -404,7 +404,7 @@ async function persistSoldSetsToGitHub(records, token) {
   }
 }
 
-async function removeSoldSetFromGitHub(record, token) {
+async function removeSoldSetFromGitHubRaw(record, token) {
   if (!token || !GH_OWNER || !GH_REPO) return;
   const fileData = await fetchSoldSetsFile(token);
   if (!fileData || fileData.unauthorized) return;
@@ -441,7 +441,7 @@ async function fetchDeletedIdsFile(token) {
   try {
     const resp = await fetch(
       `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${DELETED_IDS_FILE}`,
-      { headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" } }
+      { cache: "no-store", headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" } }
     );
     if (resp.status === 401) return { unauthorized: true };
     if (resp.status === 404) return { sha: null, deletedIds: [] };
@@ -454,7 +454,7 @@ async function fetchDeletedIdsFile(token) {
   }
 }
 
-async function persistDeletedIdsToGitHub(deletedIds, token) {
+async function persistDeletedIdsToGitHubRaw(deletedIds, token) {
   if (!token || !GH_OWNER || !GH_REPO) return { pushed: false, error: "No GitHub token configured." };
   const fileData = await fetchDeletedIdsFile(token);
   if (!fileData) return { pushed: false, error: "Could not read deleted_ids.json from GitHub." };
@@ -496,7 +496,7 @@ async function fetchListingOverridesFile(token) {
   try {
     const resp = await fetch(
       `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${LISTING_OVERRIDES_FILE}`,
-      { headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" } }
+      { cache: "no-store", headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" } }
     );
     if (resp.status === 401) return { unauthorized: true };
     if (resp.status === 404) return { sha: null, overrides: {} };
@@ -509,7 +509,7 @@ async function fetchListingOverridesFile(token) {
   }
 }
 
-async function persistListingOverridesToGitHub(overrides, token) {
+async function persistListingOverridesToGitHubRaw(overrides, token) {
   if (!token || !GH_OWNER || !GH_REPO) return { pushed: false, error: "No GitHub token configured." };
   const fileData = await fetchListingOverridesFile(token);
   if (!fileData) return { pushed: false, error: "Could not read listing_overrides.json from GitHub." };
@@ -551,7 +551,7 @@ async function fetchSetMetaFile(token) {
   try {
     const resp = await fetch(
       `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${SET_META_FILE}`,
-      { headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" } }
+      { cache: "no-store", headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" } }
     );
     if (resp.status === 401) return { unauthorized: true };
     if (resp.status === 404) return { sha: null, meta: {} };
@@ -564,7 +564,7 @@ async function fetchSetMetaFile(token) {
   }
 }
 
-async function persistSetMetaToGitHub(meta, token) {
+async function persistSetMetaToGitHubRaw(meta, token) {
   if (!token || !GH_OWNER || !GH_REPO) return { pushed: false, error: "No GitHub token configured." };
   const fileData = await fetchSetMetaFile(token);
   if (!fileData) return { pushed: false, error: "Could not read set_meta.json from GitHub." };
@@ -600,6 +600,33 @@ async function persistSetMetaToGitHub(meta, token) {
     return { pushed: false, error: e.message || String(e) };
   }
 }
+
+// GitHub rejects concurrent commits to the same branch with 409, so run writes one at a time
+// and retry 409s (each attempt re-reads the file sha).
+let ghWriteQueue = Promise.resolve();
+const queuedGhWrite = (fn) => (...args) => {
+  const run = ghWriteQueue.then(async () => {
+    let result;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      result = await fn(...args);
+      if (result?.pushed || result?.error !== "GitHub responded 409") break;
+      await new Promise((r) => setTimeout(r, 1000 * (attempt + 1)));
+    }
+    return result;
+  });
+  ghWriteQueue = run.catch(() => {});
+  return run;
+};
+
+const persistManualSetToGitHub = queuedGhWrite(persistManualSetToGitHubRaw);
+const persistManualSetsToGitHub = queuedGhWrite(persistManualSetsToGitHubRaw);
+const removeManualSetFromGitHub = queuedGhWrite(removeManualSetFromGitHubRaw);
+const persistSoldSetToGitHub = queuedGhWrite(persistSoldSetToGitHubRaw);
+const persistSoldSetsToGitHub = queuedGhWrite(persistSoldSetsToGitHubRaw);
+const removeSoldSetFromGitHub = queuedGhWrite(removeSoldSetFromGitHubRaw);
+const persistDeletedIdsToGitHub = queuedGhWrite(persistDeletedIdsToGitHubRaw);
+const persistListingOverridesToGitHub = queuedGhWrite(persistListingOverridesToGitHubRaw);
+const persistSetMetaToGitHub = queuedGhWrite(persistSetMetaToGitHubRaw);
 
 // ── Manual workflow trigger ───────────────────────────────────────────────────
 const SYNC_WORKFLOW_FILE = "sync.yml";
@@ -761,8 +788,7 @@ export default function App() {
         localStorage.removeItem(GH_TOKEN_KEY);
         setGhToken("");
         setShowTokenModal(true);
-        setSyncStatus("");
-        setError("GitHub token expired \u2014 please reconnect.");
+        setSyncStatus("GitHub token expired \u2014 please reconnect.");
         return;
       }
       if (!result?.ok) {
@@ -899,9 +925,10 @@ export default function App() {
                   localStorage.removeItem(GH_TOKEN_KEY);
                   setGhToken("");
                   setShowTokenModal(true);
-                  setError("GitHub token expired — please reconnect.");
+                  setSyncStatus("GitHub token expired — please reconnect.");
                 } else if (!result?.pushed) {
-                  setError(result?.error || "Failed to sync sold history to GitHub.");
+                  setSyncStatus(result?.error || "Failed to sync sold history to GitHub.");
+                  setTimeout(() => setSyncStatus(""), 10000);
                 }
               });
             }
@@ -1177,9 +1204,10 @@ export default function App() {
         localStorage.removeItem(GH_TOKEN_KEY);
         setGhToken("");
         setShowTokenModal(true);
-        setError("GitHub token expired — please reconnect.");
+        setSyncStatus("GitHub token expired — please reconnect.");
       } else if (!result?.pushed) {
-        setError(result?.error || "Failed to sync sold set to GitHub.");
+        setSyncStatus(result?.error || "Failed to sync sold set to GitHub.");
+        setTimeout(() => setSyncStatus(""), 10000);
       }
     }
   };
@@ -1531,7 +1559,7 @@ export default function App() {
             <div className="flex items-center gap-2 text-xs text-slate-400">
               <RefreshCw size={12} />
               <span>
-                {syncing && syncStatus ? syncStatus : `Last synced: ${lastSynced}`}
+                {syncStatus || `Last synced: ${lastSynced}`}
               </span>
             </div>
             <button
