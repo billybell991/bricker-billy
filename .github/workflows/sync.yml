@@ -10,12 +10,11 @@ on:
       - "public/manual_sets.json"
   workflow_dispatch: # Allow manual trigger from GitHub Actions UI
 
-# Coalesce rapid back-to-back edits to manual_sets.json into a single sync.
-# If another sync is already in flight when a new push lands, cancel the
-# in-progress run — the newer one will pick up all pending changes.
+# Rapid manual_sets.json edits queue behind the running sync (GitHub keeps only the
+# newest pending run) instead of cancelling it, so a long sync can actually finish.
 concurrency:
   group: daily-lego-sync
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 permissions:
   contents: write
