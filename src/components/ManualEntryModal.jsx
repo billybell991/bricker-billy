@@ -163,7 +163,7 @@ export function ManualEntryModal({ onClose, onAdd, hasGhToken, existingSets = []
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="p-6 flex flex-col gap-4">
-          {field("set_number", "Set Number *", "e.g. 10307")}
+          {field("set_number", "Set Number *", "e.g. 10307", "text", { autoFocus: true })}
 
           <div className="grid grid-cols-2 gap-3">
             {field("cost", "Cost Paid Each (CAD) *", "e.g. 259.99", "number", { step: "0.01", min: "0" })}
