@@ -132,5 +132,19 @@
     "sold_for": 0,
     "sold_on": "Other",
     "sold_date": "2026-10-17T10:51:48.264Z"
+  },
+  {
+    "sale_id": "sale_1792284982427_83li8q",
+    "id": "76990-1_178",
+    "set_id": "76990-1",
+    "set_number": "76990",
+    "name": "Sonic's Speed Sphere Challenge",
+    "theme": "Sonic The Hedgehog",
+    "cost": 10,
+    "condition": "new",
+    "notes": "",
+    "sold_for": 40,
+    "sold_on": "BrickLink",
+    "sold_date": "2026-10-18T00:56:22.427Z"
   }
 ]
