@@ -85,6 +85,8 @@ export function AdModal({ set, onClose }) {
 
   const handleSaveKey = () => {
     localStorage.setItem(GEMINI_KEY_STORAGE, apiKey.trim());
+    // Marks storage as persistent so the browser doesn't evict the saved key.
+    navigator.storage?.persist?.();
     setShowKeyInput(false);
     handleGenerate();
   };
