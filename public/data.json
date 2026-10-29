@@ -1,13 +1,13 @@
 {
-  "last_synced": "2026-10-28T15:13:33.965635+00:00",
+  "last_synced": "2026-10-29T15:20:27.983122+00:00",
   "currency": "CAD",
   "summary": {
     "total_sets": 375,
     "total_cost": 14713.73,
-    "total_market_value": 18445.25,
-    "total_profit_potential": 4577.71,
-    "strong_sell_count": 45,
-    "consider_count": 166,
+    "total_market_value": 18445.58,
+    "total_profit_potential": 4578.68,
+    "strong_sell_count": 44,
+    "consider_count": 167,
     "hold_count": 145
   },
   "sets": [
@@ -29,7 +29,7 @@
       "notes": "Retired - Display in nerd cave",
       "image_url": "images/21045.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:53:59.781741+00:00"
+      "last_updated": "2026-10-29T14:59:05.682915+00:00"
     },
     {
       "id": "21028-1_1",
@@ -38,18 +38,18 @@
       "name": "New York City",
       "theme": "Architecture",
       "cost": 65.0,
-      "current_value": 51.3,
-      "profit": -13.7,
-      "roi": -21.08,
+      "current_value": 49.34,
+      "profit": -15.66,
+      "roi": -24.1,
       "signal": "Hold",
-      "qty_sold_6m": 19,
+      "qty_sold_6m": 17,
       "bl_min_price": 26.76,
-      "bl_max_price": 88.39,
+      "bl_max_price": 59.72,
       "selling_on": "",
       "notes": "",
       "image_url": "images/21028.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:02.433703+00:00"
+      "last_updated": "2026-10-29T14:59:08.643734+00:00"
     },
     {
       "id": "21028-1_2",
@@ -58,18 +58,18 @@
       "name": "New York City",
       "theme": "Architecture",
       "cost": 33.9,
-      "current_value": 51.3,
-      "profit": 17.4,
-      "roi": 51.33,
-      "signal": "Strong Sell",
-      "qty_sold_6m": 19,
+      "current_value": 49.34,
+      "profit": 15.44,
+      "roi": 45.54,
+      "signal": "Consider",
+      "qty_sold_6m": 17,
       "bl_min_price": 26.76,
-      "bl_max_price": 88.39,
+      "bl_max_price": 59.72,
       "selling_on": "",
       "notes": "",
       "image_url": "images/21028.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:04.925283+00:00"
+      "last_updated": "2026-10-29T14:59:11.283433+00:00"
     },
     {
       "id": "21034-1_3",
@@ -89,7 +89,7 @@
       "notes": "",
       "image_url": "images/21034.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:07.497296+00:00"
+      "last_updated": "2026-10-29T14:59:14.316866+00:00"
     },
     {
       "id": "21034-1_4",
@@ -109,7 +109,7 @@
       "notes": "",
       "image_url": "images/21034.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:09.988639+00:00"
+      "last_updated": "2026-10-29T14:59:16.973860+00:00"
     },
     {
       "id": "21057-1_5",
@@ -129,7 +129,7 @@
       "notes": "",
       "image_url": "images/21057.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:12.613368+00:00"
+      "last_updated": "2026-10-29T14:59:19.872686+00:00"
     },
     {
       "id": "21057-1_6",
@@ -149,7 +149,7 @@
       "notes": "",
       "image_url": "images/21057.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:15.080159+00:00"
+      "last_updated": "2026-10-29T14:59:22.554238+00:00"
     },
     {
       "id": "21044-1_7",
@@ -169,7 +169,7 @@
       "notes": "",
       "image_url": "images/21044.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:17.614444+00:00"
+      "last_updated": "2026-10-29T14:59:25.475505+00:00"
     },
     {
       "id": "21042-1_8",
@@ -189,7 +189,7 @@
       "notes": "",
       "image_url": "images/21042.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:20.156141+00:00"
+      "last_updated": "2026-10-29T14:59:28.490979+00:00"
     },
     {
       "id": "31199-1_9",
@@ -209,7 +209,7 @@
       "notes": "Open in Nerd Cave",
       "image_url": "images/31199.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:22.701796+00:00"
+      "last_updated": "2026-10-29T14:59:31.577468+00:00"
     },
     {
       "id": "31205-1_10",
@@ -229,7 +229,7 @@
       "notes": "Open in Nerd Cave",
       "image_url": "images/31205.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:25.218416+00:00"
+      "last_updated": "2026-10-29T14:59:34.504924+00:00"
     },
     {
       "id": "31202-1_11",
@@ -249,7 +249,7 @@
       "notes": "",
       "image_url": "images/31202.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:27.830549+00:00"
+      "last_updated": "2026-10-29T14:59:37.465225+00:00"
     },
     {
       "id": "10281-1_12",
@@ -269,7 +269,7 @@
       "notes": "",
       "image_url": "images/10281.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:30.404511+00:00"
+      "last_updated": "2026-10-29T14:59:40.391821+00:00"
     },
     {
       "id": "10281-1_13",
@@ -289,7 +289,7 @@
       "notes": "",
       "image_url": "images/10281.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:32.857623+00:00"
+      "last_updated": "2026-10-29T14:59:43.059208+00:00"
     },
     {
       "id": "10280-1_14",
@@ -309,7 +309,7 @@
       "notes": "",
       "image_url": "images/10280.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:35.404053+00:00"
+      "last_updated": "2026-10-29T14:59:46.002543+00:00"
     },
     {
       "id": "40495-1_15",
@@ -329,7 +329,7 @@
       "notes": "",
       "image_url": "images/40495.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:37.979685+00:00"
+      "last_updated": "2026-10-29T14:59:48.934171+00:00"
     },
     {
       "id": "75317-1_16",
@@ -349,7 +349,7 @@
       "notes": "",
       "image_url": "images/75317.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:40.599376+00:00"
+      "last_updated": "2026-10-29T14:59:51.830744+00:00"
     },
     {
       "id": "75317-1_17",
@@ -369,7 +369,7 @@
       "notes": "",
       "image_url": "images/75317.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:43.079987+00:00"
+      "last_updated": "2026-10-29T14:59:54.506184+00:00"
     },
     {
       "id": "75317-1_18",
@@ -389,7 +389,7 @@
       "notes": "",
       "image_url": "images/75317.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:45.551865+00:00"
+      "last_updated": "2026-10-29T14:59:57.112336+00:00"
     },
     {
       "id": "75317-1_19",
@@ -409,7 +409,7 @@
       "notes": "",
       "image_url": "images/75317.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:48.014630+00:00"
+      "last_updated": "2026-10-29T14:59:59.772983+00:00"
     },
     {
       "id": "75317-1_20",
@@ -429,7 +429,7 @@
       "notes": "",
       "image_url": "images/75317.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:50.487881+00:00"
+      "last_updated": "2026-10-29T15:00:02.437992+00:00"
     },
     {
       "id": "75317-1_21",
@@ -449,7 +449,7 @@
       "notes": "",
       "image_url": "images/75317.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:52.954013+00:00"
+      "last_updated": "2026-10-29T15:00:05.099491+00:00"
     },
     {
       "id": "75317-1_22",
@@ -469,7 +469,7 @@
       "notes": "",
       "image_url": "images/75317.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:55.420278+00:00"
+      "last_updated": "2026-10-29T15:00:07.820588+00:00"
     },
     {
       "id": "40490-1_23",
@@ -478,18 +478,18 @@
       "name": "Ninjago 10",
       "theme": "Ninjago",
       "cost": 20.0,
-      "current_value": 31.88,
-      "profit": 11.88,
-      "roi": 59.38,
+      "current_value": 32.16,
+      "profit": 12.16,
+      "roi": 60.78,
       "signal": "Consider",
-      "qty_sold_6m": 8,
+      "qty_sold_6m": 7,
       "bl_min_price": 25.0,
       "bl_max_price": 39.95,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/40490.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:54:57.956271+00:00"
+      "last_updated": "2026-10-29T15:00:10.756359+00:00"
     },
     {
       "id": "40623-1_24",
@@ -509,7 +509,7 @@
       "notes": "",
       "image_url": "images/40623.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:00.475469+00:00"
+      "last_updated": "2026-10-29T15:00:13.706148+00:00"
     },
     {
       "id": "40623-1_25",
@@ -529,7 +529,7 @@
       "notes": "",
       "image_url": "images/40623.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:02.951939+00:00"
+      "last_updated": "2026-10-29T15:00:16.308617+00:00"
     },
     {
       "id": "40619-1_26",
@@ -549,7 +549,7 @@
       "notes": "",
       "image_url": "images/40619.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:05.538577+00:00"
+      "last_updated": "2026-10-29T15:00:19.344860+00:00"
     },
     {
       "id": "40619-1_27",
@@ -569,7 +569,7 @@
       "notes": "",
       "image_url": "images/40619.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:08.007956+00:00"
+      "last_updated": "2026-10-29T15:00:21.952702+00:00"
     },
     {
       "id": "40619-1_28",
@@ -589,7 +589,7 @@
       "notes": "",
       "image_url": "images/40619.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:10.514763+00:00"
+      "last_updated": "2026-10-29T15:00:24.587754+00:00"
     },
     {
       "id": "40622-1_29",
@@ -609,7 +609,7 @@
       "notes": "",
       "image_url": "images/40622.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:13.028708+00:00"
+      "last_updated": "2026-10-29T15:00:27.541427+00:00"
     },
     {
       "id": "10305-1_30",
@@ -629,7 +629,7 @@
       "notes": "",
       "image_url": "images/10305.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:15.632061+00:00"
+      "last_updated": "2026-10-29T15:00:30.430756+00:00"
     },
     {
       "id": "60320-1_31",
@@ -649,7 +649,7 @@
       "notes": "",
       "image_url": "images/60320.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:18.134370+00:00"
+      "last_updated": "2026-10-29T15:00:33.359344+00:00"
     },
     {
       "id": "60320-1_32",
@@ -669,7 +669,7 @@
       "notes": "",
       "image_url": "images/60320.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:20.605588+00:00"
+      "last_updated": "2026-10-29T15:00:36.008120+00:00"
     },
     {
       "id": "60320-1_33",
@@ -689,7 +689,7 @@
       "notes": "",
       "image_url": "images/60320.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:23.093737+00:00"
+      "last_updated": "2026-10-29T15:00:38.635573+00:00"
     },
     {
       "id": "60295-1_34",
@@ -709,7 +709,7 @@
       "notes": "",
       "image_url": "images/60295.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:25.640406+00:00"
+      "last_updated": "2026-10-29T15:00:41.473296+00:00"
     },
     {
       "id": "60295-1_35",
@@ -729,7 +729,7 @@
       "notes": "",
       "image_url": "images/60295.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:28.109051+00:00"
+      "last_updated": "2026-10-29T15:00:44.109438+00:00"
     },
     {
       "id": "60310-1_36",
@@ -749,7 +749,7 @@
       "notes": "",
       "image_url": "images/60310.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:30.630579+00:00"
+      "last_updated": "2026-10-29T15:00:47.063551+00:00"
     },
     {
       "id": "60309-1_37",
@@ -769,7 +769,7 @@
       "notes": "",
       "image_url": "images/60309.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:33.140890+00:00"
+      "last_updated": "2026-10-29T15:00:49.944932+00:00"
     },
     {
       "id": "60299-1_38",
@@ -789,7 +789,7 @@
       "notes": "",
       "image_url": "images/60299.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:35.646076+00:00"
+      "last_updated": "2026-10-29T15:00:52.824935+00:00"
     },
     {
       "id": "60299-1_39",
@@ -809,7 +809,7 @@
       "notes": "",
       "image_url": "images/60299.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:38.110444+00:00"
+      "last_updated": "2026-10-29T15:00:55.454872+00:00"
     },
     {
       "id": "71022-1_40",
@@ -829,7 +829,7 @@
       "notes": "",
       "image_url": "images/71022.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:40.640811+00:00"
+      "last_updated": "2026-10-29T15:00:58.462676+00:00"
     },
     {
       "id": "10274-1_41",
@@ -849,7 +849,7 @@
       "notes": "Display in nerd cave",
       "image_url": "images/10274.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:43.209405+00:00"
+      "last_updated": "2026-10-29T15:01:01.377846+00:00"
     },
     {
       "id": "10274-1_42",
@@ -869,7 +869,7 @@
       "notes": "",
       "image_url": "images/10274.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:45.745583+00:00"
+      "last_updated": "2026-10-29T15:01:03.995637+00:00"
     },
     {
       "id": "10300-1_43",
@@ -889,7 +889,7 @@
       "notes": "",
       "image_url": "images/10300.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:48.342674+00:00"
+      "last_updated": "2026-10-29T15:01:06.943267+00:00"
     },
     {
       "id": "40220-1_44",
@@ -909,7 +909,7 @@
       "notes": "",
       "image_url": "images/40220.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:51.136595+00:00"
+      "last_updated": "2026-10-29T15:01:09.782842+00:00"
     },
     {
       "id": "40220-1_45",
@@ -929,7 +929,7 @@
       "notes": "",
       "image_url": "images/40220.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:53.608886+00:00"
+      "last_updated": "2026-10-29T15:01:12.453930+00:00"
     },
     {
       "id": "10306-1_46",
@@ -949,7 +949,7 @@
       "notes": "",
       "image_url": "images/10306.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:56.163277+00:00"
+      "last_updated": "2026-10-29T15:01:15.555774+00:00"
     },
     {
       "id": "31133-1_47",
@@ -969,7 +969,7 @@
       "notes": "",
       "image_url": "images/31133.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:55:58.717492+00:00"
+      "last_updated": "2026-10-29T15:01:18.474349+00:00"
     },
     {
       "id": "31131-1_48",
@@ -989,7 +989,7 @@
       "notes": "",
       "image_url": "images/31131.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:01.368261+00:00"
+      "last_updated": "2026-10-29T15:01:21.363084+00:00"
     },
     {
       "id": "31131-1_49",
@@ -1009,7 +1009,7 @@
       "notes": "",
       "image_url": "images/31131.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:03.854315+00:00"
+      "last_updated": "2026-10-29T15:01:24.025174+00:00"
     },
     {
       "id": "76139-1_50",
@@ -1029,7 +1029,7 @@
       "notes": "Display in nerd cave",
       "image_url": "images/76139.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:06.382799+00:00"
+      "last_updated": "2026-10-29T15:01:26.931250+00:00"
     },
     {
       "id": "40428-1_51",
@@ -1049,7 +1049,7 @@
       "notes": "Built in nerd cave",
       "image_url": "images/40428.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:08.922413+00:00"
+      "last_updated": "2026-10-29T15:01:29.951021+00:00"
     },
     {
       "id": "40386-1_52",
@@ -1069,7 +1069,7 @@
       "notes": "Built in nerd cave",
       "image_url": "images/40386.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:11.440831+00:00"
+      "last_updated": "2026-10-29T15:01:32.866655+00:00"
     },
     {
       "id": "40386-1_53",
@@ -1089,7 +1089,7 @@
       "notes": "",
       "image_url": "images/40386.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:13.911368+00:00"
+      "last_updated": "2026-10-29T15:01:35.565873+00:00"
     },
     {
       "id": "76179-1_54",
@@ -1109,7 +1109,7 @@
       "notes": "",
       "image_url": "images/76179.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:16.442529+00:00"
+      "last_updated": "2026-10-29T15:01:38.479645+00:00"
     },
     {
       "id": "76183-1_55",
@@ -1129,7 +1129,7 @@
       "notes": "",
       "image_url": "images/76183.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:19.017992+00:00"
+      "last_updated": "2026-10-29T15:01:41.411077+00:00"
     },
     {
       "id": "76183-1_56",
@@ -1149,7 +1149,7 @@
       "notes": "",
       "image_url": "images/76183.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:21.511297+00:00"
+      "last_updated": "2026-10-29T15:01:44.033979+00:00"
     },
     {
       "id": "76183-1_57",
@@ -1169,7 +1169,7 @@
       "notes": "",
       "image_url": "images/76183.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:23.977266+00:00"
+      "last_updated": "2026-10-29T15:01:46.667778+00:00"
     },
     {
       "id": "76183-1_58",
@@ -1189,7 +1189,7 @@
       "notes": "",
       "image_url": "images/76183.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:26.453910+00:00"
+      "last_updated": "2026-10-29T15:01:49.348668+00:00"
     },
     {
       "id": "76183-1_59",
@@ -1209,7 +1209,7 @@
       "notes": "",
       "image_url": "images/76183.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:28.985851+00:00"
+      "last_updated": "2026-10-29T15:01:51.983859+00:00"
     },
     {
       "id": "76183-1_60",
@@ -1229,7 +1229,7 @@
       "notes": "",
       "image_url": "images/76183.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:31.456841+00:00"
+      "last_updated": "2026-10-29T15:01:54.624464+00:00"
     },
     {
       "id": "76183-1_61",
@@ -1249,7 +1249,7 @@
       "notes": "",
       "image_url": "images/76183.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:33.937648+00:00"
+      "last_updated": "2026-10-29T15:01:57.252029+00:00"
     },
     {
       "id": "30455-1_62",
@@ -1269,7 +1269,7 @@
       "notes": "",
       "image_url": "images/30455.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:36.552427+00:00"
+      "last_updated": "2026-10-29T15:02:00.226724+00:00"
     },
     {
       "id": "30455-1_63",
@@ -1289,7 +1289,7 @@
       "notes": "",
       "image_url": "images/30455.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:39.041722+00:00"
+      "last_updated": "2026-10-29T15:02:02.832090+00:00"
     },
     {
       "id": "30455-1_64",
@@ -1309,7 +1309,7 @@
       "notes": "",
       "image_url": "images/30455.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:41.507697+00:00"
+      "last_updated": "2026-10-29T15:02:05.466714+00:00"
     },
     {
       "id": "30558-1_65",
@@ -1329,7 +1329,7 @@
       "notes": "",
       "image_url": "images/30558.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:44.015748+00:00"
+      "last_updated": "2026-10-29T15:02:08.461542+00:00"
     },
     {
       "id": "30558-1_66",
@@ -1349,7 +1349,7 @@
       "notes": "",
       "image_url": "images/30558.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:46.477021+00:00"
+      "last_updated": "2026-10-29T15:02:11.159116+00:00"
     },
     {
       "id": "30558-1_67",
@@ -1369,7 +1369,7 @@
       "notes": "",
       "image_url": "images/30558.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:48.960059+00:00"
+      "last_updated": "2026-10-29T15:02:13.791452+00:00"
     },
     {
       "id": "30558-1_68",
@@ -1389,7 +1389,7 @@
       "notes": "",
       "image_url": "images/30558.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:51.427986+00:00"
+      "last_updated": "2026-10-29T15:02:16.457598+00:00"
     },
     {
       "id": "40521-1_69",
@@ -1409,7 +1409,7 @@
       "notes": "",
       "image_url": "images/40521.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:53.949300+00:00"
+      "last_updated": "2026-10-29T15:02:19.382254+00:00"
     },
     {
       "id": "40521-1_70",
@@ -1429,7 +1429,7 @@
       "notes": "",
       "image_url": "images/40521.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:56.425733+00:00"
+      "last_updated": "2026-10-29T15:02:22.062803+00:00"
     },
     {
       "id": "40521-1_71",
@@ -1449,7 +1449,7 @@
       "notes": "",
       "image_url": "images/40521.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:56:58.897245+00:00"
+      "last_updated": "2026-10-29T15:02:24.702762+00:00"
     },
     {
       "id": "43217-1_72",
@@ -1469,7 +1469,7 @@
       "notes": "",
       "image_url": "images/43217.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:01.450722+00:00"
+      "last_updated": "2026-10-29T15:02:27.641509+00:00"
     },
     {
       "id": "43229-1_73",
@@ -1489,7 +1489,7 @@
       "notes": "",
       "image_url": "images/43229.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:03.966570+00:00"
+      "last_updated": "2026-10-29T15:02:30.663722+00:00"
     },
     {
       "id": "43212-1_74",
@@ -1509,7 +1509,7 @@
       "notes": "",
       "image_url": "images/43212.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:06.511825+00:00"
+      "last_updated": "2026-10-29T15:02:33.589635+00:00"
     },
     {
       "id": "10998-1_75",
@@ -1529,7 +1529,7 @@
       "notes": "",
       "image_url": "images/10998.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:07.837197+00:00"
+      "last_updated": "2026-10-29T15:02:35.281767+00:00"
     },
     {
       "id": "10998-1_76",
@@ -1549,7 +1549,7 @@
       "notes": "",
       "image_url": "images/10998.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:09.089751+00:00"
+      "last_updated": "2026-10-29T15:02:36.601683+00:00"
     },
     {
       "id": "43227-1_77",
@@ -1558,18 +1558,18 @@
       "name": "Villain Icons",
       "theme": "Disney",
       "cost": 153.67,
-      "current_value": 205.25,
-      "profit": 51.58,
-      "roi": 33.57,
+      "current_value": 206.18,
+      "profit": 52.51,
+      "roi": 34.17,
       "signal": "Consider",
-      "qty_sold_6m": 17,
-      "bl_min_price": 190.39,
+      "qty_sold_6m": 16,
+      "bl_min_price": 191.32,
       "bl_max_price": 225.37,
       "selling_on": "",
       "notes": "",
       "image_url": "images/43227.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:11.660449+00:00"
+      "last_updated": "2026-10-29T15:02:39.673717+00:00"
     },
     {
       "id": "5005888-1_78",
@@ -1589,7 +1589,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5005888-1.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:13.004900+00:00"
+      "last_updated": "2026-10-29T15:02:41.366587+00:00"
     },
     {
       "id": "5005888-1_79",
@@ -1609,7 +1609,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5005888-1.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:14.283100+00:00"
+      "last_updated": "2026-10-29T15:02:42.945564+00:00"
     },
     {
       "id": "75955-1_80",
@@ -1629,7 +1629,7 @@
       "notes": "",
       "image_url": "images/75955.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:16.788310+00:00"
+      "last_updated": "2026-10-29T15:02:45.951942+00:00"
     },
     {
       "id": "75955-1_81",
@@ -1649,7 +1649,7 @@
       "notes": "",
       "image_url": "images/75955.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:19.252306+00:00"
+      "last_updated": "2026-10-29T15:02:48.598449+00:00"
     },
     {
       "id": "75979-1_82",
@@ -1658,18 +1658,18 @@
       "name": "Hedwig",
       "theme": "Harry Potter",
       "cost": 56.49,
-      "current_value": 65.32,
-      "profit": 8.83,
-      "roi": 15.62,
+      "current_value": 65.2,
+      "profit": 8.71,
+      "roi": 15.41,
       "signal": "Hold",
-      "qty_sold_6m": 15,
+      "qty_sold_6m": 14,
       "bl_min_price": 53.35,
       "bl_max_price": 82.4,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/75979.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:21.791514+00:00"
+      "last_updated": "2026-10-29T15:02:51.442887+00:00"
     },
     {
       "id": "75979-1_83",
@@ -1678,18 +1678,18 @@
       "name": "Hedwig",
       "theme": "Harry Potter",
       "cost": 56.49,
-      "current_value": 65.32,
-      "profit": 8.83,
-      "roi": 15.62,
+      "current_value": 65.2,
+      "profit": 8.71,
+      "roi": 15.41,
       "signal": "Hold",
-      "qty_sold_6m": 15,
+      "qty_sold_6m": 14,
       "bl_min_price": 53.35,
       "bl_max_price": 82.4,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/75979.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:24.265060+00:00"
+      "last_updated": "2026-10-29T15:02:54.134867+00:00"
     },
     {
       "id": "76385-1_84",
@@ -1709,7 +1709,7 @@
       "notes": "",
       "image_url": "images/76385.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:26.792927+00:00"
+      "last_updated": "2026-10-29T15:02:57.184953+00:00"
     },
     {
       "id": "76383-1_85",
@@ -1729,7 +1729,7 @@
       "notes": "",
       "image_url": "images/76383.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:29.329581+00:00"
+      "last_updated": "2026-10-29T15:03:00.337734+00:00"
     },
     {
       "id": "76383-1_86",
@@ -1749,7 +1749,7 @@
       "notes": "",
       "image_url": "images/76383.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:31.788889+00:00"
+      "last_updated": "2026-10-29T15:03:02.980906+00:00"
     },
     {
       "id": "76383-1_87",
@@ -1769,7 +1769,7 @@
       "notes": "",
       "image_url": "images/76383.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:34.260810+00:00"
+      "last_updated": "2026-10-29T15:03:05.671568+00:00"
     },
     {
       "id": "76382-1_88",
@@ -1789,7 +1789,7 @@
       "notes": "",
       "image_url": "images/76382.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:36.812879+00:00"
+      "last_updated": "2026-10-29T15:03:08.652278+00:00"
     },
     {
       "id": "76382-1_89",
@@ -1809,7 +1809,7 @@
       "notes": "",
       "image_url": "images/76382.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:39.298842+00:00"
+      "last_updated": "2026-10-29T15:03:11.280035+00:00"
     },
     {
       "id": "76382-1_90",
@@ -1829,7 +1829,7 @@
       "notes": "",
       "image_url": "images/76382.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:41.776353+00:00"
+      "last_updated": "2026-10-29T15:03:13.939428+00:00"
     },
     {
       "id": "75969-1_91",
@@ -1849,7 +1849,7 @@
       "notes": "",
       "image_url": "images/75969.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:44.376146+00:00"
+      "last_updated": "2026-10-29T15:03:16.893083+00:00"
     },
     {
       "id": "75969-1_92",
@@ -1869,7 +1869,7 @@
       "notes": "",
       "image_url": "images/75969.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:46.832043+00:00"
+      "last_updated": "2026-10-29T15:03:19.500429+00:00"
     },
     {
       "id": "76392-1_93",
@@ -1889,7 +1889,7 @@
       "notes": "",
       "image_url": "images/76392.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:49.361611+00:00"
+      "last_updated": "2026-10-29T15:03:22.450575+00:00"
     },
     {
       "id": "76399-1_94",
@@ -1909,7 +1909,7 @@
       "notes": "",
       "image_url": "images/76399.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:51.870824+00:00"
+      "last_updated": "2026-10-29T15:03:25.532066+00:00"
     },
     {
       "id": "75968-1_95",
@@ -1918,18 +1918,18 @@
       "name": "4 Privet Drive",
       "theme": "Harry Potter",
       "cost": 45.2,
-      "current_value": 63.35,
-      "profit": 18.15,
-      "roi": 40.16,
+      "current_value": 63.43,
+      "profit": 18.23,
+      "roi": 40.34,
       "signal": "Strong Sell",
-      "qty_sold_6m": 11,
+      "qty_sold_6m": 10,
       "bl_min_price": 40.63,
       "bl_max_price": 80.0,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/75968.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:54.405208+00:00"
+      "last_updated": "2026-10-29T15:03:28.505991+00:00"
     },
     {
       "id": "76388-1_96",
@@ -1938,18 +1938,18 @@
       "name": "Hogsmeade Village Visit",
       "theme": "Harry Potter",
       "cost": 49.72,
-      "current_value": 99.58,
-      "profit": 49.86,
-      "roi": 100.27,
+      "current_value": 99.52,
+      "profit": 49.8,
+      "roi": 100.16,
       "signal": "Strong Sell",
-      "qty_sold_6m": 19,
+      "qty_sold_6m": 18,
       "bl_min_price": 84.07,
       "bl_max_price": 136.58,
       "selling_on": "",
       "notes": "",
       "image_url": "images/76388.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:56.915797+00:00"
+      "last_updated": "2026-10-29T15:03:31.381699+00:00"
     },
     {
       "id": "76388-1_97",
@@ -1958,18 +1958,18 @@
       "name": "Hogsmeade Village Visit",
       "theme": "Harry Potter",
       "cost": 49.72,
-      "current_value": 99.58,
-      "profit": 49.86,
-      "roi": 100.27,
+      "current_value": 99.52,
+      "profit": 49.8,
+      "roi": 100.16,
       "signal": "Strong Sell",
-      "qty_sold_6m": 19,
+      "qty_sold_6m": 18,
       "bl_min_price": 84.07,
       "bl_max_price": 136.58,
       "selling_on": "",
       "notes": "",
       "image_url": "images/76388.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:57:59.374742+00:00"
+      "last_updated": "2026-10-29T15:03:34.007395+00:00"
     },
     {
       "id": "76388-1_98",
@@ -1978,18 +1978,18 @@
       "name": "Hogsmeade Village Visit",
       "theme": "Harry Potter",
       "cost": 62.14,
-      "current_value": 99.58,
-      "profit": 37.44,
-      "roi": 60.25,
+      "current_value": 99.52,
+      "profit": 37.38,
+      "roi": 60.15,
       "signal": "Strong Sell",
-      "qty_sold_6m": 19,
+      "qty_sold_6m": 18,
       "bl_min_price": 84.07,
       "bl_max_price": 136.58,
       "selling_on": "",
       "notes": "",
       "image_url": "images/76388.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:01.828890+00:00"
+      "last_updated": "2026-10-29T15:03:36.635946+00:00"
     },
     {
       "id": "76388-1_99",
@@ -1998,18 +1998,18 @@
       "name": "Hogsmeade Village Visit",
       "theme": "Harry Potter",
       "cost": 62.14,
-      "current_value": 99.58,
-      "profit": 37.44,
-      "roi": 60.25,
+      "current_value": 99.52,
+      "profit": 37.38,
+      "roi": 60.15,
       "signal": "Strong Sell",
-      "qty_sold_6m": 19,
+      "qty_sold_6m": 18,
       "bl_min_price": 84.07,
       "bl_max_price": 136.58,
       "selling_on": "",
       "notes": "",
       "image_url": "images/76388.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:04.310826+00:00"
+      "last_updated": "2026-10-29T15:03:39.293962+00:00"
     },
     {
       "id": "76397-1_100",
@@ -2029,7 +2029,7 @@
       "notes": "",
       "image_url": "images/76397.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:06.875416+00:00"
+      "last_updated": "2026-10-29T15:03:42.286290+00:00"
     },
     {
       "id": "30392-1_101",
@@ -2040,16 +2040,16 @@
       "cost": 6.12,
       "current_value": 8.67,
       "profit": 2.55,
-      "roi": 41.73,
+      "roi": 41.61,
       "signal": "Consider",
-      "qty_sold_6m": 38,
+      "qty_sold_6m": 39,
       "bl_min_price": 5.11,
       "bl_max_price": 21.16,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/30392.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:09.449268+00:00"
+      "last_updated": "2026-10-29T15:03:45.212810+00:00"
     },
     {
       "id": "76406-1_102",
@@ -2069,7 +2069,7 @@
       "notes": "",
       "image_url": "images/76406.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:11.981961+00:00"
+      "last_updated": "2026-10-29T15:03:48.205256+00:00"
     },
     {
       "id": "76416-1_103",
@@ -2089,7 +2089,7 @@
       "notes": "",
       "image_url": "images/76416.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:14.478806+00:00"
+      "last_updated": "2026-10-29T15:03:51.206765+00:00"
     },
     {
       "id": "40197-1_104",
@@ -2109,7 +2109,7 @@
       "notes": "",
       "image_url": "images/40197.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:17.032054+00:00"
+      "last_updated": "2026-10-29T15:03:54.083110+00:00"
     },
     {
       "id": "40499-1_105",
@@ -2129,7 +2129,7 @@
       "notes": "",
       "image_url": "images/40499.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:19.585389+00:00"
+      "last_updated": "2026-10-29T15:03:56.970367+00:00"
     },
     {
       "id": "40573-1_106",
@@ -2149,7 +2149,7 @@
       "notes": "",
       "image_url": "images/40573.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:22.154419+00:00"
+      "last_updated": "2026-10-29T15:03:59.908288+00:00"
     },
     {
       "id": "40573-1_107",
@@ -2169,7 +2169,7 @@
       "notes": "",
       "image_url": "images/40573.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:24.683660+00:00"
+      "last_updated": "2026-10-29T15:04:02.577247+00:00"
     },
     {
       "id": "10308-1_108",
@@ -2189,7 +2189,7 @@
       "notes": "",
       "image_url": "images/10308.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:27.261138+00:00"
+      "last_updated": "2026-10-29T15:04:05.526133+00:00"
     },
     {
       "id": "21315-1_109",
@@ -2209,7 +2209,7 @@
       "notes": "",
       "image_url": "images/21315.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:29.836620+00:00"
+      "last_updated": "2026-10-29T15:04:08.475234+00:00"
     },
     {
       "id": "21329-1_110",
@@ -2229,7 +2229,7 @@
       "notes": "",
       "image_url": "images/21329.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:32.364289+00:00"
+      "last_updated": "2026-10-29T15:04:11.441221+00:00"
     },
     {
       "id": "21329-1_111",
@@ -2249,7 +2249,7 @@
       "notes": "",
       "image_url": "images/21329.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:34.821000+00:00"
+      "last_updated": "2026-10-29T15:04:14.054205+00:00"
     },
     {
       "id": "21329-1_112",
@@ -2269,7 +2269,7 @@
       "notes": "",
       "image_url": "images/21329.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:37.283352+00:00"
+      "last_updated": "2026-10-29T15:04:16.703737+00:00"
     },
     {
       "id": "21331-1_113",
@@ -2289,7 +2289,7 @@
       "notes": "",
       "image_url": "images/21331.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:39.801446+00:00"
+      "last_updated": "2026-10-29T15:04:19.671850+00:00"
     },
     {
       "id": "21331-1_114",
@@ -2309,7 +2309,7 @@
       "notes": "",
       "image_url": "images/21331.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:42.265362+00:00"
+      "last_updated": "2026-10-29T15:04:22.342265+00:00"
     },
     {
       "id": "21342-1_115",
@@ -2329,7 +2329,7 @@
       "notes": "",
       "image_url": "images/21342.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:44.844872+00:00"
+      "last_updated": "2026-10-29T15:04:25.343047+00:00"
     },
     {
       "id": "21342-1_116",
@@ -2349,7 +2349,7 @@
       "notes": "",
       "image_url": "images/21342.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:47.326837+00:00"
+      "last_updated": "2026-10-29T15:04:27.957781+00:00"
     },
     {
       "id": "21342-1_117",
@@ -2369,7 +2369,7 @@
       "notes": "",
       "image_url": "images/21342.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:49.799342+00:00"
+      "last_updated": "2026-10-29T15:04:30.615120+00:00"
     },
     {
       "id": "76942-1_118",
@@ -2378,18 +2378,18 @@
       "name": "Baryonyx Dinosaur Boat Escape",
       "theme": "Jurassic World",
       "cost": 56.49,
-      "current_value": 117.55,
-      "profit": 61.06,
-      "roi": 108.09,
+      "current_value": 118.73,
+      "profit": 62.24,
+      "roi": 110.18,
       "signal": "Strong Sell",
-      "qty_sold_6m": 13,
+      "qty_sold_6m": 12,
       "bl_min_price": 99.57,
       "bl_max_price": 139.88,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/76942.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:52.297950+00:00"
+      "last_updated": "2026-10-29T15:04:33.705926+00:00"
     },
     {
       "id": "76942-1_119",
@@ -2398,18 +2398,18 @@
       "name": "Baryonyx Dinosaur Boat Escape",
       "theme": "Jurassic World",
       "cost": 56.49,
-      "current_value": 117.55,
-      "profit": 61.06,
-      "roi": 108.09,
+      "current_value": 118.73,
+      "profit": 62.24,
+      "roi": 110.18,
       "signal": "Strong Sell",
-      "qty_sold_6m": 13,
+      "qty_sold_6m": 12,
       "bl_min_price": 99.57,
       "bl_max_price": 139.88,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/76942.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:54.781313+00:00"
+      "last_updated": "2026-10-29T15:04:36.359416+00:00"
     },
     {
       "id": "76956-1_120",
@@ -2429,7 +2429,7 @@
       "notes": "",
       "image_url": "images/76956.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:57.372322+00:00"
+      "last_updated": "2026-10-29T15:04:39.267566+00:00"
     },
     {
       "id": "76162-1_121",
@@ -2449,7 +2449,7 @@
       "notes": "",
       "image_url": "images/76162.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:58:59.972256+00:00"
+      "last_updated": "2026-10-29T15:04:42.234973+00:00"
     },
     {
       "id": "76185-1_122",
@@ -2469,7 +2469,7 @@
       "notes": "",
       "image_url": "images/76185.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:02.491564+00:00"
+      "last_updated": "2026-10-29T15:04:45.367584+00:00"
     },
     {
       "id": "40454-1_123",
@@ -2478,18 +2478,18 @@
       "name": "Spider-Man vs. Venom and Iron Venom",
       "theme": "Marvel",
       "cost": 22.59,
-      "current_value": 38.49,
-      "profit": 15.9,
-      "roi": 70.38,
+      "current_value": 38.61,
+      "profit": 16.02,
+      "roi": 70.93,
       "signal": "Consider",
-      "qty_sold_6m": 84,
+      "qty_sold_6m": 85,
       "bl_min_price": 26.25,
       "bl_max_price": 60.0,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/40454.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:05.015865+00:00"
+      "last_updated": "2026-10-29T15:04:48.271921+00:00"
     },
     {
       "id": "40454-1_124",
@@ -2498,18 +2498,18 @@
       "name": "Spider-Man vs. Venom and Iron Venom",
       "theme": "Marvel",
       "cost": 22.59,
-      "current_value": 38.49,
-      "profit": 15.9,
-      "roi": 70.38,
+      "current_value": 38.61,
+      "profit": 16.02,
+      "roi": 70.93,
       "signal": "Consider",
-      "qty_sold_6m": 84,
+      "qty_sold_6m": 85,
       "bl_min_price": 26.25,
       "bl_max_price": 60.0,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/40454.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:07.480956+00:00"
+      "last_updated": "2026-10-29T15:04:50.917004+00:00"
     },
     {
       "id": "40454-1_125",
@@ -2518,18 +2518,18 @@
       "name": "Spider-Man vs. Venom and Iron Venom",
       "theme": "Marvel",
       "cost": 22.59,
-      "current_value": 38.49,
-      "profit": 15.9,
-      "roi": 70.38,
+      "current_value": 38.61,
+      "profit": 16.02,
+      "roi": 70.93,
       "signal": "Consider",
-      "qty_sold_6m": 84,
+      "qty_sold_6m": 85,
       "bl_min_price": 26.25,
       "bl_max_price": 60.0,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/40454.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:09.967927+00:00"
+      "last_updated": "2026-10-29T15:04:53.589913+00:00"
     },
     {
       "id": "40454-1_126",
@@ -2538,18 +2538,18 @@
       "name": "Spider-Man vs. Venom and Iron Venom",
       "theme": "Marvel",
       "cost": 22.59,
-      "current_value": 38.49,
-      "profit": 15.9,
-      "roi": 70.38,
+      "current_value": 38.61,
+      "profit": 16.02,
+      "roi": 70.93,
       "signal": "Consider",
-      "qty_sold_6m": 84,
+      "qty_sold_6m": 85,
       "bl_min_price": 26.25,
       "bl_max_price": 60.0,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/40454.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:12.445398+00:00"
+      "last_updated": "2026-10-29T15:04:56.307399+00:00"
     },
     {
       "id": "40454-1_127",
@@ -2558,18 +2558,18 @@
       "name": "Spider-Man vs. Venom and Iron Venom",
       "theme": "Marvel",
       "cost": 22.59,
-      "current_value": 38.49,
-      "profit": 15.9,
-      "roi": 70.38,
+      "current_value": 38.61,
+      "profit": 16.02,
+      "roi": 70.93,
       "signal": "Consider",
-      "qty_sold_6m": 84,
+      "qty_sold_6m": 85,
       "bl_min_price": 26.25,
       "bl_max_price": 60.0,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/40454.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:14.978655+00:00"
+      "last_updated": "2026-10-29T15:04:58.995613+00:00"
     },
     {
       "id": "76205-1_128",
@@ -2589,7 +2589,7 @@
       "notes": "",
       "image_url": "images/76205.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:17.591790+00:00"
+      "last_updated": "2026-10-29T15:05:01.910033+00:00"
     },
     {
       "id": "76205-1_129",
@@ -2609,7 +2609,7 @@
       "notes": "",
       "image_url": "images/76205.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:20.064870+00:00"
+      "last_updated": "2026-10-29T15:05:04.620211+00:00"
     },
     {
       "id": "76156-1_130",
@@ -2629,7 +2629,7 @@
       "notes": "",
       "image_url": "images/76156.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:22.589425+00:00"
+      "last_updated": "2026-10-29T15:05:07.653433+00:00"
     },
     {
       "id": "66711-1_131",
@@ -2649,7 +2649,7 @@
       "notes": "",
       "image_url": "images/66711.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:25.116374+00:00"
+      "last_updated": "2026-10-29T15:05:10.646119+00:00"
     },
     {
       "id": "66711-1_132",
@@ -2669,7 +2669,7 @@
       "notes": "",
       "image_url": "images/66711.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:27.600928+00:00"
+      "last_updated": "2026-10-29T15:05:13.254627+00:00"
     },
     {
       "id": "30652-1_133",
@@ -2678,18 +2678,18 @@
       "name": "Dr. Strange's Interdimentional Portal",
       "theme": "Marvel",
       "cost": 7.3,
-      "current_value": 7.76,
-      "profit": 0.46,
-      "roi": 6.25,
+      "current_value": 7.77,
+      "profit": 0.47,
+      "roi": 6.44,
       "signal": "Hold",
-      "qty_sold_6m": 94,
+      "qty_sold_6m": 95,
       "bl_min_price": 3.42,
       "bl_max_price": 25.84,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/30652.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:30.197340+00:00"
+      "last_updated": "2026-10-29T15:05:16.212937+00:00"
     },
     {
       "id": "30652-1_134",
@@ -2698,18 +2698,18 @@
       "name": "Dr. Strange's Interdimentional Portal",
       "theme": "Marvel",
       "cost": 7.3,
-      "current_value": 7.76,
-      "profit": 0.46,
-      "roi": 6.25,
+      "current_value": 7.77,
+      "profit": 0.47,
+      "roi": 6.44,
       "signal": "Hold",
-      "qty_sold_6m": 94,
+      "qty_sold_6m": 95,
       "bl_min_price": 3.42,
       "bl_max_price": 25.84,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/30652.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:32.690090+00:00"
+      "last_updated": "2026-10-29T15:05:18.899936+00:00"
     },
     {
       "id": "30652-1_135",
@@ -2718,18 +2718,18 @@
       "name": "Dr. Strange's Interdimentional Portal",
       "theme": "Marvel",
       "cost": 7.3,
-      "current_value": 7.76,
-      "profit": 0.46,
-      "roi": 6.25,
+      "current_value": 7.77,
+      "profit": 0.47,
+      "roi": 6.44,
       "signal": "Hold",
-      "qty_sold_6m": 94,
+      "qty_sold_6m": 95,
       "bl_min_price": 3.42,
       "bl_max_price": 25.84,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/30652.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:35.155898+00:00"
+      "last_updated": "2026-10-29T15:05:21.655339+00:00"
     },
     {
       "id": "242104-1_136",
@@ -2749,7 +2749,7 @@
       "notes": "",
       "image_url": "images/242104.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:37.668825+00:00"
+      "last_updated": "2026-10-29T15:05:24.672888+00:00"
     },
     {
       "id": "30443-1_137",
@@ -2769,7 +2769,7 @@
       "notes": "",
       "image_url": "images/30443.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:40.164202+00:00"
+      "last_updated": "2026-10-29T15:05:27.625117+00:00"
     },
     {
       "id": "76244-1_138",
@@ -2789,7 +2789,7 @@
       "notes": "",
       "image_url": "images/76244.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:42.674730+00:00"
+      "last_updated": "2026-10-29T15:05:30.559520+00:00"
     },
     {
       "id": "71374-1_139",
@@ -2809,7 +2809,7 @@
       "notes": "",
       "image_url": "images/71374.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:45.210818+00:00"
+      "last_updated": "2026-10-29T15:05:33.602875+00:00"
     },
     {
       "id": "71360-1_140",
@@ -2818,18 +2818,18 @@
       "name": "Starter Set",
       "theme": "Super Mario",
       "cost": 53.99,
-      "current_value": 42.38,
-      "profit": -11.61,
-      "roi": -21.5,
+      "current_value": 42.47,
+      "profit": -11.52,
+      "roi": -21.34,
       "signal": "Hold",
-      "qty_sold_6m": 19,
+      "qty_sold_6m": 18,
       "bl_min_price": 26.55,
       "bl_max_price": 56.04,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/71360.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:47.817425+00:00"
+      "last_updated": "2026-10-29T15:05:36.561270+00:00"
     },
     {
       "id": "71360-1_141",
@@ -2838,18 +2838,18 @@
       "name": "Starter Set",
       "theme": "Super Mario",
       "cost": 53.99,
-      "current_value": 42.38,
-      "profit": -11.61,
-      "roi": -21.5,
+      "current_value": 42.47,
+      "profit": -11.52,
+      "roi": -21.34,
       "signal": "Hold",
-      "qty_sold_6m": 19,
+      "qty_sold_6m": 18,
       "bl_min_price": 26.55,
       "bl_max_price": 56.04,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/71360.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:50.268185+00:00"
+      "last_updated": "2026-10-29T15:05:39.179172+00:00"
     },
     {
       "id": "5007029-1_142",
@@ -2869,7 +2869,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5007029-1.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:51.651012+00:00"
+      "last_updated": "2026-10-29T15:05:40.794597+00:00"
     },
     {
       "id": "66648-1_143",
@@ -2889,7 +2889,7 @@
       "notes": "",
       "image_url": "images/66648.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:52.959947+00:00"
+      "last_updated": "2026-10-29T15:05:42.492688+00:00"
     },
     {
       "id": "66650-1_144",
@@ -2909,7 +2909,7 @@
       "notes": "",
       "image_url": "images/66650.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:54.261480+00:00"
+      "last_updated": "2026-10-29T15:05:44.128704+00:00"
     },
     {
       "id": "5007840-1_145",
@@ -2929,7 +2929,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5007840-1.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:55.535983+00:00"
+      "last_updated": "2026-10-29T15:05:45.812606+00:00"
     },
     {
       "id": "5007840-1_146",
@@ -2949,7 +2949,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5007840-1.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:56.914284+00:00"
+      "last_updated": "2026-10-29T15:05:47.374130+00:00"
     },
     {
       "id": "5007403-1_147",
@@ -2969,7 +2969,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5007403-1.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:58.183072+00:00"
+      "last_updated": "2026-10-29T15:05:49.072170+00:00"
     },
     {
       "id": "5007403-1_148",
@@ -2989,7 +2989,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5007403-1.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T14:59:59.537023+00:00"
+      "last_updated": "2026-10-29T15:05:50.731376+00:00"
     },
     {
       "id": "5007403-1_149",
@@ -3009,7 +3009,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5007403-1.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:00.975850+00:00"
+      "last_updated": "2026-10-29T15:05:52.415858+00:00"
     },
     {
       "id": "5007089-1_150",
@@ -3029,7 +3029,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5007089-1.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:02.254040+00:00"
+      "last_updated": "2026-10-29T15:05:54.033576+00:00"
     },
     {
       "id": "40529-1_151",
@@ -3049,7 +3049,7 @@
       "notes": "",
       "image_url": "images/40529.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:04.776159+00:00"
+      "last_updated": "2026-10-29T15:05:56.957019+00:00"
     },
     {
       "id": "40417-1_152",
@@ -3069,7 +3069,7 @@
       "notes": "",
       "image_url": "images/40417.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:07.288190+00:00"
+      "last_updated": "2026-10-29T15:05:59.881021+00:00"
     },
     {
       "id": "5006746-1_153",
@@ -3089,7 +3089,7 @@
       "notes": "",
       "image_url": "images/5006746.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:09.923195+00:00"
+      "last_updated": "2026-10-29T15:06:02.868939+00:00"
     },
     {
       "id": "6346109-1_154",
@@ -3109,7 +3109,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/6346109-1.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:11.202767+00:00"
+      "last_updated": "2026-10-29T15:06:04.487879+00:00"
     },
     {
       "id": "6427896-1_155",
@@ -3129,7 +3129,7 @@
       "notes": "",
       "image_url": "images/6427896.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:13.703132+00:00"
+      "last_updated": "2026-10-29T15:06:07.491072+00:00"
     },
     {
       "id": "6427896-1_156",
@@ -3149,7 +3149,7 @@
       "notes": "",
       "image_url": "images/6427896.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:16.169916+00:00"
+      "last_updated": "2026-10-29T15:06:10.145625+00:00"
     },
     {
       "id": "6427896-1_157",
@@ -3169,7 +3169,7 @@
       "notes": "",
       "image_url": "images/6427896.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:18.628576+00:00"
+      "last_updated": "2026-10-29T15:06:12.796227+00:00"
     },
     {
       "id": "6427896-1_158",
@@ -3189,7 +3189,7 @@
       "notes": "",
       "image_url": "images/6427896.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:21.086341+00:00"
+      "last_updated": "2026-10-29T15:06:15.478397+00:00"
     },
     {
       "id": "40563-1_159",
@@ -3209,7 +3209,7 @@
       "notes": "",
       "image_url": "images/40563.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:23.602920+00:00"
+      "last_updated": "2026-10-29T15:06:18.377590+00:00"
     },
     {
       "id": "5007428-1_160",
@@ -3229,7 +3229,7 @@
       "notes": "",
       "image_url": "images/5007428.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:26.120042+00:00"
+      "last_updated": "2026-10-29T15:06:21.326383+00:00"
     },
     {
       "id": "5007427-1_161",
@@ -3238,18 +3238,18 @@
       "name": "Pirate Adventure Ride",
       "theme": "Promo",
       "cost": 0.0,
-      "current_value": 26.02,
+      "current_value": 26.27,
       "profit": 0.0,
       "roi": 0.0,
       "signal": "Hold",
-      "qty_sold_6m": 17,
+      "qty_sold_6m": 15,
       "bl_min_price": 21.01,
       "bl_max_price": 34.34,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/5007427.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:28.651005+00:00"
+      "last_updated": "2026-10-29T15:06:24.303021+00:00"
     },
     {
       "id": "5006085-1_162",
@@ -3269,7 +3269,7 @@
       "notes": "",
       "image_url": "images/5006085.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:31.156619+00:00"
+      "last_updated": "2026-10-29T15:06:27.139820+00:00"
     },
     {
       "id": "6346101-1_163",
@@ -3289,7 +3289,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/6346101-1.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:32.434165+00:00"
+      "last_updated": "2026-10-29T15:06:28.786628+00:00"
     },
     {
       "id": "5007622-1_164",
@@ -3309,7 +3309,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/5007622-1.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:33.720252+00:00"
+      "last_updated": "2026-10-29T15:06:30.461986+00:00"
     },
     {
       "id": "40407-1_165",
@@ -3329,7 +3329,7 @@
       "notes": "",
       "image_url": "images/40407.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:36.250210+00:00"
+      "last_updated": "2026-10-29T15:06:33.446990+00:00"
     },
     {
       "id": "40407-1_166",
@@ -3349,7 +3349,7 @@
       "notes": "",
       "image_url": "images/40407.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:38.725395+00:00"
+      "last_updated": "2026-10-29T15:06:36.064519+00:00"
     },
     {
       "id": "40407-1_167",
@@ -3369,7 +3369,7 @@
       "notes": "",
       "image_url": "images/40407.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:41.192826+00:00"
+      "last_updated": "2026-10-29T15:06:38.684159+00:00"
     },
     {
       "id": "40600-1_168",
@@ -3389,7 +3389,7 @@
       "notes": "",
       "image_url": "images/40600.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:43.772088+00:00"
+      "last_updated": "2026-10-29T15:06:41.600483+00:00"
     },
     {
       "id": "40600-1_169",
@@ -3409,7 +3409,7 @@
       "notes": "",
       "image_url": "images/40600.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:46.238998+00:00"
+      "last_updated": "2026-10-29T15:06:44.236171+00:00"
     },
     {
       "id": "40600-1_170",
@@ -3429,7 +3429,7 @@
       "notes": "",
       "image_url": "images/40600.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:48.714705+00:00"
+      "last_updated": "2026-10-29T15:06:46.892698+00:00"
     },
     {
       "id": "40600-1_171",
@@ -3449,7 +3449,7 @@
       "notes": "",
       "image_url": "images/40600.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:51.175639+00:00"
+      "last_updated": "2026-10-29T15:06:49.634072+00:00"
     },
     {
       "id": "40600-1_172",
@@ -3469,7 +3469,7 @@
       "notes": "",
       "image_url": "images/40600.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:53.650758+00:00"
+      "last_updated": "2026-10-29T15:06:52.339091+00:00"
     },
     {
       "id": "6471612-1_173",
@@ -3489,7 +3489,7 @@
       "notes": "",
       "image_url": "https://img.bricklink.com/ItemImage/SN/0/6471612-1.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:54.925806+00:00"
+      "last_updated": "2026-10-29T15:06:53.999100+00:00"
     },
     {
       "id": "30668-1_174",
@@ -3498,18 +3498,18 @@
       "name": "Easter Bunny w/Colorful Eggs polybag",
       "theme": "GWP",
       "cost": 0.0,
-      "current_value": 5.08,
+      "current_value": 5.01,
       "profit": 0.0,
       "roi": 0.0,
       "signal": "Hold",
-      "qty_sold_6m": 27,
+      "qty_sold_6m": 29,
       "bl_min_price": 2.08,
       "bl_max_price": 15.52,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/30668.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:00:57.554905+00:00"
+      "last_updated": "2026-10-29T15:06:56.987433+00:00"
     },
     {
       "id": "40703-1_175",
@@ -3529,7 +3529,7 @@
       "notes": "",
       "image_url": "images/40703.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:00.102576+00:00"
+      "last_updated": "2026-10-29T15:07:00.028647+00:00"
     },
     {
       "id": "5009044-1_176",
@@ -3538,18 +3538,18 @@
       "name": "Barracuda Seas",
       "theme": "VIP",
       "cost": 0.0,
-      "current_value": 27.59,
+      "current_value": 27.63,
       "profit": 0.0,
       "roi": 0.0,
       "signal": "Hold",
-      "qty_sold_6m": 11,
+      "qty_sold_6m": 10,
       "bl_min_price": 20.61,
       "bl_max_price": 35.33,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/5009044.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:02.737991+00:00"
+      "last_updated": "2026-10-29T15:07:02.932211+00:00"
     },
     {
       "id": "76991-1_177",
@@ -3569,7 +3569,7 @@
       "notes": "",
       "image_url": "images/76991.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:05.291822+00:00"
+      "last_updated": "2026-10-29T15:07:05.935130+00:00"
     },
     {
       "id": "76990-1_178",
@@ -3589,7 +3589,7 @@
       "notes": "",
       "image_url": "images/76990.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:07.818419+00:00"
+      "last_updated": "2026-10-29T15:07:08.831616+00:00"
     },
     {
       "id": "75254-1_179",
@@ -3609,7 +3609,7 @@
       "notes": "",
       "image_url": "images/75254.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:10.342422+00:00"
+      "last_updated": "2026-10-29T15:07:11.805457+00:00"
     },
     {
       "id": "75267-1_180",
@@ -3629,7 +3629,7 @@
       "notes": "",
       "image_url": "images/75267.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:12.849754+00:00"
+      "last_updated": "2026-10-29T15:07:14.836087+00:00"
     },
     {
       "id": "75267-1_181",
@@ -3649,7 +3649,7 @@
       "notes": "",
       "image_url": "images/75267.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:15.314095+00:00"
+      "last_updated": "2026-10-29T15:07:17.594645+00:00"
     },
     {
       "id": "75267-1_182",
@@ -3669,7 +3669,7 @@
       "notes": "",
       "image_url": "images/75267.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:17.786353+00:00"
+      "last_updated": "2026-10-29T15:07:20.269089+00:00"
     },
     {
       "id": "75267-1_183",
@@ -3689,7 +3689,7 @@
       "notes": "",
       "image_url": "images/75267.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:20.272339+00:00"
+      "last_updated": "2026-10-29T15:07:22.961907+00:00"
     },
     {
       "id": "75267-1_184",
@@ -3709,7 +3709,7 @@
       "notes": "",
       "image_url": "images/75267.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:22.745353+00:00"
+      "last_updated": "2026-10-29T15:07:25.645584+00:00"
     },
     {
       "id": "75267-1_185",
@@ -3729,7 +3729,7 @@
       "notes": "",
       "image_url": "images/75267.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:25.230338+00:00"
+      "last_updated": "2026-10-29T15:07:28.448885+00:00"
     },
     {
       "id": "40407-1_186",
@@ -3749,7 +3749,7 @@
       "notes": "",
       "image_url": "images/40407.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:27.700081+00:00"
+      "last_updated": "2026-10-29T15:07:31.120670+00:00"
     },
     {
       "id": "40407-1_187",
@@ -3769,7 +3769,7 @@
       "notes": "",
       "image_url": "images/40407.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:30.164470+00:00"
+      "last_updated": "2026-10-29T15:07:33.860171+00:00"
     },
     {
       "id": "40407-1_188",
@@ -3789,7 +3789,7 @@
       "notes": "",
       "image_url": "images/40407.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:32.673114+00:00"
+      "last_updated": "2026-10-29T15:07:36.511082+00:00"
     },
     {
       "id": "75292-1_189",
@@ -3798,18 +3798,18 @@
       "name": "The Razor Crest",
       "theme": "Star Wars",
       "cost": 175.14,
-      "current_value": 178.15,
-      "profit": 3.01,
-      "roi": 1.72,
+      "current_value": 177.85,
+      "profit": 2.71,
+      "roi": 1.55,
       "signal": "Hold",
-      "qty_sold_6m": 36,
+      "qty_sold_6m": 35,
       "bl_min_price": 124.2,
       "bl_max_price": 252.17,
       "selling_on": "BL, FB",
       "notes": "",
       "image_url": "images/75292.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:35.213839+00:00"
+      "last_updated": "2026-10-29T15:07:39.535381+00:00"
     },
     {
       "id": "40391-1_190",
@@ -3829,7 +3829,7 @@
       "notes": "Built in nerd cave",
       "image_url": "images/40391.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:37.733967+00:00"
+      "last_updated": "2026-10-29T15:07:42.569425+00:00"
     },
     {
       "id": "40431-1_191",
@@ -3849,7 +3849,7 @@
       "notes": "Built in nerd cave",
       "image_url": "images/40431.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:40.248464+00:00"
+      "last_updated": "2026-10-29T15:07:45.495039+00:00"
     },
     {
       "id": "75299-1_192",
@@ -3869,7 +3869,7 @@
       "notes": "",
       "image_url": "images/75299.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:42.763988+00:00"
+      "last_updated": "2026-10-29T15:07:48.548460+00:00"
     },
     {
       "id": "75270-1_193",
@@ -3878,18 +3878,18 @@
       "name": "Obi-Wan's Hut",
       "theme": "Star Wars",
       "cost": 45.19,
-      "current_value": 49.27,
-      "profit": 4.08,
-      "roi": 9.04,
+      "current_value": 49.58,
+      "profit": 4.39,
+      "roi": 9.71,
       "signal": "Hold",
-      "qty_sold_6m": 40,
+      "qty_sold_6m": 41,
       "bl_min_price": 35.0,
-      "bl_max_price": 59.74,
+      "bl_max_price": 61.75,
       "selling_on": "",
       "notes": "",
       "image_url": "images/75270.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:45.298655+00:00"
+      "last_updated": "2026-10-29T15:07:51.482370+00:00"
     },
     {
       "id": "75270-1_194",
@@ -3898,18 +3898,18 @@
       "name": "Obi-Wan's Hut",
       "theme": "Star Wars",
       "cost": 45.19,
-      "current_value": 49.27,
-      "profit": 4.08,
-      "roi": 9.04,
+      "current_value": 49.58,
+      "profit": 4.39,
+      "roi": 9.71,
       "signal": "Hold",
-      "qty_sold_6m": 40,
+      "qty_sold_6m": 41,
       "bl_min_price": 35.0,
-      "bl_max_price": 59.74,
+      "bl_max_price": 61.75,
       "selling_on": "",
       "notes": "",
       "image_url": "images/75270.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:47.749520+00:00"
+      "last_updated": "2026-10-29T15:07:54.079966+00:00"
     },
     {
       "id": "75304-1_195",
@@ -3918,18 +3918,18 @@
       "name": "Darth Vader Helmet",
       "theme": "Star Wars",
       "cost": 112.99,
-      "current_value": 94.4,
-      "profit": -18.59,
-      "roi": -16.45,
+      "current_value": 94.63,
+      "profit": -18.36,
+      "roi": -16.25,
       "signal": "Hold",
-      "qty_sold_6m": 42,
+      "qty_sold_6m": 41,
       "bl_min_price": 67.64,
       "bl_max_price": 116.18,
       "selling_on": "",
       "notes": "",
       "image_url": "images/75304.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:50.353059+00:00"
+      "last_updated": "2026-10-29T15:07:57.025545+00:00"
     },
     {
       "id": "75304-1_196",
@@ -3938,18 +3938,18 @@
       "name": "Darth Vader Helmet",
       "theme": "Star Wars",
       "cost": 45.2,
-      "current_value": 94.4,
-      "profit": 49.2,
-      "roi": 108.85,
+      "current_value": 94.63,
+      "profit": 49.43,
+      "roi": 109.36,
       "signal": "Strong Sell",
-      "qty_sold_6m": 42,
+      "qty_sold_6m": 41,
       "bl_min_price": 67.64,
       "bl_max_price": 116.18,
       "selling_on": "",
       "notes": "",
       "image_url": "images/75304.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:52.815057+00:00"
+      "last_updated": "2026-10-29T15:07:59.732014+00:00"
     },
     {
       "id": "75266-1_197",
@@ -3969,7 +3969,7 @@
       "notes": "",
       "image_url": "images/75266.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:55.461415+00:00"
+      "last_updated": "2026-10-29T15:08:02.646877+00:00"
     },
     {
       "id": "30384-1_198",
@@ -3978,18 +3978,18 @@
       "name": "Snowspeeder - mini polybag",
       "theme": "Star Wars",
       "cost": 5.0,
-      "current_value": 10.23,
-      "profit": 5.23,
-      "roi": 104.57,
+      "current_value": 10.31,
+      "profit": 5.31,
+      "roi": 106.14,
       "signal": "Consider",
-      "qty_sold_6m": 26,
+      "qty_sold_6m": 27,
       "bl_min_price": 5.7,
       "bl_max_price": 14.18,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/30384.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:01:58.042660+00:00"
+      "last_updated": "2026-10-29T15:08:05.641534+00:00"
     },
     {
       "id": "40539-1_199",
@@ -3998,18 +3998,18 @@
       "name": "Ahsoka Tano",
       "theme": "Star Wars",
       "cost": 14.68,
-      "current_value": 17.92,
-      "profit": 3.24,
-      "roi": 22.1,
+      "current_value": 17.75,
+      "profit": 3.07,
+      "roi": 20.93,
       "signal": "Consider",
-      "qty_sold_6m": 30,
+      "qty_sold_6m": 31,
       "bl_min_price": 6.37,
       "bl_max_price": 28.92,
       "selling_on": "BL",
       "notes": "Retiring Soon",
       "image_url": "images/40539.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:00.570135+00:00"
+      "last_updated": "2026-10-29T15:08:08.538604+00:00"
     },
     {
       "id": "40539-1_200",
@@ -4018,18 +4018,18 @@
       "name": "Ahsoka Tano",
       "theme": "Star Wars",
       "cost": 14.68,
-      "current_value": 17.92,
-      "profit": 3.24,
-      "roi": 22.1,
+      "current_value": 17.75,
+      "profit": 3.07,
+      "roi": 20.93,
       "signal": "Consider",
-      "qty_sold_6m": 30,
+      "qty_sold_6m": 31,
       "bl_min_price": 6.37,
       "bl_max_price": 28.92,
       "selling_on": "BL",
       "notes": "Retiring Soon",
       "image_url": "images/40539.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:03.049276+00:00"
+      "last_updated": "2026-10-29T15:08:11.167455+00:00"
     },
     {
       "id": "40539-1_201",
@@ -4038,18 +4038,18 @@
       "name": "Ahsoka Tano",
       "theme": "Star Wars",
       "cost": 14.68,
-      "current_value": 17.92,
-      "profit": 3.24,
-      "roi": 22.1,
+      "current_value": 17.75,
+      "profit": 3.07,
+      "roi": 20.93,
       "signal": "Consider",
-      "qty_sold_6m": 30,
+      "qty_sold_6m": 31,
       "bl_min_price": 6.37,
       "bl_max_price": 28.92,
       "selling_on": "BL",
       "notes": "Retiring Soon",
       "image_url": "images/40539.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:05.573835+00:00"
+      "last_updated": "2026-10-29T15:08:13.890773+00:00"
     },
     {
       "id": "40539-1_202",
@@ -4058,18 +4058,18 @@
       "name": "Ahsoka Tano",
       "theme": "Star Wars",
       "cost": 14.68,
-      "current_value": 17.92,
-      "profit": 3.24,
-      "roi": 22.1,
+      "current_value": 17.75,
+      "profit": 3.07,
+      "roi": 20.93,
       "signal": "Consider",
-      "qty_sold_6m": 30,
+      "qty_sold_6m": 31,
       "bl_min_price": 6.37,
       "bl_max_price": 28.92,
       "selling_on": "BL",
       "notes": "Retiring Soon",
       "image_url": "images/40539.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:08.043001+00:00"
+      "last_updated": "2026-10-29T15:08:16.558450+00:00"
     },
     {
       "id": "40539-1_203",
@@ -4078,18 +4078,18 @@
       "name": "Ahsoka Tano",
       "theme": "Star Wars",
       "cost": 14.68,
-      "current_value": 17.92,
-      "profit": 3.24,
-      "roi": 22.1,
+      "current_value": 17.75,
+      "profit": 3.07,
+      "roi": 20.93,
       "signal": "Consider",
-      "qty_sold_6m": 30,
+      "qty_sold_6m": 31,
       "bl_min_price": 6.37,
       "bl_max_price": 28.92,
       "selling_on": "BL",
       "notes": "Retiring Soon",
       "image_url": "images/40539.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:10.517007+00:00"
+      "last_updated": "2026-10-29T15:08:19.190429+00:00"
     },
     {
       "id": "75320-1_204",
@@ -4098,18 +4098,18 @@
       "name": "Snowtrooper Battle Pack",
       "theme": "Star Wars",
       "cost": 28.24,
-      "current_value": 34.06,
-      "profit": 5.82,
-      "roi": 20.61,
+      "current_value": 34.07,
+      "profit": 5.83,
+      "roi": 20.65,
       "signal": "Consider",
-      "qty_sold_6m": 90,
+      "qty_sold_6m": 91,
       "bl_min_price": 20.0,
       "bl_max_price": 47.62,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/75320.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:13.047006+00:00"
+      "last_updated": "2026-10-29T15:08:22.270831+00:00"
     },
     {
       "id": "75320-1_205",
@@ -4118,18 +4118,18 @@
       "name": "Snowtrooper Battle Pack",
       "theme": "Star Wars",
       "cost": 28.24,
-      "current_value": 34.06,
-      "profit": 5.82,
-      "roi": 20.61,
+      "current_value": 34.07,
+      "profit": 5.83,
+      "roi": 20.65,
       "signal": "Consider",
-      "qty_sold_6m": 90,
+      "qty_sold_6m": 91,
       "bl_min_price": 20.0,
       "bl_max_price": 47.62,
       "selling_on": "BL",
       "notes": "",
       "image_url": "images/75320.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:15.540180+00:00"
+      "last_updated": "2026-10-29T15:08:24.971788+00:00"
     },
     {
       "id": "75321-1_206",
@@ -4149,7 +4149,7 @@
       "notes": "",
       "image_url": "images/75321.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:18.049586+00:00"
+      "last_updated": "2026-10-29T15:08:27.988368+00:00"
     },
     {
       "id": "75321-1_207",
@@ -4169,7 +4169,7 @@
       "notes": "",
       "image_url": "images/75321.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:20.521774+00:00"
+      "last_updated": "2026-10-29T15:08:30.600360+00:00"
     },
     {
       "id": "75324-1_208",
@@ -4189,7 +4189,7 @@
       "notes": "",
       "image_url": "images/75324.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:23.038552+00:00"
+      "last_updated": "2026-10-29T15:08:33.506878+00:00"
     },
     {
       "id": "75324-1_209",
@@ -4209,7 +4209,7 @@
       "notes": "",
       "image_url": "images/75324.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:25.787749+00:00"
+      "last_updated": "2026-10-29T15:08:36.178782+00:00"
     },
     {
       "id": "75324-1_210",
@@ -4229,7 +4229,7 @@
       "notes": "",
       "image_url": "images/75324.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:28.249957+00:00"
+      "last_updated": "2026-10-29T15:08:38.851854+00:00"
     },
     {
       "id": "75324-1_211",
@@ -4249,7 +4249,7 @@
       "notes": "",
       "image_url": "images/75324.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:30.707543+00:00"
+      "last_updated": "2026-10-29T15:08:41.535349+00:00"
     },
     {
       "id": "75324-1_212",
@@ -4269,7 +4269,7 @@
       "notes": "",
       "image_url": "images/75324.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:33.200343+00:00"
+      "last_updated": "2026-10-29T15:08:44.244877+00:00"
     },
     {
       "id": "75316-1_213",
@@ -4289,7 +4289,7 @@
       "notes": "",
       "image_url": "images/75316.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:35.730267+00:00"
+      "last_updated": "2026-10-29T15:08:47.252131+00:00"
     },
     {
       "id": "75302-1_214",
@@ -4309,7 +4309,7 @@
       "notes": "",
       "image_url": "images/75302.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:38.245718+00:00"
+      "last_updated": "2026-10-29T15:08:50.144578+00:00"
     },
     {
       "id": "75302-1_215",
@@ -4329,7 +4329,7 @@
       "notes": "",
       "image_url": "images/75302.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:40.718857+00:00"
+      "last_updated": "2026-10-29T15:08:52.788812+00:00"
     },
     {
       "id": "75302-1_216",
@@ -4349,7 +4349,7 @@
       "notes": "",
       "image_url": "images/75302.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:43.184561+00:00"
+      "last_updated": "2026-10-29T15:08:55.394430+00:00"
     },
     {
       "id": "75302-1_217",
@@ -4369,7 +4369,7 @@
       "notes": "",
       "image_url": "images/75302.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:45.642790+00:00"
+      "last_updated": "2026-10-29T15:08:58.015843+00:00"
     },
     {
       "id": "75312-1_218",
@@ -4389,7 +4389,7 @@
       "notes": "",
       "image_url": "images/75312.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:48.174013+00:00"
+      "last_updated": "2026-10-29T15:09:00.986910+00:00"
     },
     {
       "id": "75330-1_219",
@@ -4409,7 +4409,7 @@
       "notes": "Lego.com",
       "image_url": "images/75330.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:50.720132+00:00"
+      "last_updated": "2026-10-29T15:09:04.012241+00:00"
     },
     {
       "id": "75330-1_220",
@@ -4429,7 +4429,7 @@
       "notes": "Lego.com",
       "image_url": "images/75330.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:53.182498+00:00"
+      "last_updated": "2026-10-29T15:09:06.740292+00:00"
     },
     {
       "id": "75339-1_221",
@@ -4438,18 +4438,18 @@
       "name": "Death Star Trash Compactor Diorama",
       "theme": "Star Wars",
       "cost": 135.59,
-      "current_value": 112.16,
-      "profit": -23.43,
-      "roi": -17.28,
+      "current_value": 112.08,
+      "profit": -23.51,
+      "roi": -17.34,
       "signal": "Hold",
-      "qty_sold_6m": 27,
+      "qty_sold_6m": 28,
       "bl_min_price": 89.78,
       "bl_max_price": 168.33,
       "selling_on": "",
       "notes": "Lego.com",
       "image_url": "images/75339.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:55.686256+00:00"
+      "last_updated": "2026-10-29T15:09:09.888620+00:00"
     },
     {
       "id": "75339-1_222",
@@ -4458,18 +4458,18 @@
       "name": "Death Star Trash Compactor Diorama",
       "theme": "Star Wars",
       "cost": 135.59,
-      "current_value": 112.16,
-      "profit": -23.43,
-      "roi": -17.28,
+      "current_value": 112.08,
+      "profit": -23.51,
+      "roi": -17.34,
       "signal": "Hold",
-      "qty_sold_6m": 27,
+      "qty_sold_6m": 28,
       "bl_min_price": 89.78,
       "bl_max_price": 168.33,
       "selling_on": "",
       "notes": "Lego.com",
       "image_url": "images/75339.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:02:58.156349+00:00"
+      "last_updated": "2026-10-29T15:09:12.570455+00:00"
     },
     {
       "id": "75329-1_223",
@@ -4489,7 +4489,7 @@
       "notes": "Lego.com",
       "image_url": "images/75329.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:00.713617+00:00"
+      "last_updated": "2026-10-29T15:09:15.621687+00:00"
     },
     {
       "id": "75329-1_224",
@@ -4509,7 +4509,7 @@
       "notes": "Lego.com",
       "image_url": "images/75329.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:03.182787+00:00"
+      "last_updated": "2026-10-29T15:09:18.276574+00:00"
     },
     {
       "id": "75298-1_225",
@@ -4529,7 +4529,7 @@
       "notes": "Lego.com",
       "image_url": "images/75298.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:05.759857+00:00"
+      "last_updated": "2026-10-29T15:09:21.246293+00:00"
     },
     {
       "id": "75322-1_226",
@@ -4538,18 +4538,18 @@
       "name": "Hoth AT-ST",
       "theme": "Star Wars",
       "cost": 32.5,
-      "current_value": 76.28,
-      "profit": 43.78,
-      "roi": 134.71,
+      "current_value": 76.32,
+      "profit": 43.82,
+      "roi": 134.82,
       "signal": "Strong Sell",
-      "qty_sold_6m": 38,
+      "qty_sold_6m": 37,
       "bl_min_price": 43.43,
       "bl_max_price": 90.0,
       "selling_on": "",
       "notes": "",
       "image_url": "images/75322.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:08.319665+00:00"
+      "last_updated": "2026-10-29T15:09:24.090554+00:00"
     },
     {
       "id": "75294-1_227",
@@ -4569,7 +4569,7 @@
       "notes": "",
       "image_url": "images/75294.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:10.893992+00:00"
+      "last_updated": "2026-10-29T15:09:27.101843+00:00"
     },
     {
       "id": "75353-1_228",
@@ -4589,7 +4589,7 @@
       "notes": "",
       "image_url": "images/75353.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:13.493180+00:00"
+      "last_updated": "2026-10-29T15:09:30.142986+00:00"
     },
     {
       "id": "75352-1_229",
@@ -4609,7 +4609,7 @@
       "notes": "",
       "image_url": "images/75352.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:16.029382+00:00"
+      "last_updated": "2026-10-29T15:09:33.135619+00:00"
     },
     {
       "id": "75352-1_230",
@@ -4629,7 +4629,7 @@
       "notes": "",
       "image_url": "images/75352.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:18.518350+00:00"
+      "last_updated": "2026-10-29T15:09:35.800379+00:00"
     },
     {
       "id": "30654-1_231",
@@ -4649,7 +4649,7 @@
       "notes": "",
       "image_url": "images/30654.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:21.044338+00:00"
+      "last_updated": "2026-10-29T15:09:38.759972+00:00"
     },
     {
       "id": "75323-1_232",
@@ -4669,7 +4669,7 @@
       "notes": "",
       "image_url": "images/75323.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:23.566396+00:00"
+      "last_updated": "2026-10-29T15:09:41.700862+00:00"
     },
     {
       "id": "75342-1_233",
@@ -4689,7 +4689,7 @@
       "notes": "",
       "image_url": "images/75342.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:26.098536+00:00"
+      "last_updated": "2026-10-29T15:09:44.679907+00:00"
     },
     {
       "id": "40623-1_234",
@@ -4709,7 +4709,7 @@
       "notes": "",
       "image_url": "images/40623.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:28.590752+00:00"
+      "last_updated": "2026-10-29T15:09:47.385848+00:00"
     },
     {
       "id": "40623-1_235",
@@ -4729,7 +4729,7 @@
       "notes": "",
       "image_url": "images/40623.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:31.123245+00:00"
+      "last_updated": "2026-10-29T15:09:50.060026+00:00"
     },
     {
       "id": "75372-1_236",
@@ -4738,18 +4738,18 @@
       "name": "Clone Trooper & Battle Droid Battle Pack",
       "theme": "Star Wars",
       "cost": 45.19,
-      "current_value": 28.58,
-      "profit": -16.61,
-      "roi": -36.75,
+      "current_value": 28.75,
+      "profit": -16.44,
+      "roi": -36.38,
       "signal": "Hold",
-      "qty_sold_6m": 34,
+      "qty_sold_6m": 33,
       "bl_min_price": 21.61,
       "bl_max_price": 44.19,
       "selling_on": "",
       "notes": "",
       "image_url": "images/75372.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:33.715586+00:00"
+      "last_updated": "2026-10-29T15:09:52.926817+00:00"
     },
     {
       "id": "75372-1_237",
@@ -4758,18 +4758,18 @@
       "name": "Clone Trooper & Battle Droid Battle Pack",
       "theme": "Star Wars",
       "cost": 45.19,
-      "current_value": 28.58,
-      "profit": -16.61,
-      "roi": -36.75,
+      "current_value": 28.75,
+      "profit": -16.44,
+      "roi": -36.38,
       "signal": "Hold",
-      "qty_sold_6m": 34,
+      "qty_sold_6m": 33,
       "bl_min_price": 21.61,
       "bl_max_price": 44.19,
       "selling_on": "",
       "notes": "",
       "image_url": "images/75372.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:36.183906+00:00"
+      "last_updated": "2026-10-29T15:09:55.571669+00:00"
     },
     {
       "id": "75372-1_238",
@@ -4778,18 +4778,18 @@
       "name": "Clone Trooper & Battle Droid Battle Pack",
       "theme": "Star Wars",
       "cost": 45.19,
-      "current_value": 28.58,
-      "profit": -16.61,
-      "roi": -36.75,
+      "current_value": 28.75,
+      "profit": -16.44,
+      "roi": -36.38,
       "signal": "Hold",
-      "qty_sold_6m": 34,
+      "qty_sold_6m": 33,
       "bl_min_price": 21.61,
       "bl_max_price": 44.19,
       "selling_on": "",
       "notes": "",
       "image_url": "images/75372.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:38.665353+00:00"
+      "last_updated": "2026-10-29T15:09:58.245716+00:00"
     },
     {
       "id": "75372-1_239",
@@ -4798,18 +4798,18 @@
       "name": "Clone Trooper & Battle Droid Battle Pack",
       "theme": "Star Wars",
       "cost": 45.19,
-      "current_value": 28.58,
-      "profit": -16.61,
-      "roi": -36.75,
+      "current_value": 28.75,
+      "profit": -16.44,
+      "roi": -36.38,
       "signal": "Hold",
-      "qty_sold_6m": 34,
+      "qty_sold_6m": 33,
       "bl_min_price": 21.61,
       "bl_max_price": 44.19,
       "selling_on": "",
       "notes": "",
       "image_url": "images/75372.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:41.135091+00:00"
+      "last_updated": "2026-10-29T15:10:00.872106+00:00"
     },
     {
       "id": "75372-1_240",
@@ -4818,18 +4818,18 @@
       "name": "Clone Trooper & Battle Droid Battle Pack",
       "theme": "Star Wars",
       "cost": 45.19,
-      "current_value": 28.58,
-      "profit": -16.61,
-      "roi": -36.75,
+      "current_value": 28.75,
+      "profit": -16.44,
+      "roi": -36.38,
       "signal": "Hold",
-      "qty_sold_6m": 34,
+      "qty_sold_6m": 33,
       "bl_min_price": 21.61,
       "bl_max_price": 44.19,
       "selling_on": "",
       "notes": "",
       "image_url": "images/75372.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:43.628008+00:00"
+      "last_updated": "2026-10-29T15:10:03.543197+00:00"
     },
     {
       "id": "75372-1_241",
@@ -4838,18 +4838,18 @@
       "name": "Clone Trooper & Battle Droid Battle Pack",
       "theme": "Star Wars",
       "cost": 20.0,
-      "current_value": 28.58,
-      "profit": 8.58,
-      "roi": 42.91,
+      "current_value": 28.75,
+      "profit": 8.75,
+      "roi": 43.74,
       "signal": "Consider",
-      "qty_sold_6m": 34,
+      "qty_sold_6m": 33,
       "bl_min_price": 21.61,
       "bl_max_price": 44.19,
       "selling_on": "",
       "notes": "",
       "image_url": "images/75372.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:46.087365+00:00"
+      "last_updated": "2026-10-29T15:10:06.203591+00:00"
     },
     {
       "id": "75359-1_242",
@@ -4858,18 +4858,18 @@
       "name": "Ahsoka's Clone Trooper Battle Pack",
       "theme": "Star Wars",
       "cost": 10.0,
-      "current_value": 25.58,
-      "profit": 15.58,
-      "roi": 155.81,
+      "current_value": 25.62,
+      "profit": 15.62,
+      "roi": 156.24,
       "signal": "Consider",
-      "qty_sold_6m": 93,
+      "qty_sold_6m": 95,
       "bl_min_price": 14.14,
       "bl_max_price": 48.0,
       "selling_on": "",
       "notes": "",
       "image_url": "images/75359.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:48.738138+00:00"
+      "last_updated": "2026-10-29T15:10:09.115093+00:00"
     },
     {
       "id": "75347-1_243",
@@ -4889,7 +4889,7 @@
       "notes": "",
       "image_url": "images/75347.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:51.287554+00:00"
+      "last_updated": "2026-10-29T15:10:12.092914+00:00"
     },
     {
       "id": "75345-1_244",
@@ -4898,18 +4898,18 @@
       "name": "501st Clone Troopers Battle Pack",
       "theme": "Star Wars",
       "cost": 20.0,
-      "current_value": 20.84,
-      "profit": 0.84,
-      "roi": 4.18,
+      "current_value": 20.88,
+      "profit": 0.88,
+      "roi": 4.38,
       "signal": "Hold",
-      "qty_sold_6m": 140,
+      "qty_sold_6m": 141,
       "bl_min_price": 11.1,
       "bl_max_price": 34.35,
       "selling_on": "",
       "notes": "",
       "image_url": "images/75345.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:53.828455+00:00"
+      "last_updated": "2026-10-29T15:10:15.222286+00:00"
     },
     {
       "id": "75345-1_245",
@@ -4918,18 +4918,18 @@
       "name": "501st Clone Troopers Battle Pack",
       "theme": "Star Wars",
       "cost": 20.0,
-      "current_value": 20.84,
-      "profit": 0.84,
-      "roi": 4.18,
+      "current_value": 20.88,
+      "profit": 0.88,
+      "roi": 4.38,
       "signal": "Hold",
-      "qty_sold_6m": 140,
+      "qty_sold_6m": 141,
       "bl_min_price": 11.1,
       "bl_max_price": 34.35,
       "selling_on": "",
       "notes": "",
       "image_url": "images/75345.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:56.293178+00:00"
+      "last_updated": "2026-10-29T15:10:17.982180+00:00"
     },
     {
       "id": "75345-1_246",
@@ -4938,18 +4938,18 @@
       "name": "501st Clone Troopers Battle Pack",
       "theme": "Star Wars",
       "cost": 20.0,
-      "current_value": 20.84,
-      "profit": 0.84,
-      "roi": 4.18,
+      "current_value": 20.88,
+      "profit": 0.88,
+      "roi": 4.38,
       "signal": "Hold",
-      "qty_sold_6m": 140,
+      "qty_sold_6m": 141,
       "bl_min_price": 11.1,
       "bl_max_price": 34.35,
       "selling_on": "",
       "notes": "",
       "image_url": "images/75345.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:03:58.801695+00:00"
+      "last_updated": "2026-10-29T15:10:20.635505+00:00"
     },
     {
       "id": "75345-1_247",
@@ -4958,18 +4958,18 @@
       "name": "501st Clone Troopers Battle Pack",
       "theme": "Star Wars",
       "cost": 20.0,
-      "current_value": 20.84,
-      "profit": 0.84,
-      "roi": 4.18,
+      "current_value": 20.88,
+      "profit": 0.88,
+      "roi": 4.38,
       "signal": "Hold",
-      "qty_sold_6m": 140,
+      "qty_sold_6m": 141,
       "bl_min_price": 11.1,
       "bl_max_price": 34.35,
       "selling_on": "",
       "notes": "",
       "image_url": "images/75345.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:04:01.285759+00:00"
+      "last_updated": "2026-10-29T15:10:23.335915+00:00"
     },
     {
       "id": "75378-1_248",
@@ -4989,7 +4989,7 @@
       "notes": "",
       "image_url": "images/75378.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:04:03.822391+00:00"
+      "last_updated": "2026-10-29T15:10:26.275337+00:00"
     },
     {
       "id": "manual_30701_1_manual",
@@ -5002,16 +5002,16 @@
       "qty_owned": 1,
       "current_value": 5.71,
       "profit": 3.21,
-      "roi": 128.25,
+      "roi": 128.21,
       "signal": "Consider",
-      "qty_sold_6m": 61,
+      "qty_sold_6m": 59,
       "bl_min_price": 0.07,
       "bl_max_price": 9.83,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30701.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:04:06.351299+00:00",
+      "last_updated": "2026-10-29T15:10:29.202051+00:00",
       "isManual": true
     },
     {
@@ -5025,16 +5025,16 @@
       "qty_owned": 1,
       "current_value": 5.71,
       "profit": 3.21,
-      "roi": 128.25,
+      "roi": 128.21,
       "signal": "Consider",
-      "qty_sold_6m": 61,
+      "qty_sold_6m": 59,
       "bl_min_price": 0.07,
       "bl_max_price": 9.83,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30701.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:04:08.835945+00:00",
+      "last_updated": "2026-10-29T15:10:31.842531+00:00",
       "isManual": true
     },
     {
@@ -5057,7 +5057,7 @@
       "notes": "",
       "image_url": "images/77256.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:04:11.408837+00:00",
+      "last_updated": "2026-10-29T15:10:34.706788+00:00",
       "isManual": true
     },
     {
@@ -5069,18 +5069,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.98,
-      "profit": 4.48,
-      "roi": 179.07,
+      "current_value": 6.81,
+      "profit": 4.31,
+      "roi": 172.55,
       "signal": "Consider",
-      "qty_sold_6m": 16,
+      "qty_sold_6m": 17,
       "bl_min_price": 4.0,
       "bl_max_price": 14.14,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30714.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:04:16.448897+00:00",
+      "last_updated": "2026-10-29T15:10:40.068563+00:00",
       "isManual": true
     },
     {
@@ -5092,18 +5092,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.98,
-      "profit": 4.48,
-      "roi": 179.07,
+      "current_value": 6.81,
+      "profit": 4.31,
+      "roi": 172.55,
       "signal": "Consider",
-      "qty_sold_6m": 16,
+      "qty_sold_6m": 17,
       "bl_min_price": 4.0,
       "bl_max_price": 14.14,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30714.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:04:21.671631+00:00",
+      "last_updated": "2026-10-29T15:10:44.820201+00:00",
       "isManual": true
     },
     {
@@ -5115,18 +5115,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.98,
-      "profit": 4.48,
-      "roi": 179.07,
+      "current_value": 6.81,
+      "profit": 4.31,
+      "roi": 172.55,
       "signal": "Consider",
-      "qty_sold_6m": 16,
+      "qty_sold_6m": 17,
       "bl_min_price": 4.0,
       "bl_max_price": 14.14,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30714.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:04:26.362981+00:00",
+      "last_updated": "2026-10-29T15:10:49.510764+00:00",
       "isManual": true
     },
     {
@@ -5138,18 +5138,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.98,
-      "profit": 4.48,
-      "roi": 179.07,
+      "current_value": 6.81,
+      "profit": 4.31,
+      "roi": 172.55,
       "signal": "Consider",
-      "qty_sold_6m": 16,
+      "qty_sold_6m": 17,
       "bl_min_price": 4.0,
       "bl_max_price": 14.14,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30714.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:04:31.004869+00:00",
+      "last_updated": "2026-10-29T15:10:54.128560+00:00",
       "isManual": true
     },
     {
@@ -5172,7 +5172,7 @@
       "notes": "",
       "image_url": "images/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:04:35.673333+00:00",
+      "last_updated": "2026-10-29T15:10:59.259133+00:00",
       "isManual": true
     },
     {
@@ -5195,7 +5195,7 @@
       "notes": "",
       "image_url": "images/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:04:40.201942+00:00",
+      "last_updated": "2026-10-29T15:11:03.893429+00:00",
       "isManual": true
     },
     {
@@ -5218,7 +5218,7 @@
       "notes": "",
       "image_url": "images/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:04:44.726949+00:00",
+      "last_updated": "2026-10-29T15:11:08.560853+00:00",
       "isManual": true
     },
     {
@@ -5241,7 +5241,7 @@
       "notes": "",
       "image_url": "images/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:04:49.309364+00:00",
+      "last_updated": "2026-10-29T15:11:13.241217+00:00",
       "isManual": true
     },
     {
@@ -5264,7 +5264,7 @@
       "notes": "",
       "image_url": "images/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:04:53.645142+00:00",
+      "last_updated": "2026-10-29T15:11:17.931152+00:00",
       "isManual": true
     },
     {
@@ -5287,7 +5287,7 @@
       "notes": "",
       "image_url": "images/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:04:58.110716+00:00",
+      "last_updated": "2026-10-29T15:11:22.594155+00:00",
       "isManual": true
     },
     {
@@ -5310,7 +5310,7 @@
       "notes": "",
       "image_url": "images/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:05:02.434970+00:00",
+      "last_updated": "2026-10-29T15:11:27.239265+00:00",
       "isManual": true
     },
     {
@@ -5333,7 +5333,7 @@
       "notes": "",
       "image_url": "images/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:05:06.905437+00:00",
+      "last_updated": "2026-10-29T15:11:31.787591+00:00",
       "isManual": true
     },
     {
@@ -5356,7 +5356,7 @@
       "notes": "",
       "image_url": "images/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:05:11.311451+00:00",
+      "last_updated": "2026-10-29T15:11:36.305388+00:00",
       "isManual": true
     },
     {
@@ -5379,7 +5379,7 @@
       "notes": "",
       "image_url": "images/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:05:15.589068+00:00",
+      "last_updated": "2026-10-29T15:11:40.866293+00:00",
       "isManual": true
     },
     {
@@ -5402,7 +5402,7 @@
       "notes": "",
       "image_url": "images/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:05:20.078093+00:00",
+      "last_updated": "2026-10-29T15:11:45.336702+00:00",
       "isManual": true
     },
     {
@@ -5425,7 +5425,7 @@
       "notes": "",
       "image_url": "images/30704.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:05:24.364352+00:00",
+      "last_updated": "2026-10-29T15:11:49.892633+00:00",
       "isManual": true
     },
     {
@@ -5437,18 +5437,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.97,
-      "profit": 4.47,
-      "roi": 178.68,
+      "current_value": 6.92,
+      "profit": 4.42,
+      "roi": 176.93,
       "signal": "Consider",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 23,
       "bl_min_price": 3.0,
       "bl_max_price": 9.84,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30735.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:05:29.297614+00:00",
+      "last_updated": "2026-10-29T15:12:01.329281+00:00",
       "isManual": true
     },
     {
@@ -5460,18 +5460,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.97,
-      "profit": 4.47,
-      "roi": 178.68,
+      "current_value": 6.92,
+      "profit": 4.42,
+      "roi": 176.93,
       "signal": "Consider",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 23,
       "bl_min_price": 3.0,
       "bl_max_price": 9.84,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30735.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:05:34.040938+00:00",
+      "last_updated": "2026-10-29T15:12:06.388927+00:00",
       "isManual": true
     },
     {
@@ -5483,18 +5483,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.97,
-      "profit": 4.47,
-      "roi": 178.68,
+      "current_value": 6.92,
+      "profit": 4.42,
+      "roi": 176.93,
       "signal": "Consider",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 23,
       "bl_min_price": 3.0,
       "bl_max_price": 9.84,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30735.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:05:38.517835+00:00",
+      "last_updated": "2026-10-29T15:12:11.345877+00:00",
       "isManual": true
     },
     {
@@ -5506,18 +5506,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.97,
-      "profit": 4.47,
-      "roi": 178.68,
+      "current_value": 6.92,
+      "profit": 4.42,
+      "roi": 176.93,
       "signal": "Consider",
-      "qty_sold_6m": 22,
+      "qty_sold_6m": 23,
       "bl_min_price": 3.0,
       "bl_max_price": 9.84,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30735.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:05:43.137072+00:00",
+      "last_updated": "2026-10-29T15:12:16.304743+00:00",
       "isManual": true
     },
     {
@@ -5529,18 +5529,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 5.85,
-      "profit": 3.35,
-      "roi": 133.83,
+      "current_value": 5.77,
+      "profit": 3.27,
+      "roi": 130.62,
       "signal": "Consider",
-      "qty_sold_6m": 14,
+      "qty_sold_6m": 15,
       "bl_min_price": 4.16,
       "bl_max_price": 8.46,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30719.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:05:47.679984+00:00",
+      "last_updated": "2026-10-29T15:12:21.513373+00:00",
       "isManual": true
     },
     {
@@ -5552,18 +5552,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 5.85,
-      "profit": 3.35,
-      "roi": 133.83,
+      "current_value": 5.77,
+      "profit": 3.27,
+      "roi": 130.62,
       "signal": "Consider",
-      "qty_sold_6m": 14,
+      "qty_sold_6m": 15,
       "bl_min_price": 4.16,
       "bl_max_price": 8.46,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30719.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:05:52.405045+00:00",
+      "last_updated": "2026-10-29T15:12:26.228698+00:00",
       "isManual": true
     },
     {
@@ -5575,18 +5575,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 5.85,
-      "profit": 3.35,
-      "roi": 133.83,
+      "current_value": 5.77,
+      "profit": 3.27,
+      "roi": 130.62,
       "signal": "Consider",
-      "qty_sold_6m": 14,
+      "qty_sold_6m": 15,
       "bl_min_price": 4.16,
       "bl_max_price": 8.46,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30719.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:05:56.857937+00:00",
+      "last_updated": "2026-10-29T15:12:30.844898+00:00",
       "isManual": true
     },
     {
@@ -5598,18 +5598,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 5.85,
-      "profit": 3.35,
-      "roi": 133.83,
+      "current_value": 5.77,
+      "profit": 3.27,
+      "roi": 130.62,
       "signal": "Consider",
-      "qty_sold_6m": 14,
+      "qty_sold_6m": 15,
       "bl_min_price": 4.16,
       "bl_max_price": 8.46,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30719.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:06:01.332059+00:00",
+      "last_updated": "2026-10-29T15:12:35.351498+00:00",
       "isManual": true
     },
     {
@@ -5621,18 +5621,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 5.85,
-      "profit": 3.35,
-      "roi": 133.83,
+      "current_value": 5.77,
+      "profit": 3.27,
+      "roi": 130.62,
       "signal": "Consider",
-      "qty_sold_6m": 14,
+      "qty_sold_6m": 15,
       "bl_min_price": 4.16,
       "bl_max_price": 8.46,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30719.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:06:05.853615+00:00",
+      "last_updated": "2026-10-29T15:12:39.909670+00:00",
       "isManual": true
     },
     {
@@ -5655,7 +5655,7 @@
       "notes": "",
       "image_url": "images/30691.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:06:10.584088+00:00",
+      "last_updated": "2026-10-29T15:12:45.016082+00:00",
       "isManual": true
     },
     {
@@ -5678,7 +5678,7 @@
       "notes": "",
       "image_url": "images/30691.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:06:15.012336+00:00",
+      "last_updated": "2026-10-29T15:12:49.621854+00:00",
       "isManual": true
     },
     {
@@ -5701,7 +5701,7 @@
       "notes": "",
       "image_url": "images/30691.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:06:19.609023+00:00",
+      "last_updated": "2026-10-29T15:12:54.213294+00:00",
       "isManual": true
     },
     {
@@ -5724,7 +5724,7 @@
       "notes": "",
       "image_url": "images/30691.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:06:24.290760+00:00",
+      "last_updated": "2026-10-29T15:12:58.829130+00:00",
       "isManual": true
     },
     {
@@ -5747,7 +5747,7 @@
       "notes": "",
       "image_url": "images/30691.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:06:28.880421+00:00",
+      "last_updated": "2026-10-29T15:13:03.494169+00:00",
       "isManual": true
     },
     {
@@ -5770,7 +5770,7 @@
       "notes": "",
       "image_url": "images/30691.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:06:33.371605+00:00",
+      "last_updated": "2026-10-29T15:13:08.186770+00:00",
       "isManual": true
     },
     {
@@ -5793,7 +5793,7 @@
       "notes": "",
       "image_url": "images/30697.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:06:38.253783+00:00",
+      "last_updated": "2026-10-29T15:13:14.261714+00:00",
       "isManual": true
     },
     {
@@ -5816,7 +5816,7 @@
       "notes": "",
       "image_url": "images/30697.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:06:42.770057+00:00",
+      "last_updated": "2026-10-29T15:13:19.772186+00:00",
       "isManual": true
     },
     {
@@ -5839,7 +5839,7 @@
       "notes": "",
       "image_url": "images/30697.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:06:47.103489+00:00",
+      "last_updated": "2026-10-29T15:13:24.581511+00:00",
       "isManual": true
     },
     {
@@ -5862,7 +5862,7 @@
       "notes": "",
       "image_url": "images/30697.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:06:51.516706+00:00",
+      "last_updated": "2026-10-29T15:13:29.394878+00:00",
       "isManual": true
     },
     {
@@ -5885,7 +5885,7 @@
       "notes": "",
       "image_url": "images/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:06:56.274137+00:00",
+      "last_updated": "2026-10-29T15:13:34.530415+00:00",
       "isManual": true
     },
     {
@@ -5908,7 +5908,7 @@
       "notes": "",
       "image_url": "images/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:07:00.654392+00:00",
+      "last_updated": "2026-10-29T15:13:39.268387+00:00",
       "isManual": true
     },
     {
@@ -5931,7 +5931,7 @@
       "notes": "",
       "image_url": "images/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:07:05.136025+00:00",
+      "last_updated": "2026-10-29T15:13:43.756873+00:00",
       "isManual": true
     },
     {
@@ -5954,7 +5954,7 @@
       "notes": "",
       "image_url": "images/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:07:09.614027+00:00",
+      "last_updated": "2026-10-29T15:13:48.293760+00:00",
       "isManual": true
     },
     {
@@ -5977,7 +5977,7 @@
       "notes": "",
       "image_url": "images/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:07:14.061727+00:00",
+      "last_updated": "2026-10-29T15:13:52.972101+00:00",
       "isManual": true
     },
     {
@@ -6000,7 +6000,7 @@
       "notes": "",
       "image_url": "images/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:07:18.405074+00:00",
+      "last_updated": "2026-10-29T15:13:57.561979+00:00",
       "isManual": true
     },
     {
@@ -6023,7 +6023,7 @@
       "notes": "",
       "image_url": "images/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:07:22.892798+00:00",
+      "last_updated": "2026-10-29T15:14:02.448886+00:00",
       "isManual": true
     },
     {
@@ -6046,7 +6046,7 @@
       "notes": "",
       "image_url": "images/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:07:27.194350+00:00",
+      "last_updated": "2026-10-29T15:14:07.135220+00:00",
       "isManual": true
     },
     {
@@ -6069,7 +6069,7 @@
       "notes": "",
       "image_url": "images/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:07:31.600333+00:00",
+      "last_updated": "2026-10-29T15:14:11.705594+00:00",
       "isManual": true
     },
     {
@@ -6092,7 +6092,7 @@
       "notes": "",
       "image_url": "images/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:07:36.027823+00:00",
+      "last_updated": "2026-10-29T15:14:16.504974+00:00",
       "isManual": true
     },
     {
@@ -6115,7 +6115,7 @@
       "notes": "",
       "image_url": "images/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:07:40.312197+00:00",
+      "last_updated": "2026-10-29T15:14:21.193796+00:00",
       "isManual": true
     },
     {
@@ -6138,7 +6138,7 @@
       "notes": "",
       "image_url": "images/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:07:44.863337+00:00",
+      "last_updated": "2026-10-29T15:14:26.027787+00:00",
       "isManual": true
     },
     {
@@ -6161,7 +6161,7 @@
       "notes": "",
       "image_url": "images/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:07:49.265837+00:00",
+      "last_updated": "2026-10-29T15:14:30.625782+00:00",
       "isManual": true
     },
     {
@@ -6184,7 +6184,7 @@
       "notes": "",
       "image_url": "images/30698.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:07:53.825932+00:00",
+      "last_updated": "2026-10-29T15:14:35.155437+00:00",
       "isManual": true
     },
     {
@@ -6207,7 +6207,7 @@
       "notes": "",
       "image_url": "images/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:07:58.274963+00:00",
+      "last_updated": "2026-10-29T15:14:40.336607+00:00",
       "isManual": true
     },
     {
@@ -6230,7 +6230,7 @@
       "notes": "",
       "image_url": "images/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:08:03.051694+00:00",
+      "last_updated": "2026-10-29T15:14:44.837041+00:00",
       "isManual": true
     },
     {
@@ -6253,7 +6253,7 @@
       "notes": "",
       "image_url": "images/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:08:07.670113+00:00",
+      "last_updated": "2026-10-29T15:14:49.477106+00:00",
       "isManual": true
     },
     {
@@ -6276,7 +6276,7 @@
       "notes": "",
       "image_url": "images/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:08:12.115784+00:00",
+      "last_updated": "2026-10-29T15:14:54.071098+00:00",
       "isManual": true
     },
     {
@@ -6299,7 +6299,7 @@
       "notes": "",
       "image_url": "images/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:08:16.517704+00:00",
+      "last_updated": "2026-10-29T15:14:58.683215+00:00",
       "isManual": true
     },
     {
@@ -6322,7 +6322,7 @@
       "notes": "",
       "image_url": "images/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:08:21.016009+00:00",
+      "last_updated": "2026-10-29T15:15:03.449635+00:00",
       "isManual": true
     },
     {
@@ -6345,7 +6345,7 @@
       "notes": "",
       "image_url": "images/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:08:25.289969+00:00",
+      "last_updated": "2026-10-29T15:15:08.111523+00:00",
       "isManual": true
     },
     {
@@ -6368,7 +6368,7 @@
       "notes": "",
       "image_url": "images/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:08:29.909298+00:00",
+      "last_updated": "2026-10-29T15:15:12.848207+00:00",
       "isManual": true
     },
     {
@@ -6391,7 +6391,7 @@
       "notes": "",
       "image_url": "images/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:08:34.215886+00:00",
+      "last_updated": "2026-10-29T15:15:17.628212+00:00",
       "isManual": true
     },
     {
@@ -6414,7 +6414,7 @@
       "notes": "",
       "image_url": "images/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:08:38.679073+00:00",
+      "last_updated": "2026-10-29T15:15:22.281662+00:00",
       "isManual": true
     },
     {
@@ -6437,7 +6437,7 @@
       "notes": "",
       "image_url": "images/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:08:43.020272+00:00",
+      "last_updated": "2026-10-29T15:15:26.846479+00:00",
       "isManual": true
     },
     {
@@ -6460,7 +6460,7 @@
       "notes": "",
       "image_url": "images/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:08:47.362409+00:00",
+      "last_updated": "2026-10-29T15:15:31.360150+00:00",
       "isManual": true
     },
     {
@@ -6483,7 +6483,7 @@
       "notes": "",
       "image_url": "images/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:08:51.772183+00:00",
+      "last_updated": "2026-10-29T15:15:35.903463+00:00",
       "isManual": true
     },
     {
@@ -6506,7 +6506,7 @@
       "notes": "",
       "image_url": "images/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:08:56.051286+00:00",
+      "last_updated": "2026-10-29T15:15:40.506329+00:00",
       "isManual": true
     },
     {
@@ -6529,7 +6529,7 @@
       "notes": "",
       "image_url": "images/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:09:00.607358+00:00",
+      "last_updated": "2026-10-29T15:15:45.316325+00:00",
       "isManual": true
     },
     {
@@ -6552,7 +6552,7 @@
       "notes": "",
       "image_url": "images/30693.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:09:05.036673+00:00",
+      "last_updated": "2026-10-29T15:15:49.922627+00:00",
       "isManual": true
     },
     {
@@ -6564,18 +6564,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.79,
-      "profit": 4.29,
-      "roi": 171.42,
+      "current_value": 6.81,
+      "profit": 4.31,
+      "roi": 172.38,
       "signal": "Consider",
-      "qty_sold_6m": 65,
+      "qty_sold_6m": 64,
       "bl_min_price": 2.95,
       "bl_max_price": 15.61,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30665.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:09:09.896668+00:00",
+      "last_updated": "2026-10-29T15:15:55.074027+00:00",
       "isManual": true
     },
     {
@@ -6587,18 +6587,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.79,
-      "profit": 4.29,
-      "roi": 171.42,
+      "current_value": 6.81,
+      "profit": 4.31,
+      "roi": 172.38,
       "signal": "Consider",
-      "qty_sold_6m": 65,
+      "qty_sold_6m": 64,
       "bl_min_price": 2.95,
       "bl_max_price": 15.61,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30665.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:09:14.972656+00:00",
+      "last_updated": "2026-10-29T15:15:59.760182+00:00",
       "isManual": true
     },
     {
@@ -6610,18 +6610,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.79,
-      "profit": 4.29,
-      "roi": 171.42,
+      "current_value": 6.81,
+      "profit": 4.31,
+      "roi": 172.38,
       "signal": "Consider",
-      "qty_sold_6m": 65,
+      "qty_sold_6m": 64,
       "bl_min_price": 2.95,
       "bl_max_price": 15.61,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30665.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:09:19.588824+00:00",
+      "last_updated": "2026-10-29T15:16:04.566681+00:00",
       "isManual": true
     },
     {
@@ -6633,18 +6633,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.79,
-      "profit": 4.29,
-      "roi": 171.42,
+      "current_value": 6.81,
+      "profit": 4.31,
+      "roi": 172.38,
       "signal": "Consider",
-      "qty_sold_6m": 65,
+      "qty_sold_6m": 64,
       "bl_min_price": 2.95,
       "bl_max_price": 15.61,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30665.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:09:24.096387+00:00",
+      "last_updated": "2026-10-29T15:16:09.681442+00:00",
       "isManual": true
     },
     {
@@ -6656,18 +6656,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.79,
-      "profit": 4.29,
-      "roi": 171.42,
+      "current_value": 6.81,
+      "profit": 4.31,
+      "roi": 172.38,
       "signal": "Consider",
-      "qty_sold_6m": 65,
+      "qty_sold_6m": 64,
       "bl_min_price": 2.95,
       "bl_max_price": 15.61,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30665.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:09:28.651370+00:00",
+      "last_updated": "2026-10-29T15:16:14.320074+00:00",
       "isManual": true
     },
     {
@@ -6679,18 +6679,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.79,
-      "profit": 4.29,
-      "roi": 171.42,
+      "current_value": 6.81,
+      "profit": 4.31,
+      "roi": 172.38,
       "signal": "Consider",
-      "qty_sold_6m": 65,
+      "qty_sold_6m": 64,
       "bl_min_price": 2.95,
       "bl_max_price": 15.61,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30665.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:09:33.225037+00:00",
+      "last_updated": "2026-10-29T15:16:18.988133+00:00",
       "isManual": true
     },
     {
@@ -6702,18 +6702,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.79,
-      "profit": 4.29,
-      "roi": 171.42,
+      "current_value": 6.81,
+      "profit": 4.31,
+      "roi": 172.38,
       "signal": "Consider",
-      "qty_sold_6m": 65,
+      "qty_sold_6m": 64,
       "bl_min_price": 2.95,
       "bl_max_price": 15.61,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30665.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:09:37.741869+00:00",
+      "last_updated": "2026-10-29T15:16:23.695387+00:00",
       "isManual": true
     },
     {
@@ -6725,18 +6725,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.79,
-      "profit": 4.29,
-      "roi": 171.42,
+      "current_value": 6.81,
+      "profit": 4.31,
+      "roi": 172.38,
       "signal": "Consider",
-      "qty_sold_6m": 65,
+      "qty_sold_6m": 64,
       "bl_min_price": 2.95,
       "bl_max_price": 15.61,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30665.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:09:42.220561+00:00",
+      "last_updated": "2026-10-29T15:16:28.259422+00:00",
       "isManual": true
     },
     {
@@ -6748,18 +6748,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.79,
-      "profit": 4.29,
-      "roi": 171.42,
+      "current_value": 6.81,
+      "profit": 4.31,
+      "roi": 172.38,
       "signal": "Consider",
-      "qty_sold_6m": 65,
+      "qty_sold_6m": 64,
       "bl_min_price": 2.95,
       "bl_max_price": 15.61,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30665.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:09:46.728926+00:00",
+      "last_updated": "2026-10-29T15:16:32.931209+00:00",
       "isManual": true
     },
     {
@@ -6771,18 +6771,18 @@
       "cost": 2.5,
       "unit_cost": 2.5,
       "qty_owned": 1,
-      "current_value": 6.79,
-      "profit": 4.29,
-      "roi": 171.42,
+      "current_value": 6.81,
+      "profit": 4.31,
+      "roi": 172.38,
       "signal": "Consider",
-      "qty_sold_6m": 65,
+      "qty_sold_6m": 64,
       "bl_min_price": 2.95,
       "bl_max_price": 15.61,
       "selling_on": "",
       "notes": "",
       "image_url": "images/30665.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:09:51.245931+00:00",
+      "last_updated": "2026-10-29T15:16:37.616190+00:00",
       "isManual": true
     },
     {
@@ -6805,7 +6805,7 @@
       "notes": "",
       "image_url": "images/30723.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:09:56.227779+00:00",
+      "last_updated": "2026-10-29T15:16:42.809525+00:00",
       "isManual": true
     },
     {
@@ -6828,7 +6828,7 @@
       "notes": "",
       "image_url": "images/30723.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:10:00.776470+00:00",
+      "last_updated": "2026-10-29T15:16:47.480608+00:00",
       "isManual": true
     },
     {
@@ -6851,7 +6851,7 @@
       "notes": "",
       "image_url": "images/30659.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:10:05.185746+00:00",
+      "last_updated": "2026-10-29T15:16:52.717496+00:00",
       "isManual": true
     },
     {
@@ -6874,7 +6874,7 @@
       "notes": "",
       "image_url": "images/30659.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:10:09.869694+00:00",
+      "last_updated": "2026-10-29T15:16:57.242710+00:00",
       "isManual": true
     },
     {
@@ -6897,7 +6897,7 @@
       "notes": "",
       "image_url": "images/30659.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:10:14.215507+00:00",
+      "last_updated": "2026-10-29T15:17:01.897884+00:00",
       "isManual": true
     },
     {
@@ -6920,7 +6920,7 @@
       "notes": "",
       "image_url": "images/30659.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:10:18.797259+00:00",
+      "last_updated": "2026-10-29T15:17:06.479457+00:00",
       "isManual": true
     },
     {
@@ -6943,7 +6943,7 @@
       "notes": "",
       "image_url": "images/30733.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:10:23.618047+00:00",
+      "last_updated": "2026-10-29T15:17:11.462159+00:00",
       "isManual": true
     },
     {
@@ -6966,7 +6966,7 @@
       "notes": "",
       "image_url": "images/30733.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:10:28.083182+00:00",
+      "last_updated": "2026-10-29T15:17:15.942348+00:00",
       "isManual": true
     },
     {
@@ -6989,7 +6989,7 @@
       "notes": "",
       "image_url": "images/30699.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:10:32.696084+00:00",
+      "last_updated": "2026-10-29T15:17:20.939238+00:00",
       "isManual": true
     },
     {
@@ -7012,7 +7012,7 @@
       "notes": "",
       "image_url": "images/30699.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:10:37.415005+00:00",
+      "last_updated": "2026-10-29T15:17:25.715247+00:00",
       "isManual": true
     },
     {
@@ -7035,7 +7035,7 @@
       "notes": "",
       "image_url": "images/30699.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:10:42.011172+00:00",
+      "last_updated": "2026-10-29T15:17:30.315858+00:00",
       "isManual": true
     },
     {
@@ -7058,7 +7058,7 @@
       "notes": "",
       "image_url": "images/30699.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:10:46.462682+00:00",
+      "last_updated": "2026-10-29T15:17:34.895664+00:00",
       "isManual": true
     },
     {
@@ -7081,7 +7081,7 @@
       "notes": "",
       "image_url": "images/30699.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:10:50.997024+00:00",
+      "last_updated": "2026-10-29T15:17:39.449657+00:00",
       "isManual": true
     },
     {
@@ -7104,7 +7104,7 @@
       "notes": "",
       "image_url": "images/30699.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:10:55.529678+00:00",
+      "last_updated": "2026-10-29T15:17:44.098805+00:00",
       "isManual": true
     },
     {
@@ -7127,7 +7127,7 @@
       "notes": "",
       "image_url": "images/30699.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:10:59.871290+00:00",
+      "last_updated": "2026-10-29T15:17:48.815987+00:00",
       "isManual": true
     },
     {
@@ -7150,7 +7150,7 @@
       "notes": "",
       "image_url": "images/30699.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:11:04.301300+00:00",
+      "last_updated": "2026-10-29T15:17:53.865809+00:00",
       "isManual": true
     },
     {
@@ -7173,7 +7173,7 @@
       "notes": "",
       "image_url": "images/30700.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:11:09.278824+00:00",
+      "last_updated": "2026-10-29T15:17:59.515422+00:00",
       "isManual": true
     },
     {
@@ -7196,7 +7196,7 @@
       "notes": "",
       "image_url": "images/30692.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:11:14.141429+00:00",
+      "last_updated": "2026-10-29T15:18:04.674465+00:00",
       "isManual": true
     },
     {
@@ -7219,7 +7219,7 @@
       "notes": "",
       "image_url": "images/30692.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:11:19.032371+00:00",
+      "last_updated": "2026-10-29T15:18:09.253184+00:00",
       "isManual": true
     },
     {
@@ -7242,7 +7242,7 @@
       "notes": "",
       "image_url": "images/30692.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:11:23.685375+00:00",
+      "last_updated": "2026-10-29T15:18:13.955269+00:00",
       "isManual": true
     },
     {
@@ -7265,7 +7265,7 @@
       "notes": "",
       "image_url": "images/30675.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:11:28.522458+00:00",
+      "last_updated": "2026-10-29T15:18:19.067376+00:00",
       "isManual": true
     },
     {
@@ -7288,7 +7288,7 @@
       "notes": "",
       "image_url": "images/30675.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:11:33.250897+00:00",
+      "last_updated": "2026-10-29T15:18:23.778294+00:00",
       "isManual": true
     },
     {
@@ -7311,7 +7311,7 @@
       "notes": "",
       "image_url": "images/30675.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:11:37.908562+00:00",
+      "last_updated": "2026-10-29T15:18:28.563384+00:00",
       "isManual": true
     },
     {
@@ -7334,7 +7334,7 @@
       "notes": "Traded for London and Bonsai Tree.",
       "image_url": "images/71395.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:11:43.211570+00:00",
+      "last_updated": "2026-10-29T15:18:33.941750+00:00",
       "isManual": true
     },
     {
@@ -7357,7 +7357,7 @@
       "notes": "",
       "image_url": "images/77248.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:11:48.475669+00:00",
+      "last_updated": "2026-10-29T15:18:39.081583+00:00",
       "isManual": true
     },
     {
@@ -7380,7 +7380,7 @@
       "notes": "",
       "image_url": "images/75384.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:11:53.362764+00:00",
+      "last_updated": "2026-10-29T15:18:44.019905+00:00",
       "isManual": true
     },
     {
@@ -7403,7 +7403,7 @@
       "notes": "",
       "image_url": "images/77057.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:11:58.120005+00:00",
+      "last_updated": "2026-10-29T15:18:49.225113+00:00",
       "isManual": true
     },
     {
@@ -7426,7 +7426,7 @@
       "notes": "",
       "image_url": "images/77057.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:12:02.451513+00:00",
+      "last_updated": "2026-10-29T15:18:53.880672+00:00",
       "isManual": true
     },
     {
@@ -7449,7 +7449,7 @@
       "notes": "",
       "image_url": "images/77057.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:12:07.049559+00:00",
+      "last_updated": "2026-10-29T15:18:58.604812+00:00",
       "isManual": true
     },
     {
@@ -7472,7 +7472,7 @@
       "notes": "",
       "image_url": "images/77077.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:12:11.810081+00:00",
+      "last_updated": "2026-10-29T15:19:03.825526+00:00",
       "isManual": true
     },
     {
@@ -7495,7 +7495,7 @@
       "notes": "",
       "image_url": "images/76785.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:12:16.580819+00:00",
+      "last_updated": "2026-10-29T15:19:08.772155+00:00",
       "isManual": true
     },
     {
@@ -7518,7 +7518,7 @@
       "notes": "",
       "image_url": "images/76785.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:12:21.158416+00:00",
+      "last_updated": "2026-10-29T15:19:13.459597+00:00",
       "isManual": true
     },
     {
@@ -7541,7 +7541,7 @@
       "notes": "",
       "image_url": "images/76785.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:12:25.539953+00:00",
+      "last_updated": "2026-10-29T15:19:18.215070+00:00",
       "isManual": true
     },
     {
@@ -7564,7 +7564,7 @@
       "notes": "",
       "image_url": "images/77056.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:12:30.300344+00:00",
+      "last_updated": "2026-10-29T15:19:23.280553+00:00",
       "isManual": true
     },
     {
@@ -7587,7 +7587,7 @@
       "notes": "",
       "image_url": "images/77056.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:12:34.571148+00:00",
+      "last_updated": "2026-10-29T15:19:27.906915+00:00",
       "isManual": true
     },
     {
@@ -7610,7 +7610,7 @@
       "notes": "",
       "image_url": "images/77057.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:12:38.964867+00:00",
+      "last_updated": "2026-10-29T15:19:32.476812+00:00",
       "isManual": true
     },
     {
@@ -7633,7 +7633,7 @@
       "notes": "",
       "image_url": "images/77057.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:12:43.289347+00:00",
+      "last_updated": "2026-10-29T15:19:37.214038+00:00",
       "isManual": true
     },
     {
@@ -7656,7 +7656,7 @@
       "notes": "",
       "image_url": "images/75685.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:12:48.056706+00:00",
+      "last_updated": "2026-10-29T15:19:42.479337+00:00",
       "isManual": true
     },
     {
@@ -7679,7 +7679,7 @@
       "notes": "",
       "image_url": "images/42169.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:12:52.932054+00:00",
+      "last_updated": "2026-10-29T15:19:47.630589+00:00",
       "isManual": true
     },
     {
@@ -7702,7 +7702,7 @@
       "notes": "",
       "image_url": "images/42169.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:12:57.991580+00:00",
+      "last_updated": "2026-10-29T15:19:52.364194+00:00",
       "isManual": true
     },
     {
@@ -7725,7 +7725,7 @@
       "notes": "",
       "image_url": "images/42169.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:13:02.622574+00:00",
+      "last_updated": "2026-10-29T15:19:56.999445+00:00",
       "isManual": true
     },
     {
@@ -7748,7 +7748,7 @@
       "notes": "",
       "image_url": "images/72038.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:13:07.769426+00:00",
+      "last_updated": "2026-10-29T15:20:02.038100+00:00",
       "isManual": true
     },
     {
@@ -7771,7 +7771,7 @@
       "notes": "",
       "image_url": "images/72038.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:13:12.306303+00:00",
+      "last_updated": "2026-10-29T15:20:06.800004+00:00",
       "isManual": true
     },
     {
@@ -7794,7 +7794,7 @@
       "notes": "",
       "image_url": "images/76786.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:13:16.616884+00:00",
+      "last_updated": "2026-10-29T15:20:10.348389+00:00",
       "isManual": true
     },
     {
@@ -7817,7 +7817,7 @@
       "notes": "",
       "image_url": "images/76786.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:13:19.854011+00:00",
+      "last_updated": "2026-10-29T15:20:13.549749+00:00",
       "isManual": true
     },
     {
@@ -7840,7 +7840,7 @@
       "notes": "",
       "image_url": "images/76327.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:13:24.870729+00:00",
+      "last_updated": "2026-10-29T15:20:18.514440+00:00",
       "isManual": true
     },
     {
@@ -7863,7 +7863,7 @@
       "notes": "",
       "image_url": "images/76327.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:13:29.348347+00:00",
+      "last_updated": "2026-10-29T15:20:23.061683+00:00",
       "isManual": true
     },
     {
@@ -7886,7 +7886,7 @@
       "notes": "",
       "image_url": "images/75414.png",
       "ad_copy": "",
-      "last_updated": "2026-10-28T15:13:33.965318+00:00",
+      "last_updated": "2026-10-29T15:20:27.982808+00:00",
       "isManual": true
     }
   ]
