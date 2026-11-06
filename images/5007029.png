@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BrickLink - Buy and sell LEGO Parts, Sets and Minifigures</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script>
+        function getNextDayESTDate() {
+            // Get current UTC time
+            var now = new Date();
+
+            // Get offset for EST (UTC-5)
+            var offset = -5 * 60;
+
+            // Adjust time based on offset
+            now.setMinutes(now.getMinutes() + offset);
+
+            // Add one day
+            now.setDate(now.getDate() + 1);
+
+            // Format date
+            var month = now.getUTCMonth() + 1; // months are zero-based
+            var day = now.getUTCDate();
+            var year = now.getUTCFullYear();
+
+            // Add leading zero if needed
+            month = (month < 10) ? "0" + month : month;
+            day = (day < 10) ? "0" + day : day;
+
+            return year + "-" + month + "-" + day;
+        }
+
+        // Set maintenance date dynamically
+        window.onload = function() {
+            var maintenanceDateElement = document.getElementById("maintenance-date");
+            maintenanceDateElement.innerHTML = getNextDayESTDate();
+            maintenanceDateElement.innerHTML = "2025-05-21";
+        };
+    </script>
+</head>
+<BODY LEFTMARGIN="0" RIGHTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0" STYLE="background-color: #DDDDDD; font-family: arial; ">
+    <div style="width: 100%; background-color: #FFFFFF; box-shadow: 0 4px 2px 0 rgba(0,0,0,0.15); margin-bottom:24px;">
+        <div style="width: 960px; margin-left: auto; margin-right: auto; padding: 12px 0;">
+			<a href="https://www.bricklink.com">
+				<IMG SRC="img/logo-light.0vu9aguq6t-0q.svg" WIDTH="124px" ALT="BrickLink logo" style="color:transparent;max-height: 100%;max-width: 100%;height:auto;">
+			</a>
+        </div>
+    </div>
+    <div style="width: 960px; margin: 0 auto; margin-bottom:24px; background-color: white; box-shadow: 0 4px 2px 0 rgba(0,0,0,0.15); text-align:center; border-radius:4px; overflow:hidden;">
+        <div style="margin-bottom:24px;">
+            <img src="img/maintenance_parrot.png" alt="Parrot made out of LEGO wearing a construction helmet"/>
+        </div>
+        <h2 style="margin:0; margin-bottom:24px;">Temporarily unavailable</h2>
+        <p style="font-size: 16px; color: #999999; margin:0; margin-bottom:12px;">BrickLink is currently offline while our teams carry out necessary work. <br>We expect the site to remain unavailable until at least 6pm CET / 9am PST.</p>
+        <p style="font-size: 16px; color: #999999; margin:0; margin-bottom:24px;">We’re sorry for the disruption and appreciate your patience while we complete this work.</p>
+        <div style="border-top: 1px solid #cccccc; background-color: #FAFAFA; padding: 12px; padding-bottom:9px; display:flex; justify-content: flex-end; gap:6px;">
+            <a href="https://www.facebook.com/bricklink" target="_blank" alt="Follow us on Facebook"><img src="img/social-icon-facebook.png" border=0 width="26px"></a>
+            <a href="https://www.flickr.com/photos/bricklink/" alt="Check out our Flickr" class="flickr"><img src="img/social-icon-flickr.png" border=0 width="26px"></a>
+            <a href="http://www.instagram.com/bricklink" target="_blank" alt="Follow us on Instagram" class="instagram"><img src="img/social-icon-instagram.png" border=0 width="26px"></a>
+            <a href="https://twitter.com/intent/follow?screen_name=Bricklink" onclick="window.open(this.href,'_blank','scrollbars=yes,toolbar=yes,resizable=yes,width=600,height=465,left=0,top=0'); return false;" alt="Follow us on Twitter" class="twitter"><img src="img/social-icon-twitter.png" border=0 width="26px"></a>
+        </div>
+    </div>
+    <div STYLE="width: 960px; margin: 0 auto; margin-bottom:24px; font-size: 11px; color: #999999; text-align: left;">
+        LEGO, the LEGO logo, BrickLink, the Minifigure, DUPLO, the FRIENDS logo, the MINIFIGURES logo, DREAMZzz, NINJAGO, VIDIYO and MINDSTORMS are trademarks of the LEGO Group. © 2026 The LEGO Group. All rights reserved. Some LEGO® sets contain small parts and/or small balls that pose a choking hazard and are not suitable for children under 3 years of age. LEGO® DUPLO® elements are not small parts and are specifically designed for safe use by children under 3 years of age. Use of this website constitutes acceptance of the Terms of Service and Privacy Policy.
+    </div>
+</BODY>
+</HTML>
+
